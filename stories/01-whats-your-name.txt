@@ -1,0 +1,18 @@
+# Tiny Japanese - sample episode
+# Format:  Speaker: Japanese | English   (romaji is added automatically)
+title: What's Your Name?
+episode: 1
+scene: cafe
+
+Mika: はじめまして！ミカです。 | Nice to meet you! I'm Mika.
+Alex: はじめまして。アレックスです。 | Nice to meet you. I'm Alex.
+Mika: アレックスさんは、がくせいですか？ | Alex, are you a student?
+Alex: はい、がくせいです。 | Yes, I'm a student.
+Mika: わたしも、がくせいです！ | I'm a student too!
+Alex: そうですか。よろしくおねがいします。 | I see. Nice to meet you.
+Mika: こちらこそ、よろしくね！ | Likewise!
+
+vocab: はじめまして | hajimemashite | Nice to meet you
+vocab: わたしは〜です | watashi wa ~ desu | I am ~
+vocab: がくせい | gakusei | student
+vocab: よろしくおねがいします | yoroshiku onegaishimasu | Nice to meet you (polite closing)

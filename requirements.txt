@@ -1,0 +1,5 @@
+edge-tts>=6.1.12
+gTTS>=2.5.1
+Pillow>=10.0
+numpy
+pykakasi>=2.2
