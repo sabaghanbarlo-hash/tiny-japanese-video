@@ -116,7 +116,7 @@ def sh(cmd):
     subprocess.run(cmd, check=True)
 
 
-def synth(text, speaker, out_wav, rate, dummy=False):
+def synth(text, speaker, out_wav, rate, dummy=False, voice=None, lang="ja"):
     if dummy:
         n = int(max(1.0, len(text) * 0.11) * SR); t = np.arange(n) / SR
         write_wav(out_wav, 0.4 * np.sin(2 * np.pi * 220 * t) * np.abs(np.sin(2 * np.pi * 3.5 * t)) ** 0.7)
@@ -124,12 +124,12 @@ def synth(text, speaker, out_wav, rate, dummy=False):
     mp3, af = out_wav + ".mp3", []
     try:
         import edge_tts
-        asyncio.run(edge_tts.Communicate(text, CHARS[speaker]["voice"], rate=rate).save(mp3))
+        asyncio.run(edge_tts.Communicate(text, voice or CHARS[speaker]["voice"], rate=rate).save(mp3))
     except Exception as e:
         print(f"edge-tts failed ({e}); falling back to gTTS", file=sys.stderr)
         from gtts import gTTS
-        gTTS(text, lang="ja").save(mp3)
-        if speaker == "Alex":
+        gTTS(text, lang=lang).save(mp3)
+        if speaker == "Alex" and lang == "ja":
             af = ["-af", f"asetrate={int(SR * 0.86)},aresample={SR}"]
     sh(["ffmpeg", "-y", "-loglevel", "error", "-i", mp3, *af, "-ar", str(SR), "-ac", "1", out_wav])
 
@@ -289,11 +289,17 @@ def line_card(ln):
     return card_image(ln["speaker"], CHARS[ln["speaker"]]["accent"], parts)
 
 
-def vocab_card(vocab):
+def vocab_card(vocab, active=None):
     parts = []
-    for v in vocab[:5]:
-        parts.append((v["jp"], font(50), (52, 40, 44), 64))
-        parts.append((f'{v["romaji"]}  –  {v["en"]}', font(31, False), (120, 98, 104), 58))
+    for i, v in enumerate(vocab[:5]):
+        if active is None:
+            jc, sc = (52, 40, 44), (120, 98, 104)
+        elif i == active:
+            jc, sc = BRAND, (90, 70, 78)
+        else:
+            jc, sc = (140, 124, 130), (170, 156, 162)
+        parts.append((v["jp"], font(50), jc, 64))
+        parts.append((f'{v["romaji"]}  –  {v["en"]}', font(31, False), sc, 58))
     return card_image("Today's tiny words", BRAND, parts, min_h=420)
 
 
@@ -305,20 +311,40 @@ def build(story, rate, dummy, tmp):
         wav = os.path.join(tmp, f"l{i}.wav"); synth(ln["jp"], ln["speaker"], wav, rate, dummy)
         x = read_wav(wav); ln["start"], ln["end"] = t, t + len(x) / SR
         chunks += [x, np.zeros(int(0.5 * SR), np.float32)]; t = ln["end"] + 0.5
-    vstart, total = t, t + (5.0 if vocab else 1.2)
+    # Key words: say each one out loud (Japanese, then its English meaning, then Japanese again).
+    vocab = vocab[:5]
+    vstart, talk = t, list(lines)
+    for j, v in enumerate(vocab):
+        jp_say = re.sub(r"[〜~]+", "、", v["jp"]).strip("、 ") or v["jp"]
+        en_say = "means " + v["en"].replace("~", "something")
+        steps = [(jp_say, "jp"), (en_say, "en"), (jp_say, "jp")]
+        v["start"] = t
+        for k, (txt, kind) in enumerate(steps):
+            wav = os.path.join(tmp, f"v{j}_{k}.wav")
+            if kind == "jp":
+                synth(txt, "Mika", wav, "-25%", dummy)
+            else:
+                synth(txt, "Narrator", wav, "+0%", dummy, voice="en-US-AriaNeural", lang="en")
+            x = read_wav(wav)
+            if kind == "jp":
+                talk.append(dict(speaker="Mika", start=t, end=t + len(x) / SR))
+            gap = 0.45 if k < 2 else 0.9
+            chunks += [x, np.zeros(int(gap * SR), np.float32)]; t += len(x) / SR + gap
+        v["end"] = t
+    total = t + (0.6 if vocab else 1.2)
     chunks.append(np.zeros(int((total - t) * SR) + SR, np.float32))
     audio = np.concatenate(chunks); audio = audio / max(0.01, np.abs(audio).max()) * 0.9
     n = int(total * FPS); mouth = mouth_levels(audio, n)
     bg, fg = make_scene(meta["scene"].lower(), meta)
-    cards = [line_card(l) for l in lines]; vcard = vocab_card(vocab) if vocab else None
+    cards = [line_card(l) for l in lines]; vcards = [vocab_card(vocab, j) for j in range(len(vocab))]
     pills = {(nm, a): pill(nm, CHARS[nm]["accent"] if a else (226, 214, 206), (255, 255, 255) if a else (130, 112, 108))
              for nm in CHARS for a in (0, 1)}
 
     def frame(i):
         tt = i / FPS; fr = bg.copy()
-        cur = next((k for k, l in enumerate(lines) if l["start"] - 0.02 <= tt <= l["end"] + 0.1), None)
+        cur = next((k for k, l in enumerate(talk) if l["start"] - 0.02 <= tt <= l["end"] + 0.1), None)
         for nm, c in CHARS.items():
-            sp = cur is not None and lines[cur]["speaker"] == nm
+            sp = cur is not None and talk[cur]["speaker"] == nm
             bob = 6 * abs(math.sin(tt * 7)) if sp and mouth[i] else 2 * math.sin(tt * 2 + (0 if nm == "Mika" else 1.7))
             blink = ((i + (0 if nm == "Mika" else 41)) % 97) < 4
             s = sprite(nm, int(mouth[i]) if sp else 0, blink)
@@ -326,8 +352,9 @@ def build(story, rate, dummy, tmp):
             p = pills[(nm, int(sp))]; fr.paste(p, (c["x"] + s.width // 2 - p.width // 2, 330), p)
         fr.paste(fg, (0, TABLE_TOP - 55), fg)
         card, t0 = None, 0
-        if tt >= vstart and vcard:
-            card, t0 = vcard, vstart
+        if tt >= vstart and vcards:
+            j = max((j for j, v in enumerate(vocab) if tt >= v["start"]), default=0)
+            card, t0 = vcards[j], vstart
         else:
             k = max((k for k, l in enumerate(lines) if tt >= l["start"] - 0.02), default=None)
             if k is not None:
