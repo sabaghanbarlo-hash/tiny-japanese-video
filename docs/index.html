@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiny Japanese · Video Studio</title>
+<style>
+:root{--cream:#fff6ea;--card:#fffdfa;--pink:#de6e86;--ink:#3c2d30;--soft:#8a7378;--line:#ecd9cf;--ok:#4f9a6a;--err:#c0463f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:720px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:1.5rem;margin:0 0 4px}h1 span{color:var(--pink)}
+p.sub{margin:0 0 20px;color:var(--soft)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:16px;box-shadow:0 6px 20px rgba(120,80,70,.06)}
+label{display:block;font-weight:600;margin:0 0 6px}
+textarea,input[type=password],input[type=text]{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;background:#fff;color:var(--ink)}
+textarea{min-height:300px;font-family:ui-monospace,Menlo,Consolas,"Noto Sans JP",monospace;font-size:.92rem;line-height:1.55}
+textarea.small{min-height:90px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.check{display:flex;gap:8px;align-items:center;font-weight:600;margin:12px 0}
+button{border:0;border-radius:999px;background:var(--pink);color:#fff;font:inherit;font-weight:700;padding:14px 28px;cursor:pointer;width:100%;font-size:1.05rem}
+button:disabled{opacity:.55;cursor:wait}
+button.ghost{background:transparent;color:var(--pink);border:1px solid var(--pink);width:auto;padding:8px 16px;font-size:.9rem}
+details summary{cursor:pointer;font-weight:600}
+.hint{color:var(--soft);font-size:.88rem;margin:8px 0 0}
+#status{white-space:pre-wrap;font-size:.95rem}
+.ok{color:var(--ok)}.err{color:var(--err)}
+video{width:100%;max-width:360px;border-radius:16px;display:block;margin:12px auto 0;background:#000}
+a{color:var(--pink)}
+</style>
+</head>
+<body>
+<main>
+<h1>Tiny <span>Japanese</span> · Video Studio</h1>
+<p class="sub">Paste a script, press the button, get a Reel.</p>
+
+<div class="card">
+<label for="script">Script</label>
+<textarea id="script" spellcheck="false"></textarea>
+<p class="hint">One line per speaker: <code>Mika: Japanese | English</code>. Speakers: Mika, Alex. Scenes: cafe, station, sakura. Romaji is automatic.</p>
+<label for="caption" style="margin-top:14px">Instagram caption <span style="font-weight:400;color:var(--soft)">(optional – auto-written if empty)</span></label>
+<textarea id="caption" class="small" placeholder="Leave empty for an automatic caption with today's words and hashtags"></textarea>
+<div class="check"><input type="checkbox" id="post" checked><label for="post" style="margin:0">Post to Instagram when the video is ready</label></div>
+<button id="run">Make video</button>
+</div>
+
+<div class="card"><div id="status">Ready.</div><div id="result"></div></div>
+
+<div class="card">
+<details id="setup">
+<summary>One-time setup: GitHub access token</summary>
+<p class="hint">Create a fine-grained token at GitHub → Settings → Developer settings → Fine-grained tokens. Limit it to the repository <b>tiny-japanese-video</b> with <b>Contents: read/write</b> and <b>Actions: read/write</b>. It is saved only in this browser.</p>
+<label for="token" style="margin-top:10px">Token</label>
+<input id="token" type="password" autocomplete="off" placeholder="github_pat_…">
+<div class="row" style="margin-top:10px"><button class="ghost" id="saveTok" type="button">Save token</button><button class="ghost" id="clearTok" type="button">Forget token</button></div>
+</details>
+</div>
+</main>
+
+<script>
+const OWNER="sabaghanbarlo-hash", REPO="tiny-japanese-video", BRANCH="main", WF="generate.yml";
+const API=`https://api.github.com/repos/${OWNER}/${REPO}`;
+const $=id=>document.getElementById(id);
+const SAMPLE=`title: At the Station
+episode: 2
+scene: station
+
+Mika: おはようございます！ | Good morning!
+Alex: おはようございます。えきは どこですか？ | Good morning. Where is the station?
+Mika: あそこです。 | It's over there.
+Alex: ありがとうございます！ | Thank you!
+
+vocab: えき | eki | station
+vocab: どこですか | doko desu ka | Where is it?
+`;
+const get=k=>{try{return localStorage.getItem(k)||""}catch(e){return ""}};
+const set=(k,v)=>{try{v?localStorage.setItem(k,v):localStorage.removeItem(k)}catch(e){}};
+$("script").value=get("tjv_script")||SAMPLE;
+$("script").addEventListener("input",()=>set("tjv_script",$("script").value));
+$("token").value=get("tjv_token");
+if(!get("tjv_token"))$("setup").open=true;
+$("saveTok").onclick=()=>{set("tjv_token",$("token").value.trim());say("Token saved in this browser.","ok")};
+$("clearTok").onclick=()=>{set("tjv_token","");$("token").value="";say("Token removed.")};
+
+function say(t,cls){const s=$("status");s.textContent=t;s.className=cls||""}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const b64=s=>{const b=new TextEncoder().encode(s);let o="";b.forEach(c=>o+=String.fromCharCode(c));return btoa(o)};
+function hdr(){return{Authorization:"Bearer "+get("tjv_token"),Accept:"application/vnd.github+json","Content-Type":"application/json"}}
+async function gh(path,opt={}){const r=await fetch(API+path,{...opt,headers:hdr()});if(!r.ok){let m="";try{m=(await r.json()).message}catch(e){}throw new Error(`GitHub ${r.status}: ${m||r.statusText}`)}return r.status===204?null:r.json()}
+function slug(t){return (t||"story").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,40)||"story"}
+function check(text){
+  const speakers=/^(mika|alex)\s*[:：]/i;let n=0;
+  for(const raw of text.split("\n")){const l=raw.trim();if(!l||l.startsWith("#"))continue;
+    if(/^(title|scene|episode|vocab)\s*:/i.test(l))continue;
+    if(speakers.test(l)){n++;continue}
+    throw new Error("Can't read this line (use Mika: or Alex:):\n"+l)}
+  if(!n)throw new Error("No dialogue lines found.")}
+
+$("run").onclick=async()=>{
+  const btn=$("run");$("result").innerHTML="";
+  try{
+    if(!get("tjv_token")){$("setup").open=true;throw new Error("Add your GitHub token first (setup box below).")}
+    const text=$("script").value.trim();check(text);
+    btn.disabled=true;
+    const title=(text.match(/^title\s*:\s*(.+)$/im)||[])[1]||"story";
+    const stamp=new Date().toISOString().slice(0,16).replace(/[-:T]/g,"");
+    const base=`stories/${stamp}-${slug(title)}`;
+    const post=$("post").checked;
+    say("Saving script…");
+    await gh(`/contents/${base}.txt`,{method:"PUT",body:JSON.stringify({message:"Add story: "+title,content:b64(text+"\n"),branch:BRANCH})});
+    const cap=$("caption").value.trim();
+    if(cap)await gh(`/contents/${base}.caption`,{method:"PUT",body:JSON.stringify({message:"Add caption",content:b64(cap+"\n"),branch:BRANCH})});
+    const t0=Date.now()-5000;
+    say("Starting the video job…");
+    await gh(`/actions/workflows/${WF}/dispatches`,{method:"POST",body:JSON.stringify({ref:BRANCH,inputs:{story:base+".txt",post:String(post)}})});
+    let run=null;
+    for(let i=0;i<30&&!run;i++){await sleep(3000);
+      const r=await gh(`/actions/workflows/${WF}/runs?event=workflow_dispatch&per_page=5`);
+      run=(r.workflow_runs||[]).find(x=>new Date(x.created_at).getTime()>=t0)}
+    if(!run)throw new Error("The job didn't start. Check the Actions tab on GitHub.");
+    const started=Date.now();
+    for(;;){await sleep(8000);
+      run=await gh(`/actions/runs/${run.id}`);
+      const mins=Math.floor((Date.now()-started)/60000);
+      say(`Rendering… (${run.status.replace("_"," ")}, ${mins} min)  This takes a few minutes.`);
+      if(run.status==="completed")break}
+    if(run.conclusion!=="success"){
+      let why="";try{const j=await gh(`/actions/runs/${run.id}/jobs`);const bad=j.jobs.find(x=>x.conclusion==="failure");if(bad)why=` Failed step: "${(bad.steps.find(s=>s.conclusion==="failure")||{}).name||bad.name}" in job "${bad.name}".`}catch(e){}
+      throw new Error("The job didn't finish."+why+"\n"+run.html_url)}
+    const url=`${location.origin}${location.pathname.replace(/[^/]*$/,"")}videos/${base.split("/")[1]}.mp4`;
+    say(post?"Done – video made and posted to Instagram.":"Done – video is ready.","ok");
+    $("result").innerHTML=`<video controls playsinline src="${url}"></video><p style="text-align:center"><a href="${url}" download>Download MP4</a> · <a href="${run.html_url}" target="_blank" rel="noopener">View job</a></p>`;
+  }catch(e){say(String(e.message||e),"err")}
+  finally{btn.disabled=false}
+};
+</script>
+</body>
+</html>
