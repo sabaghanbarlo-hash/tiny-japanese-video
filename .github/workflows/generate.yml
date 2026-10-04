@@ -26,7 +26,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: System dependencies
-        run: sudo apt-get update -y && sudo apt-get install -y ffmpeg fonts-noto-cjk
+        run: |
+          # Some runner images ship a Microsoft apt source that can answer 403; we don't need it.
+          sudo rm -f /etc/apt/sources.list.d/microsoft-prod.list /etc/apt/sources.list.d/microsoft-prod.sources /etc/apt/sources.list.d/mono-official-stable.list
+          for i in 1 2 3; do
+            sudo apt-get update -y -o Acquire::Retries=3 || true
+            sudo apt-get install -y ffmpeg fonts-noto-cjk && break
+            echo "apt attempt $i failed, retrying..."; sleep 10
+          done
+          ffmpeg -version | head -1
+          fc-list | grep -qi "noto sans cjk" && echo "CJK font OK"
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
