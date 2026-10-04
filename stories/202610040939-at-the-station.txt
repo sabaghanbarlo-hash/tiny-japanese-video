@@ -1,0 +1,11 @@
+title: At the Station
+episode: 2
+scene: station
+
+Mika: おはようございます！ | Good morning!
+Alex: おはようございます。えきは どこですか？ | Good morning. Where is the station?
+Mika: あそこです。 | It's over there.
+Alex: ありがとうございます！ | Thank you!
+
+vocab: えき | eki | station
+vocab: どこですか | doko desu ka | Where is it?
