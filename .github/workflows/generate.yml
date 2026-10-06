@@ -91,4 +91,4 @@ jobs:
           STORY: ${{ github.event.inputs.story }}
         run: |
           if [ -z "$COMPOSIO_API_KEY" ]; then echo "::error::Add the COMPOSIO_API_KEY repository secret to enable Instagram posting."; exit 1; fi
-          python publish.py "$STORY" "output/$(basename "${STORY%.txt}").mp4"
+          python -u publish.py "$STORY" "output/$(basename "${STORY%.txt}").mp4"

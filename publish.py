@@ -28,17 +28,31 @@ def caption():
     return out + "\nSave this to practice later! 💌\n#learnjapanese #japanese #nihongo #japaneselanguage #jlpt #japaneseforbeginners"
 
 
-def call(slug, args):
-    body = {"arguments": args}
-    if ACC:
-        body["connected_account_id"] = ACC
+def _post(slug, body):
     req = urllib.request.Request(f"https://backend.composio.dev/api/v3/tools/execute/{slug}",
                                  data=json.dumps(body).encode(),
                                  headers={"x-api-key": KEY, "Content-Type": "application/json"})
     try:
-        r = json.load(urllib.request.urlopen(req, timeout=400))
+        return 200, json.load(urllib.request.urlopen(req, timeout=400))
     except urllib.error.HTTPError as e:
-        sys.exit(f"{slug} failed: {e.code} {e.read().decode()[:500]}")
+        return e.code, e.read().decode()[:600]
+
+
+def call(slug, args):
+    # "version": "latest" is required when calling the REST API directly, otherwise Composio uses an
+    # old base version of the toolkit that does not contain these Instagram tools ("Tool not found").
+    body = {"arguments": args, "version": "latest"}
+    if ACC:
+        body["connected_account_id"] = ACC
+    code, r = _post(slug, body)
+    if code == 404 and "ToolNotFound" in str(r):
+        code, r = _post(slug.lower(), body)
+    if code != 200 and ACC and re.search(r"connected.?account", str(r), re.I):
+        print("Connected account id was not accepted; retrying with the key's default Instagram account.", flush=True)
+        body.pop("connected_account_id", None)
+        code, r = _post(slug, body)
+    if code != 200:
+        sys.exit(f"{slug} failed: HTTP {code} {r}")
     if not r.get("successful", True):
         sys.exit(f"{slug} failed: {r.get('error')}")
     return r
@@ -55,7 +69,7 @@ def find_id(o):
     return None
 
 
-print("Waiting for video to be reachable:", url)
+print("Waiting for video to be reachable:", url, flush=True)
 for _ in range(60):
     try:
         if urllib.request.urlopen(urllib.request.Request(url, method="HEAD"), timeout=20).status == 200:
