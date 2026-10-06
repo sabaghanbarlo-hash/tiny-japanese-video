@@ -28,9 +28,10 @@ def caption():
     return out + "\nSave this to practice later! 💌\n#learnjapanese #japanese #nihongo #japaneselanguage #jlpt #japaneseforbeginners"
 
 
-def _post(slug, body):
-    req = urllib.request.Request(f"https://backend.composio.dev/api/v3/tools/execute/{slug}",
-                                 data=json.dumps(body).encode(),
+def _req(method, path, body=None):
+    req = urllib.request.Request(f"https://backend.composio.dev{path}",
+                                 data=json.dumps(body).encode() if body is not None else None,
+                                 method=method,
                                  headers={"x-api-key": KEY, "Content-Type": "application/json"})
     try:
         return 200, json.load(urllib.request.urlopen(req, timeout=400))
@@ -38,19 +39,31 @@ def _post(slug, body):
         return e.code, e.read().decode()[:600]
 
 
+def resolve_identity():
+    """Composio needs the connected account AND the user that owns it. Look both up from the API key."""
+    code, r = _req("GET", "/api/v3/connected_accounts?toolkit_slugs=instagram&statuses=ACTIVE&limit=50")
+    items = (r.get("items") if isinstance(r, dict) else None) or []
+    print(f"Found {len(items)} active Instagram connection(s) for this API key.", flush=True)
+    if not items:
+        sys.exit("No active Instagram connection was found for this COMPOSIO_API_KEY. "
+                 "Make sure the key comes from the same Composio project where Instagram is connected.")
+    pick = next((i for i in items if i.get("id") == ACC), None) or items[0]
+    return pick.get("id"), pick.get("user_id")
+
+
+ACC_ID, USER_ID = resolve_identity()
+
+
 def call(slug, args):
     # "version": "latest" is required when calling the REST API directly, otherwise Composio uses an
     # old base version of the toolkit that does not contain these Instagram tools ("Tool not found").
-    body = {"arguments": args, "version": "latest"}
-    if ACC:
-        body["connected_account_id"] = ACC
-    code, r = _post(slug, body)
-    if code == 404 and "ToolNotFound" in str(r):
-        code, r = _post(slug.lower(), body)
-    if code != 200 and ACC and re.search(r"connected.?account", str(r), re.I):
-        print("Connected account id was not accepted; retrying with the key's default Instagram account.", flush=True)
-        body.pop("connected_account_id", None)
-        code, r = _post(slug, body)
+    body = {"arguments": args, "version": "latest", "connected_account_id": ACC_ID}
+    if USER_ID:
+        body["user_id"] = USER_ID
+    code, r = _req("POST", f"/api/v3/tools/execute/{slug}", body)
+    if code == 400 and "EntityIdRequired" in str(r) and USER_ID:
+        body["entity_id"] = body.pop("user_id")
+        code, r = _req("POST", f"/api/v3/tools/execute/{slug}", body)
     if code != 200:
         sys.exit(f"{slug} failed: HTTP {code} {r}")
     if not r.get("successful", True):
