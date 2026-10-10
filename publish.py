@@ -85,7 +85,7 @@ def _mcp_start():
 
 def _mcp_tool(slug, args):
     r = _mcp_rpc("tools/call", {"name": "COMPOSIO_MULTI_EXECUTE_TOOL",
-                                "arguments": {"tools": [{"tool_slug": slug, "arguments": args}],
+                                "arguments": {"tools": [{"tool_slug": slug, "account": os.environ.get("IG_ACCOUNT", "Tiny Japanese"), "arguments": args}],
                                               "sync_response_to_workbench": False}})
     if not r or "error" in r:
         sys.exit(f"{slug} failed: {str(r)[:500]}")
@@ -96,7 +96,8 @@ def _mcp_tool(slug, args):
     except Exception:
         sys.exit(f"{slug}: unreadable answer from Composio: {text[:500]}")
     if res.get("isError") or not top.get("successful", True):
-        sys.exit(f"{slug} failed: {str(top.get('error') or top)[:600]}")
+        _it = ((top.get("data") or {}).get("results") or [{}])[0]
+        sys.exit(f"{slug} failed: {str(_it.get('error') or top.get('error') or top)[:600]}")
     items = (top.get("data") or {}).get("results") or []
     if not items:
         sys.exit(f"{slug}: empty answer from Composio: {text[:400]}")
