@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
-"""Publish a rendered video to Instagram as a Reel using the official Instagram API (no third parties)."""
-import json, os, re, sys, time, urllib.parse, urllib.request, urllib.error
+"""Publish a rendered video to Instagram as a Reel via Composio.
 
-story, mp4 = sys.argv[1], sys.argv[2]
-TOKEN = os.environ["IG_ACCESS_TOKEN"].strip()
-API = "https://graph.instagram.com/v23.0"
-url = f'{os.environ["PAGES_BASE"].rstrip("/")}/videos/{os.path.basename(mp4)}'
+Usage: publish.py STORY MP4 [--check]
+  --check  only verify the API key + Instagram connection, post nothing.
+"""
+import json, os, re, sys, time, urllib.request, urllib.error
+
+args = [a for a in sys.argv[1:] if not a.startswith("--")]
+CHECK = "--check" in sys.argv
+story, mp4 = (args + ["", ""])[:2]
+KEY = os.environ["COMPOSIO_API_KEY"].strip()
+BASE = "https://backend.composio.dev"
+url = f'{os.environ.get("PAGES_BASE", "").rstrip("/")}/videos/{os.path.basename(mp4)}'
 
 
 def caption():
@@ -28,17 +34,67 @@ def caption():
     return out + "\nSave this to practice later! 💌\n#learnjapanese #japanese #nihongo #japaneselanguage #jlpt #japanesefortbeginners"
 
 
-def api(method, path, data=None):
-    data = dict(data or {}, access_token=TOKEN)
-    if method == "GET":
-        req = urllib.request.Request(f"{API}{path}?{urllib.parse.urlencode(data)}")
-    else:
-        req = urllib.request.Request(f"{API}{path}", data=urllib.parse.urlencode(data).encode(), method="POST")
+def _req(method, path, body=None):
+    req = urllib.request.Request(BASE + path, method=method,
+                                 data=json.dumps(body).encode() if body is not None else None,
+                                 headers={"x-api-key": KEY, "Content-Type": "application/json"})
     try:
-        return json.load(urllib.request.urlopen(req, timeout=120))
+        r = urllib.request.urlopen(req, timeout=400)
+        raw = r.read().decode()
+        code = r.status
     except urllib.error.HTTPError as e:
-        sys.exit(f"Instagram said no ({method} {path}): HTTP {e.code} {e.read().decode()[:600]}")
+        raw, code = e.read().decode(), e.code
+    try:
+        return code, json.loads(raw)
+    except Exception:
+        return code, raw
 
+
+def resolve_identity():
+    code, r = _req("GET", "/api/v3/connected_accounts?toolkit_slugs=instagram&statuses=ACTIVE&limit=50")
+    items = (r.get("items") if isinstance(r, dict) else None) or []
+    print(f"Composio answered HTTP {code}. Active Instagram connections for this API key: {len(items)}", flush=True)
+    if code != 200:
+        sys.exit(f"The Composio API key was rejected: {str(r)[:300]}")
+    if not items:
+        sys.exit("This API key works, but it has no Instagram connection. Create the key in the same Composio account/project where Instagram is connected.")
+    pick = items[0]
+    return pick.get("id"), pick.get("user_id")
+
+
+ACC_ID, USER_ID = resolve_identity()
+
+
+def call(slug, args):
+    body = {"arguments": args, "version": "latest", "connected_account_id": ACC_ID}
+    if USER_ID:
+        body["user_id"] = USER_ID
+    code, r = _req("POST", f"/api/v3/tools/execute/{slug}", body)
+    if code == 400 and "EntityIdRequired" in str(r) and USER_ID:
+        body["entity_id"] = body.pop("user_id")
+        code, r = _req("POST", f"/api/v3/tools/execute/{slug}", body)
+    if code != 200:
+        sys.exit(f"{slug} failed: HTTP {code} {str(r)[:500]}")
+    if not r.get("successful", True):
+        sys.exit(f"{slug} failed: {r.get('error')}")
+    return r
+
+
+def find_id(o):
+    if isinstance(o, dict):
+        if isinstance(o.get("id"), (str, int)):
+            return str(o["id"])
+        for v in o.values():
+            f = find_id(v)
+            if f:
+                return f
+    return None
+
+
+if CHECK:
+    info = call("INSTAGRAM_GET_USER_INFO", {"ig_user_id": "me", "fields": "id,username,account_type"})
+    print("CHECK OK. Instagram account:", json.dumps(info.get("data"), ensure_ascii=False), flush=True)
+    sys.exit(0)
 
 print("Waiting for video to be reachable:", url, flush=True)
 for _ in range(60):
@@ -51,20 +107,9 @@ for _ in range(60):
 else:
     sys.exit("Video URL never became reachable")
 
-me = api("GET", "/me", {"fields": "username,account_type"})
-print("Posting as:", me.get("username"), "|", me.get("account_type"), flush=True)
-c = api("POST", "/me/media", {"media_type": "REELS", "video_url": url, "caption": caption(), "share_to_feed": "true"})
-cid = c["id"]
+c = call("INSTAGRAM_POST_IG_USER_MEDIA", {"ig_user_id": "me", "video_url": url, "media_type": "REELS",
+                                          "caption": caption(), "share_to_feed": True})
+cid = find_id(c.get("data"))
 print("container:", cid, flush=True)
-for _ in range(60):
-    st = api("GET", f"/{cid}", {"fields": "status_code,status"})
-    print("processing:", st.get("status_code"), flush=True)
-    if st.get("status_code") == "FINISHED":
-        break
-    if st.get("status_code") in ("ERROR", "EXPIRED"):
-        sys.exit(f"Instagram could not process the video: {st}")
-    time.sleep(10)
-else:
-    sys.exit("Instagram took too long to process the video")
-pub = api("POST", "/me/media_publish", {"creation_id": cid})
-print("published:", pub.get("id"), flush=True)
+p = call("INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH", {"ig_user_id": "me", "creation_id": cid, "max_wait_seconds": 300})
+print("published:", find_id(p.get("data")), flush=True)
