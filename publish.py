@@ -37,7 +37,7 @@ def caption():
 def _req(method, path, body=None):
     req = urllib.request.Request(BASE + path, method=method,
                                  data=json.dumps(body).encode() if body is not None else None,
-                                 headers={"x-api-key": KEY, "Content-Type": "application/json"})
+                                 headers={"x-api-key": KEY, "x-consumer-api-key": KEY, "Content-Type": "application/json"})
     try:
         r = urllib.request.urlopen(req, timeout=400)
         raw = r.read().decode()
