@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Publish a rendered video to Instagram as a Reel via Composio.
+"""Publish a rendered video to Instagram as a Reel via Composio (MCP, consumer key).
 
 Usage: publish.py STORY MP4 [--check]
-  --check  only verify the API key + Instagram connection, post nothing.
+  --check  only verify the key + Instagram connection, post nothing.
 """
 import json, os, re, sys, time, urllib.request, urllib.error
 
@@ -10,7 +10,6 @@ args = [a for a in sys.argv[1:] if not a.startswith("--")]
 CHECK = "--check" in sys.argv
 story, mp4 = (args + ["", ""])[:2]
 KEY = os.environ["COMPOSIO_API_KEY"].strip()
-BASE = "https://backend.composio.dev"
 url = f'{os.environ.get("PAGES_BASE", "").rstrip("/")}/videos/{os.path.basename(mp4)}'
 
 
@@ -34,58 +33,84 @@ def caption():
     return out + "\nSave this to practice later! 💌\n#learnjapanese #japanese #nihongo #japaneselanguage #jlpt #japanesefortbeginners"
 
 
-def _req(method, path, body=None):
-    req = urllib.request.Request(BASE + path, method=method,
-                                 data=json.dumps(body).encode() if body is not None else None,
-                                 headers={("x-consumer-api-key" if KEY.startswith("ck_") else "x-api-key"): KEY, "Content-Type": "application/json"})
+MCP_URL = "https://connect.composio.dev/mcp"
+_session = {"id": None, "n": 0}
+
+
+def _mcp_post(payload):
+    headers = {"x-consumer-api-key": KEY, "Content-Type": "application/json",
+               "Accept": "application/json, text/event-stream"}
+    if _session["id"]:
+        headers["Mcp-Session-Id"] = _session["id"]
+    req = urllib.request.Request(MCP_URL, data=json.dumps(payload).encode(), headers=headers, method="POST")
     try:
         r = urllib.request.urlopen(req, timeout=400)
-        raw = r.read().decode()
-        code = r.status
     except urllib.error.HTTPError as e:
-        raw, code = e.read().decode(), e.code
+        sys.exit(f"Composio MCP said HTTP {e.code}: {e.read().decode()[:500]}")
+    sid = r.headers.get("Mcp-Session-Id")
+    if sid:
+        _session["id"] = sid
+    raw = r.read().decode()
+    if not raw.strip():
+        return None
+    if "data:" in raw and not raw.lstrip().startswith("{"):
+        msgs = [l[5:].strip() for l in raw.splitlines() if l.startswith("data:")]
+        for m in reversed(msgs):
+            try:
+                return json.loads(m)
+            except Exception:
+                continue
+        return None
+    return json.loads(raw)
+
+
+def _mcp_rpc(method, params=None, notify=False):
+    msg = {"jsonrpc": "2.0", "method": method}
+    if params is not None:
+        msg["params"] = params
+    if not notify:
+        _session["n"] += 1
+        msg["id"] = _session["n"]
+    return _mcp_post(msg)
+
+
+def _mcp_start():
+    r = _mcp_rpc("initialize", {"protocolVersion": "2025-03-26", "capabilities": {},
+                                "clientInfo": {"name": "tiny-japanese-video", "version": "1.0"}})
+    if not r or "error" in r:
+        sys.exit(f"Composio MCP initialize failed: {str(r)[:400]}")
+    _mcp_rpc("notifications/initialized", notify=True)
+    print("Connected to Composio MCP.", flush=True)
+
+
+def _mcp_tool(slug, args):
+    r = _mcp_rpc("tools/call", {"name": "COMPOSIO_MULTI_EXECUTE_TOOL",
+                                "arguments": {"tools": [{"tool_slug": slug, "arguments": args}],
+                                              "sync_response_to_workbench": False}})
+    if not r or "error" in r:
+        sys.exit(f"{slug} failed: {str(r)[:500]}")
+    res = r.get("result", {})
+    text = "".join(c.get("text", "") for c in res.get("content", []) if isinstance(c, dict))
     try:
-        return code, json.loads(raw)
+        top = json.loads(text)
     except Exception:
-        return code, raw
-
-
-def resolve_identity():
-    code, r = _req("GET", "/api/v3/connected_accounts?limit=100")
-    allitems = (r.get("items") if isinstance(r, dict) else None) or []
-    print(f"Composio answered HTTP {code}. Connections visible to this API key: {len(allitems)}", flush=True)
-    if code != 200:
-        sys.exit(f"The Composio API key was rejected: {str(r)[:300]}")
-
-    def slug(i):
-        t = i.get("toolkit")
-        return (t.get("slug") if isinstance(t, dict) else t) or ""
-
-    for i in allitems:
-        print("  -", slug(i), "|", i.get("status"), "|", i.get("id"), flush=True)
-    items = [i for i in allitems if slug(i).lower() == "instagram" and str(i.get("status", "")).upper() == "ACTIVE"]
+        sys.exit(f"{slug}: unreadable answer from Composio: {text[:500]}")
+    if res.get("isError") or not top.get("successful", True):
+        sys.exit(f"{slug} failed: {str(top.get('error') or top)[:600]}")
+    items = (top.get("data") or {}).get("results") or []
     if not items:
-        sys.exit("This API key works, but no ACTIVE Instagram connection is visible to it (see the list above).")
-    pick = items[0]
-    return pick.get("id"), pick.get("user_id")
-
-
-ACC_ID, USER_ID = resolve_identity()
+        sys.exit(f"{slug}: empty answer from Composio: {text[:400]}")
+    resp = items[0].get("response", {})
+    if not resp.get("successful", True):
+        sys.exit(f"{slug} failed: {str(resp.get('error') or resp)[:600]}")
+    return resp
 
 
 def call(slug, args):
-    body = {"arguments": args, "version": "latest", "connected_account_id": ACC_ID}
-    if USER_ID:
-        body["user_id"] = USER_ID
-    code, r = _req("POST", f"/api/v3/tools/execute/{slug}", body)
-    if code == 400 and "EntityIdRequired" in str(r) and USER_ID:
-        body["entity_id"] = body.pop("user_id")
-        code, r = _req("POST", f"/api/v3/tools/execute/{slug}", body)
-    if code != 200:
-        sys.exit(f"{slug} failed: HTTP {code} {str(r)[:500]}")
-    if not r.get("successful", True):
-        sys.exit(f"{slug} failed: {r.get('error')}")
-    return r
+    return _mcp_tool(slug, args)
+
+
+_mcp_start()
 
 
 def find_id(o):
