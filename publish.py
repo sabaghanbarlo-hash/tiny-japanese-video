@@ -51,13 +51,21 @@ def _req(method, path, body=None):
 
 
 def resolve_identity():
-    code, r = _req("GET", "/api/v3/connected_accounts?toolkit_slugs=instagram&statuses=ACTIVE&limit=50")
-    items = (r.get("items") if isinstance(r, dict) else None) or []
-    print(f"Composio answered HTTP {code}. Active Instagram connections for this API key: {len(items)}", flush=True)
+    code, r = _req("GET", "/api/v3/connected_accounts?limit=100")
+    allitems = (r.get("items") if isinstance(r, dict) else None) or []
+    print(f"Composio answered HTTP {code}. Connections visible to this API key: {len(allitems)}", flush=True)
     if code != 200:
         sys.exit(f"The Composio API key was rejected: {str(r)[:300]}")
+
+    def slug(i):
+        t = i.get("toolkit")
+        return (t.get("slug") if isinstance(t, dict) else t) or ""
+
+    for i in allitems:
+        print("  -", slug(i), "|", i.get("status"), "|", i.get("id"), flush=True)
+    items = [i for i in allitems if slug(i).lower() == "instagram" and str(i.get("status", "")).upper() == "ACTIVE"]
     if not items:
-        sys.exit("This API key works, but it has no Instagram connection. Create the key in the same Composio account/project where Instagram is connected.")
+        sys.exit("This API key works, but no ACTIVE Instagram connection is visible to it (see the list above).")
     pick = items[0]
     return pick.get("id"), pick.get("user_id")
 
