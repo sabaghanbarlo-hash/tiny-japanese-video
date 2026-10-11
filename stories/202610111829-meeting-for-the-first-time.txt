@@ -1,0 +1,14 @@
+title: Meeting for the First Time
+episode: 1
+scene: park
+
+Mika: こんにちは！ | Hello!
+Alex: こんにちは！ | Hello!
+Mika: おなまえは？ | What's your name?
+Alex: アレックスです。 | I'm Alex.
+Mika: わたしは ミカです。 | I'm Mika.
+Alex: よろしくおねがいします！ | Nice to meet you!
+
+vocab: こんにちは | konnichiwa | Hello
+vocab: おなまえは | onamae wa | What's your name?
+vocab: よろしくおねがいします | yoroshiku onegaishimasu | Nice to meet you
