@@ -1,0 +1,11 @@
+title: At the Café
+episode: 3
+scene: cafe
+
+Mika: こんにちは！コーヒーを おねがいします。 | Hello! Coffee, please.
+Alex: ぼくも コーヒーを おねがいします。 | I'd like coffee too, please.
+Mika: ありがとうございます！ | Thank you!
+Alex: どういたしまして。 | You're welcome!
+
+vocab: コーヒー | koohii | coffee
+vocab: おねがいします | onegaishimasu | Please
