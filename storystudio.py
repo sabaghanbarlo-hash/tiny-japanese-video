@@ -191,7 +191,8 @@ def qc(seq, convo_info, layout_warns, known_words):
             warns.append(f"{label}: reading check unavailable ({e})"); return
         checks.append({"check": f"reading matches dictionary: {label}", "ok": ok})
         if not ok:
-            warns.append(f"{label}: given reading '{reading}' differs from dictionary reading '{hira(jp.replace("今日は", "今日 は"))}' - verify")
+            alt = hira(jp.replace("今日は", "今日 は"))
+            warns.append(f"{label}: given reading '{reading}' differs from dictionary reading '{alt}' - verify")
 
     if word:
         reading_check("target word", word["jp"], word["reading"])
