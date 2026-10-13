@@ -1,0 +1,82 @@
+{
+  "id": "tanoshii-01",
+  "title": "楽しい - fun",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": false,
+  "reviewed_by": "",
+  "publish_at": "2026-10-21T18:00:00+00:00",
+  "uncertain": [
+    "Level label N5 comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's fun”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "jp": "楽しい",
+      "reading": "たのしい",
+      "en": "fun",
+      "example": {
+        "jp": "日本語は楽しいです。",
+        "reading": "にほんごはたのしいです。",
+        "en": "Japanese is fun."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "楽しい · Fun",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "日本語は楽しいですか？",
+          "en": "Is Japanese fun?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、とても楽しいです。",
+          "en": "Yes, it's very fun."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "私も！",
+          "en": "Me too!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "楽しい",
+      "question": "What does this word mean?",
+      "options": [
+        "Fun",
+        "Sad",
+        "Difficult",
+        "Quiet"
+      ],
+      "answer": 0
+    },
+    {
+      "type": "reveal",
+      "answer_label": "A",
+      "jp": "楽しい",
+      "reading": "たのしい",
+      "en": "fun",
+      "note": [
+        "楽しいです = It's fun (polite).",
+        "Past: 楽しかったです = It was fun."
+      ],
+      "cta": "Watch our latest Reel for more everyday Japanese"
+    }
+  ]
+}

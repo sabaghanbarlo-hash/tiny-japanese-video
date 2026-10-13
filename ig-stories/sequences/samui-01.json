@@ -1,0 +1,82 @@
+{
+  "id": "samui-01",
+  "title": "寒い - cold (weather)",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": false,
+  "reviewed_by": "",
+  "publish_at": "2026-10-23T18:00:00+00:00",
+  "uncertain": [
+    "Level label N5 comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's cold”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "jp": "寒い",
+      "reading": "さむい",
+      "en": "cold",
+      "example": {
+        "jp": "冬は寒いです。",
+        "reading": "ふゆはさむいです。",
+        "en": "Winter is cold."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "寒い · Cold",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "寒いですか？",
+          "en": "Are you cold?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、少し寒いです。",
+          "en": "Yes, I'm a little cold."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "これを どうぞ。",
+          "en": "Here, take this."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "寒い",
+      "question": "What does this word mean?",
+      "options": [
+        "Dark",
+        "Cold",
+        "Loud",
+        "Hot"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "寒い",
+      "reading": "さむい",
+      "en": "cold",
+      "note": [
+        "寒い = cold weather, or feeling cold.",
+        "For cold things you touch, use 冷たい (つめたい)."
+      ],
+      "cta": "Which word do you want next? Reply!"
+    }
+  ]
+}

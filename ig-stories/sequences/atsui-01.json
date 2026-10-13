@@ -1,0 +1,83 @@
+{
+  "id": "atsui-01",
+  "title": "暑い - hot (weather)",
+  "level": "N5",
+  "scene": "cafe",
+  "approved": false,
+  "reviewed_by": "",
+  "publish_at": "2026-10-20T18:00:00+00:00",
+  "uncertain": [
+    "Level label N5 comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
+    "Quiz shows only 'Hot'; the note explains 暑い vs 熱い - check the wording is clear for beginners."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's hot”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "jp": "暑い",
+      "reading": "あつい",
+      "en": "hot",
+      "example": {
+        "jp": "今日は暑いです。",
+        "reading": "きょうはあついです。",
+        "en": "It's hot today."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "sakura",
+      "title": "暑い · Hot",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "今日は暑いですね。",
+          "en": "It's hot today, isn't it?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、とても暑いです。",
+          "en": "Yes, it's very hot."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "水を どうぞ。",
+          "en": "Here, have some water."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "暑い",
+      "question": "What does this word mean?",
+      "options": [
+        "Cold",
+        "Rainy",
+        "Hot",
+        "Windy"
+      ],
+      "answer": 2
+    },
+    {
+      "type": "reveal",
+      "answer_label": "C",
+      "jp": "暑い",
+      "reading": "あつい",
+      "en": "hot",
+      "note": [
+        "暑い = hot weather.",
+        "For hot things you touch, use 熱い (also あつい)."
+      ],
+      "cta": "More free lessons: link in bio"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "id": "isogashii-01",
+  "title": "忙しい - busy",
+  "level": "N4",
+  "scene": "cafe",
+  "approved": false,
+  "reviewed_by": "",
+  "publish_at": "2026-10-22T18:00:00+00:00",
+  "uncertain": [
+    "Level label N4 comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
+    "がんばって！ is casual; fine between friends, a native speaker can confirm it suits this polite-leaning dialogue."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“I'm busy”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "jp": "忙しい",
+      "reading": "いそがしい",
+      "en": "busy",
+      "example": {
+        "jp": "今日は忙しいです。",
+        "reading": "きょうはいそがしいです。",
+        "en": "I'm busy today."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "sakura",
+      "title": "忙しい · Busy",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "忙しいですか？",
+          "en": "Are you busy?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、とても忙しいです。",
+          "en": "Yes, I'm very busy."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "がんばって！",
+          "en": "Hang in there!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "忙しい",
+      "question": "What does this word mean?",
+      "options": [
+        "Tired",
+        "Free",
+        "Late",
+        "Busy"
+      ],
+      "answer": 3
+    },
+    {
+      "type": "reveal",
+      "answer_label": "D",
+      "jp": "忙しい",
+      "reading": "いそがしい",
+      "en": "busy",
+      "note": [
+        "忙しいです = I'm busy (polite).",
+        "The opposite idea: 暇（ひま）= free time."
+      ],
+      "cta": "Reply with a sentence using 忙しい!"
+    }
+  ]
+}
