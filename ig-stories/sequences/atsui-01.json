@@ -3,13 +3,14 @@
   "title": "暑い - hot (weather)",
   "level": "N5",
   "scene": "cafe",
-  "approved": false,
-  "reviewed_by": "",
+  "approved": true,
+  "reviewed_by": "Saba (Japanese reviewed by Claude, not a native speaker)",
   "publish_at": "2026-10-20T18:00:00+00:00",
   "uncertain": [
     "Level label N5 comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
     "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
-    "Quiz shows only 'Hot'; the note explains 暑い vs 熱い - check the wording is clear for beginners."
+    "Quiz shows only 'Hot'; the note explains 暑い vs 熱い - check the wording is clear for beginners.",
+    "Dialogue opener shortened to 暑いですね。 so the voice cannot misread 今日は as こんにちは."
   ],
   "slides": [
     {
@@ -40,8 +41,8 @@
       "lines": [
         {
           "speaker": "Mika",
-          "jp": "今日は暑いですね。",
-          "en": "It's hot today, isn't it?"
+          "jp": "暑いですね。",
+          "en": "It's hot, isn't it?"
         },
         {
           "speaker": "Alex",
