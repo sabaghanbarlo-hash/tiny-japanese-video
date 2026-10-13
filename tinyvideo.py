@@ -4,7 +4,7 @@
 Free stack: edge-tts (Japanese neural voices), Pillow (drawn characters + subtitles),
 ffmpeg (encode). Runs on GitHub Actions, nothing to install locally.
 """
-import argparse, asyncio, functools, glob, math, os, random, re, subprocess, sys, tempfile, wave
+import time, argparse, asyncio, functools, glob, math, os, random, re, subprocess, sys, tempfile, wave
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
@@ -116,17 +116,34 @@ def sh(cmd):
     subprocess.run(cmd, check=True)
 
 
+FALLBACK_USED = False
+
+
 def synth(text, speaker, out_wav, rate, dummy=False, voice=None, lang="ja"):
     if dummy:
         n = int(max(1.0, len(text) * 0.11) * SR); t = np.arange(n) / SR
         write_wav(out_wav, 0.4 * np.sin(2 * np.pi * 220 * t) * np.abs(np.sin(2 * np.pi * 3.5 * t)) ** 0.7)
         return
+    global FALLBACK_USED
     mp3, af = out_wav + ".mp3", []
-    try:
-        import edge_tts
-        asyncio.run(edge_tts.Communicate(text, voice or CHARS[speaker]["voice"], rate=rate).save(mp3))
-    except Exception as e:
-        print(f"edge-tts failed ({e}); falling back to gTTS", file=sys.stderr)
+    ok, last = False, None
+    for attempt in range(1, 6):          # Microsoft's endpoint sometimes answers 403 for a while; retry before downgrading
+        try:
+            import edge_tts
+            asyncio.run(edge_tts.Communicate(text, voice or CHARS[speaker]["voice"], rate=rate).save(mp3))
+            ok = True
+            break
+        except Exception as e:
+            last = e
+            print(f"edge-tts attempt {attempt}/5 failed ({e})", file=sys.stderr)
+            if attempt < 5:
+                time.sleep(4 * attempt)
+    if not ok:
+        if os.environ.get("STRICT_VOICE") == "1":
+            sys.exit("::error::The natural (edge-tts) voice is unavailable right now, so this render was stopped instead of "
+                     "using the lower-quality fallback voice. Re-run it in a little while.")
+        FALLBACK_USED = True
+        print(f"::warning::edge-tts unavailable ({last}); using the lower-quality gTTS fallback voice", file=sys.stderr)
         from gtts import gTTS
         gTTS(text, lang=lang).save(mp3)
         if speaker == "Alex" and lang == "ja":

@@ -138,10 +138,13 @@ def render_convo(sl, seq, cfg, out_mp4, poster, dummy):
     for ln in sl["lines"]:
         tmp_story.write(f"{ln['speaker']}: {ln['jp']} | {ln['en']}" + (f" | {ln['romaji']}" if ln.get("romaji") else "") + "\n")
     tmp_story.close()
+    tv.FALLBACK_USED = False
     status = "placeholder_tone" if dummy else "real_voice"
     try:
         with tempfile.TemporaryDirectory() as tmp:
             meta, lines, audio, n, frame = tv.build(tmp_story.name, cfg["voice_rate"], dummy, tmp)
+            if tv.FALLBACK_USED:
+                status = "fallback_voice"
             wav = os.path.join(tmp, "final.wav"); write_wav(wav, audio)
             l = lines[min(1, len(lines) - 1)]
             frame(int((l["start"] + 0.5) * FPS)).save(poster, "JPEG", quality=90)
@@ -227,7 +230,7 @@ def qc(seq, convo_info, layout_warns, known_words):
         checks.append({"check": "audio transcript == subtitles (both generated from the same text)",
                        "ok": convo_info["audio_transcript"] == [s["jp"] for s in convo_info["subtitles"]]})
         if convo_info["audio"] != "real_voice":
-            errors.append("conversation audio is a placeholder tone, not a Japanese voice")
+            errors.append(f"conversation audio is {convo_info['audio']} (placeholder or lower-quality fallback voice), not the natural Japanese voice - re-render")
         if convo_info["duration"] > 60 or convo_info["duration"] < 3:
             errors.append(f"clip duration {convo_info['duration']}s outside Story limits (3-60s)")
         elif convo_info["duration"] > 10:

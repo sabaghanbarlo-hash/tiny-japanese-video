@@ -44,6 +44,7 @@ jobs:
       - name: Render
         env:
           STORY: ${{ github.event.inputs.story }}
+          STRICT_VOICE: "1"
         run: |
           mkdir -p output
           if [ -z "$STORY" ] || [ "$STORY" = "all" ]; then files=$(ls stories/*.txt); else files="$STORY"; fi
