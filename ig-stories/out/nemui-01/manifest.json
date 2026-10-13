@@ -2,11 +2,11 @@
   "id": "nemui-01",
   "title": "眠い - sleepy",
   "level": "N4",
-  "approved": false,
-  "reviewed_by": "",
+  "approved": true,
+  "reviewed_by": "Saba (Japanese reviewed by Claude, not a native speaker)",
   "publish_at": "2026-10-14T18:00:00+00:00",
   "timezone": "UTC",
-  "ready_to_publish": false,
+  "ready_to_publish": true,
   "qc": {
     "errors": [],
     "warnings": [
@@ -53,7 +53,7 @@
       "Vocabulary/grammar level was NOT machine-checked; compare against your N4 target by eye."
     ],
     "japanese_verified": false,
-    "status": "needs_review"
+    "status": "ready"
   },
   "slides": [
     {

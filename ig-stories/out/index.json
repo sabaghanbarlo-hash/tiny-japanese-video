@@ -21,10 +21,10 @@
     "id": "nemui-01",
     "title": "眠い - sleepy",
     "level": "N4",
-    "approved": false,
-    "ready_to_publish": false,
+    "approved": true,
+    "ready_to_publish": true,
     "publish_at": "2026-10-14T18:00:00+00:00",
-    "status": "needs_review"
+    "status": "ready"
   },
   {
     "id": "oishii-01",
