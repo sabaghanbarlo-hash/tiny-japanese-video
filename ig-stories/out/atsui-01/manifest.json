@@ -2,15 +2,15 @@
   "id": "atsui-01",
   "title": "暑い - hot (weather)",
   "level": "N5",
-  "approved": false,
-  "reviewed_by": "",
+  "approved": true,
+  "reviewed_by": "Saba (Japanese reviewed by Claude, not a native speaker)",
   "publish_at": "2026-10-20T18:00:00+00:00",
   "timezone": "UTC",
-  "ready_to_publish": false,
+  "ready_to_publish": true,
   "qc": {
     "errors": [],
     "warnings": [
-      "clip is 11.2s (target 5-10s)"
+      "clip is 10.7s (target 5-10s)"
     ],
     "checks": [
       {
@@ -45,14 +45,15 @@
     "uncertain": [
       "Level label N5 comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
       "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
-      "Quiz shows only 'Hot'; the note explains 暑い vs 熱い - check the wording is clear for beginners."
+      "Quiz shows only 'Hot'; the note explains 暑い vs 熱い - check the wording is clear for beginners.",
+      "Dialogue opener shortened to 暑いですね。 so the voice cannot misread 今日は as こんにちは."
     ],
     "notes": [
       "Automated checks only prove internal consistency. They cannot prove the Japanese is natural or correct.",
       "Vocabulary/grammar level was NOT machine-checked; compare against your N4 target by eye."
     ],
     "japanese_verified": false,
-    "status": "needs_review"
+    "status": "ready"
   },
   "slides": [
     {
@@ -92,18 +93,18 @@
       "kind": "video",
       "file": "03-convo.mp4",
       "poster": "03-convo-poster.jpg",
-      "duration": 11.2,
-      "size_mb": 0.39,
+      "duration": 10.7,
+      "size_mb": 0.37,
       "audio": "real_voice",
       "audio_transcript": [
-        "今日は暑いですね。",
+        "暑いですね。",
         "はい、とても暑いです。",
         "水を どうぞ。"
       ],
       "subtitles": [
         {
-          "jp": "今日は暑いですね。",
-          "en": "It's hot today, isn't it?"
+          "jp": "暑いですね。",
+          "en": "It's hot, isn't it?"
         },
         {
           "jp": "はい、とても暑いです。",
@@ -120,8 +121,8 @@
         "lines": [
           {
             "speaker": "Mika",
-            "jp": "今日は暑いですね。",
-            "en": "It's hot today, isn't it?"
+            "jp": "暑いですね。",
+            "en": "It's hot, isn't it?"
           },
           {
             "speaker": "Alex",
