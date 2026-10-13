@@ -7,6 +7,7 @@ on:
       - "ig-stories/sequences/**"
       - "ig-stories/config.json"
       - "storystudio.py"
+      - "docs/stories.html"
   workflow_dispatch:
     inputs:
       sequence:
