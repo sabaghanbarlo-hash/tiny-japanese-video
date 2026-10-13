@@ -63,6 +63,8 @@ jobs:
           mkdir -p site/videos
           cp -r docs/* site/
           cp output/*.mp4 site/videos/
+          mkdir -p site/story-media
+          if [ -d ig-stories/out ]; then cp -r ig-stories/out/. site/story-media/; fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

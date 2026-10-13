@@ -1,0 +1,75 @@
+name: Render Stories
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "ig-stories/sequences/**"
+      - "ig-stories/config.json"
+      - "storystudio.py"
+  workflow_dispatch:
+    inputs:
+      sequence:
+        description: "Sequence id (e.g. nemui-01) or 'all'"
+        default: "all"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: render
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: System dependencies
+        run: |
+          sudo rm -f /etc/apt/sources.list.d/microsoft-prod.list /etc/apt/sources.list.d/microsoft-prod.sources /etc/apt/sources.list.d/mono-official-stable.list
+          for i in 1 2 3; do
+            sudo apt-get update -y -o Acquire::Retries=3 || true
+            sudo apt-get install -y ffmpeg fonts-noto-cjk && break
+            echo "apt attempt $i failed, retrying..."; sleep 10
+          done
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Render Stories
+        env:
+          SEQ: ${{ github.event.inputs.sequence }}
+        run: |
+          python -u storystudio.py render --sequence "${SEQ:-all}"
+      - name: Commit rendered Stories
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add ig-stories/out
+          git commit -m "Render Stories [skip ci]" || echo "nothing to commit"
+          git pull --rebase || true
+          git push || true
+      - name: Build site
+        run: |
+          mkdir -p site/videos site/story-media
+          cp -r docs/* site/
+          cp output/*.mp4 site/videos/
+          cp -r ig-stories/out/. site/story-media/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: render
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
