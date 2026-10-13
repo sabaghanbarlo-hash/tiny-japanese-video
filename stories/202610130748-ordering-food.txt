@@ -1,0 +1,18 @@
+title: Ordering Food
+episode: 4
+scene: restaurant
+
+Mika: すみません！ | Excuse me!
+Alex: メニューを おねがいします。 | The menu, please.
+Mika: これを おねがいします。 | This one, please.
+Alex: ぼくは これを ください。 | I'll have this, please.
+Mika: ありがとうございます！ | Thank you!
+
+vocab: すみません | sumimasen | Excuse me / Sorry
+vocab: メニュー | menyuu | Menu
+vocab: これ | kore | This / This one
+vocab: おねがいします | onegaishimasu | Please / I'd like...
+vocab: ぼく | boku | I / Me (commonly used by males)
+vocab: ください | kudasai | Please give me...
+vocab: ありがとう | arigatou | Thank you (casual)
+vocab: ありがとうございます | arigatou gozaimasu | Thank you (polite)
