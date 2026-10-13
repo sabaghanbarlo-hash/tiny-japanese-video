@@ -1,0 +1,184 @@
+{
+  "id": "isogashii-01",
+  "title": "忙しい - busy",
+  "level": "N4",
+  "approved": false,
+  "reviewed_by": "",
+  "publish_at": "2026-10-22T18:00:00+00:00",
+  "timezone": "UTC",
+  "ready_to_publish": false,
+  "qc": {
+    "errors": [],
+    "warnings": [
+      "clip is 11.0s (target 5-10s)"
+    ],
+    "checks": [
+      {
+        "check": "reading matches dictionary: target word",
+        "ok": true
+      },
+      {
+        "check": "reading matches dictionary: example sentence",
+        "ok": true
+      },
+      {
+        "check": "quiz has 3-4 unique options and exactly one valid correct answer",
+        "ok": true
+      },
+      {
+        "check": "quiz correct option equals the taught meaning",
+        "ok": true
+      },
+      {
+        "check": "reveal slide matches the quiz answer",
+        "ok": true
+      },
+      {
+        "check": "reveal slide repeats the same word and reading",
+        "ok": true
+      },
+      {
+        "check": "audio transcript == subtitles (both generated from the same text)",
+        "ok": true
+      }
+    ],
+    "uncertain": [
+      "Level label N4 comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+      "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
+      "がんばって！ is casual; fine between friends, a native speaker can confirm it suits this polite-leaning dialogue."
+    ],
+    "notes": [
+      "Automated checks only prove internal consistency. They cannot prove the Japanese is natural or correct.",
+      "Vocabulary/grammar level was NOT machine-checked; compare against your N4 target by eye."
+    ],
+    "japanese_verified": false,
+    "status": "needs_review"
+  },
+  "slides": [
+    {
+      "n": 1,
+      "type": "intro",
+      "kind": "image",
+      "file": "01-intro.jpg",
+      "content": {
+        "kicker": "Today's tiny word",
+        "headline": [
+          "How do you say",
+          "“I'm busy”",
+          "in Japanese?"
+        ],
+        "sub": "Tap to find out"
+      }
+    },
+    {
+      "n": 2,
+      "type": "word",
+      "kind": "image",
+      "file": "02-word.jpg",
+      "content": {
+        "jp": "忙しい",
+        "reading": "いそがしい",
+        "en": "busy",
+        "example": {
+          "jp": "今日は忙しいです。",
+          "reading": "きょうはいそがしいです。",
+          "en": "I'm busy today."
+        }
+      }
+    },
+    {
+      "n": 3,
+      "type": "convo",
+      "kind": "video",
+      "file": "03-convo.mp4",
+      "poster": "03-convo-poster.jpg",
+      "duration": 11.0,
+      "size_mb": 0.37,
+      "audio": "real_voice",
+      "audio_transcript": [
+        "忙しいですか？",
+        "はい、とても忙しいです。",
+        "がんばって！"
+      ],
+      "subtitles": [
+        {
+          "jp": "忙しいですか？",
+          "en": "Are you busy?"
+        },
+        {
+          "jp": "はい、とても忙しいです。",
+          "en": "Yes, I'm very busy."
+        },
+        {
+          "jp": "がんばって！",
+          "en": "Hang in there!"
+        }
+      ],
+      "content": {
+        "scene": "sakura",
+        "title": "忙しい · Busy",
+        "lines": [
+          {
+            "speaker": "Mika",
+            "jp": "忙しいですか？",
+            "en": "Are you busy?"
+          },
+          {
+            "speaker": "Alex",
+            "jp": "はい、とても忙しいです。",
+            "en": "Yes, I'm very busy."
+          },
+          {
+            "speaker": "Mika",
+            "jp": "がんばって！",
+            "en": "Hang in there!"
+          }
+        ]
+      }
+    },
+    {
+      "n": 4,
+      "type": "quiz",
+      "kind": "image",
+      "file": "04-quiz.jpg",
+      "content": {
+        "jp": "忙しい",
+        "question": "What does this word mean?",
+        "options": [
+          "Tired",
+          "Free",
+          "Late",
+          "Busy"
+        ],
+        "answer": 3
+      }
+    },
+    {
+      "n": 5,
+      "type": "reveal",
+      "kind": "image",
+      "file": "05-reveal.jpg",
+      "content": {
+        "answer_label": "D",
+        "jp": "忙しい",
+        "reading": "いそがしい",
+        "en": "busy",
+        "note": [
+          "忙しいです = I'm busy (polite).",
+          "The opposite idea: 暇（ひま）= free time."
+        ],
+        "cta": "Reply with a sentence using 忙しい!"
+      }
+    }
+  ],
+  "source": "ig-stories/sequences/isogashii-01.json",
+  "api_limits": [
+    "Stories are single-media: each slide is posted as its own Story.",
+    "The Instagram API cannot add stickers (poll, quiz, link, question) or captions to Stories.",
+    "The API has no native scheduling: this project's scheduled workflow publishes at publish_at."
+  ],
+  "manual_steps": [
+    "Optional: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version.",
+    "Optional: add a Link sticker to the last Story by hand if you want a tappable link to the free lesson."
+  ]
+}

@@ -1,11 +1,56 @@
 [
   {
+    "id": "atsui-01",
+    "title": "暑い - hot (weather)",
+    "level": "N5",
+    "approved": false,
+    "ready_to_publish": false,
+    "publish_at": "2026-10-20T18:00:00+00:00",
+    "status": "needs_review"
+  },
+  {
+    "id": "isogashii-01",
+    "title": "忙しい - busy",
+    "level": "N4",
+    "approved": false,
+    "ready_to_publish": false,
+    "publish_at": "2026-10-22T18:00:00+00:00",
+    "status": "needs_review"
+  },
+  {
     "id": "nemui-01",
     "title": "眠い - sleepy",
     "level": "N4",
     "approved": false,
     "ready_to_publish": false,
     "publish_at": "2026-10-14T18:00:00+00:00",
+    "status": "needs_review"
+  },
+  {
+    "id": "oishii-01",
+    "title": "おいしい - delicious",
+    "level": "N5",
+    "approved": false,
+    "ready_to_publish": false,
+    "publish_at": "2026-10-19T18:00:00+00:00",
+    "status": "needs_review"
+  },
+  {
+    "id": "samui-01",
+    "title": "寒い - cold (weather)",
+    "level": "N5",
+    "approved": false,
+    "ready_to_publish": false,
+    "publish_at": "2026-10-23T18:00:00+00:00",
+    "status": "needs_review"
+  },
+  {
+    "id": "tanoshii-01",
+    "title": "楽しい - fun",
+    "level": "N5",
+    "approved": false,
+    "ready_to_publish": false,
+    "publish_at": "2026-10-21T18:00:00+00:00",
     "status": "needs_review"
   }
 ]
