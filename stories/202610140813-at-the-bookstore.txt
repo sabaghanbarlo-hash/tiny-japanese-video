@@ -1,0 +1,25 @@
+title: At the Bookstore
+episode: 5
+scene: bookstore
+
+Alex: すみません。この ほんは いくらですか？ | Excuse me. How much is this book?
+Mika: せんえんです。 | It's 1,000 yen.
+Alex: ちょっと たかいですね。 | It's a little expensive, isn't it?
+Mika: あの ほんは やすいですよ。 | That book is cheap!
+Alex: じゃあ、あの ほんを ください。 | Then, that book, please.
+Mika: はい、どうぞ！ | Sure, here you go!
+
+vocab: すみません | sumimasen | Excuse me / Sorry
+vocab: この | kono | This (before a noun)
+vocab: ほん | hon | Book
+vocab: いくら | ikura | How much
+vocab: せんえん | sen'en | 1,000 yen
+vocab: ちょっと | chotto | A little / A bit
+vocab: たかい | takai | Expensive / High / Tall
+vocab: ですね | desu ne | Isn't it? / Right? (seeking agreement)
+vocab: あの | ano | That (over there, before a noun)
+vocab: やすい | yasui | Cheap / Inexpensive
+vocab: じゃあ | jaa | Then / In that case
+vocab: ください | kudasai | Please give me...
+vocab: はい | hai | Yes / Okay
+vocab: どうぞ | douzo | Here you go / Please
