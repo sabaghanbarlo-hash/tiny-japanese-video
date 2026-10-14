@@ -9,7 +9,7 @@ Free, runs entirely on GitHub Actions – nothing to install.
 ```
 title: At the Station
 episode: 2
-scene: station        # cafe | station | sakura
+scene: auto           # auto (picked from the story) or: cafe station sakura restaurant store bookstore classroom home airport street park beach hospital
 
 Mika: おはようございます。 | Good morning.
 Alex: おはよう！ | Morning!

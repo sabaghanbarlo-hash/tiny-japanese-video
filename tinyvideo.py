@@ -22,7 +22,51 @@ SCENES = {
     "cafe": dict(top=(255, 246, 232), bot=(250, 228, 210), floor=(204, 160, 120), table=(228, 184, 140), edge=(176, 130, 92)),
     "station": dict(top=(196, 224, 246), bot=(236, 246, 252), floor=(150, 150, 164), table=(238, 204, 96), edge=(120, 120, 134)),
     "sakura": dict(top=(255, 228, 236), bot=(255, 246, 242), floor=(160, 204, 148), table=(176, 218, 156), edge=(120, 170, 108)),
+    "restaurant": dict(top=(255, 236, 214), bot=(250, 214, 186), floor=(150, 96, 74), table=(196, 140, 104), edge=(140, 92, 66)),
+    "store": dict(top=(232, 246, 255), bot=(246, 252, 255), floor=(214, 218, 226), table=(120, 196, 170), edge=(84, 150, 128)),
+    "bookstore": dict(top=(246, 230, 206), bot=(238, 214, 184), floor=(166, 122, 90), table=(204, 160, 118), edge=(150, 108, 76)),
+    "classroom": dict(top=(240, 248, 236), bot=(250, 252, 244), floor=(206, 176, 136), table=(226, 196, 150), edge=(176, 142, 102)),
+    "home": dict(top=(255, 242, 226), bot=(252, 226, 204), floor=(196, 150, 112), table=(236, 206, 170), edge=(190, 150, 112)),
+    "airport": dict(top=(204, 228, 250), bot=(240, 248, 255), floor=(178, 184, 198), table=(150, 170, 210), edge=(110, 128, 170)),
+    "street": dict(top=(46, 52, 98), bot=(120, 90, 130), floor=(84, 84, 104), table=(186, 90, 90), edge=(130, 60, 66)),
+    "park": dict(top=(190, 228, 252), bot=(236, 248, 238), floor=(140, 200, 120), table=(190, 152, 110), edge=(146, 112, 78)),
+    "beach": dict(top=(150, 214, 244), bot=(224, 244, 252), floor=(240, 220, 170), table=(240, 130, 110), edge=(200, 96, 80)),
+    "hospital": dict(top=(236, 248, 250), bot=(248, 252, 252), floor=(200, 222, 224), table=(170, 214, 216), edge=(120, 176, 180)),
 }
+# keywords used to pick a background automatically from the story's title + dialogue
+SCENE_KEYWORDS = {
+    "station": ["えき", "でんしゃ", "電車", "駅", "きっぷ", "ホーム", "バス", "station", "train", "bus stop", "ticket"],
+    "airport": ["くうこう", "空港", "ひこうき", "飛行機", "パスポート", "airport", "flight", "passport", "luggage"],
+    "bookstore": ["ほんや", "本屋", "しょてん", "ほん", "本", "book", "library", "としょかん", "図書館"],
+    "restaurant": ["レストラン", "メニュー", "ちゅうもん", "注文", "ラーメン", "すし", "寿司", "おなか", "ごはん", "restaurant", "menu", "order", "hungry", "ramen", "sushi", "food"],
+    "cafe": ["カフェ", "コーヒー", "こうちゃ", "ケーキ", "のみもの", "cafe", "café", "coffee", "tea", "name", "meet", "first time", "はじめまして"],
+    "store": ["コンビニ", "みせ", "店", "いくら", "かいもの", "買い物", "ぜんぶで", "shop", "store", "buy", "how much", "price", "convenience"],
+    "classroom": ["がっこう", "学校", "せんせい", "先生", "じゅぎょう", "しゅくだい", "きょうしつ", "school", "class", "teacher", "homework", "student"],
+    "hospital": ["びょういん", "病院", "くすり", "いしゃ", "医者", "ねつ", "あたま", "いたい", "hospital", "doctor", "medicine", "sick", "fever", "pain"],
+    "home": ["いえ", "家", "うち", "へや", "部屋", "かぞく", "ただいま", "いってきます", "home", "house", "room", "family", "kitchen"],
+    "beach": ["うみ", "海", "なつ", "夏", "およぐ", "ビーチ", "sea", "beach", "swim", "summer"],
+    "street": ["よる", "夜", "こんばんは", "みち", "道", "まつり", "祭り", "night", "evening", "street", "festival", "way to"],
+    "park": ["こうえん", "公園", "さんぽ", "てんき", "天気", "あめ", "はれ", "park", "walk", "weather", "sunny", "rain"],
+    "sakura": ["さくら", "桜", "はなみ", "花見", "はる", "春", "sakura", "cherry", "blossom", "spring"],
+}
+SCENE_ORDER = ["cafe", "station", "sakura", "restaurant", "store", "bookstore", "classroom", "home", "airport", "street", "park", "beach", "hospital"]
+
+
+def pick_scene(meta, lines):
+    """Explicit `scene:` wins when it is a known one; otherwise choose from the story text."""
+    sc = (meta.get("scene") or "auto").strip().lower()
+    if sc in SCENES:
+        return sc
+    text = (meta.get("title", "") + " " + " ".join(l["jp"] + " " + l["en"] for l in lines)).lower()
+    title = meta.get("title", "").lower()
+    best, score = None, 0
+    for name, kws in SCENE_KEYWORDS.items():
+        n = sum(text.count(k.lower()) + 3 * title.count(k.lower()) for k in kws)
+        if n > score:
+            best, score = name, n
+    if best:
+        return best
+    return SCENE_ORDER[sum(map(ord, meta.get("title", ""))) % len(SCENE_ORDER)]
 BRAND = (222, 110, 134)
 
 
@@ -71,7 +115,7 @@ def to_romaji(t):
 
 # ---------- script parsing ----------
 def parse_story(path):
-    meta, lines, vocab = {"title": "Tiny Story", "scene": "cafe", "episode": ""}, [], []
+    meta, lines, vocab = {"title": "Tiny Story", "scene": "auto", "episode": ""}, [], []
     for raw in open(path, encoding="utf-8"):
         s = raw.strip()
         if not s or s.startswith("#"):
@@ -229,7 +273,75 @@ def blossoms(d, rng, box, n):
 def make_scene(scene, meta):
     sc = SCENES.get(scene, SCENES["cafe"]); rng = random.Random(7)
     bg = vgrad(W, H, sc["top"], sc["bot"]); d = ImageDraw.Draw(bg)
-    if scene == "station":
+    if scene == "restaurant":
+        for x in (150, 540, 930):
+            d.line([(x, 0), (x, 250)], fill=(120, 90, 80), width=5)
+            d.ellipse((x - 60, 230, x + 60, 300), fill=(255, 214, 120)); d.ellipse((x - 150, 200, x + 150, 420), fill=(255, 226, 150, 40))
+        d.rounded_rectangle((120, 380, 960, 560), radius=20, fill=(110, 70, 56))
+        d.text((540, 470), "らーめん  ・  すし  ・  どん", font=font(54), fill=(255, 236, 200), anchor="mm")
+        for x in range(160, 960, 120):
+            d.rounded_rectangle((x, 600, x + 70, 760), radius=14, fill=(214, 70, 70)); d.rectangle((x + 20, 580, x + 50, 600), fill=(250, 220, 120))
+    elif scene == "store":
+        d.rectangle((0, 300, W, 340), fill=(52, 160, 120)); d.rectangle((0, 340, W, 372), fill=(244, 244, 250))
+        d.text((540, 322), "コンビニ  OPEN 24h", font=font(40), fill="white", anchor="mm")
+        cols = [(250, 120, 110), (250, 200, 90), (110, 190, 240), (140, 210, 150), (200, 150, 230)]
+        for row, y in enumerate((430, 600, 770)):
+            d.rectangle((60, y + 70, W - 60, y + 86), fill=(150, 150, 164))
+            for k, x in enumerate(range(80, W - 120, 70)):
+                c = cols[(k * 3 + row) % 5]; hh = 40 + (k * 7 + row * 5) % 30
+                d.rounded_rectangle((x, y + 70 - hh, x + 52, y + 70), radius=8, fill=c)
+    elif scene == "bookstore":
+        d.rectangle((60, 280, W - 60, 840), fill=(150, 104, 72))
+        for y in (280, 460, 640):
+            d.rectangle((70, y + 150, W - 70, y + 170), fill=(116, 78, 54)); x = 80
+            while x < W - 120:
+                w = rng.randint(34, 62); hh = rng.randint(100, 145)
+                d.rectangle((x, y + 150 - hh, x + w, y + 150), fill=rng.choice([(210, 100, 96), (96, 150, 200), (230, 190, 96), (110, 170, 130), (170, 120, 190), (240, 230, 214)])); x += w + 4
+    elif scene == "classroom":
+        d.rounded_rectangle((120, 290, 960, 690), radius=18, fill=(150, 112, 78)); d.rounded_rectangle((140, 310, 940, 670), radius=10, fill=(52, 98, 80))
+        d.text((540, 420), "にほんご", font=font(110), fill=(244, 244, 236), anchor="mm"); d.text((540, 560), "あ い う え お", font=font(80), fill=(244, 230, 140), anchor="mm")
+        d.ellipse((860, 740, 940, 820), fill=(250, 250, 250), outline=(60, 60, 70), width=6); d.line([(900, 780), (900, 750)], fill=(60, 60, 70), width=5); d.line([(900, 780), (922, 790)], fill=(60, 60, 70), width=5)
+    elif scene == "home":
+        d.rounded_rectangle((90, 290, 470, 690), radius=24, fill=(255, 255, 255)); d.rounded_rectangle((108, 308, 452, 672), radius=16, fill=(205, 232, 244))
+        d.line([(280, 308), (280, 672)], fill=(255, 255, 255), width=8)
+        d.rounded_rectangle((590, 330, 990, 520), radius=16, fill=(255, 240, 220), outline=(190, 150, 112), width=8)
+        d.ellipse((650, 370, 750, 470), fill=(255, 200, 150)); d.polygon([(780, 480), (860, 380), (940, 480)], fill=(150, 200, 140))
+        d.rounded_rectangle((560, 640, 1020, 840), radius=34, fill=(224, 140, 140)); d.rounded_rectangle((560, 600, 1020, 700), radius=30, fill=(236, 160, 160))
+    elif scene == "airport":
+        d.rectangle((0, 280, W, 760), fill=(176, 212, 244)); d.polygon([(0, 760), (W, 560), (W, 760)], fill=(160, 200, 236))
+        d.polygon([(250, 500), (640, 470), (700, 430), (730, 440), (690, 500), (800, 520), (790, 540), (260, 540)], fill=(250, 250, 255))
+        d.rounded_rectangle((60, 290, 1020, 380), radius=18, fill=(40, 52, 80)); d.text((540, 335), "くうこう  Airport", font=font(48), fill=(250, 220, 110), anchor="mm")
+        d.rounded_rectangle((100, 700, 260, 860), radius=20, fill=(230, 120, 100)); d.rounded_rectangle((820, 720, 960, 860), radius=18, fill=(100, 150, 200))
+    elif scene == "street":
+        d.ellipse((780, 220, 920, 360), fill=(255, 244, 200))
+        for _ in range(60):
+            x, y = rng.randint(0, W), rng.randint(0, 420); d.ellipse((x, y, x + 5, y + 5), fill=(255, 255, 255))
+        for x in range(-30, W, 170):
+            hh = rng.randint(260, 520); d.rectangle((x, TABLE_TOP - hh, x + 150, TABLE_TOP), fill=(36, 40, 72))
+            for wy in range(TABLE_TOP - hh + 24, TABLE_TOP - 30, 54):
+                for wx in (x + 20, x + 80):
+                    if rng.random() < 0.65: d.rectangle((wx, wy, wx + 34, wy + 30), fill=(255, 218, 120))
+        for x in (120, 360, 600, 840):
+            d.line([(x, 560), (x, 620)], fill=(120, 80, 70), width=3); d.ellipse((x - 42, 600, x + 42, 720), fill=(236, 80, 70)); d.rectangle((x - 30, 650, x + 30, 662), fill=(255, 220, 160))
+    elif scene == "park":
+        d.ellipse((120, 300, 300, 480), fill=(250, 232, 140))
+        for x in (760, 940):
+            d.rectangle((x - 18, 520, x + 18, 800), fill=(122, 88, 66)); d.ellipse((x - 150, 300, x + 150, 600), fill=(96, 176, 108)); d.ellipse((x - 90, 340, x + 40, 450), fill=(120, 196, 128))
+        for cx, cy in ((420, 360), (560, 300), (640, 420)):
+            d.ellipse((cx - 70, cy - 30, cx + 70, cy + 30), fill=(255, 255, 255)); d.ellipse((cx - 30, cy - 55, cx + 50, cy + 10), fill=(255, 255, 255))
+    elif scene == "beach":
+        d.ellipse((780, 250, 920, 390), fill=(255, 226, 120))
+        d.rectangle((0, 520, W, 885), fill=(70, 170, 220))
+        for y in range(560, 880, 60):
+            for x in range(-40, W, 140):
+                d.arc((x + (y % 120), y, x + 100 + (y % 120), y + 40), 200, 340, fill=(220, 244, 255), width=5)
+        d.rectangle((140, 560, 150, 840), fill=(150, 110, 80)); d.pieslice((40, 450, 260, 640), 180, 360, fill=(240, 100, 90)); d.pieslice((40, 450, 150, 640), 180, 360, fill=(255, 250, 250))
+    elif scene == "hospital":
+        d.rectangle((60, 290, W - 60, 800), fill=(226, 242, 244))
+        d.rounded_rectangle((60, 290, W - 60, 380), radius=16, fill=(90, 170, 180)); d.text((540, 335), "びょういん  Hospital", font=font(50), fill="white", anchor="mm")
+        d.rectangle((480, 440, 600, 480), fill=(236, 86, 96)); d.rectangle((520, 400, 560, 520), fill=(236, 86, 96))
+        d.rounded_rectangle((120, 600, 330, 800), radius=12, fill=(250, 250, 252), outline=(160, 200, 206), width=6); d.rounded_rectangle((750, 600, 960, 800), radius=12, fill=(250, 250, 252), outline=(160, 200, 206), width=6)
+    elif scene == "station":
         for x in range(-40, W, 150):
             hh = rng.randint(180, 380); d.rectangle((x, TABLE_TOP - hh, x + 130, TABLE_TOP), fill=(206, 218, 234))
         d.rounded_rectangle((330, 290, 750, 400), radius=24, fill=(60, 80, 120))
@@ -258,7 +370,7 @@ def make_scene(scene, meta):
     d.text((100, 184), ep + meta["title"], font=font(size), fill=(60, 45, 48))
     fg = Image.new("RGBA", (W, 175), (0, 0, 0, 0)); g = ImageDraw.Draw(fg)
     g.rectangle((0, 55, W, 125), fill=sc["table"]); g.rectangle((0, 125, W, 175), fill=sc["edge"])
-    if scene not in SCENES or scene == "cafe":
+    if scene in ("cafe", "restaurant"):
         for x in (180, 820):
             g.rounded_rectangle((x, 8, x + 84, 62), radius=14, fill=(255, 255, 255)); g.ellipse((x + 70, 20, x + 110, 50), outline=(255, 255, 255), width=8)
     return bg, fg
@@ -352,7 +464,9 @@ def build(story, rate, dummy, tmp):
     chunks.append(np.zeros(int((total - t) * SR) + SR, np.float32))
     audio = np.concatenate(chunks); audio = audio / max(0.01, np.abs(audio).max()) * 0.9
     n = int(total * FPS); mouth = mouth_levels(audio, n)
-    bg, fg = make_scene(meta["scene"].lower(), meta)
+    meta["scene"] = pick_scene(meta, lines)
+    print("Scene:", meta["scene"])
+    bg, fg = make_scene(meta["scene"], meta)
     cards = [line_card(l) for l in lines]; vcards = [vocab_card(vocab, j) for j in range(len(vocab))]
     pills = {(nm, a): pill(nm, CHARS[nm]["accent"] if a else (226, 214, 206), (255, 255, 255) if a else (130, 112, 108))
              for nm in CHARS for a in (0, 1)}
