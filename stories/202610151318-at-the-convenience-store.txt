@@ -1,0 +1,29 @@
+title: At the Convenience Store
+episode: 6
+scene: convenience store
+
+Mika: のどが かわきましたね。 | I'm thirsty, aren't you?
+Alex: はい。みずを かいたいです。 | Yes. I want to buy water.
+Mika: あそこに ありますよ。 | It's over there.
+Alex: すみません。これは いくらですか？ | Excuse me. How much is this?
+Mika: ひゃくごじゅうえんです。 | It's 150 yen.
+Alex: じゃあ、これを ください。 | Then, this one, please.
+Mika: はい、どうぞ！ | Sure, here you go!
+
+vocab: のど | nodo | Throat
+vocab: かわきました | kawakimashita | Became thirsty / Is thirsty (polite past form)
+vocab: ね | ne | Isn't it? / Right? (seeking agreement)
+vocab: はい | hai | Yes
+vocab: みず | mizu | Water
+vocab: かいたいです | kaitai desu | Want to buy
+vocab: あそこ | asoko | Over there
+vocab: に | ni | At / In (marks a location in this sentence)
+vocab: あります | arimasu | There is / It exists (for things)
+vocab: すみません | sumimasen | Excuse me / Sorry
+vocab: これ | kore | This / This one
+vocab: いくら | ikura | How much
+vocab: ひゃくごじゅうえん | hyaku gojuu en | 150 yen
+vocab: じゃあ | jaa | Then / In that case
+vocab: を | o | Object marker (marks what someone buys)
+vocab: ください | kudasai | Please give me...
+vocab: どうぞ | douzo | Here you go / Please
