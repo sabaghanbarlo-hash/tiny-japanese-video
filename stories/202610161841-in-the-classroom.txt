@@ -1,0 +1,25 @@
+title: In the Classroom
+episode: 7
+scene: classroom
+
+Mika: アレックスさん、これは なんですか？ | Alex, what is this?
+Alex: それは ほんです。 | That is a book.
+Mika: これは なんですか？ | What is this?
+Alex: それは えんぴつです。 | That is a pencil.
+Mika: えんぴつを かしてください。 | Please lend me a pencil.
+Alex: はい、どうぞ。 | Sure, here you go!
+Mika: ありがとうございます！ | Thank you very much!
+
+vocab: アレックスさん | arekkusu-san | Alex (polite form of address)
+vocab: これ | kore | This / This one
+vocab: それ | sore | That / That one (near the listener)
+vocab: なん | nan | What
+vocab: ですか | desu ka | Polite question ending
+vocab: ほん | hon | Book
+vocab: えんぴつ | enpitsu | Pencil
+vocab: を | o | Object marker
+vocab: かして | kashite | Lend (the て-form of かす)
+vocab: ください | kudasai | Please (used to make a request)
+vocab: はい | hai | Yes / Okay
+vocab: どうぞ | douzo | Here you go / Please
+vocab: ありがとうございます | arigatou gozaimasu | Thank you very much
