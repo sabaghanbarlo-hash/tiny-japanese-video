@@ -1,0 +1,83 @@
+{
+  "id": "chiisai-01",
+  "title": "小さい - small",
+  "level": "N5",
+  "scene": "cafe",
+  "approved": false,
+  "reviewed_by": "",
+  "publish_at": "2026-10-23T18:00:00+00:00",
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
+    "Post after 大きい so the pair reads as opposites."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's small”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "jp": "小さい",
+      "reading": "ちいさい",
+      "en": "small",
+      "example": {
+        "jp": "この猫は小さいです。",
+        "reading": "このねこはちいさいです。",
+        "en": "This cat is small."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "sakura",
+      "title": "小さい · Small",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "小さいですか？",
+          "en": "Is it small?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、とても小さいです。",
+          "en": "Yes, it's very small."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "かわいい！",
+          "en": "So cute!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "小さい",
+      "question": "What does this word mean?",
+      "options": [
+        "Small",
+        "Big",
+        "Old",
+        "New"
+      ],
+      "answer": 0
+    },
+    {
+      "type": "reveal",
+      "answer_label": "A",
+      "jp": "小さい",
+      "reading": "ちいさい",
+      "en": "small",
+      "note": [
+        "小さいです = It's small (polite).",
+        "The opposite is 大きい (おおきい) = big."
+      ],
+      "cta": "Which word do you want next? Reply!"
+    }
+  ]
+}
