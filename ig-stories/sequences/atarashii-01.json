@@ -1,0 +1,83 @@
+{
+  "id": "atarashii-01",
+  "title": "新しい - new",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": false,
+  "reviewed_by": "",
+  "publish_at": "2026-10-24T18:00:00+00:00",
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
+    "新しい is often confused with 新しい readings like しん; only あたらしい is taught here."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's new”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "jp": "新しい",
+      "reading": "あたらしい",
+      "en": "new",
+      "example": {
+        "jp": "これは新しい本です。",
+        "reading": "これはあたらしいほんです。",
+        "en": "This is a new book."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "新しい · New",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "これは新しいですか？",
+          "en": "Is this new?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、新しいです。",
+          "en": "Yes, it's new."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "いいですね！",
+          "en": "Nice!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "新しい",
+      "question": "What does this word mean?",
+      "options": [
+        "Old",
+        "New",
+        "Cheap",
+        "Heavy"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "新しい",
+      "reading": "あたらしい",
+      "en": "new",
+      "note": [
+        "新しいです = It's new (polite).",
+        "The opposite is 古い (ふるい) = old."
+      ],
+      "cta": "Watch our latest Reel for more everyday Japanese"
+    }
+  ]
+}
