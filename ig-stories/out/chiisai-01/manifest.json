@@ -1,0 +1,186 @@
+{
+  "id": "chiisai-01",
+  "title": "小さい - small",
+  "level": "N5",
+  "approved": false,
+  "reviewed_by": "",
+  "publish_at": "2026-10-23T18:00:00+00:00",
+  "timezone": "UTC",
+  "ready_to_publish": false,
+  "qc": {
+    "errors": [],
+    "warnings": [
+      "target word: given reading 'ちいさい' differs from dictionary reading 'ちーさい' - verify",
+      "example sentence: given reading 'このねこはちいさいです。' differs from dictionary reading 'このねこはちーさいです。' - verify",
+      "clip is 10.7s (target 5-10s)"
+    ],
+    "checks": [
+      {
+        "check": "reading matches dictionary: target word",
+        "ok": false
+      },
+      {
+        "check": "reading matches dictionary: example sentence",
+        "ok": false
+      },
+      {
+        "check": "quiz has 3-4 unique options and exactly one valid correct answer",
+        "ok": true
+      },
+      {
+        "check": "quiz correct option equals the taught meaning",
+        "ok": true
+      },
+      {
+        "check": "reveal slide matches the quiz answer",
+        "ok": true
+      },
+      {
+        "check": "reveal slide repeats the same word and reading",
+        "ok": true
+      },
+      {
+        "check": "audio transcript == subtitles (both generated from the same text)",
+        "ok": true
+      }
+    ],
+    "uncertain": [
+      "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+      "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
+      "Post after 大きい so the pair reads as opposites."
+    ],
+    "notes": [
+      "Automated checks only prove internal consistency. They cannot prove the Japanese is natural or correct.",
+      "Vocabulary/grammar level was NOT machine-checked; compare against your N4 target by eye."
+    ],
+    "japanese_verified": false,
+    "status": "needs_review"
+  },
+  "slides": [
+    {
+      "n": 1,
+      "type": "intro",
+      "kind": "image",
+      "file": "01-intro.jpg",
+      "content": {
+        "kicker": "Today's tiny word",
+        "headline": [
+          "How do you say",
+          "“It's small”",
+          "in Japanese?"
+        ],
+        "sub": "Tap to find out"
+      }
+    },
+    {
+      "n": 2,
+      "type": "word",
+      "kind": "image",
+      "file": "02-word.jpg",
+      "content": {
+        "jp": "小さい",
+        "reading": "ちいさい",
+        "en": "small",
+        "example": {
+          "jp": "この猫は小さいです。",
+          "reading": "このねこはちいさいです。",
+          "en": "This cat is small."
+        }
+      }
+    },
+    {
+      "n": 3,
+      "type": "convo",
+      "kind": "video",
+      "file": "03-convo.mp4",
+      "poster": "03-convo-poster.jpg",
+      "duration": 10.7,
+      "size_mb": 0.37,
+      "audio": "real_voice",
+      "audio_transcript": [
+        "小さいですか？",
+        "はい、とても小さいです。",
+        "かわいい！"
+      ],
+      "subtitles": [
+        {
+          "jp": "小さいですか？",
+          "en": "Is it small?"
+        },
+        {
+          "jp": "はい、とても小さいです。",
+          "en": "Yes, it's very small."
+        },
+        {
+          "jp": "かわいい！",
+          "en": "So cute!"
+        }
+      ],
+      "content": {
+        "scene": "sakura",
+        "title": "小さい · Small",
+        "lines": [
+          {
+            "speaker": "Mika",
+            "jp": "小さいですか？",
+            "en": "Is it small?"
+          },
+          {
+            "speaker": "Alex",
+            "jp": "はい、とても小さいです。",
+            "en": "Yes, it's very small."
+          },
+          {
+            "speaker": "Mika",
+            "jp": "かわいい！",
+            "en": "So cute!"
+          }
+        ]
+      }
+    },
+    {
+      "n": 4,
+      "type": "quiz",
+      "kind": "image",
+      "file": "04-quiz.jpg",
+      "content": {
+        "jp": "小さい",
+        "question": "What does this word mean?",
+        "options": [
+          "Small",
+          "Big",
+          "Old",
+          "New"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "n": 5,
+      "type": "reveal",
+      "kind": "image",
+      "file": "05-reveal.jpg",
+      "content": {
+        "answer_label": "A",
+        "jp": "小さい",
+        "reading": "ちいさい",
+        "en": "small",
+        "note": [
+          "小さいです = It's small (polite).",
+          "The opposite is 大きい (おおきい) = big."
+        ],
+        "cta": "Which word do you want next? Reply!"
+      }
+    }
+  ],
+  "source": "ig-stories/sequences/chiisai-01.json",
+  "api_limits": [
+    "Stories are single-media: each slide is posted as its own Story.",
+    "The Instagram API cannot add stickers (poll, quiz, link, question) or captions to Stories.",
+    "The API has no native scheduling: this project's scheduled workflow publishes at publish_at."
+  ],
+  "manual_steps": [
+    "Optional: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version.",
+    "Optional: add a Link sticker to the last Story by hand if you want a tappable link to the free lesson."
+  ]
+}

@@ -9,6 +9,15 @@
     "status": "ready"
   },
   {
+    "id": "chiisai-01",
+    "title": "小さい - small",
+    "level": "N5",
+    "approved": false,
+    "ready_to_publish": false,
+    "publish_at": "2026-10-23T18:00:00+00:00",
+    "status": "needs_review"
+  },
+  {
     "id": "isogashii-01",
     "title": "忙しい - busy",
     "level": "N4",
@@ -41,7 +50,7 @@
     "level": "N5",
     "approved": true,
     "ready_to_publish": true,
-    "publish_at": "2026-10-23T18:00:00+00:00",
+    "publish_at": "2026-10-17T18:00:00+00:00",
     "status": "ready"
   },
   {
