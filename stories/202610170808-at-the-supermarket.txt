@@ -1,0 +1,32 @@
+title: At the Supermarket
+episode: 8
+scene: supermarket
+
+Mika: すみません。りんごは どこですか？ | Excuse me. Where are the apples?
+Alex: やさいの となりに ありますよ。 | They're next to the vegetables.
+Mika: ありがとうございます。バナナも ありますか？ | Thank you. Do you have bananas too?
+Alex: はい、あそこに あります。 | Yes, they're over there.
+Mika: りんごを みっつと、バナナを ふたつ ください。 | Three apples and two bananas, please.
+Alex: はい、かしこまりました。 | Certainly!
+
+vocab: すみません | sumimasen | Excuse me / Sorry
+vocab: りんご | ringo | Apple
+vocab: は | wa | Topic marker
+vocab: どこ | doko | Where
+vocab: ですか | desu ka | Polite question ending
+vocab: やさい | yasai | Vegetables
+vocab: の | no | Of / Possessive or linking particle
+vocab: となり | tonari | Next to / Beside
+vocab: に | ni | At / In / To (location particle here)
+vocab: あります | arimasu | There is / Are (for things)
+vocab: よ | yo | Emphasis marker; adds information
+vocab: ありがとうございます | arigatou gozaimasu | Thank you very much
+vocab: バナナ | banana | Banana
+vocab: も | mo | Also / Too
+vocab: あそこ | asoko | Over there
+vocab: を | o | Object marker
+vocab: みっつ | mittsu | Three things (general counter)
+vocab: ふたつ | futatsu | Two things (general counter)
+vocab: ください | kudasai | Please give me...
+vocab: はい | hai | Yes / Okay
+vocab: かしこまりました | kashikomarimashita | Certainly / Understood (very polite service expression)
