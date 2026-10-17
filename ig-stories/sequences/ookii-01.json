@@ -1,0 +1,83 @@
+{
+  "id": "ookii-01",
+  "title": "大きい - big",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": false,
+  "reviewed_by": "",
+  "publish_at": "2026-10-22T18:00:00+00:00",
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
+    "大きい is an i-adjective; the polite form 大きいです is standard."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's big”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "jp": "大きい",
+      "reading": "おおきい",
+      "en": "big",
+      "example": {
+        "jp": "この犬は大きいです。",
+        "reading": "このいぬはおおきいです。",
+        "en": "This dog is big."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "大きい · Big",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "大きいですか？",
+          "en": "Is it big?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、とても大きいです。",
+          "en": "Yes, it's very big."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "すごい！",
+          "en": "Wow!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "大きい",
+      "question": "What does this word mean?",
+      "options": [
+        "Small",
+        "Big",
+        "Fast",
+        "Heavy"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "大きい",
+      "reading": "おおきい",
+      "en": "big",
+      "note": [
+        "大きいです = It's big (polite).",
+        "The opposite is 小さい (ちいさい) = small."
+      ],
+      "cta": "Reply with something big!"
+    }
+  ]
+}
