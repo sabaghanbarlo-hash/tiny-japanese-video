@@ -1,0 +1,83 @@
+{
+  "id": "muzukashii-01",
+  "title": "難しい - difficult",
+  "level": "N4",
+  "scene": "cafe",
+  "approved": false,
+  "reviewed_by": "",
+  "publish_at": "2026-10-25T18:00:00+00:00",
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
+    "この問題は難しいです。 uses 問題 (もんだい), which learners may not know yet."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's difficult”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "jp": "難しい",
+      "reading": "むずかしい",
+      "en": "difficult",
+      "example": {
+        "jp": "この問題は難しいです。",
+        "reading": "このもんだいはむずかしいです。",
+        "en": "This problem is difficult."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "sakura",
+      "title": "難しい · Difficult",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "難しいですか？",
+          "en": "Is it difficult?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、ちょっと難しいです。",
+          "en": "Yes, it's a little difficult."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "がんばって！",
+          "en": "Do your best!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "難しい",
+      "question": "What does this word mean?",
+      "options": [
+        "Easy",
+        "Difficult",
+        "Short",
+        "Cheap"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "難しい",
+      "reading": "むずかしい",
+      "en": "difficult",
+      "note": [
+        "難しいです = It's difficult (polite).",
+        "The opposite is 簡単 (かんたん) = easy / simple."
+      ],
+      "cta": "Reply with something that feels difficult!"
+    }
+  ]
+}
