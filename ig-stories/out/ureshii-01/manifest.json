@@ -1,0 +1,184 @@
+{
+  "id": "ureshii-01",
+  "title": "嬉しい - happy / glad",
+  "level": "N4",
+  "approved": true,
+  "reviewed_by": "Saba (Japanese reviewed by Claude, not a native speaker)",
+  "publish_at": "2026-10-26T18:00:00+00:00",
+  "timezone": "UTC",
+  "ready_to_publish": false,
+  "qc": {
+    "errors": [
+      "quiz correct option 'Happy' != word meaning 'happy / glad'",
+      "reveal slide does not match the quiz answer"
+    ],
+    "warnings": [
+      "clip is 10.6s (target 5-10s)"
+    ],
+    "checks": [
+      {
+        "check": "reading matches dictionary: target word",
+        "ok": true
+      },
+      {
+        "check": "reading matches dictionary: example sentence",
+        "ok": true
+      },
+      {
+        "check": "quiz has 3-4 unique options and exactly one valid correct answer",
+        "ok": true
+      },
+      {
+        "check": "reveal slide matches the quiz answer",
+        "ok": false
+      },
+      {
+        "check": "reveal slide repeats the same word and reading",
+        "ok": true
+      },
+      {
+        "check": "audio transcript == subtitles (both generated from the same text)",
+        "ok": true
+      }
+    ],
+    "uncertain": [
+      "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+      "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
+      "嬉しい is often written in hiragana (うれしい) in everyday text - confirm you want the kanji form.",
+      "会えて嬉しいです uses the te-form of 会う; may be above beginner level."
+    ],
+    "notes": [
+      "Automated checks only prove internal consistency. They cannot prove the Japanese is natural or correct.",
+      "Vocabulary/grammar level was NOT machine-checked; compare against your N4 target by eye."
+    ],
+    "japanese_verified": false,
+    "status": "blocked"
+  },
+  "slides": [
+    {
+      "n": 1,
+      "type": "intro",
+      "kind": "image",
+      "file": "01-intro.jpg",
+      "content": {
+        "kicker": "Today's tiny word",
+        "headline": [
+          "How do you say",
+          "“I'm happy”",
+          "in Japanese?"
+        ],
+        "sub": "Tap to find out"
+      }
+    },
+    {
+      "n": 2,
+      "type": "word",
+      "kind": "image",
+      "file": "02-word.jpg",
+      "content": {
+        "jp": "嬉しい",
+        "reading": "うれしい",
+        "en": "happy / glad",
+        "example": {
+          "jp": "会えて嬉しいです。",
+          "reading": "あえてうれしいです。",
+          "en": "I'm glad to meet you."
+        }
+      }
+    },
+    {
+      "n": 3,
+      "type": "convo",
+      "kind": "video",
+      "file": "03-convo.mp4",
+      "poster": "03-convo-poster.jpg",
+      "duration": 10.6,
+      "size_mb": 0.33,
+      "audio": "real_voice",
+      "audio_transcript": [
+        "嬉しいですか？",
+        "はい、とても嬉しいです。",
+        "よかった！"
+      ],
+      "subtitles": [
+        {
+          "jp": "嬉しいですか？",
+          "en": "Are you happy?"
+        },
+        {
+          "jp": "はい、とても嬉しいです。",
+          "en": "Yes, I'm very happy."
+        },
+        {
+          "jp": "よかった！",
+          "en": "I'm glad!"
+        }
+      ],
+      "content": {
+        "scene": "cafe",
+        "title": "嬉しい · Happy / glad",
+        "lines": [
+          {
+            "speaker": "Mika",
+            "jp": "嬉しいですか？",
+            "en": "Are you happy?"
+          },
+          {
+            "speaker": "Alex",
+            "jp": "はい、とても嬉しいです。",
+            "en": "Yes, I'm very happy."
+          },
+          {
+            "speaker": "Mika",
+            "jp": "よかった！",
+            "en": "I'm glad!"
+          }
+        ]
+      }
+    },
+    {
+      "n": 4,
+      "type": "quiz",
+      "kind": "image",
+      "file": "04-quiz.jpg",
+      "content": {
+        "jp": "嬉しい",
+        "question": "What does this word mean?",
+        "options": [
+          "Sad",
+          "Angry",
+          "Happy",
+          "Tired"
+        ],
+        "answer": 2
+      }
+    },
+    {
+      "n": 5,
+      "type": "reveal",
+      "kind": "image",
+      "file": "05-reveal.jpg",
+      "content": {
+        "answer_label": "C",
+        "jp": "嬉しい",
+        "reading": "うれしい",
+        "en": "happy / glad",
+        "note": [
+          "嬉しいです = I'm happy / glad (polite).",
+          "The opposite feeling: 悲しい (かなしい) = sad."
+        ],
+        "cta": "Tell us what makes you happy!"
+      }
+    }
+  ],
+  "source": "ig-stories/sequences/ureshii-01.json",
+  "api_limits": [
+    "Stories are single-media: each slide is posted as its own Story.",
+    "The Instagram API cannot add stickers (poll, quiz, link, question) or captions to Stories.",
+    "The API has no native scheduling: this project's scheduled workflow publishes at publish_at."
+  ],
+  "manual_steps": [
+    "Optional: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version.",
+    "Optional: add a Link sticker to the last Story by hand if you want a tappable link to the free lesson."
+  ]
+}

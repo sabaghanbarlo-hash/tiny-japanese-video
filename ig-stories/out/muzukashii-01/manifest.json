@@ -1,0 +1,184 @@
+{
+  "id": "muzukashii-01",
+  "title": "難しい - difficult",
+  "level": "N4",
+  "approved": true,
+  "reviewed_by": "Saba (Japanese reviewed by Claude, not a native speaker)",
+  "publish_at": "2026-10-25T18:00:00+00:00",
+  "timezone": "UTC",
+  "ready_to_publish": true,
+  "qc": {
+    "errors": [],
+    "warnings": [
+      "clip is 11.1s (target 5-10s)"
+    ],
+    "checks": [
+      {
+        "check": "reading matches dictionary: target word",
+        "ok": true
+      },
+      {
+        "check": "reading matches dictionary: example sentence",
+        "ok": true
+      },
+      {
+        "check": "quiz has 3-4 unique options and exactly one valid correct answer",
+        "ok": true
+      },
+      {
+        "check": "quiz correct option equals the taught meaning",
+        "ok": true
+      },
+      {
+        "check": "reveal slide matches the quiz answer",
+        "ok": true
+      },
+      {
+        "check": "reveal slide repeats the same word and reading",
+        "ok": true
+      },
+      {
+        "check": "audio transcript == subtitles (both generated from the same text)",
+        "ok": true
+      }
+    ],
+    "uncertain": [
+      "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+      "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
+      "この問題は難しいです。 uses 問題 (もんだい), which learners may not know yet."
+    ],
+    "notes": [
+      "Automated checks only prove internal consistency. They cannot prove the Japanese is natural or correct.",
+      "Vocabulary/grammar level was NOT machine-checked; compare against your N4 target by eye."
+    ],
+    "japanese_verified": false,
+    "status": "ready"
+  },
+  "slides": [
+    {
+      "n": 1,
+      "type": "intro",
+      "kind": "image",
+      "file": "01-intro.jpg",
+      "content": {
+        "kicker": "Today's tiny word",
+        "headline": [
+          "How do you say",
+          "“It's difficult”",
+          "in Japanese?"
+        ],
+        "sub": "Tap to find out"
+      }
+    },
+    {
+      "n": 2,
+      "type": "word",
+      "kind": "image",
+      "file": "02-word.jpg",
+      "content": {
+        "jp": "難しい",
+        "reading": "むずかしい",
+        "en": "difficult",
+        "example": {
+          "jp": "この問題は難しいです。",
+          "reading": "このもんだいはむずかしいです。",
+          "en": "This problem is difficult."
+        }
+      }
+    },
+    {
+      "n": 3,
+      "type": "convo",
+      "kind": "video",
+      "file": "03-convo.mp4",
+      "poster": "03-convo-poster.jpg",
+      "duration": 11.1,
+      "size_mb": 0.38,
+      "audio": "real_voice",
+      "audio_transcript": [
+        "難しいですか？",
+        "はい、ちょっと難しいです。",
+        "がんばって！"
+      ],
+      "subtitles": [
+        {
+          "jp": "難しいですか？",
+          "en": "Is it difficult?"
+        },
+        {
+          "jp": "はい、ちょっと難しいです。",
+          "en": "Yes, it's a little difficult."
+        },
+        {
+          "jp": "がんばって！",
+          "en": "Do your best!"
+        }
+      ],
+      "content": {
+        "scene": "sakura",
+        "title": "難しい · Difficult",
+        "lines": [
+          {
+            "speaker": "Mika",
+            "jp": "難しいですか？",
+            "en": "Is it difficult?"
+          },
+          {
+            "speaker": "Alex",
+            "jp": "はい、ちょっと難しいです。",
+            "en": "Yes, it's a little difficult."
+          },
+          {
+            "speaker": "Mika",
+            "jp": "がんばって！",
+            "en": "Do your best!"
+          }
+        ]
+      }
+    },
+    {
+      "n": 4,
+      "type": "quiz",
+      "kind": "image",
+      "file": "04-quiz.jpg",
+      "content": {
+        "jp": "難しい",
+        "question": "What does this word mean?",
+        "options": [
+          "Easy",
+          "Difficult",
+          "Short",
+          "Cheap"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "n": 5,
+      "type": "reveal",
+      "kind": "image",
+      "file": "05-reveal.jpg",
+      "content": {
+        "answer_label": "B",
+        "jp": "難しい",
+        "reading": "むずかしい",
+        "en": "difficult",
+        "note": [
+          "難しいです = It's difficult (polite).",
+          "The opposite is 簡単 (かんたん) = easy / simple."
+        ],
+        "cta": "Reply with something that feels difficult!"
+      }
+    }
+  ],
+  "source": "ig-stories/sequences/muzukashii-01.json",
+  "api_limits": [
+    "Stories are single-media: each slide is posted as its own Story.",
+    "The Instagram API cannot add stickers (poll, quiz, link, question) or captions to Stories.",
+    "The API has no native scheduling: this project's scheduled workflow publishes at publish_at."
+  ],
+  "manual_steps": [
+    "Optional: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version.",
+    "Optional: add a Link sticker to the last Story by hand if you want a tappable link to the free lesson."
+  ]
+}

@@ -2,17 +2,16 @@
   "id": "chiisai-01",
   "title": "小さい - small",
   "level": "N5",
-  "approved": false,
-  "reviewed_by": "",
+  "approved": true,
+  "reviewed_by": "Saba (Japanese reviewed by Claude, not a native speaker)",
   "publish_at": "2026-10-23T18:00:00+00:00",
   "timezone": "UTC",
-  "ready_to_publish": false,
+  "ready_to_publish": true,
   "qc": {
     "errors": [],
     "warnings": [
       "target word: given reading 'ちいさい' differs from dictionary reading 'ちーさい' - verify",
-      "example sentence: given reading 'このねこはちいさいです。' differs from dictionary reading 'このねこはちーさいです。' - verify",
-      "clip is 10.7s (target 5-10s)"
+      "example sentence: given reading 'このねこはちいさいです。' differs from dictionary reading 'このねこはちーさいです。' - verify"
     ],
     "checks": [
       {
@@ -54,7 +53,7 @@
       "Vocabulary/grammar level was NOT machine-checked; compare against your N4 target by eye."
     ],
     "japanese_verified": false,
-    "status": "needs_review"
+    "status": "ready"
   },
   "slides": [
     {
@@ -94,8 +93,8 @@
       "kind": "video",
       "file": "03-convo.mp4",
       "poster": "03-convo-poster.jpg",
-      "duration": 10.7,
-      "size_mb": 0.37,
+      "duration": 7.8,
+      "size_mb": 0.26,
       "audio": "real_voice",
       "audio_transcript": [
         "小さいですか？",

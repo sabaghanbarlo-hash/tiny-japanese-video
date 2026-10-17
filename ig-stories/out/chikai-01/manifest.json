@@ -1,0 +1,184 @@
+{
+  "id": "chikai-01",
+  "title": "近い - near",
+  "level": "N5",
+  "approved": true,
+  "reviewed_by": "Saba (Japanese reviewed by Claude, not a native speaker)",
+  "publish_at": "2026-10-27T18:00:00+00:00",
+  "timezone": "UTC",
+  "ready_to_publish": true,
+  "qc": {
+    "errors": [],
+    "warnings": [
+      "clip is 10.6s (target 5-10s)"
+    ],
+    "checks": [
+      {
+        "check": "reading matches dictionary: target word",
+        "ok": true
+      },
+      {
+        "check": "reading matches dictionary: example sentence",
+        "ok": true
+      },
+      {
+        "check": "quiz has 3-4 unique options and exactly one valid correct answer",
+        "ok": true
+      },
+      {
+        "check": "quiz correct option equals the taught meaning",
+        "ok": true
+      },
+      {
+        "check": "reveal slide matches the quiz answer",
+        "ok": true
+      },
+      {
+        "check": "reveal slide repeats the same word and reading",
+        "ok": true
+      },
+      {
+        "check": "audio transcript == subtitles (both generated from the same text)",
+        "ok": true
+      }
+    ],
+    "uncertain": [
+      "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+      "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
+      "Post before 遠い so the pair reads as opposites."
+    ],
+    "notes": [
+      "Automated checks only prove internal consistency. They cannot prove the Japanese is natural or correct.",
+      "Vocabulary/grammar level was NOT machine-checked; compare against your N4 target by eye."
+    ],
+    "japanese_verified": false,
+    "status": "ready"
+  },
+  "slides": [
+    {
+      "n": 1,
+      "type": "intro",
+      "kind": "image",
+      "file": "01-intro.jpg",
+      "content": {
+        "kicker": "Today's tiny word",
+        "headline": [
+          "How do you say",
+          "“It's near”",
+          "in Japanese?"
+        ],
+        "sub": "Tap to find out"
+      }
+    },
+    {
+      "n": 2,
+      "type": "word",
+      "kind": "image",
+      "file": "02-word.jpg",
+      "content": {
+        "jp": "近い",
+        "reading": "ちかい",
+        "en": "near",
+        "example": {
+          "jp": "駅は近いです。",
+          "reading": "えきはちかいです。",
+          "en": "The station is near."
+        }
+      }
+    },
+    {
+      "n": 3,
+      "type": "convo",
+      "kind": "video",
+      "file": "03-convo.mp4",
+      "poster": "03-convo-poster.jpg",
+      "duration": 10.6,
+      "size_mb": 0.36,
+      "audio": "real_voice",
+      "audio_transcript": [
+        "駅は近いですか？",
+        "はい、近いです。",
+        "ありがとう！"
+      ],
+      "subtitles": [
+        {
+          "jp": "駅は近いですか？",
+          "en": "Is the station near?"
+        },
+        {
+          "jp": "はい、近いです。",
+          "en": "Yes, it's near."
+        },
+        {
+          "jp": "ありがとう！",
+          "en": "Thank you!"
+        }
+      ],
+      "content": {
+        "scene": "sakura",
+        "title": "近い · Near",
+        "lines": [
+          {
+            "speaker": "Mika",
+            "jp": "駅は近いですか？",
+            "en": "Is the station near?"
+          },
+          {
+            "speaker": "Alex",
+            "jp": "はい、近いです。",
+            "en": "Yes, it's near."
+          },
+          {
+            "speaker": "Mika",
+            "jp": "ありがとう！",
+            "en": "Thank you!"
+          }
+        ]
+      }
+    },
+    {
+      "n": 4,
+      "type": "quiz",
+      "kind": "image",
+      "file": "04-quiz.jpg",
+      "content": {
+        "jp": "近い",
+        "question": "What does this word mean?",
+        "options": [
+          "Far",
+          "Near",
+          "Big",
+          "Late"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "n": 5,
+      "type": "reveal",
+      "kind": "image",
+      "file": "05-reveal.jpg",
+      "content": {
+        "answer_label": "B",
+        "jp": "近い",
+        "reading": "ちかい",
+        "en": "near",
+        "note": [
+          "近いです = It's near (polite).",
+          "The opposite is 遠い (とおい) = far."
+        ],
+        "cta": "Reply with a place that's near you!"
+      }
+    }
+  ],
+  "source": "ig-stories/sequences/chikai-01.json",
+  "api_limits": [
+    "Stories are single-media: each slide is posted as its own Story.",
+    "The Instagram API cannot add stickers (poll, quiz, link, question) or captions to Stories.",
+    "The API has no native scheduling: this project's scheduled workflow publishes at publish_at."
+  ],
+  "manual_steps": [
+    "Optional: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version.",
+    "Optional: add a Link sticker to the last Story by hand if you want a tappable link to the free lesson."
+  ]
+}
