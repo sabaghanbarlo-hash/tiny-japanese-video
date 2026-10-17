@@ -3,8 +3,8 @@
   "title": "小さい - small",
   "level": "N5",
   "scene": "cafe",
-  "approved": false,
-  "reviewed_by": "",
+  "approved": true,
+  "reviewed_by": "Saba (Japanese reviewed by Claude, not a native speaker)",
   "publish_at": "2026-10-23T18:00:00+00:00",
   "uncertain": [
     "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
