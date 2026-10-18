@@ -17,8 +17,8 @@ h2{font-size:1.1rem;margin:28px 0 10px;display:flex;align-items:center;gap:8px}
 p.sub{margin:0 0 6px;color:var(--soft)}
 nav{margin:0 0 18px}a{color:var(--pink)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;margin-bottom:12px;display:flex;gap:14px;align-items:center;box-shadow:0 8px 28px rgba(0,0,0,.35)}
-.thumb{flex:0 0 72px;width:72px;aspect-ratio:9/16;border-radius:10px;background:#000;object-fit:cover;cursor:pointer}
-.ph{flex:0 0 72px;width:72px;aspect-ratio:9/16;border-radius:10px;background:var(--field);border:1px dashed var(--line);display:grid;place-items:center;color:var(--soft);font-size:1.4rem}
+.thumb{flex:0 0 96px;width:96px;aspect-ratio:9/16;border-radius:10px;background:#000;object-fit:cover;cursor:pointer}
+.ph{flex:0 0 96px;width:96px;aspect-ratio:9/16;border-radius:10px;background:var(--field);border:1px dashed var(--line);display:grid;place-items:center;color:var(--soft);font-size:1.4rem}
 .info{min-width:0;flex:1}
 .t{font-weight:700;overflow-wrap:anywhere}
 .m{color:var(--soft);font-size:.88rem}
@@ -76,14 +76,15 @@ function prettyName(n){const m=n.match(/^(\d{4})(\d\d)(\d\d)(\d\d)(\d\d)-/);retu
 function card(name,info,kind,slot){
   const c=el("div","card");
   if(kind==="pending"){c.append(el("div","ph","⏳"))}
-  else{const v=el("video","thumb");v.src=`${base}videos/${name}.mp4#t=0.8`;v.preload="metadata";v.muted=true;v.playsInline=true;v.onclick=()=>play(name);c.append(v)}
+  else{const im=el("img","thumb");im.alt="";im.loading="lazy";im.src=`${base}videos/${name}.jpg`;im.onclick=()=>play(name);
+    im.onerror=()=>{const v=el("video","thumb");v.src=`${base}videos/${name}.mp4#t=0.8`;v.preload="metadata";v.muted=true;v.playsInline=true;v.onclick=()=>play(name);im.replaceWith(v)};c.append(im)}
   const i=el("div","info");
   i.append(el("div","t",esc((info.episode?`Ep.${esc(info.episode)} · `:"")+info.title)));
   i.append(el("div","m",`${esc(info.scene)} · ${info.lines} lines · ${esc(prettyName(name))}`));
   const w=el("span","when "+(kind==="queued"?(slot.first?"next":""):kind==="posted"?"done":"wait"),
     kind==="queued"?(slot.first?"Posts next · ":"Posts ")+fmt(slot.date):kind==="posted"?"Posted ✓":"Waiting for its video");
   i.append(w);c.append(i);return c}
-function play(name){const p=$("player");p.src=`${base}videos/${name}.mp4`;$("dlg").showModal();p.play().catch(()=>{})}
+function play(name){const p=$("player");p.poster=`${base}videos/${name}.jpg`;p.src=`${base}videos/${name}.mp4`;$("dlg").showModal();p.play().catch(()=>{})}
 $("close").onclick=()=>{$("player").pause();$("dlg").close()};
 $("dlg").addEventListener("close",()=>$("player").pause());
 $("reload").onclick=e=>{e.preventDefault();load()};

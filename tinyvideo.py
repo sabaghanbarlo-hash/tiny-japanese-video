@@ -40,7 +40,7 @@ SCENE_KEYWORDS = {
     "bookstore": ["ほんや", "本屋", "しょてん", "ほん", "本", "book", "library", "としょかん", "図書館"],
     "restaurant": ["レストラン", "メニュー", "ちゅうもん", "注文", "ラーメン", "すし", "寿司", "おなか", "ごはん", "restaurant", "menu", "order", "hungry", "ramen", "sushi", "food"],
     "cafe": ["カフェ", "コーヒー", "こうちゃ", "ケーキ", "のみもの", "cafe", "café", "coffee", "tea", "name", "meet", "first time", "はじめまして"],
-    "store": ["コンビニ", "みせ", "店", "いくら", "かいもの", "買い物", "ぜんぶで", "shop", "store", "buy", "how much", "price", "convenience"],
+    "store": ["スーパー", "supermarket", "コンビニ", "みせ", "店", "いくら", "かいもの", "買い物", "ぜんぶで", "shop", "store", "buy", "how much", "price", "convenience"],
     "classroom": ["がっこう", "学校", "せんせい", "先生", "じゅぎょう", "しゅくだい", "きょうしつ", "school", "class", "teacher", "homework", "student"],
     "hospital": ["びょういん", "病院", "くすり", "いしゃ", "医者", "ねつ", "あたま", "いたい", "hospital", "doctor", "medicine", "sick", "fever", "pain"],
     "home": ["いえ", "家", "うち", "へや", "部屋", "かぞく", "ただいま", "いってきます", "home", "house", "room", "family", "kitchen"],
@@ -49,14 +49,22 @@ SCENE_KEYWORDS = {
     "park": ["こうえん", "公園", "さんぽ", "てんき", "天気", "あめ", "はれ", "park", "walk", "weather", "sunny", "rain"],
     "sakura": ["さくら", "桜", "はなみ", "花見", "はる", "春", "sakura", "cherry", "blossom", "spring"],
 }
+SCENE_ALIASES = {"supermarket": "store", "market": "store", "shop": "store", "shopping": "store", "convenience": "store",
+                 "school": "classroom", "library": "bookstore", "house": "home", "kitchen": "home", "room": "home",
+                 "night": "street", "city": "street", "festival": "street", "sea": "beach", "ocean": "beach",
+                 "garden": "park", "train": "station", "bus": "station", "clinic": "hospital", "bakery": "cafe", "coffee": "cafe"}
 SCENE_ORDER = ["cafe", "station", "sakura", "restaurant", "store", "bookstore", "classroom", "home", "airport", "street", "park", "beach", "hospital"]
 
 
 def pick_scene(meta, lines):
     """Explicit `scene:` wins when it is a known one; otherwise choose from the story text."""
     sc = (meta.get("scene") or "auto").strip().lower()
+    sc = SCENE_ALIASES.get(sc, sc)
     if sc in SCENES:
         return sc
+    for key, val in list(SCENE_ALIASES.items()) + [(k, k) for k in SCENES]:  # e.g. "train station" -> station
+        if sc != "auto" and key in sc:
+            return val
     text = (meta.get("title", "") + " " + " ".join(l["jp"] + " " + l["en"] for l in lines)).lower()
     title = meta.get("title", "").lower()
     best, score = None, 0
@@ -270,7 +278,7 @@ def blossoms(d, rng, box, n):
         d.ellipse((x - r, y - r, x + r, y + r), fill=rng.choice(cols))
 
 
-def make_scene(scene, meta):
+def make_scene(scene, meta, header=True):
     sc = SCENES.get(scene, SCENES["cafe"]); rng = random.Random(7)
     bg = vgrad(W, H, sc["top"], sc["bot"]); d = ImageDraw.Draw(bg)
     if scene == "restaurant":
@@ -361,13 +369,14 @@ def make_scene(scene, meta):
     d.rectangle((0, TABLE_TOP, W, H), fill=sc["floor"])
     for y in range(TABLE_TOP + 140, H, 96):
         d.line([(0, y), (W, y)], fill=tuple(int(v * 0.93) for v in sc["floor"]), width=3)
-    ep = f"Ep.{meta['episode']}  ·  " if meta.get("episode") else ""
-    d.rounded_rectangle((60, 118, 1020, 252), radius=54, fill=(255, 255, 255, 238))
-    d.text((100, 142), "TINY JAPANESE", font=font(30), fill=BRAND)
-    size = 48
-    while size > 28 and font(size).getlength(ep + meta["title"]) > 880:
-        size -= 2
-    d.text((100, 184), ep + meta["title"], font=font(size), fill=(60, 45, 48))
+    if header:
+        ep = f"Ep.{meta['episode']}  ·  " if meta.get("episode") else ""
+        d.rounded_rectangle((60, 118, 1020, 252), radius=54, fill=(255, 255, 255, 238))
+        d.text((100, 142), "TINY JAPANESE", font=font(30), fill=BRAND)
+        size = 48
+        while size > 28 and font(size).getlength(ep + meta["title"]) > 880:
+            size -= 2
+        d.text((100, 184), ep + meta["title"], font=font(size), fill=(60, 45, 48))
     fg = Image.new("RGBA", (W, 175), (0, 0, 0, 0)); g = ImageDraw.Draw(fg)
     g.rectangle((0, 55, W, 125), fill=sc["table"]); g.rectangle((0, 125, W, 175), fill=sc["edge"])
     if scene in ("cafe", "restaurant"):

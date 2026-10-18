@@ -141,8 +141,15 @@ for _ in range(60):
 else:
     sys.exit("Video URL never became reachable")
 
-c = call("INSTAGRAM_POST_IG_USER_MEDIA", {"ig_user_id": "me", "video_url": url, "media_type": "REELS",
-                                          "caption": caption(), "share_to_feed": True})
+args = {"ig_user_id": "me", "video_url": url, "media_type": "REELS", "caption": caption(), "share_to_feed": True}
+cover = url.rsplit(".", 1)[0] + ".jpg"
+try:
+    if urllib.request.urlopen(urllib.request.Request(cover, method="HEAD"), timeout=20).status == 200:
+        args["cover_url"] = cover  # custom thumbnail made by cover.py
+        print("Using cover:", cover, flush=True)
+except Exception:
+    print("No cover image online yet; Instagram will pick a frame.", flush=True)
+c = call("INSTAGRAM_POST_IG_USER_MEDIA", args)
 cid = find_id(c.get("data"))
 print("container:", cid, flush=True)
 p = call("INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH", {"ig_user_id": "me", "creation_id": cid, "max_wait_seconds": 300})

@@ -136,7 +136,7 @@ $("run").onclick=async()=>{
       throw new Error("The job didn't finish."+why+"\n"+run.html_url)}
     const url=`${location.origin}${location.pathname.replace(/[^/]*$/,"")}videos/${base.split("/")[1]}.mp4`;
     say(post?"Done – video made and posted to Instagram.":"Done – video is ready.","ok");
-    $("result").innerHTML=`<video controls playsinline src="${url}"></video><p style="text-align:center"><a href="${url}" download>Download MP4</a> · <a href="${run.html_url}" target="_blank" rel="noopener">View job</a></p>`;
+    $("result").innerHTML=`<video controls playsinline poster="${url.replace(/\.mp4$/,".jpg")}" src="${url}"></video><p style="text-align:center;margin:8px 0 0"><a href="${url.replace(/\.mp4$/,".jpg")}" download>Download cover (JPG)</a></p><p style="text-align:center"><a href="${url}" download>Download MP4</a> · <a href="${run.html_url}" target="_blank" rel="noopener">View job</a></p>`;
   }catch(e){say(String(e.message||e),"err")}
   finally{btn.disabled=false}
 };

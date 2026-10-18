@@ -51,6 +51,17 @@ jobs:
           for f in $files; do
             python tinyvideo.py "$f" -o "output/$(basename "${f%.txt}").mp4"
           done
+      - name: Covers (thumbnails)
+        run: |
+          mkdir -p output
+          for f in stories/*.txt; do
+            b=$(basename "${f%.txt}")
+            if [ ! -f "output/$b.jpg" ] || [ "$f" = "${STORY:-}" ] || [ "${STORY:-all}" = "all" ]; then
+              python cover.py "$f" "output/$b.jpg" || echo "cover failed for $f"
+            fi
+          done
+        env:
+          STORY: ${{ github.event.inputs.story }}
       - name: Commit videos
         run: |
           git config user.name "github-actions"
@@ -64,6 +75,7 @@ jobs:
           mkdir -p site/videos
           cp -r docs/* site/
           cp output/*.mp4 site/videos/
+          cp output/*.jpg site/videos/ 2>/dev/null || true
           mkdir -p site/story-media
           if [ -d ig-stories/out ]; then cp -r ig-stories/out/. site/story-media/; fi
       - uses: actions/upload-pages-artifact@v3
