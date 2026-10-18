@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#14101a">
+<title>Tiny Japanese · Queue</title>
+<style>
+:root{color-scheme:dark;--bg:#14101a;--card:#1e1822;--field:#120e16;--pink:#ef7c96;--ink:#f4eaed;--soft:#a99aa1;--line:#3a2f3a;--ok:#6cc58c;--warn:#f0c060;--err:#ff7a70}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:720px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:1.5rem;margin:0 0 4px}h1 span{color:var(--pink)}
+h2{font-size:1.1rem;margin:28px 0 10px;display:flex;align-items:center;gap:8px}
+.count{background:var(--card);border:1px solid var(--line);border-radius:999px;font-size:.8rem;padding:1px 10px;color:var(--soft)}
+p.sub{margin:0 0 6px;color:var(--soft)}
+nav{margin:0 0 18px}a{color:var(--pink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;margin-bottom:12px;display:flex;gap:14px;align-items:center;box-shadow:0 8px 28px rgba(0,0,0,.35)}
+.thumb{flex:0 0 72px;width:72px;aspect-ratio:9/16;border-radius:10px;background:#000;object-fit:cover;cursor:pointer}
+.ph{flex:0 0 72px;width:72px;aspect-ratio:9/16;border-radius:10px;background:var(--field);border:1px dashed var(--line);display:grid;place-items:center;color:var(--soft);font-size:1.4rem}
+.info{min-width:0;flex:1}
+.t{font-weight:700;overflow-wrap:anywhere}
+.m{color:var(--soft);font-size:.88rem}
+.when{display:inline-block;margin-top:4px;padding:2px 10px;border-radius:999px;font-size:.82rem;font-weight:600;background:#2b2030;color:var(--pink)}
+.when.next{background:var(--pink);color:#2a1219}
+.when.done{background:#1f2c24;color:var(--ok)}
+.when.wait{background:#322b1a;color:var(--warn)}
+.empty{color:var(--soft);padding:6px 2px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;text-align:center}
+.stat b{display:block;font-size:1.6rem;color:var(--pink)}.stat span{color:var(--soft);font-size:.82rem}
+#err{color:var(--err);white-space:pre-wrap}
+dialog{border:0;border-radius:20px;background:var(--card);padding:12px;max-width:92vw}
+dialog::backdrop{background:rgba(0,0,0,.75)}
+dialog video{width:min(340px,80vw);border-radius:14px;display:block;background:#000}
+dialog button{margin-top:10px;width:100%;border:0;border-radius:999px;background:var(--pink);color:#2a1219;font:inherit;font-weight:700;padding:10px;cursor:pointer}
+</style>
+</head>
+<body>
+<main>
+<h1>Tiny <span>Japanese</span> · Queue</h1>
+<p class="sub">Everything you've generated and where it is on its way to Instagram.</p>
+<nav><a href="./">← Make a new video</a> · <a href="#" id="reload">Refresh</a></nav>
+<p class="sub" id="sched"></p>
+<div class="stats" id="stats"></div>
+<div id="err"></div>
+
+<h2>Up next <span class="count" id="nq">…</span></h2>
+<div id="queued"><div class="empty">Loading…</div></div>
+
+<h2>Rendering or no video yet <span class="count" id="nr">…</span></h2>
+<div id="pending"></div>
+
+<h2>Already posted <span class="count" id="np">…</span></h2>
+<div id="posted"></div>
+</main>
+
+<dialog id="dlg"><video id="player" controls playsinline></video><button id="close">Close</button></dialog>
+
+<script>
+const OWNER="sabaghanbarlo-hash",REPO="tiny-japanese-video",BRANCH="main";
+const POST_HOUR_UTC=17;
+const $=id=>document.getElementById(id);
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const base=location.origin+location.pathname.replace(/[^/]*$/,"");
+
+function nextSlot(from){const d=new Date(from);d.setUTCHours(POST_HOUR_UTC,0,0,0);if(d<=from)d.setUTCDate(d.getUTCDate()+1);return d}
+const fmt=d=>d.toLocaleString(undefined,{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+function parseStory(t){
+  const g=k=>((t.match(new RegExp("^"+k+"\\s*:\\s*(.+)$","im"))||[])[1]||"").trim();
+  return{title:g("title")||"Untitled",episode:g("episode"),scene:g("scene")||"auto",lines:(t.match(/^(mika|alex)\s*[:：]/gim)||[]).length}}
+function prettyName(n){const m=n.match(/^(\d{4})(\d\d)(\d\d)(\d\d)(\d\d)-/);return m?`Made ${m[3]}/${m[2]} ${m[4]}:${m[5]} UTC`:"Sample story"}
+
+function card(name,info,kind,slot){
+  const c=el("div","card");
+  if(kind==="pending"){c.append(el("div","ph","⏳"))}
+  else{const v=el("video","thumb");v.src=`${base}videos/${name}.mp4#t=0.8`;v.preload="metadata";v.muted=true;v.playsInline=true;v.onclick=()=>play(name);c.append(v)}
+  const i=el("div","info");
+  i.append(el("div","t",esc((info.episode?`Ep.${esc(info.episode)} · `:"")+info.title)));
+  i.append(el("div","m",`${esc(info.scene)} · ${info.lines} lines · ${esc(prettyName(name))}`));
+  const w=el("span","when "+(kind==="queued"?(slot.first?"next":""):kind==="posted"?"done":"wait"),
+    kind==="queued"?(slot.first?"Posts next · ":"Posts ")+fmt(slot.date):kind==="posted"?"Posted ✓":"Waiting for its video");
+  i.append(w);c.append(i);return c}
+function play(name){const p=$("player");p.src=`${base}videos/${name}.mp4`;$("dlg").showModal();p.play().catch(()=>{})}
+$("close").onclick=()=>{$("player").pause();$("dlg").close()};
+$("dlg").addEventListener("close",()=>$("player").pause());
+$("reload").onclick=e=>{e.preventDefault();load()};
+
+async function load(){
+  $("err").textContent="";
+  try{
+    const tr=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/git/trees/${BRANCH}?recursive=1`);
+    if(!tr.ok)throw new Error("GitHub said "+tr.status+" (try again in a minute).");
+    const tree=(await tr.json()).tree.map(x=>x.path);
+    const stories=tree.filter(p=>/^stories\/[^/]+\.txt$/.test(p)).map(p=>p.slice(8,-4)).sort();
+    const videos=new Set(tree.filter(p=>/^output\/[^/]+\.mp4$/.test(p)).map(p=>p.slice(7,-4)));
+    const pr=await fetch(`https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/posted.txt?t=${Date.now()}`);
+    const posted=(pr.ok?await pr.text():"").split("\n").map(s=>s.trim()).filter(Boolean);
+    const postedSet=new Set(posted);
+    const infos={};
+    await Promise.all(stories.map(async n=>{
+      try{const r=await fetch(`https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/stories/${n}.txt`);infos[n]=parseStory(await r.text())}
+      catch(e){infos[n]={title:n,episode:"",scene:"?",lines:0}}}));
+    const queued=stories.filter(n=>videos.has(n)&&!postedSet.has(n));
+    const pending=stories.filter(n=>!videos.has(n)&&!postedSet.has(n));
+    const done=posted.filter(n=>infos[n]).reverse();
+
+    $("nq").textContent=queued.length;$("nr").textContent=pending.length;$("np").textContent=done.length;
+    const day=d=>d.toLocaleDateString(undefined,{weekday:"short",day:"numeric",month:"short"});
+    const lastDate=new Date(nextSlot(new Date()).getTime()+Math.max(0,queued.length-1)*864e5);
+    $("stats").innerHTML=`<div class="stat"><b>${queued.length}</b><span>in the queue</span></div><div class="stat"><b>${queued.length?day(lastDate):"—"}</b><span>last post lands</span></div><div class="stat"><b>${done.length}</b><span>posted</span></div>`;
+    const local=nextSlot(new Date());
+    $("sched").textContent=`One Reel is posted every day at ${fmt(local).split(", ").pop()} your time (17:00 UTC), oldest video first.`;
+
+    const q=$("queued");q.innerHTML="";
+    if(!queued.length)q.append(el("div","empty","Nothing waiting. Make a video with “Post to Instagram” unticked and it will appear here."));
+    let d=nextSlot(new Date());
+    queued.forEach((n,i)=>{q.append(card(n,infos[n],"queued",{date:new Date(d),first:i===0}));d=new Date(d.getTime()+864e5)});
+    const p=$("pending");p.innerHTML="";
+    if(!pending.length)p.append(el("div","empty","None – every script has a video."));
+    pending.forEach(n=>p.append(card(n,infos[n],"pending")));
+    const o=$("posted");o.innerHTML="";
+    if(!done.length)o.append(el("div","empty","Nothing posted yet."));
+    done.forEach(n=>o.append(card(n,infos[n],"posted")));
+  }catch(e){$("err").textContent=String(e.message||e)}
+}
+load();
+</script>
+</body>
+</html>
