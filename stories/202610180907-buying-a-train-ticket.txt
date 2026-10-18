@@ -1,0 +1,25 @@
+title: Buying a Train Ticket
+episode: 9
+scene: train station
+
+Mika: すみません。とうきょうまでの きっぷは いくらですか？ | Excuse me. How much is a ticket to Tokyo?
+Alex: せんにひゃくえんです。 | It's 1,200 yen.
+Mika: きっぷを ふたつ ください。 | Two tickets, please.
+Alex: はい。とうきょうまでですね？ | Okay. To Tokyo, right?
+Mika: はい、そうです。 | Yes, that's right.
+Alex: ありがとうございます。 | Thank you.
+
+vocab: すみません | sumimasen | Excuse me / Sorry
+vocab: とうきょう | toukyou | Tokyo
+vocab: まで | made | Until / As far as / To
+vocab: の | no | Linking particle; connects words
+vocab: きっぷ | kippu | Ticket
+vocab: いくら | ikura | How much
+vocab: せんにひゃくえん | sen nihyaku en | 1,200 yen
+vocab: を | o | Object marker
+vocab: ふたつ | futatsu | Two things
+vocab: ください | kudasai | Please give me...
+vocab: はい | hai | Yes / Okay
+vocab: ですね | desu ne | Right? / Isn't that so?
+vocab: そうです | sou desu | That's right
+vocab: ありがとうございます | arigatou gozaimasu | Thank you very much
