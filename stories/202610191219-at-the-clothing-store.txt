@@ -1,0 +1,24 @@
+title: At the Clothing Store
+episode: 10
+scene: clothing store
+
+Mika: この シャツは かわいいですね！ | This shirt is cute!
+Alex: そうですね。いくらですか？ | It is, isn't it? How much is it?
+Mika: にせんえんです。 | It's 2,000 yen.
+Alex: ちょっと たかいですね。 | It's a little expensive, isn't it?
+Mika: しちゃくしても いいですか？ | May I try it on?
+Alex: はい、どうぞ！ | Yes, go ahead!
+
+vocab: この | kono | This (used before a noun)
+vocab: シャツ | shatsu | Shirt
+vocab: かわいい | kawaii | Cute
+vocab: ですね | desu ne | Isn't it? / Right?
+vocab: そうですね | sou desu ne | That's right / Let's see
+vocab: いくら | ikura | How much
+vocab: にせんえん | nisen en | 2,000 yen
+vocab: ちょっと | chotto | A little / A bit
+vocab: たかい | takai | Expensive / High / Tall
+vocab: しちゃく | shichaku | Trying on clothes
+vocab: してもいいですか | shite mo ii desu ka | Is it okay if I do...? / May I...?
+vocab: はい | hai | Yes / Okay
+vocab: どうぞ | douzo | Go ahead / Here you go
