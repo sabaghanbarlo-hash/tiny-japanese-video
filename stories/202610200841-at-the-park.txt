@@ -1,0 +1,32 @@
+title: At the Park
+episode: 11
+scene: park
+
+Mika: いい てんきですね！ | The weather is nice, isn't it?
+Alex: そうですね。こうえんを さんぽしませんか？ | It is! Shall we take a walk in the park?
+Mika: いいですね！ | Sounds good!
+Alex: あの きの したで やすみましょう。 | Let's rest under that tree.
+Mika: はい！ちょっと つかれました。 | Yes! I'm a little tired.
+Alex: じゃあ、ここに すわりましょう。 | Then, let's sit here.
+
+vocab: いい | ii | Good / Nice
+vocab: てんき | tenki | Weather
+vocab: ですね | desu ne | Isn't it? / Right?
+vocab: そうですね | sou desu ne | That's right / It is, isn't it?
+vocab: こうえん | kouen | Park
+vocab: さんぽ | sanpo | Walk / Stroll
+vocab: しませんか | shimasen ka | Shall we...? / Would you like to...?
+vocab: いいですね | ii desu ne | Sounds good / That's nice
+vocab: あの | ano | That (over there, before a noun)
+vocab: き | ki | Tree
+vocab: の | no | Of / Linking particle
+vocab: した | shita | Under / Below
+vocab: で | de | At / In (marks where an action takes place)
+vocab: やすみましょう | yasumimashou | Let's rest
+vocab: はい | hai | Yes / Okay
+vocab: ちょっと | chotto | A little / A bit
+vocab: つかれました | tsukaremashita | Became tired / Got tired
+vocab: じゃあ | jaa | Then / In that case
+vocab: ここ | koko | Here
+vocab: に | ni | At / To (marks a destination or position)
+vocab: すわりましょう | suwarimashou | Let's sit
