@@ -1,0 +1,25 @@
+title: At the Pharmacy
+episode: 12
+scene: pharmacy
+
+Mika: どうしましたか？ | What's wrong?
+Alex: あたまが いたいです。 | I have a headache.
+Mika: だいじょうぶですか？ | Are you okay?
+Alex: ちょっと つらいです。くすりが ほしいです。 | I'm feeling a little unwell. I want some medicine.
+Mika: わかりました。これを どうぞ。 | I understand. Here you go.
+Alex: ありがとうございます！ | Thank you very much!
+
+vocab: どうしましたか | dou shimashita ka | What's wrong? / What happened?
+vocab: あたま | atama | Head
+vocab: が | ga | Subject marker
+vocab: いたい | itai | Painful / Hurts
+vocab: です | desu | Polite sentence ending
+vocab: だいじょうぶ | daijoubu | Okay / All right
+vocab: ちょっと | chotto | A little / A bit
+vocab: つらい | tsurai | Painful / Difficult / Uncomfortable
+vocab: くすり | kusuri | Medicine
+vocab: ほしい | hoshii | Want / Would like
+vocab: わかりました | wakarimashita | I understand / Understood
+vocab: これ | kore | This / This one
+vocab: どうぞ | douzo | Here you go / Please
+vocab: ありがとうございます | arigatou gozaimasu | Thank you very much
