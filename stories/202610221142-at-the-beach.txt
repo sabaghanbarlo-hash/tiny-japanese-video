@@ -1,0 +1,30 @@
+title: At the Beach
+episode: 13
+scene: beach
+
+Mika: わあ、うみが きれいですね！ | Wow, the sea is beautiful!
+Alex: ほんとうですね！およぎたいです。 | It's really beautiful! I want to swim.
+Mika: いっしょに およぎませんか？ | Shall we swim together?
+Alex: いいですね！でも、ちょっと あついですね。 | Sounds good! But it's a little hot, isn't it?
+Mika: そうですね。まず、みずを のみましょう。 | That's true. First, let's drink some water.
+Alex: はい！それから およびましょう！ | Okay! Then let's swim!
+
+vocab: わあ | waa | Wow!
+vocab: うみ | umi | Sea / Ocean
+vocab: きれい | kirei | Beautiful / Clean
+vocab: ほんとう | hontou | Truth / Really
+vocab: ほんとうですね | hontou desu ne | That's so true / It really is
+vocab: およぎたいです | oyogitai desu | Want to swim
+vocab: いっしょに | issho ni | Together
+vocab: およぎませんか | oyogimasen ka | Shall we swim? / Would you like to swim?
+vocab: いいですね | ii desu ne | Sounds good / That's nice
+vocab: でも | demo | But
+vocab: ちょっと | chotto | A little / A bit
+vocab: あつい | atsui | Hot (weather or objects)
+vocab: そうですね | sou desu ne | That's true / Let me think
+vocab: まず | mazu | First
+vocab: みず | mizu | Water
+vocab: のみましょう | nomimashou | Let's drink
+vocab: はい | hai | Yes / Okay
+vocab: それから | sorekara | After that / Then
+vocab: およびましょう | oyobimashou | Let's swim
