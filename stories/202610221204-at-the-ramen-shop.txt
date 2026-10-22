@@ -1,0 +1,35 @@
+title: At the Ramen Shop
+episode: 14
+scene: ramen shop
+
+Mika: わあ！ラーメンが おいしそうですね！ | Wow! The ramen looks delicious!
+Alex: ほんとうですね！おすすめは なんですか？ | It really does! What do you recommend?
+Mika: しょうゆラーメンが おすすめです。 | I recommend soy sauce ramen.
+Alex: からいですか？ | Is it spicy?
+Mika: いいえ、からくないですよ。 | No, it's not spicy.
+Alex: じゃあ、しょうゆラーメンを ひとつ ください！ | Then, one soy sauce ramen, please!
+Mika: わたしは みそラーメンに します。 | I'll have miso ramen.
+Alex: いただきます！ | Let's eat! (A phrase said before eating.)
+
+vocab: わあ | waa | Wow!
+vocab: ラーメン | raamen | Ramen
+vocab: おいしそう | oishisou | Looks delicious
+vocab: ですね | desu ne | Isn't it? / Right?
+vocab: ほんとう | hontou | Really / Truth
+vocab: おすすめ | osusume | Recommendation / Recommended item
+vocab: なん | nan | What
+vocab: しょうゆ | shouyu | Soy sauce
+vocab: しょうゆラーメン | shouyu raamen | Soy sauce ramen
+vocab: みそ | miso | Miso (fermented soybean paste)
+vocab: みそラーメン | miso raamen | Miso ramen
+vocab: からい | karai | Spicy
+vocab: からくない | karakunai | Not spicy
+vocab: いいえ | iie | No
+vocab: よ | yo | Emphasis particle; adds information
+vocab: じゃあ | jaa | Then / In that case
+vocab: を | o | Object marker
+vocab: ひとつ | hitotsu | One item
+vocab: ください | kudasai | Please give me...
+vocab: わたし | watashi | I / Me
+vocab: にします | ni shimasu | I'll choose / I'll have
+vocab: いただきます | itadakimasu | A customary phrase said before eating
