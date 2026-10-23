@@ -1,0 +1,35 @@
+title: We Missed the Train!
+episode: 15
+scene: train station
+
+Alex: ミカさん、いそいで！でんしゃが きます！ | Mika, hurry! The train is coming!
+Mika: えっ！まってください！ | What?! Wait for me!
+Alex: ああ！でんしゃに のれませんでした。 | Oh no! We couldn't get on the train.
+Mika: だいじょうぶです。つぎの でんしゃは なんじですか？ | It's okay. What time is the next train?
+Alex: ごご さんじです。 | It's at three p.m.
+Mika: まだ さんじまで じかんが ありますね。 | We still have time until three, don't we?
+Alex: そうですね。コーヒーを のみませんか？ | That's true. Would you like to have coffee?
+Mika: いいですね！ | Sounds good!
+
+vocab: ミカさん | Mika-san | Mika (polite form of address)
+vocab: いそいで | isoide | Hurry! (request form of hurry)
+vocab: でんしゃ | densha | Train
+vocab: きます | kimasu | Comes / Is coming
+vocab: えっ | e | What?! / Huh?!
+vocab: まってください | matte kudasai | Please wait / Wait!
+vocab: ああ | aa | Oh! / Ah!
+vocab: のれませんでした | noremasen deshita | Couldn't get on / Couldn't ride
+vocab: だいじょうぶ | daijoubu | Okay / All right
+vocab: つぎ | tsugi | Next
+vocab: なんじ | nanji | What time
+vocab: ごご | gogo | P.M. / Afternoon
+vocab: さんじ | sanji | Three o'clock
+vocab: まだ | mada | Still / Yet
+vocab: まで | made | Until / Up to
+vocab: じかん | jikan | Time / Hours
+vocab: あります | arimasu | There is / There are / Have
+vocab: そうですね | sou desu ne | That's true / Let me think
+vocab: コーヒー | koohii | Coffee
+vocab: を | o | Object marker
+vocab: のみませんか | nomimasen ka | Would you like to drink? / Shall we drink?
+vocab: いいですね | ii desu ne | Sounds good / That's nice
