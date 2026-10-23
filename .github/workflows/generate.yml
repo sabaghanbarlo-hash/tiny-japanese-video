@@ -26,14 +26,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: System dependencies
+        timeout-minutes: 12
+        env:
+          DEBIAN_FRONTEND: noninteractive
         run: |
           # Some runner images ship a Microsoft apt source that can answer 403; we don't need it.
           sudo rm -f /etc/apt/sources.list.d/microsoft-prod.list /etc/apt/sources.list.d/microsoft-prod.sources /etc/apt/sources.list.d/mono-official-stable.list
+          # Every apt call has its own time limit, so a stalled mirror fails fast and is retried
+          # instead of hanging the whole job until the 40 minute timeout.
+          ok=0
           for i in 1 2 3; do
-            sudo apt-get update -y -o Acquire::Retries=3 || true
-            sudo apt-get install -y ffmpeg fonts-noto-cjk && break
-            echo "apt attempt $i failed, retrying..."; sleep 10
+            sudo timeout 120 apt-get update -y -o Acquire::Retries=3 -o Acquire::http::Timeout=20 || true
+            if sudo timeout 240 apt-get install -y --no-install-recommends -o Acquire::http::Timeout=20 ffmpeg fonts-noto-cjk; then ok=1; break; fi
+            echo "apt attempt $i failed or timed out, retrying..."
+            sudo pkill -f apt-get || true
+            sudo dpkg --configure -a || true
+            sleep 10
           done
+          if [ "$ok" != 1 ]; then echo "::error::apt install of ffmpeg/fonts failed after 3 attempts - just re-run the workflow"; exit 1; fi
           ffmpeg -version | head -1
           fc-list | grep -qi "noto sans cjk" && echo "CJK font OK"
       - uses: actions/setup-python@v5
