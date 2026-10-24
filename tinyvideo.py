@@ -42,13 +42,23 @@ SCENES = {
     "snow": dict(top=(176, 200, 232), bot=(244, 248, 255), floor=(236, 242, 250), table=(190, 150, 110), edge=(140, 106, 76)),
     "bakery": dict(top=(255, 240, 218), bot=(252, 222, 192), floor=(214, 170, 130), table=(240, 200, 150), edge=(190, 140, 96)),
     "rainy": dict(top=(120, 136, 164), bot=(190, 200, 216), floor=(110, 116, 134), table=(90, 120, 170), edge=(60, 86, 134)),
+    "karaoke": dict(top=(36, 24, 70), bot=(150, 56, 120), floor=(70, 40, 84), table=(250, 120, 170), edge=(190, 70, 120)),
+    "rooftop": dict(top=(168, 208, 246), bot=(250, 236, 224), floor=(150, 154, 166), table=(190, 196, 208), edge=(140, 146, 160)),
+    "izakaya": dict(top=(120, 72, 52), bot=(176, 106, 70), floor=(84, 56, 44), table=(150, 96, 64), edge=(96, 60, 42)),
+    "commute": dict(top=(226, 232, 240), bot=(240, 244, 250), floor=(126, 134, 150), table=(80, 150, 200), edge=(50, 110, 160)),
+    "sushi": dict(top=(255, 240, 226), bot=(250, 222, 200), floor=(160, 110, 80), table=(196, 150, 110), edge=(150, 104, 72)),
+    "bamboo": dict(top=(200, 236, 206), bot=(236, 248, 230), floor=(150, 170, 120), table=(176, 150, 100), edge=(130, 106, 70)),
+    "autumn": dict(top=(255, 220, 170), bot=(255, 238, 214), floor=(190, 130, 80), table=(214, 150, 90), edge=(160, 100, 60)),
+    "castle": dict(top=(150, 206, 246), bot=(238, 248, 252), floor=(196, 190, 176), table=(170, 134, 96), edge=(124, 94, 64)),
+    "sunset": dict(top=(250, 150, 110), bot=(255, 220, 170), floor=(126, 150, 106), table=(176, 150, 110), edge=(130, 106, 76)),
+    "flowers": dict(top=(150, 214, 250), bot=(236, 248, 252), floor=(130, 196, 104), table=(240, 200, 100), edge=(190, 150, 60)),
 }
 # keywords used to pick a background automatically from the story's title + dialogue
 SCENE_KEYWORDS = {
     "station": ["えき", "でんしゃ", "電車", "駅", "きっぷ", "ホーム", "バス", "station", "train", "bus stop", "ticket"],
     "airport": ["くうこう", "空港", "ひこうき", "飛行機", "パスポート", "airport", "flight", "passport", "luggage"],
     "bookstore": ["ほんや", "本屋", "しょてん", "ほん", "本", "book", "library", "としょかん", "図書館"],
-    "restaurant": ["レストラン", "メニュー", "ちゅうもん", "注文", "すし", "寿司", "おなか", "ごはん", "restaurant", "menu", "order", "hungry", "sushi", "food"],
+    "restaurant": ["レストラン", "メニュー", "ちゅうもん", "注文", "おなか", "ごはん", "restaurant", "menu", "order", "hungry", "food"],
     "cafe": ["カフェ", "コーヒー", "こうちゃ", "ケーキ", "のみもの", "cafe", "café", "coffee", "tea", "name", "meet", "first time", "はじめまして"],
     "store": ["スーパー", "supermarket", "コンビニ", "みせ", "店", "いくら", "かいもの", "買い物", "ぜんぶで", "shop", "store", "buy", "how much", "price", "convenience"],
     "classroom": ["がっこう", "学校", "せんせい", "先生", "じゅぎょう", "しゅくだい", "きょうしつ", "school", "class", "teacher", "homework", "student"],
@@ -64,19 +74,40 @@ SCENE_KEYWORDS = {
     "matsuri": ["まつり", "祭", "はなび", "花火", "やたい", "屋台", "ゆかた", "浴衣", "festival", "fireworks", "yukata", "stall"],
     "arcade": ["ゲーム", "げーむ", "ゲーセン", "プリクラ", "arcade", "game", "claw machine"],
     "aquarium": ["すいぞくかん", "水族館", "くらげ", "クラゲ", "イルカ", "aquarium", "shark", "jellyfish", "dolphin"],
-    "onsen": ["おんせん", "温泉", "おふろ", "お風呂", "りょかん", "旅館", "onsen", "hot spring", "ryokan", "bath"],
-    "snow": ["ゆき", "雪", "ふゆ", "冬", "スキー", "snow", "winter", "ski"],
+    "onsen": ["おんせん", "温泉", "おふろ", "お風呂", "りょかん", "旅館", "onsen", "hot spring", "ryokan", "bathhouse", "hot bath"],
+    "snow": ["ゆき", "雪", "ふゆ", "冬", "スキー", "snow", "winter", "skiing"],
     "bakery": ["パンや", "パン屋", "ベーカリー", "メロンパン", "クロワッサン", "bakery", "bread", "croissant"],
     "rainy": ["雨", "あめ", "傘", "rain", "umbrella"],
+    "karaoke": ["カラオケ", "からおけ", "歌", "karaoke", "sing"],
+    "rooftop": ["おくじょう", "屋上", "rooftop", "roof"],
+    "izakaya": ["いざかや", "居酒屋", "ビール", "やきとり", "焼き鳥", "かんぱい", "乾杯", "izakaya", "beer", "yakitori", "cheers"],
+    "commute": ["つうきん", "通勤", "しゃない", "車内", "commute", "on the train", "train ride"],
+    "sushi": ["すし", "寿司", "かいてん", "回転", "sushi", "conveyor"],
+    "bamboo": ["竹", "たけやぶ", "嵐山", "bamboo", "arashiyama"],
+    "autumn": ["もみじ", "紅葉", "秋", "autumn", "momiji", "maple"],
+    "castle": ["お城", "おしろ", "城", "castle", "himeji"],
+    "sunset": ["ゆうやけ", "夕焼け", "ゆうひ", "夕日", "川", "sunset", "river", "riverside"],
+    "flowers": ["花畑", "はなばたけ", "ひまわり", "向日葵", "sunflower", "flower field", "flowers"],
 }
 SCENE_ALIASES = {"supermarket": "store", "market": "store", "shop": "store", "shopping": "store", "convenience": "store",
                  "school": "classroom", "library": "bookstore", "house": "home", "kitchen": "home", "room": "home",
                  "night": "street", "city": "street", "festival": "matsuri", "fireworks": "matsuri", "sea": "beach", "ocean": "beach",
                  "garden": "park", "train": "station", "bus": "station", "clinic": "hospital", "coffee": "cafe", "noodles": "ramen", "temple": "shrine", "torii": "shrine", "mountain": "fuji", "mt fuji": "fuji",
                  "game": "arcade", "game center": "arcade", "gamecenter": "arcade", "fish": "aquarium", "hot spring": "onsen", "bath": "onsen",
-                 "winter": "snow", "bread": "bakery", "rain": "rainy", "umbrella": "rainy"}
+                 "winter": "snow", "bread": "bakery", "rain": "rainy", "umbrella": "rainy",
+                 "school roof": "rooftop", "roof": "rooftop", "pub": "izakaya", "subway": "commute", "train interior": "commute", "train car": "commute",
+                 "kaiten": "sushi", "conveyor sushi": "sushi", "bamboo forest": "bamboo", "momiji": "autumn", "koyo": "autumn", "maple": "autumn",
+                 "himeji": "castle", "riverside": "sunset", "river": "sunset", "dusk": "sunset", "sunflower": "flowers", "flower": "flowers",
+                 "sing": "karaoke"}
 SCENE_ORDER = ["cafe", "station", "sakura", "restaurant", "store", "bookstore", "classroom", "home", "airport", "street", "park", "beach", "hospital",
-               "ramen", "shrine", "fuji", "matsuri", "arcade", "aquarium", "onsen", "snow", "bakery", "rainy"]
+               "ramen", "shrine", "fuji", "matsuri", "arcade", "aquarium", "onsen", "snow", "bakery", "rainy",
+               "karaoke", "rooftop", "izakaya", "commute", "sushi", "bamboo", "autumn", "castle", "sunset", "flowers"]
+
+
+def kw_count(text, kw):
+    """Count a keyword; ASCII words must start at a word boundary (so 'rain' does not match 'train')."""
+    kw = kw.lower()
+    return len(re.findall(r"\b" + re.escape(kw), text)) if kw.isascii() and kw[:1].isalnum() else text.count(kw)
 
 
 def pick_scene(meta, lines):
@@ -92,7 +123,7 @@ def pick_scene(meta, lines):
     title = meta.get("title", "").lower()
     best, score = None, 0
     for name, kws in SCENE_KEYWORDS.items():
-        n = sum(text.count(k.lower()) + 3 * title.count(k.lower()) for k in kws)
+        n = sum(kw_count(text, k) + 3 * kw_count(title, k) for k in kws)
         if n > score:
             best, score = name, n
     if best:
@@ -151,7 +182,7 @@ def parse_story(path):
         s = raw.strip()
         if not s or s.startswith("#"):
             continue
-        m = re.match(r"^(title|scene|episode)\s*:\s*(.+)$", s, re.I)
+        m = re.match(r"^(title|scene|episode|weather)\s*:\s*(.+)$", s, re.I)
         if m:
             meta[m[1].lower()] = m[2].strip()
             continue
@@ -287,6 +318,11 @@ def pill(text, fill, fg=(255, 255, 255)):
 
 
 # ---------- scenes ----------
+PETAL_COLS = ((255, 200, 214), (255, 214, 224), (250, 184, 202))
+LEAF_COLS = ((232, 110, 60), (240, 170, 60), (210, 70, 50), (190, 120, 50))
+GROUND_DECOR = {"sakura": PETAL_COLS, "fuji": PETAL_COLS, "castle": PETAL_COLS, "shrine": LEAF_COLS, "autumn": LEAF_COLS}
+
+
 def vgrad(w, h, a, b):
     arr = np.zeros((h, w, 3), np.uint8)
     for i in range(3):
@@ -351,6 +387,15 @@ def jellyfish(d, x, y, col):
     d.pieslice((x - 44, y - 44, x + 44, y + 44), 180, 360, fill=col)
     for k in range(-3, 4):
         d.line([(x + k * 12, y), (x + k * 12 + (7 if k % 2 else -7), y + 30), (x + k * 12, y + 58)], fill=col, width=4)
+
+
+def sunflower(d, x, y, s):
+    d.line([(x, y), (x, y + s * 5)], fill=(70, 150, 80), width=max(4, s // 4))
+    d.ellipse((x + 2, y + s * 2, x + s * 2, y + s * 2 + s // 2), fill=(90, 170, 90)); d.ellipse((x - s * 2, y + s * 3, x - 2, y + s * 3 + s // 2), fill=(90, 170, 90))
+    for a in range(0, 360, 30):
+        px, py = x + int(1.35 * s * math.cos(math.radians(a))), y + int(1.35 * s * math.sin(math.radians(a)))
+        d.ellipse((px - s // 2, py - s // 2, px + s // 2, py + s // 2), fill=(250, 206, 50))
+    d.ellipse((x - int(s * 0.85), y - int(s * 0.85), x + int(s * 0.85), y + int(s * 0.85)), fill=(112, 72, 42))
 
 
 def make_scene(scene, meta, header=True):
@@ -576,6 +621,109 @@ def make_scene(scene, meta, header=True):
         d.line([(540, 300), (540, 600)], fill=(70, 50, 56), width=10); d.arc((510, 570, 570, 630), 0, 180, fill=(70, 50, 56), width=10)
         for px, py in ((180, 840), (700, 850)):
             d.ellipse((px - 110, py - 14, px + 110, py + 22), fill=(150, 168, 204)); d.ellipse((px - 50, py - 6, px + 50, py + 14), outline=(220, 232, 250), width=3)
+    elif scene == "karaoke":
+        for pts, col in (([(540, 340), (150, 880), (330, 880)], (96, 52, 132)), ([(540, 340), (460, 880), (640, 880)], (124, 58, 132)), ([(540, 340), (750, 880), (930, 880)], (96, 52, 132))):
+            d.polygon(pts, fill=col)
+        d.rounded_rectangle((130, 450, 950, 700), radius=20, fill=(12, 14, 40), outline=(255, 255, 255), width=8)
+        d.text((540, 510), "カラオケ", font=font(70), fill=(255, 230, 90), anchor="mm")
+        d.rectangle((200, 580, 880, 600), fill=(255, 150, 210)); d.rectangle((200, 624, 640, 644), fill=(255, 255, 255)); d.rectangle((200, 624, 430, 644), fill=(255, 230, 90))
+        d.line([(540, 252), (540, 300)], fill=(200, 204, 224), width=4); d.ellipse((496, 300, 584, 388), fill=(200, 204, 224))
+        for k in (322, 344, 366): d.line([(500, k), (580, k)], fill=(150, 154, 180), width=2)
+        for k in range(-1, 2): d.line([(540 + k * 22, 302), (540 + k * 22, 386)], fill=(150, 154, 180), width=2)
+        for _ in range(26):
+            x, y = rng.randint(60, 1020), rng.randint(280, 440); d.rectangle((x, y, x + 5, y + 5), fill=rng.choice([(255, 255, 255), (255, 200, 120), (140, 230, 255)]))
+        d.rounded_rectangle((60, 740, 1020, 870), radius=40, fill=(190, 60, 110)); d.rounded_rectangle((60, 790, 1020, 880), radius=30, fill=(214, 78, 130))
+        for x in (360, 720): d.line([(x, 800), (x, 876)], fill=(160, 44, 90), width=4)
+    elif scene == "rooftop":
+        d.ellipse((120, 330, 330, 400), fill=(255, 255, 255)); d.ellipse((190, 300, 320, 370), fill=(255, 255, 255)); d.ellipse((720, 360, 940, 430), fill=(255, 255, 255))
+        for x in range(-30, W, 120):
+            hh = rng.randint(120, 330); d.rectangle((x, 740 - hh, x + 100, 740), fill=(128, 150, 192))
+            for wy in range(740 - hh + 16, 720, 36):
+                d.rectangle((x + 18, wy, x + 34, wy + 16), fill=(232, 240, 252)); d.rectangle((x + 60, wy, x + 76, wy + 16), fill=(232, 240, 252))
+        d.rectangle((790, 420, 960, 560), fill=(170, 176, 190)); d.polygon([(776, 424), (875, 360), (974, 424)], fill=(120, 126, 142))
+        for x in (800, 940): d.rectangle((x, 560, x + 10, 740), fill=(120, 126, 142))
+        for x in range(40, 1060, 50): d.line([(x, 430), (x, 800)], fill=(92, 102, 122), width=3)
+        for y in range(430, 801, 50): d.line([(40, y), (1040, y)], fill=(92, 102, 122), width=3)
+        d.rectangle((30, 412, 1050, 430), fill=(70, 80, 100)); d.rectangle((30, 796, 1050, 812), fill=(70, 80, 100))
+        for x in (30, 330, 630, 930): d.rectangle((x, 412, x + 16, 812), fill=(70, 80, 100))
+    elif scene == "izakaya":
+        for x in range(0, W, 90): d.line([(x, 280), (x, 800)], fill=(100, 62, 44), width=4)
+        for x in (140, 540, 940): paper_lantern(d, x, 300, 46, (226, 60, 56), "酒", font(48))
+        for i, name in enumerate(("やきとり", "ビール", "からあげ", "おでん", "えだまめ")):
+            x = 60 + i * 190; d.rectangle((x, 430, x + 170, 520), fill=(250, 238, 214), outline=(150, 100, 70), width=3)
+            d.text((x + 85, 475), name, font=font(34), fill=(120, 40, 36), anchor="mm")
+        d.rectangle((40, 660, 1040, 680), fill=(84, 54, 40))
+        for i, x in enumerate(range(80, 1000, 90)):
+            col = ((70, 130, 100), (200, 150, 60), (90, 110, 170), (160, 80, 70))[i % 4]
+            d.rounded_rectangle((x, 580, x + 44, 660), radius=8, fill=col); d.rectangle((x + 15, 548, x + 29, 584), fill=col)
+    elif scene == "commute":
+        d.rectangle((0, 280, W, 885), fill=(226, 232, 240))
+        for x in (60, 390, 720):
+            d.rounded_rectangle((x, 340, x + 300, 640), radius=16, fill=(150, 208, 250), outline=(150, 160, 176), width=10)
+            d.rectangle((x + 10, 570, x + 290, 630), fill=(120, 186, 120)); d.ellipse((x + 210, 370, x + 262, 422), fill=(255, 240, 160)); d.ellipse((x + 40, 380, x + 140, 420), fill=(255, 255, 255))
+        d.rectangle((0, 296, W, 310), fill=(190, 196, 208))
+        for x in range(90, 1040, 120):
+            d.line([(x, 310), (x, 372)], fill=(200, 200, 210), width=4); d.ellipse((x - 24, 360, x + 24, 408), outline=(250, 250, 250), width=7)
+        d.rounded_rectangle((20, 700, 1060, 870), radius=30, fill=(70, 140, 196))
+        for x in (360, 720): d.line([(x, 710), (x, 860)], fill=(50, 110, 160), width=4)
+    elif scene == "sushi":
+        d.rounded_rectangle((190, 290, 890, 400), radius=18, fill=(196, 52, 52)); d.text((540, 345), "かいてんずし", font=font(62), fill=(255, 244, 228), anchor="mm")
+        for x in (90, 990): paper_lantern(d, x, 430, 40, (236, 70, 64), "寿", font(44))
+        d.rectangle((0, 720, W, 800), fill=(214, 216, 224)); d.rectangle((0, 800, W, 830), fill=(150, 154, 166))
+        tops = ((250, 140, 110), (220, 70, 84), (250, 222, 110), (246, 160, 90), (240, 240, 236))
+        for i, x in enumerate(range(40, 1060, 150)):
+            d.ellipse((x, 742, x + 120, 786), fill=(255, 255, 255), outline=((220, 60, 60), (70, 130, 210), (240, 190, 60))[i % 3], width=5)
+            d.rounded_rectangle((x + 22, 722, x + 98, 752), radius=14, fill=(250, 250, 246)); d.rounded_rectangle((x + 16, 706, x + 104, 738), radius=14, fill=tops[i % 5])
+    elif scene == "bamboo":
+        for pts in ([(200, 150), (300, 150), (520, 885), (380, 885)], [(640, 150), (720, 150), (900, 885), (800, 885)]):
+            d.polygon(pts, fill=(244, 250, 232))
+        for cols, wr, n in (((150, 200, 140), (30, 44), 9), ((110, 176, 104), (40, 60), 7)):
+            for k in range(n):
+                x = rng.randint(-20, W); w = rng.randint(*wr)
+                d.rectangle((x, 170, x + w, TABLE_TOP), fill=cols)
+                for y in range(260 + (k * 37) % 80, TABLE_TOP, 120):
+                    d.rectangle((x - 2, y, x + w + 2, y + 10), fill=tuple(int(v * 0.78) for v in cols))
+        for _ in range(60):
+            x, y = rng.randint(0, W), rng.randint(160, 420)
+            d.polygon([(x, y), (x + 34, y + 8), (x + 4, y + 16)], fill=rng.choice([(120, 184, 100), (150, 206, 120), (90, 160, 90)]))
+    elif scene == "autumn":
+        d.ellipse((-300, 560, 500, 1000), fill=(222, 150, 90)); d.ellipse((300, 600, 1300, 1050), fill=(210, 120, 70))
+        for tx in (100, 330, 760, 980):
+            d.rectangle((tx - 14, 520, tx + 14, 860), fill=(104, 72, 56))
+            for ox, oy, rr, col in ((0, -40, 110, (220, 80, 50)), (-80, 20, 80, (240, 150, 50)), (80, 20, 86, (206, 66, 46)), (0, 60, 70, (246, 176, 60))):
+                d.ellipse((tx + ox - rr, 420 + oy - rr, tx + ox + rr, 420 + oy + rr), fill=col)
+    elif scene == "castle":
+        for cx, cy in ((190, 360), (880, 330)):
+            d.ellipse((cx - 80, cy - 26, cx + 80, cy + 26), fill=(255, 255, 255)); d.ellipse((cx - 36, cy - 48, cx + 40, cy + 8), fill=(255, 255, 255))
+        d.rectangle((0, 790, W, 885), fill=(100, 172, 226))
+        for y in range(810, 880, 36):
+            for x in range(-40, W, 150): d.arc((x + (y % 90), y, x + 100 + (y % 90), y + 26), 200, 340, fill=(220, 244, 255), width=4)
+        d.polygon([(260, 800), (330, 690), (750, 690), (820, 800)], fill=(150, 150, 156))
+        for w, y in ((440, 600), (320, 500), (200, 410)):
+            d.rectangle((540 - w // 2, y, 540 + w // 2, y + 90), fill=(250, 250, 250), outline=(200, 200, 208), width=3)
+            for wx in range(540 - w // 2 + 40, 540 + w // 2 - 30, 70): d.rectangle((wx, y + 30, wx + 22, y + 62), fill=(70, 76, 92))
+            d.polygon([(540 - w // 2 - 50, y + 8), (540, y - 52), (540 + w // 2 + 50, y + 8)], fill=(84, 92, 110))
+        for x in (90, 990):
+            d.rectangle((x - 10, 660, x + 10, 800), fill=(104, 76, 60))
+            for k, y in enumerate((520, 580, 640)): d.polygon([(x - 80 + k * 10, y + 90), (x, y - 20), (x + 80 - k * 10, y + 90)], fill=(84, 150, 102))
+    elif scene == "sunset":
+        d.ellipse((420, 430, 660, 670), fill=(255, 236, 160))
+        for cx, cy in ((200, 380), (860, 340)):
+            d.ellipse((cx - 90, cy - 24, cx + 90, cy + 24), fill=(255, 200, 170)); d.ellipse((cx - 40, cy - 46, cx + 40, cy + 6), fill=(255, 200, 170))
+        d.polygon([(0, 650), (200, 540), (420, 650)], fill=(150, 100, 130)); d.polygon([(600, 650), (860, 520), (1080, 650)], fill=(140, 96, 126))
+        d.rectangle((0, 640, W, 885), fill=(240, 150, 120))
+        for k, y in enumerate(range(660, 880, 24)):
+            half = max(20, 110 - k * 7); d.rectangle((540 - half, y, 540 + half, y + 8), fill=(255, 214, 150))
+        d.polygon([(700, 790), (860, 790), (830, 822), (730, 822)], fill=(86, 66, 96)); d.polygon([(780, 700), (780, 788), (850, 788)], fill=(86, 66, 96))
+        for bx, by in ((300, 420), (350, 390), (410, 430)):
+            d.arc((bx, by, bx + 30, by + 16), 200, 340, fill=(86, 66, 96), width=3); d.arc((bx + 28, by, bx + 58, by + 16), 200, 340, fill=(86, 66, 96), width=3)
+    elif scene == "flowers":
+        d.ellipse((780, 270, 920, 410), fill=(255, 232, 130))
+        for cx, cy in ((260, 340), (560, 300)):
+            d.ellipse((cx - 80, cy - 26, cx + 80, cy + 26), fill=(255, 255, 255)); d.ellipse((cx - 36, cy - 48, cx + 40, cy + 8), fill=(255, 255, 255))
+        d.ellipse((-300, 560, 600, 1000), fill=(150, 210, 120)); d.ellipse((400, 600, 1400, 1050), fill=(130, 196, 104))
+        for y, s, step in ((640, 18, 90), (720, 24, 110), (810, 32, 140)):
+            for x in range(40 + (y % 50), W, step): sunflower(d, x, y, s)
     else:
         d.rounded_rectangle((290, 280, 790, 730), radius=36, fill=(255, 255, 255))
         d.rounded_rectangle((310, 300, 770, 710), radius=26, fill=(205, 232, 244))
@@ -587,6 +735,12 @@ def make_scene(scene, meta, header=True):
     d.rectangle((0, TABLE_TOP, W, H), fill=sc["floor"])
     for y in range(TABLE_TOP + 140, H, 96):
         d.line([(0, y), (W, y)], fill=tuple(int(v * 0.93) for v in sc["floor"]), width=3)
+    gcols = GROUND_DECOR.get(scene)
+    if gcols:  # fallen petals / leaves on the ground
+        gr = random.Random(5)
+        for _ in range(90):
+            x, y, r = gr.randint(0, W), gr.randint(TABLE_TOP + 130, H - 20), gr.randint(7, 14)
+            d.ellipse((x - r, y - r // 2, x + r, y + r // 2), fill=gr.choice(gcols))
     if header:
         ep = f"Ep.{meta['episode']}  ·  " if meta.get("episode") else ""
         d.rounded_rectangle((60, 118, 1020, 252), radius=54, fill=(255, 255, 255, 238))
@@ -659,6 +813,108 @@ def vocab_card(vocab, active=None):
     return card_image("Today's tiny words", BRAND, parts, min_h=420)
 
 
+# ---------- weather: animated particles drawn over the scene ----------
+WX_Y0, WX_Y1 = 130, TABLE_TOP + 30
+WX_BAND = {"bubbles": (370, 830)}  # bubbles stay inside the aquarium tank
+WEATHER_KINDS = ("petals", "leaves", "snow", "rain", "wind", "bubbles", "sparks")
+WEATHER_ALIASES = {"sakura": "petals", "blossoms": "petals", "petal": "petals", "cherry": "petals", "spring": "petals",
+                   "autumn": "leaves", "fall": "leaves", "leaf": "leaves", "momiji": "leaves", "windy": "wind", "breeze": "wind", "gust": "wind",
+                   "snowing": "snow", "snowy": "snow", "raining": "rain", "rainy": "rain", "storm": "rain", "fireflies": "sparks",
+                   "embers": "sparks", "fireworks": "sparks", "none": "none", "off": "none", "clear": "none", "sunny": "none", "no": "none"}
+WEATHER_KEYWORDS = {
+    "petals": ["さくら", "桜", "はなみ", "花見", "はる", "春", "sakura", "cherry", "blossom", "petal", "spring"],
+    "snow": ["ゆき", "雪", "ふゆ", "冬", "snow", "winter", "blizzard"],
+    "rain": ["雨", "あめ", "かさ", "傘", "rain", "umbrella", "drizzle", "storm"],
+    "wind": ["かぜ", "風", "wind", "breeze", "gust"],
+    "leaves": ["もみじ", "紅葉", "あき", "秋", "autumn", "momiji", "leaves"],
+}
+WEATHER_BY_SCENE = {"sakura": "petals", "fuji": "petals", "castle": "petals", "shrine": "leaves", "autumn": "leaves", "bamboo": "leaves",
+                    "snow": "snow", "rainy": "rain", "park": "wind", "beach": "wind", "station": "wind", "sunset": "wind", "rooftop": "wind",
+                    "flowers": "wind", "airport": "wind", "aquarium": "bubbles", "matsuri": "sparks"}
+WEATHER_OUTDOOR = {"sakura", "station", "street", "park", "beach", "fuji", "shrine", "snow", "rainy", "matsuri", "sunset", "rooftop",
+                   "bamboo", "autumn", "castle", "flowers", "airport"}
+
+
+def pick_weather(meta, lines, scene):
+    """`weather:` in the story wins (petals leaves snow rain wind none ...); otherwise weather words in an outdoor story; otherwise the scene's own."""
+    w = (meta.get("weather") or "auto").strip().lower(); w = WEATHER_ALIASES.get(w, w)
+    if w == "none":
+        return None
+    if w in WEATHER_KINDS:
+        return w
+    if scene in WEATHER_OUTDOOR:
+        text = (meta.get("title", "") + " " + " ".join(l["jp"] + " " + l["en"] for l in lines)).lower(); title = meta.get("title", "").lower()
+        best, score = None, 0
+        for kind, kws in WEATHER_KEYWORDS.items():
+            n = sum(kw_count(text, k) + 3 * kw_count(title, k) for k in kws)
+            if n > score:
+                best, score = kind, n
+        if best:
+            return best
+    return WEATHER_BY_SCENE.get(scene)
+
+
+def make_weather(kind, scene):
+    rng = random.Random(3)
+    n, front = dict(petals=(70, 0.22), leaves=(44, 0.2), snow=(130, 0.2), rain=(170, 0.15), wind=(24, 0.15), bubbles=(40, 0.0), sparks=(50, 0.15))[kind]
+    leaf_cols = [(130, 190, 100, 240), (170, 214, 120, 240), (110, 170, 90, 240)] if scene == "bamboo" else [c + (240,) for c in LEAF_COLS]
+    P = []
+    for _ in range(n):
+        p = dict(x=rng.uniform(0, W + 120), y=rng.uniform(0, 4000), ph=rng.uniform(0, 6.28), front=rng.random() < front,
+                 v=0.0, sw=0.0, f=1.0, r=4.0, drift=0.0, spin=0.0, col=(255, 255, 255, 255), streak=False)
+        s = 1.25 if p["front"] else 1.0
+        if kind == "petals":
+            p.update(v=rng.uniform(55, 110), sw=rng.uniform(30, 80), f=rng.uniform(0.8, 1.8), r=rng.uniform(9, 16) * s, drift=rng.uniform(15, 50), spin=rng.uniform(-3, 3), col=rng.choice(PETAL_COLS) + (235,))
+        elif kind == "leaves":
+            p.update(v=rng.uniform(60, 120), sw=rng.uniform(40, 90), f=rng.uniform(0.7, 1.5), r=rng.uniform(12, 20) * s, drift=rng.uniform(20, 70), spin=rng.uniform(-4, 4), col=rng.choice(leaf_cols))
+        elif kind == "snow":
+            r = rng.uniform(2.5, 8) * s; p.update(v=30 + r * 9, sw=rng.uniform(10, 34), f=rng.uniform(0.6, 1.4), r=r, drift=rng.uniform(-8, 8), col=(255, 255, 255, 235))
+        elif kind == "rain":
+            p.update(v=rng.uniform(1300, 1900), r=rng.uniform(40, 70) * s, col=(214, 226, 246, 210))
+        elif kind == "wind":
+            if rng.random() < 0.45:
+                p.update(streak=True, drift=rng.uniform(500, 900), r=rng.uniform(120, 260), y=rng.uniform(150, 800))
+            else:
+                p.update(v=rng.uniform(25, 70), sw=rng.uniform(20, 50), f=rng.uniform(1.5, 3), r=rng.uniform(7, 12) * s, drift=rng.uniform(320, 620), spin=rng.uniform(-6, 6),
+                         col=rng.choice([(176, 214, 130, 235), (210, 226, 150, 235), (255, 255, 255, 235)]))
+        elif kind == "bubbles":
+            p.update(x=rng.uniform(170, 1030), v=-rng.uniform(50, 110), sw=rng.uniform(6, 16), f=rng.uniform(1, 2.2), r=rng.uniform(4, 14))  # x - 60 -> 110..970
+        elif kind == "sparks":
+            p.update(v=-rng.uniform(40, 90), sw=rng.uniform(10, 40), f=rng.uniform(0.8, 1.6), r=rng.uniform(2, 5))
+        P.append(p)
+    return P
+
+
+def wx_layer(kind, P, tt, front):
+    y0, y1 = WX_BAND.get(kind, (WX_Y0, WX_Y1)); span = y1 - y0
+    ov = Image.new("RGBA", (W, WX_Y1 - WX_Y0), (0, 0, 0, 0)); d = ImageDraw.Draw(ov)
+    for p in P:
+        if p["front"] != front:
+            continue
+        y = y0 + (p["y"] + p["v"] * tt) % span - WX_Y0
+        x = (p["x"] + p["drift"] * tt + p["sw"] * math.sin(tt * p["f"] + p["ph"])) % (W + 120) - 60
+        r = p["r"]
+        if kind in ("petals", "leaves") or (kind == "wind" and not p["streak"]):
+            a = p["ph"] + tt * p["spin"]; ca, sa = math.cos(a), math.sin(a); wd = 0.55 if kind == "petals" else 0.7
+            d.polygon([(x + ca * r, y + sa * r), (x - sa * r * wd, y + ca * r * wd), (x - ca * r, y - sa * r), (x + sa * r * wd, y - ca * r * wd)], fill=p["col"])
+        elif kind == "wind":
+            pts = [(x - r + r * k / 8, y + 7 * math.sin(k * 0.9 + tt * 3 + p["ph"])) for k in range(9)]
+            d.line(pts, fill=(255, 255, 255, 150), width=3)
+        elif kind == "snow":
+            d.ellipse((x - r, y - r, x + r, y + r), fill=p["col"])
+        elif kind == "rain":
+            d.line([(x, y), (x - 0.18 * r, y + r)], fill=p["col"], width=3 if front else 2)
+        elif kind == "bubbles":
+            d.ellipse((x - r, y - r, x + r, y + r), outline=(224, 246, 255, 210), width=2); d.ellipse((x - r * 0.5, y - r * 0.55, x - r * 0.15, y - r * 0.2), fill=(255, 255, 255, 220))
+        elif kind == "sparks":
+            d.ellipse((x - r, y - r, x + r, y + r), fill=(255, 206, 110, int(150 + 100 * math.sin(tt * 6 + p["ph"]))))
+    if kind == "rain" and not front:  # splashes where the rain hits the ground
+        for k in range(10):
+            u = (tt * 1.5 + k * 0.37) % 1; rr = 6 + 30 * u; sx = (k * 197 + 90) % W; sy = WX_Y1 - WX_Y0 - 22 - (k % 3) * 8
+            d.ellipse((sx - rr, sy - rr * 0.3, sx + rr, sy + rr * 0.3), outline=(230, 238, 250, int(210 * (1 - u))), width=2)
+    return ov
+
+
 # ---------- main ----------
 def build(story, rate, dummy, tmp):
     meta, lines, vocab = parse_story(story)
@@ -694,12 +950,16 @@ def build(story, rate, dummy, tmp):
     meta["scene"] = pick_scene(meta, lines)
     print("Scene:", meta["scene"])
     bg, fg = make_scene(meta["scene"], meta)
+    wx = pick_weather(meta, lines, meta["scene"]); print("Weather:", wx or "none")
+    wxp = make_weather(wx, meta["scene"]) if wx else None
     cards = [line_card(l) for l in lines]; vcards = [vocab_card(vocab, j) for j in range(len(vocab))]
     pills = {(nm, a): pill(nm, CHARS[nm]["accent"] if a else (226, 214, 206), (255, 255, 255) if a else (130, 112, 108))
              for nm in CHARS for a in (0, 1)}
 
     def frame(i):
         tt = i / FPS; fr = bg.copy()
+        if wx:
+            fr.alpha_composite(wx_layer(wx, wxp, tt, False), (0, WX_Y0))
         cur = next((k for k, l in enumerate(talk) if l["start"] - 0.02 <= tt <= l["end"] + 0.1), None)
         for nm, c in CHARS.items():
             sp = cur is not None and talk[cur]["speaker"] == nm
@@ -709,6 +969,8 @@ def build(story, rate, dummy, tmp):
             fr.paste(s, (c["x"], int(CHAR_Y - bob)), s)
             p = pills[(nm, int(sp))]; fr.paste(p, (c["x"] + s.width // 2 - p.width // 2, 330), p)
         fr.paste(fg, (0, TABLE_TOP - 55), fg)
+        if wx:
+            fr.alpha_composite(wx_layer(wx, wxp, tt, True), (0, WX_Y0))
         card, t0 = None, 0
         if tt >= vstart and vcards:
             j = max((j for j, v in enumerate(vocab) if tt >= v["start"]), default=0)
