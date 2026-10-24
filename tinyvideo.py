@@ -32,28 +32,51 @@ SCENES = {
     "park": dict(top=(190, 228, 252), bot=(236, 248, 238), floor=(140, 200, 120), table=(190, 152, 110), edge=(146, 112, 78)),
     "beach": dict(top=(150, 214, 244), bot=(224, 244, 252), floor=(240, 220, 170), table=(240, 130, 110), edge=(200, 96, 80)),
     "hospital": dict(top=(236, 248, 250), bot=(248, 252, 252), floor=(200, 222, 224), table=(170, 214, 216), edge=(120, 176, 180)),
+    "ramen": dict(top=(255, 226, 190), bot=(244, 198, 152), floor=(120, 78, 56), table=(170, 114, 78), edge=(112, 72, 50)),
+    "shrine": dict(top=(255, 236, 214), bot=(255, 247, 238), floor=(196, 188, 176), table=(204, 62, 54), edge=(142, 40, 40)),
+    "fuji": dict(top=(150, 206, 246), bot=(240, 248, 252), floor=(120, 184, 140), table=(236, 208, 160), edge=(180, 148, 104)),
+    "matsuri": dict(top=(30, 28, 70), bot=(150, 70, 110), floor=(104, 82, 96), table=(240, 170, 70), edge=(190, 120, 40)),
+    "arcade": dict(top=(40, 30, 90), bot=(104, 52, 144), floor=(58, 48, 98), table=(60, 200, 220), edge=(30, 140, 170)),
+    "aquarium": dict(top=(24, 96, 156), bot=(84, 172, 212), floor=(40, 80, 112), table=(120, 220, 230), edge=(60, 160, 180)),
+    "onsen": dict(top=(208, 230, 240), bot=(240, 246, 248), floor=(176, 150, 122), table=(150, 206, 222), edge=(100, 150, 170)),
+    "snow": dict(top=(176, 200, 232), bot=(244, 248, 255), floor=(236, 242, 250), table=(190, 150, 110), edge=(140, 106, 76)),
+    "bakery": dict(top=(255, 240, 218), bot=(252, 222, 192), floor=(214, 170, 130), table=(240, 200, 150), edge=(190, 140, 96)),
+    "rainy": dict(top=(120, 136, 164), bot=(190, 200, 216), floor=(110, 116, 134), table=(90, 120, 170), edge=(60, 86, 134)),
 }
 # keywords used to pick a background automatically from the story's title + dialogue
 SCENE_KEYWORDS = {
     "station": ["えき", "でんしゃ", "電車", "駅", "きっぷ", "ホーム", "バス", "station", "train", "bus stop", "ticket"],
     "airport": ["くうこう", "空港", "ひこうき", "飛行機", "パスポート", "airport", "flight", "passport", "luggage"],
     "bookstore": ["ほんや", "本屋", "しょてん", "ほん", "本", "book", "library", "としょかん", "図書館"],
-    "restaurant": ["レストラン", "メニュー", "ちゅうもん", "注文", "ラーメン", "すし", "寿司", "おなか", "ごはん", "restaurant", "menu", "order", "hungry", "ramen", "sushi", "food"],
+    "restaurant": ["レストラン", "メニュー", "ちゅうもん", "注文", "すし", "寿司", "おなか", "ごはん", "restaurant", "menu", "order", "hungry", "sushi", "food"],
     "cafe": ["カフェ", "コーヒー", "こうちゃ", "ケーキ", "のみもの", "cafe", "café", "coffee", "tea", "name", "meet", "first time", "はじめまして"],
     "store": ["スーパー", "supermarket", "コンビニ", "みせ", "店", "いくら", "かいもの", "買い物", "ぜんぶで", "shop", "store", "buy", "how much", "price", "convenience"],
     "classroom": ["がっこう", "学校", "せんせい", "先生", "じゅぎょう", "しゅくだい", "きょうしつ", "school", "class", "teacher", "homework", "student"],
     "hospital": ["びょういん", "病院", "くすり", "いしゃ", "医者", "ねつ", "あたま", "いたい", "hospital", "doctor", "medicine", "sick", "fever", "pain"],
     "home": ["いえ", "家", "うち", "へや", "部屋", "かぞく", "ただいま", "いってきます", "home", "house", "room", "family", "kitchen"],
     "beach": ["うみ", "海", "なつ", "夏", "およぐ", "ビーチ", "sea", "beach", "swim", "summer"],
-    "street": ["よる", "夜", "こんばんは", "みち", "道", "まつり", "祭り", "night", "evening", "street", "festival", "way to"],
-    "park": ["こうえん", "公園", "さんぽ", "てんき", "天気", "あめ", "はれ", "park", "walk", "weather", "sunny", "rain"],
+    "street": ["よる", "夜", "こんばんは", "みち", "道", "night", "evening", "street", "way to"],
+    "park": ["こうえん", "公園", "さんぽ", "てんき", "天気", "はれ", "park", "walk", "weather", "sunny"],
     "sakura": ["さくら", "桜", "はなみ", "花見", "はる", "春", "sakura", "cherry", "blossom", "spring"],
+    "ramen": ["ラーメン", "らーめん", "ramen", "noodle", "麺", "とんこつ", "broth", "ぎょうざ", "餃子"],
+    "shrine": ["じんじゃ", "神社", "おまいり", "お参り", "おみくじ", "鳥居", "寺", "shrine", "temple", "pray", "fortune", "torii"],
+    "fuji": ["ふじさん", "富士", "山", "とざん", "登山", "mountain", "hiking", "hike", "fuji"],
+    "matsuri": ["まつり", "祭", "はなび", "花火", "やたい", "屋台", "ゆかた", "浴衣", "festival", "fireworks", "yukata", "stall"],
+    "arcade": ["ゲーム", "げーむ", "ゲーセン", "プリクラ", "arcade", "game", "claw machine"],
+    "aquarium": ["すいぞくかん", "水族館", "くらげ", "クラゲ", "イルカ", "aquarium", "shark", "jellyfish", "dolphin"],
+    "onsen": ["おんせん", "温泉", "おふろ", "お風呂", "りょかん", "旅館", "onsen", "hot spring", "ryokan", "bath"],
+    "snow": ["ゆき", "雪", "ふゆ", "冬", "スキー", "snow", "winter", "ski"],
+    "bakery": ["パンや", "パン屋", "ベーカリー", "メロンパン", "クロワッサン", "bakery", "bread", "croissant"],
+    "rainy": ["雨", "あめ", "傘", "rain", "umbrella"],
 }
 SCENE_ALIASES = {"supermarket": "store", "market": "store", "shop": "store", "shopping": "store", "convenience": "store",
                  "school": "classroom", "library": "bookstore", "house": "home", "kitchen": "home", "room": "home",
-                 "night": "street", "city": "street", "festival": "street", "sea": "beach", "ocean": "beach",
-                 "garden": "park", "train": "station", "bus": "station", "clinic": "hospital", "bakery": "cafe", "coffee": "cafe"}
-SCENE_ORDER = ["cafe", "station", "sakura", "restaurant", "store", "bookstore", "classroom", "home", "airport", "street", "park", "beach", "hospital"]
+                 "night": "street", "city": "street", "festival": "matsuri", "fireworks": "matsuri", "sea": "beach", "ocean": "beach",
+                 "garden": "park", "train": "station", "bus": "station", "clinic": "hospital", "coffee": "cafe", "noodles": "ramen", "temple": "shrine", "torii": "shrine", "mountain": "fuji", "mt fuji": "fuji",
+                 "game": "arcade", "game center": "arcade", "gamecenter": "arcade", "fish": "aquarium", "hot spring": "onsen", "bath": "onsen",
+                 "winter": "snow", "bread": "bakery", "rain": "rainy", "umbrella": "rainy"}
+SCENE_ORDER = ["cafe", "station", "sakura", "restaurant", "store", "bookstore", "classroom", "home", "airport", "street", "park", "beach", "hospital",
+               "ramen", "shrine", "fuji", "matsuri", "arcade", "aquarium", "onsen", "snow", "bakery", "rainy"]
 
 
 def pick_scene(meta, lines):
@@ -278,6 +301,58 @@ def blossoms(d, rng, box, n):
         d.ellipse((x - r, y - r, x + r, y + r), fill=rng.choice(cols))
 
 
+def paper_lantern(d, x, y, r, col, text=None, f=None):
+    """Hanging chochin lantern: x = centre, y = top of the lantern body."""
+    hh = int(r * 1.35); dark = (70, 50, 44)
+    d.line([(x, y - 40), (x, y)], fill=dark, width=4)
+    d.ellipse((x - r, y, x + r, y + hh), fill=col)
+    d.rectangle((x - int(r * 0.55), y - 6, x + int(r * 0.55), y + 6), fill=dark)
+    d.rectangle((x - int(r * 0.55), y + hh - 6, x + int(r * 0.55), y + hh + 4), fill=dark)
+    for k in (0.38, 0.62):
+        d.line([(x - r + 10, y + int(hh * k)), (x + r - 10, y + int(hh * k))], fill=tuple(int(v * 0.8) for v in col), width=2)
+    if text:
+        d.text((x, y + hh // 2), text, font=f, fill=(255, 240, 210), anchor="mm")
+
+
+def steam(d, x, y, n=3, col=(255, 255, 255), w=5):
+    for i in range(n):
+        xx = x + (i - n // 2) * 28
+        d.arc((xx - 16, y - 70 - i * 6, xx + 16, y - 30 - i * 6), 90, 270, fill=col, width=w)
+        d.arc((xx - 16, y - 110 - i * 6, xx + 16, y - 70 - i * 6), 270, 450, fill=col, width=w)
+
+
+def ramen_bowl(d, x, y):
+    """Bowl whose foot sits at about y + 80."""
+    d.rounded_rectangle((x - 54, y + 62, x + 54, y + 80), radius=6, fill=(196, 56, 52))
+    d.pieslice((x - 110, y - 110, x + 110, y + 70), 0, 180, fill=(250, 250, 246), outline=(196, 56, 52), width=6)
+    d.ellipse((x - 106, y - 40, x + 106, y), fill=(222, 156, 76), outline=(250, 250, 246), width=6)
+    for k in range(-2, 3):
+        d.arc((x + k * 34 - 30, y - 34, x + k * 34 + 30, y - 6), 190, 350, fill=(252, 232, 160), width=5)
+    d.ellipse((x - 76, y - 34, x - 26, y - 8), fill=(255, 255, 255)); d.ellipse((x - 60, y - 28, x - 42, y - 14), fill=(246, 168, 56))
+    d.ellipse((x + 18, y - 34, x + 64, y - 8), fill=(255, 255, 255)); d.ellipse((x + 33, y - 27, x + 49, y - 15), fill=(240, 130, 150))
+    d.rectangle((x + 66, y - 62, x + 84, y - 12), fill=(30, 62, 46))
+    for sx in (-8, 6, 22, -22):
+        d.ellipse((x + sx - 5, y - 22, x + sx + 5, y - 14), fill=(110, 190, 90))
+    steam(d, x, y - 36)
+
+
+def fish(d, x, y, col, s=1.0, flip=False):
+    w, h = int(80 * s), int(38 * s); t = int(26 * s)
+    if flip:
+        d.polygon([(x + w, y + h // 2), (x + w + t, y), (x + w + t, y + h)], fill=col)
+        d.ellipse((x, y, x + w, y + h), fill=col); ex = x + int(w * 0.2)
+    else:
+        d.polygon([(x, y + h // 2), (x - t, y), (x - t, y + h)], fill=col)
+        d.ellipse((x, y, x + w, y + h), fill=col); ex = x + int(w * 0.76)
+    d.ellipse((ex - 4, y + h // 3 - 4, ex + 4, y + h // 3 + 4), fill=(255, 255, 255)); d.ellipse((ex - 2, y + h // 3 - 2, ex + 2, y + h // 3 + 2), fill=(30, 40, 60))
+
+
+def jellyfish(d, x, y, col):
+    d.pieslice((x - 44, y - 44, x + 44, y + 44), 180, 360, fill=col)
+    for k in range(-3, 4):
+        d.line([(x + k * 12, y), (x + k * 12 + (7 if k % 2 else -7), y + 30), (x + k * 12, y + 58)], fill=col, width=4)
+
+
 def make_scene(scene, meta, header=True):
     sc = SCENES.get(scene, SCENES["cafe"]); rng = random.Random(7)
     bg = vgrad(W, H, sc["top"], sc["bot"]); d = ImageDraw.Draw(bg)
@@ -358,6 +433,149 @@ def make_scene(scene, meta, header=True):
         d.line([(0, 330), (300, 280), (600, 340), (1080, 240)], fill=(122, 84, 72), width=20)
         blossoms(d, rng, (0, 170, W, 520), 150)
         blossoms(d, rng, (0, 520, W, 880), 40)
+    elif scene == "ramen":
+        d.rectangle((0, 280, W, 302), fill=(96, 62, 46))
+        for i, x in enumerate(range(60, 1020, 192)):  # noren curtain
+            d.rounded_rectangle((x, 302, x + 174, 520), radius=10, fill=(196, 52, 52))
+            d.text((x + 87, 412), "らーめんや"[i], font=font(88), fill=(255, 244, 228), anchor="mm")
+        paper_lantern(d, 90, 560, 52, (226, 60, 56), "麺", font(52)); paper_lantern(d, 990, 560, 52, (226, 60, 56), "麺", font(52))
+        d.rounded_rectangle((350, 580, 730, 690), radius=14, fill=(112, 76, 54), outline=(80, 54, 40), width=6)
+        d.text((540, 635), "きょうの おすすめ", font=font(44), fill=(255, 236, 200), anchor="mm")
+        ramen_bowl(d, 250, 800); ramen_bowl(d, 830, 800)
+    elif scene == "shrine":
+        for x in (70, 200, 880, 1010):  # pines
+            d.rectangle((x - 12, 640, x + 12, 840), fill=(104, 76, 60))
+            for k, y in enumerate((470, 540, 610)):
+                d.polygon([(x - 92 + k * 12, y + 100), (x, y - 20), (x + 92 - k * 12, y + 100)], fill=(84, 150, 102))
+        for _ in range(60):  # autumn leaves
+            x, y, r = rng.randint(0, W), rng.randint(200, 620), rng.randint(6, 12)
+            d.ellipse((x - r, y - r, x + r, y + r), fill=rng.choice([(232, 110, 60), (240, 170, 60), (210, 70, 50)]))
+        d.rectangle((350, 380, 392, 880), fill=(206, 56, 50)); d.rectangle((688, 380, 730, 880), fill=(206, 56, 50))  # torii
+        d.polygon([(206, 300), (874, 300), (842, 332), (238, 332)], fill=(40, 36, 40))
+        d.rectangle((262, 332, 818, 374), fill=(206, 56, 50)); d.rectangle((326, 462, 754, 500), fill=(206, 56, 50))
+        d.rectangle((516, 374, 564, 462), fill=(240, 200, 90), outline=(120, 40, 36), width=4)
+        d.rectangle((336, 856, 406, 885), fill=(60, 56, 60)); d.rectangle((674, 856, 744, 885), fill=(60, 56, 60))
+    elif scene == "fuji":
+        for cx, cy in ((190, 360), (860, 330), (520, 300)):
+            d.ellipse((cx - 80, cy - 26, cx + 80, cy + 26), fill=(255, 255, 255)); d.ellipse((cx - 36, cy - 48, cx + 40, cy + 8), fill=(255, 255, 255))
+        d.polygon([(40, 800), (440, 380), (640, 380), (1040, 800)], fill=(104, 120, 180))
+        d.polygon([(440, 380), (640, 380), (684, 470), (630, 445), (590, 500), (545, 455), (500, 505), (455, 450), (396, 470)], fill=(248, 250, 255))
+        d.rectangle((0, 760, W, 885), fill=(100, 172, 226))
+        for y in range(790, 880, 44):
+            for x in range(-40, W, 150):
+                d.arc((x + (y % 100), y, x + 100 + (y % 100), y + 30), 200, 340, fill=(220, 244, 255), width=4)
+        blossoms(d, rng, (0, 300, 260, 600), 34); blossoms(d, rng, (820, 300, W, 600), 34)
+        d.rectangle((90, 520, 104, 780), fill=(122, 84, 72)); d.rectangle((980, 520, 994, 780), fill=(122, 84, 72))
+    elif scene == "matsuri":
+        for _ in range(45):
+            x, y = rng.randint(0, W), rng.randint(130, 520); d.ellipse((x, y, x + 4, y + 4), fill=(255, 255, 255))
+        for cx, cy, col in ((250, 470, (255, 214, 90)), (830, 440, (255, 130, 180)), (540, 400, (120, 220, 255))):  # fireworks
+            for a in range(0, 360, 30):
+                ca, sa = math.cos(math.radians(a)), math.sin(math.radians(a))
+                d.line([(cx + int(34 * ca), cy + int(34 * sa)), (cx + int(90 * ca), cy + int(90 * sa))], fill=col, width=5)
+                d.ellipse((cx + int(104 * ca) - 6, cy + int(104 * sa) - 6, cx + int(104 * ca) + 6, cy + int(104 * sa) + 6), fill=col)
+        pts = [(x, 300 + int(36 * math.sin(x / 170))) for x in range(0, W + 20, 20)]
+        d.line(pts, fill=(60, 44, 50), width=3)
+        for x in range(60, W, 120):
+            y0 = 300 + int(36 * math.sin(x / 170)) + 4
+            d.ellipse((x - 30, y0, x + 30, y0 + 74), fill=rng.choice([(236, 70, 64), (250, 170, 60)])); d.rectangle((x - 12, y0 - 4, x + 12, y0 + 4), fill=(60, 44, 50))
+        for sx, name, awn in ((30, "きんぎょ", (236, 70, 64)), (700, "やきそば", (70, 150, 230))):  # food stalls
+            d.rectangle((sx, 650, sx + 350, 885), fill=(80, 56, 56))
+            for i in range(7):
+                col = awn if i % 2 == 0 else (255, 250, 246)
+                d.rectangle((sx + i * 50, 620, sx + (i + 1) * 50, 690), fill=col); d.pieslice((sx + i * 50, 660, sx + (i + 1) * 50, 720), 0, 180, fill=col)
+            d.text((sx + 175, 775), name, font=font(60), fill=(255, 236, 190), anchor="mm")
+    elif scene == "arcade":
+        for _ in range(70):
+            x, y = rng.randint(0, W), rng.randint(130, 420); d.rectangle((x, y, x + 4, y + 4), fill=rng.choice([(255, 255, 255), (140, 200, 255), (255, 150, 220)]))
+        d.rounded_rectangle((90, 285, 990, 375), radius=22, fill=(24, 20, 60), outline=(255, 90, 200), width=8)
+        d.text((540, 330), "ゲームセンター", font=font(56), fill=(255, 230, 90), anchor="mm")
+        for x, col in ((40, (255, 90, 160)), (300, (80, 220, 240)), (560, (250, 210, 80)), (820, (160, 120, 255))):
+            d.rounded_rectangle((x, 430, x + 220, 885), radius=18, fill=(34, 30, 78), outline=col, width=6)
+            d.rectangle((x + 16, 448, x + 204, 500), fill=col)
+            d.rounded_rectangle((x + 24, 520, x + 196, 660), radius=10, fill=(14, 16, 40), outline=(120, 120, 160), width=4)
+            for k in range(6):
+                oy = 540 + (k * 37) % 70; d.rectangle((x + 40 + k * 24, oy, x + 58 + k * 24, oy + 16), fill=col)
+            d.line([(x + 70, 745), (x + 70, 710)], fill=(200, 200, 210), width=8); d.ellipse((x + 54, 686, x + 86, 718), fill=(236, 64, 64))
+            d.ellipse((x + 120, 722, x + 148, 750), fill=(80, 220, 120)); d.ellipse((x + 158, 700, x + 186, 728), fill=(250, 210, 80))
+    elif scene == "aquarium":
+        d.rounded_rectangle((330, 282, 750, 342), radius=18, fill=(20, 60, 110)); d.text((540, 312), "すいぞくかん", font=font(38), fill=(220, 240, 250), anchor="mm")
+        d.rounded_rectangle((60, 352, 1020, 840), radius=40, fill=(24, 116, 184), outline=(214, 236, 246), width=14)
+        d.polygon([(180, 366), (280, 366), (420, 826), (300, 826)], fill=(36, 134, 200)); d.polygon([(560, 366), (680, 366), (800, 826), (680, 826)], fill=(36, 134, 200))
+        d.ellipse((250, 540, 760, 680), fill=(96, 126, 170)); d.ellipse((260, 620, 750, 682), fill=(190, 208, 230))
+        d.polygon([(740, 610), (840, 540), (862, 566), (800, 620), (862, 676), (836, 700)], fill=(96, 126, 170))
+        d.polygon([(450, 666), (520, 744), (546, 672)], fill=(96, 126, 170)); d.ellipse((312, 598, 328, 614), fill=(20, 30, 50))
+        fish(d, 120, 420, (250, 160, 60), 0.9); fish(d, 860, 450, (255, 120, 150), 0.8, True); fish(d, 170, 740, (250, 220, 90), 0.7); fish(d, 800, 770, (120, 230, 200), 0.8, True)
+        jellyfish(d, 540, 440, (250, 170, 220)); jellyfish(d, 930, 640, (190, 170, 250))
+        for bx, by, br in ((100, 600, 10), (120, 560, 7), (960, 500, 9), (940, 460, 6), (610, 400, 8)):
+            d.ellipse((bx - br, by - br, bx + br, by + br), outline=(214, 240, 252), width=3)
+        for x in (110, 190, 890, 970):
+            d.line([(x + (12 if (y // 30) % 2 else -12), y) for y in range(826, 690, -30)], fill=(60, 170, 110), width=10)
+    elif scene == "onsen":
+        for i, x in enumerate(range(60, 1020, 60)):  # wooden fence
+            d.rectangle((x, 306, x + 54, 640), fill=(150, 104, 72) if i % 2 == 0 else (132, 90, 62))
+        d.rectangle((40, 284, 1040, 312), fill=(100, 66, 48)); d.rectangle((40, 630, 1040, 660), fill=(100, 66, 48))
+        d.rounded_rectangle((440, 330, 640, 560), radius=8, fill=(52, 96, 170)); d.text((540, 445), "ゆ", font=font(150), fill=(255, 255, 255), anchor="mm")
+        d.ellipse((40, 670, 1040, 940), fill=(132, 206, 226))
+        for t in range(180, 361, 8):
+            sx, sy = 540 + int(500 * math.cos(math.radians(t))), 805 + int(135 * math.sin(math.radians(t))); r = rng.randint(18, 30)
+            d.ellipse((sx - r, sy - r, sx + r, sy + r), fill=rng.choice([(170, 166, 160), (150, 146, 142), (186, 182, 176)]))
+        for x in (210, 430, 680, 880):
+            steam(d, x, 700, 3, (246, 250, 252), 7)
+        for lx, ly in ((300, 800), (700, 830), (860, 780)):
+            d.ellipse((lx - 16, ly - 9, lx + 16, ly + 9), fill=(214, 84, 56))
+    elif scene == "snow":
+        d.polygon([(0, 560), (230, 390), (470, 560)], fill=(200, 214, 238)); d.polygon([(380, 560), (700, 360), (1000, 560)], fill=(186, 204, 232)); d.polygon([(720, 560), (940, 420), (1080, 520), (1080, 560)], fill=(206, 218, 240))
+        d.polygon([(190, 430), (230, 390), (270, 430), (240, 420), (220, 440)], fill=(255, 255, 255)); d.polygon([(630, 420), (700, 360), (770, 420), (720, 408), (690, 440)], fill=(255, 255, 255))
+        d.ellipse((-200, 700, 700, 1000), fill=(250, 252, 255)); d.ellipse((400, 720, 1300, 1000), fill=(250, 252, 255))
+        for hx in (90, 820):
+            d.rectangle((hx, 640, hx + 170, 800), fill=(176, 120, 88)); d.polygon([(hx - 16, 646), (hx + 85, 556), (hx + 186, 646)], fill=(250, 252, 255), outline=(200, 210, 226))
+            d.rectangle((hx + 20, 690, hx + 70, 740), fill=(255, 222, 130)); d.rectangle((hx + 110, 700, hx + 150, 800), fill=(110, 74, 56))
+        for x in (350, 730):
+            d.rectangle((x - 10, 700, x + 10, 800), fill=(104, 76, 60))
+            for k, y in enumerate((560, 620, 680)):
+                d.polygon([(x - 80 + k * 10, y + 90), (x, y - 20), (x + 80 - k * 10, y + 90)], fill=(70, 130, 96)); d.polygon([(x - 36, y + 20), (x, y - 20), (x + 36, y + 20)], fill=(250, 252, 255))
+        d.ellipse((490, 750, 590, 850), fill=(255, 255, 255), outline=(196, 206, 222), width=3); d.ellipse((510, 690, 570, 750), fill=(255, 255, 255), outline=(196, 206, 222), width=3)
+        d.ellipse((528, 710, 536, 718), fill=(40, 40, 50)); d.ellipse((546, 710, 554, 718), fill=(40, 40, 50)); d.polygon([(540, 722), (578, 728), (540, 734)], fill=(246, 130, 50))
+        d.rectangle((514, 744, 566, 756), fill=(226, 70, 70))
+        for _ in range(120):
+            x, y, r = rng.randint(0, W), rng.randint(170, 880), rng.randint(3, 7); d.ellipse((x - r, y - r, x + r, y + r), fill=(255, 255, 255))
+    elif scene == "bakery":
+        for i in range(10):  # striped awning
+            col = (240, 150, 170) if i % 2 == 0 else (255, 250, 246)
+            d.rectangle((40 + i * 100, 280, 40 + (i + 1) * 100, 330), fill=col); d.pieslice((40 + i * 100, 300, 40 + (i + 1) * 100, 360), 0, 180, fill=col)
+        d.rounded_rectangle((340, 390, 740, 480), radius=20, fill=(120, 76, 52)); d.text((540, 435), "パンや", font=font(64), fill=(255, 236, 200), anchor="mm")
+        d.rectangle((60, 540, 1020, 850), fill=(246, 226, 196))
+        for y in (690, 830):
+            d.rectangle((60, y, 1020, y + 16), fill=(150, 104, 72))
+            for i, x in enumerate(range(90, 960, 120)):
+                k = (i + (y // 100)) % 3
+                if k == 0:
+                    d.rounded_rectangle((x, y - 60, x + 90, y), radius=30, fill=(222, 160, 84))
+                    for s in (24, 44, 64): d.line([(x + s, y - 46), (x + s - 8, y - 18)], fill=(170, 110, 52), width=4)
+                elif k == 1:
+                    d.rounded_rectangle((x, y - 34, x + 110, y), radius=17, fill=(226, 176, 96))
+                    for s in (22, 50, 78): d.line([(x + s, y - 28), (x + s - 6, y - 6)], fill=(170, 110, 52), width=4)
+                else:
+                    d.pieslice((x, y - 70, x + 90, y + 20), 180, 360, fill=(232, 170, 80))
+                    for s in (24, 45, 66): d.line([(x + s, y - 66), (x + s, y - 4)], fill=(176, 116, 54), width=4)
+    elif scene == "rainy":
+        for x in range(-30, W, 170):
+            hh = rng.randint(220, 480); d.rectangle((x, TABLE_TOP - hh, x + 150, TABLE_TOP), fill=(84, 94, 124))
+            for wy in range(TABLE_TOP - hh + 24, TABLE_TOP - 30, 54):
+                for wx in (x + 20, x + 80):
+                    d.rectangle((wx, wy, wx + 34, wy + 30), fill=(250, 226, 150) if rng.random() < 0.4 else (150, 164, 196))
+        for _ in range(260):
+            x, y = rng.randint(0, W), rng.randint(170, 880); d.line([(x, y), (x - 10, y + 34)], fill=(214, 226, 246), width=2)
+        d.line([(980, 420), (980, 880)], fill=(60, 64, 80), width=14); d.ellipse((940, 380, 1020, 450), fill=(255, 236, 170))
+        d.pieslice((300, 300, 780, 620), 180, 360, fill=(236, 96, 110))
+        for i in range(4):
+            d.pieslice((300 + i * 120, 430, 420 + i * 120, 490), 0, 180, fill=(236, 96, 110))
+        for k in range(1, 4):
+            d.line([(540, 300), (300 + k * 120, 462)], fill=(196, 64, 80), width=3)
+        d.line([(540, 300), (540, 600)], fill=(70, 50, 56), width=10); d.arc((510, 570, 570, 630), 0, 180, fill=(70, 50, 56), width=10)
+        for px, py in ((180, 840), (700, 850)):
+            d.ellipse((px - 110, py - 14, px + 110, py + 22), fill=(150, 168, 204)); d.ellipse((px - 50, py - 6, px + 50, py + 14), outline=(220, 232, 250), width=3)
     else:
         d.rounded_rectangle((290, 280, 790, 730), radius=36, fill=(255, 255, 255))
         d.rounded_rectangle((310, 300, 770, 710), radius=26, fill=(205, 232, 244))

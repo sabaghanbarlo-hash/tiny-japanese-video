@@ -10,6 +10,7 @@ Free, runs entirely on GitHub Actions – nothing to install.
 title: At the Station
 episode: 2
 scene: auto           # auto (picked from the story) or: cafe station sakura restaurant store bookstore classroom home airport street park beach hospital
+                      # new: ramen shrine fuji matsuri arcade aquarium onsen snow bakery rainy
 
 Mika: おはようございます。 | Good morning.
 Alex: おはよう！ | Morning!
@@ -21,3 +22,8 @@ vocab: おはようございます | ohayou gozaimasu | Good morning (polite)
 
 Romaji is generated automatically; add a third `| romaji` part to override it. Speakers: `Mika`, `Alex`.
 Voices: Microsoft Edge neural Japanese voices (Nanami / Keita), slightly slowed for learners (`--rate`).
+
+## Backgrounds
+23 hand-drawn scenes (Pillow, no image files). Auto-pick matches keywords in the title and dialogue (e.g. ラーメン -> `ramen`, 花火 / festival -> `matsuri`, 雪 / snow -> `snow`).
+Aliases also work: `scene: temple`, `hot spring`, `mt fuji`, `game center`, `bread`, `rain`.
+Preview: `python tinyvideo.py stories/xxx.txt --dummy-audio --preview out.png`. Contact sheet of the 10 newest: `docs/new-backgrounds.jpg`.
