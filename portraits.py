@@ -30,7 +30,7 @@ def main():
     roster, tiles = [], []
     for cid, c in T.ROSTER.items():
         p = portrait(c); p.save(os.path.join(OUT, cid + ".png"), optimize=True); tiles.append((c["label"], p))
-        roster.append(dict(id=cid, name=c["label"], tag=c["tag"], voice="male" if c["voice"] == T.M_VOICE else "female"))
+        roster.append(dict(id=cid, name=c["label"], tag=c["tag"], group=c["group"], voice="male" if c["voice"] == T.M_VOICE else "female"))
     with open(os.path.join(OUT, "roster.json"), "w", encoding="utf-8") as f:
         json.dump(roster, f, ensure_ascii=False, indent=1)
     cols, tw, pad = 5, 240, 16

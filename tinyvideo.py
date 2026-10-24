@@ -15,7 +15,7 @@ TABLE_TOP, CARD_Y = 885, 1040
 # ---------- characters ----------
 # Two slots on screen: "Mika" = left, "Alex" = right. Which character stands in a slot comes from `cast: left, right` in the story.
 CHAR_DEFAULTS = dict(hair_style="short", eye=(55, 35, 42), pupil=False, outfit="plain", acc=(), acc_col=(226, 92, 92), mark=None, brow=None,
-                     trim=(250, 250, 250), pitch=None, tag="")
+                     trim=(250, 250, 250), pitch=None, tag="", arm=None, group="Everyday")
 F_VOICE, M_VOICE = "ja-JP-NanamiNeural", "ja-JP-KeitaNeural"
 
 
@@ -53,7 +53,44 @@ ROSTER = {
                    eye=(140, 96, 190), pupil=True, outfit="kimono", acc_col=(236, 200, 120), mark="mole", tag="Elegant"),
     "daichi": char("Daichi", voice=M_VOICE, pitch="-22Hz", hair=(112, 78, 58), skin=(240, 202, 174), top=(120, 140, 128), accent=(90, 120, 104), hair_style="short",
                    outfit="hoodie", acc=("headphones",), acc_col=(50, 50, 60), mark="stubble", tag="Chill"),
+    "kage": char("Kage", voice=M_VOICE, pitch="-6Hz", hair=(24, 28, 48), skin=(246, 212, 186), top=(44, 48, 72), accent=(60, 70, 110), hair_style="short",
+                 eye=(220, 190, 60), pupil=True, outfit="ninja", acc=("headband", "scarf"), acc_col=(196, 60, 60), brow="sharp", tag="Shadow"),
+    "sayo": char("Sayo", voice=F_VOICE, pitch="+6Hz", hair=(70, 40, 100), skin=(255, 228, 212), top=(66, 50, 96), accent=(130, 80, 170), hair_style="ponytail",
+                 eye=(190, 70, 150), pupil=True, outfit="ninja", acc=("headband", "scarf"), acc_col=(236, 130, 170), brow="sharp", tag="Swift"),
+    "rex": char("Rex", voice=M_VOICE, pitch="-12Hz", hair=(34, 30, 36), skin=(240, 204, 176), top=(250, 246, 236), accent=(176, 44, 56), hair_style="short",
+                eye=(60, 90, 140), pupil=True, outfit="pirate", acc=("piratehat", "cape"), acc_col=(232, 190, 80), mark="scar", tag="Captain"),
+    "marin": char("Marin", voice=F_VOICE, pitch="+14Hz", hair=(70, 196, 200), skin=(255, 226, 208), top=(250, 246, 236), accent=(40, 150, 170), hair_style="bob",
+                  eye=(40, 140, 170), pupil=True, outfit="pirate", acc=("bandana",), acc_col=(250, 200, 70), tag="Navigator"),
+    "bolt": char("Bolt", voice=M_VOICE, pitch="+2Hz", hair=(92, 166, 92), skin=(244, 206, 178), top=(70, 110, 170), accent=(60, 100, 160), hair_style="short",
+                 outfit="overalls", trim=(250, 210, 70), arm=(250, 210, 70), acc=("bandana",), acc_col=(220, 80, 70), mark="freckles", tag="Mechanic"),
+    "takeru": char("Takeru", voice=M_VOICE, pitch="-16Hz", hair=(26, 24, 30), skin=(244, 208, 182), top=(36, 48, 86), accent=(60, 76, 130), hair_style="topknot",
+                   eye=(50, 40, 40), pupil=True, outfit="samurai", acc_col=(200, 60, 60), mark="scar", brow="sharp", tag="Samurai"),
+    "tomoe": char("Tomoe", voice=F_VOICE, pitch="-6Hz", hair=(36, 44, 86), skin=(255, 230, 216), top=(128, 40, 64), accent=(190, 70, 100), hair_style="braid",
+                  eye=(200, 60, 70), pupil=True, outfit="samurai", acc_col=(240, 230, 220), brow="sharp", tag="Blade"),
+    "luna": char("Luna", voice=F_VOICE, pitch="+18Hz", hair=(160, 160, 250), skin=(255, 230, 218), top=(250, 196, 226), accent=(190, 120, 220), hair_style="long",
+                 eye=(120, 110, 230), pupil=True, outfit="magical", acc=("bigbow", "wand"), acc_col=(110, 150, 240), tag="Star"),
+    "hoshi": char("Hoshi", voice=F_VOICE, pitch="+24Hz", hair=(255, 210, 90), skin=(255, 228, 212), top=(255, 244, 170), accent=(240, 170, 40), hair_style="twintails",
+                  eye=(240, 150, 50), pupil=True, outfit="magical", acc=("starclip", "wand"), acc_col=(250, 120, 160), tag="Sparkle"),
+    "eldo": char("Eldo", voice=M_VOICE, pitch="-30Hz", hair=(236, 236, 242), skin=(246, 214, 190), top=(80, 64, 150), accent=(100, 80, 180), hair_style="short",
+                 eye=(90, 90, 140), pupil=True, outfit="robe", acc=("wizardhat", "mustache"), acc_col=(240, 200, 90), tag="Wizard"),
+    "mia": char("Mia", voice=F_VOICE, pitch="+16Hz", hair=(46, 34, 74), skin=(255, 230, 218), top=(60, 46, 110), accent=(90, 60, 150), hair_style="bob",
+                eye=(160, 100, 230), pupil=True, outfit="robe", acc=("wizardhat",), acc_col=(250, 210, 100), tag="Witch"),
+    "noa": char("Noa", voice=F_VOICE, pitch="+12Hz", hair=(120, 222, 232), skin=(255, 230, 216), top=(250, 250, 255), accent=(60, 190, 210), hair_style="long",
+                eye=(60, 170, 200), pupil=True, outfit="stage", acc=("headset", "starclip"), acc_col=(250, 100, 170), tag="Idol"),
+    "rei": char("Rei", voice=M_VOICE, pitch="-4Hz", hair=(58, 46, 44), skin=(248, 214, 190), top=(162, 128, 92), accent=(110, 86, 64), hair_style="short",
+                eye=(70, 60, 50), pupil=True, outfit="trench", acc=("flatcap",), acc_col=(150, 50, 56), tag="Detective"),
+    "mei": char("Mei", voice=F_VOICE, pitch="-2Hz", hair=(88, 58, 50), skin=(252, 222, 204), top=(250, 250, 252), accent=(60, 170, 170), hair_style="bun",
+                eye=(70, 100, 90), pupil=True, outfit="labcoat", trim=(60, 170, 170), acc=("glasses",), acc_col=(60, 170, 170), tag="Scientist"),
+    "gen": char("Gen", voice=M_VOICE, pitch="-30Hz", hair=(232, 232, 236), skin=(240, 206, 180), top=(110, 84, 60), accent=(130, 100, 70), hair_style="topknot",
+                eye=(60, 50, 50), pupil=True, outfit="kimono", acc=("mustache",), acc_col=(60, 50, 44), tag="Sensei"),
+    "zed": char("Zed", voice=M_VOICE, pitch="+4Hz", hair=(70, 232, 150), skin=(246, 212, 188), top=(40, 40, 48), accent=(230, 60, 150), hair_style="spiky",
+                eye=(230, 60, 150), pupil=True, outfit="jacket", trim=(240, 240, 246), acc=("headphones",), acc_col=(230, 60, 150), brow="sharp", tag="Rocker"),
 }
+GROUPS = {"Traditional": ("yuki", "hana", "sakuya", "ryu", "takeru", "tomoe", "gen"), "Ninja": ("kage", "sayo"), "Pirate": ("rex", "marin", "bolt", "kai"),
+          "Magic": ("luna", "hoshi", "eldo", "mia"), "Other": ("noa", "zed", "rei", "mei")}
+for _g, _ids in GROUPS.items():
+    for _i in _ids:
+        ROSTER[_i]["group"] = _g
 for _k, _v in ROSTER.items():
     _v["id"] = _k
 CHARS = {"Mika": dict(ROSTER["mika"], x=16), "Alex": dict(ROSTER["alex"], x=W - 16 - int(560 * CHAR_SCALE))}
@@ -347,6 +384,9 @@ def render_char(c, mouth, blink):
     ell = lambda box, fill: d.ellipse(P(*box), fill=fill)
     shade = lambda col, f: tuple(int(v * f) for v in col)
     line = lambda pts, fill, wd: d.line(P(*pts), fill=fill, width=max(1, int(wd * S)))
+    lite = lambda col, f: tuple(min(255, int(v * f)) for v in col)
+    star = lambda cx, cy, r: [v for i in range(10) for v in (cx + (r if i % 2 == 0 else r * 0.45) * math.cos(math.radians(-90 + 36 * i)),
+                                                              cy + (r if i % 2 == 0 else r * 0.45) * math.sin(math.radians(-90 + 36 * i)))]
     ink, hair, skin, top, acc, det = (70, 45, 48), c["hair"], c["skin"], c["top"], c["accent"], c["acc_col"]
     hs, outfit, accs, white = c["hair_style"], c["outfit"], set(c["acc"]), (255, 255, 255)
     # hair that sits behind the body
@@ -358,6 +398,10 @@ def render_char(c, mouth, blink):
         ell((372, 170, 522, 570), hair)
     elif hs == "bob":
         d.rounded_rectangle(P(112, 170, 448, 440), radius=int(70 * S), fill=hair)
+    elif hs == "braid":
+        d.rounded_rectangle(P(130, 170, 430, 470), radius=int(70 * S), fill=hair)
+    if "cape" in accs:
+        d.polygon(P(150, 466, 410, 466, 458, 716, 102, 716), fill=shade(acc, 0.7))
     # body + outfit
     if outfit == "hoodie":
         ell((198, 428, 362, 522), shade(top, 0.8))
@@ -380,6 +424,54 @@ def render_char(c, mouth, blink):
         for by in (530, 574, 618):
             ell((248, by - 8, 264, by + 8), (190, 190, 200)); ell((296, by - 8, 312, by + 8), (190, 190, 200))
         d.polygon(P(236, 452, 324, 452, 280, 524), fill=det)
+    elif outfit == "ninja":
+        d.polygon(P(256, 452, 280, 490, 304, 452), fill=skin)
+        line((200, 468, 360, 676), lite(top, 1.7), 9); line((360, 468, 200, 676), lite(top, 1.7), 9)
+        d.rectangle(P(185, 612, 375, 640), fill=det)
+    elif outfit == "pirate":
+        d.polygon(P(190, 466, 246, 452, 262, 690, 196, 690), fill=acc); d.polygon(P(370, 466, 314, 452, 298, 690, 364, 690), fill=acc)
+        d.polygon(P(250, 452, 280, 522, 310, 452), fill=skin)
+        d.rectangle(P(185, 612, 375, 640), fill=det); ell((340, 606, 366, 646), shade(det, 0.8))
+    elif outfit == "magical":
+        d.polygon(P(262, 452, 280, 486, 298, 452), fill=skin)
+        for x in range(205, 360, 30):
+            ell((x - 18, 440, x + 18, 480), (255, 255, 255))
+        d.polygon(P(280, 548, 226, 520, 226, 576), fill=det); d.polygon(P(280, 548, 334, 520, 334, 576), fill=det); ell((264, 532, 296, 564), shade(det, 0.85))
+        d.rectangle(P(192, 652, 368, 690), fill=(255, 255, 255))
+    elif outfit == "robe":
+        d.polygon(P(256, 452, 280, 506, 304, 452), fill=skin)
+        line((246, 452, 276, 650), det, 9); line((314, 452, 284, 650), det, 9)
+        for sx, sy in ((214, 540), (344, 522), (236, 626), (326, 640), (290, 570)):
+            ell((sx - 6, sy - 6, sx + 6, sy + 6), (255, 236, 150))
+        d.rectangle(P(185, 604, 375, 622), fill=det)
+    elif outfit == "trench":
+        d.polygon(P(256, 452, 280, 548, 304, 452), fill=(250, 250, 246)); d.polygon(P(264, 452, 280, 486, 296, 452), fill=skin)
+        d.polygon(P(274, 490, 286, 490, 289, 560, 280, 574, 271, 560), fill=det)
+        d.polygon(P(222, 440, 258, 452, 248, 530), fill=shade(top, 0.78)); d.polygon(P(338, 440, 302, 452, 312, 530), fill=shade(top, 0.78))
+        d.rectangle(P(185, 604, 375, 630), fill=shade(top, 0.65)); d.rectangle(P(268, 602, 292, 632), fill=(236, 200, 100))
+        ell((236, 560, 248, 572), (110, 86, 64)); ell((312, 560, 324, 572), (110, 86, 64))
+    elif outfit == "overalls":
+        d.polygon(P(190, 452, 370, 452, 370, 524, 190, 524), fill=c["trim"])
+        d.polygon(P(236, 452, 262, 452, 258, 536, 230, 536), fill=top); d.polygon(P(324, 452, 298, 452, 302, 536, 330, 536), fill=top)
+        d.polygon(P(262, 452, 280, 482, 298, 452), fill=skin)
+        d.rounded_rectangle(P(240, 580, 320, 640), radius=int(10 * S), fill=shade(top, 0.82))
+        ell((236, 520, 252, 536), (240, 200, 70)); ell((308, 520, 324, 536), (240, 200, 70))
+    elif outfit == "labcoat":
+        d.polygon(P(250, 452, 310, 452, 300, 690, 260, 690), fill=c["trim"]); d.polygon(P(264, 452, 280, 486, 296, 452), fill=skin)
+        d.polygon(P(224, 444, 256, 452, 262, 548), fill=shade(top, 0.92)); d.polygon(P(336, 444, 304, 452, 298, 548), fill=shade(top, 0.92))
+        line((256, 452, 262, 690), (208, 208, 218), 4); line((304, 452, 298, 690), (208, 208, 218), 4)
+        d.rectangle(P(206, 610, 250, 660), outline=(208, 208, 218), width=max(1, int(3 * S))); line((222, 596, 222, 626), det, 6)
+    elif outfit == "stage":
+        d.polygon(P(262, 452, 280, 500, 298, 452), fill=skin)
+        line((190, 560, 300, 462), det, 9); line((190, 640, 372, 462), det, 9); line((260, 690, 372, 560), det, 9)
+        d.polygon(P(280, 474, 244, 452, 244, 496), fill=det); d.polygon(P(280, 474, 316, 452, 316, 496), fill=det); ell((268, 460, 292, 488), shade(det, 0.8))
+        for sx, sy in ((228, 620), (332, 600), (306, 660)):
+            d.polygon(P(*star(sx, sy, 12)), fill=(255, 236, 150))
+    elif outfit == "samurai":
+        d.polygon(P(250, 452, 280, 506, 310, 452), fill=skin)
+        line((246, 452, 296, 580), (250, 244, 236), 10); line((314, 452, 264, 580), (250, 244, 236), 10)
+        line((196, 470, 372, 640), det, 14)
+        d.rectangle(P(185, 626, 375, 654), fill=shade(top, 0.6)); ell((262, 618, 298, 662), det)
     else:
         d.polygon(P(245, 452, 280, 505, 315, 452), fill=skin)                          # neckline
         if outfit == "kimono":
@@ -393,8 +485,13 @@ def render_char(c, mouth, blink):
             d.polygon(P(280, 548, 236, 526, 236, 572), fill=det); d.polygon(P(280, 548, 324, 526, 324, 572), fill=det); ell((264, 534, 296, 562), shade(det, 0.85))
         elif outfit == "hoodie":
             line((262, 505, 258, 565), (250, 250, 250), 5); line((298, 505, 302, 565), (250, 250, 250), 5)
-    ell((140, 500, 210, 650), top); ell((350, 500, 420, 650), top)                     # arms
+    arm = c["arm"] or top
+    ell((140, 500, 210, 650), arm); ell((350, 500, 420, 650), arm)                     # arms
     ell((148, 625, 205, 675), skin); ell((355, 625, 412, 675), skin)                   # hands
+    if outfit == "samurai":
+        d.rounded_rectangle(P(122, 468, 212, 538), radius=int(22 * S), fill=shade(det, 0.92)); d.rounded_rectangle(P(348, 468, 438, 538), radius=int(22 * S), fill=shade(det, 0.92))
+        for yy in (488, 508):
+            line((130, yy, 204, yy), shade(top, 0.8), 4); line((356, yy, 430, yy), shade(top, 0.8), 4)
     if "scarf" in accs:
         d.rounded_rectangle(P(196, 438, 364, 486), radius=int(24 * S), fill=det); d.polygon(P(326, 470, 372, 482, 362, 614, 322, 602), fill=shade(det, 0.88))
     ell((125, 145, 435, 455), skin)                                                    # head
@@ -417,7 +514,12 @@ def render_char(c, mouth, blink):
         for x in range(128, 430, 50):
             d.polygon(P(x, 215, x + 50, 215, x + 25, 302 + (14 if (x // 50) % 2 else 0)), fill=hair)
         d.polygon(P(122, 262, 92, 336, 152, 322), fill=hair); d.polygon(P(438, 262, 468, 336, 408, 322), fill=hair)
-    else:                                                                              # hime, twintails, bun, ponytail, bob: blunt bangs
+    elif hs == "topknot":
+        ell((240, 52, 320, 136), hair); d.rectangle(P(256, 120, 304, 138), fill=det)
+        for x in range(135, 420, 58):
+            d.polygon(P(x, 225, x + 58, 225, x + 29, 268), fill=hair)
+        ell((112, 250, 152, 350), hair); ell((408, 250, 448, 350), hair)
+    else:                                                                              # hime, twintails, bun, ponytail, bob, braid: blunt bangs
         d.rounded_rectangle(P(132, 200, 428, 302), radius=int(26 * S), fill=hair)
         if hs == "hime":
             ell((108, 250, 170, 570), hair); ell((390, 250, 452, 570), hair)
@@ -429,6 +531,10 @@ def render_char(c, mouth, blink):
             ell((112, 230, 160, 380), hair); ell((372, 196, 424, 248), det)
         elif hs == "bob":
             ell((112, 250, 170, 440), hair); ell((390, 250, 448, 440), hair)
+        elif hs == "braid":
+            for k in range(7):
+                ell((384 - k * 3, 300 + k * 52, 448 - k * 3, 366 + k * 52), hair)
+            ell((372, 640, 424, 690), det)
     for ex in (222, 338):                                                              # eyes
         if blink:
             d.arc(P(ex - 26, 335, ex + 26, 375), 200, 340, fill=ink, width=int(6 * S))
@@ -445,6 +551,8 @@ def render_char(c, mouth, blink):
             ell((fx - 4, fy - 4, fx + 4, fy + 4), (196, 120, 100))
     elif mk == "bandaid":
         d.rounded_rectangle(P(150, 386, 206, 406), radius=int(8 * S), fill=(246, 222, 176)); ell((172, 394, 178, 400), (222, 190, 140)); ell((184, 394, 190, 400), (222, 190, 140))
+    elif mk == "scar":
+        line((168, 350, 206, 420), (196, 110, 110), 6); line((176, 372, 200, 366), (196, 110, 110), 4); line((184, 394, 210, 386), (196, 110, 110), 4)
     elif mk == "mole":
         ell((366, 398, 376, 408), (90, 60, 60))
     elif mk == "stubble":
@@ -464,6 +572,7 @@ def render_char(c, mouth, blink):
         ell((340, 165, 392, 215), acc); ell((355, 180, 377, 200), (255, 240, 200))
     if "headband" in accs:
         d.rectangle(P(121, 212, 439, 244), fill=det)
+        d.polygon(P(430, 214, 490, 226, 472, 250, 430, 244), fill=det); d.polygon(P(430, 232, 484, 266, 458, 280, 428, 250), fill=shade(det, 0.85))
     if "goggles" in accs:
         line((122, 210, 438, 210), (60, 62, 72), 22)
         ell((196, 142, 274, 216), (60, 62, 72)); ell((206, 152, 264, 206), (140, 224, 244)); ell((286, 142, 364, 216), (60, 62, 72)); ell((296, 152, 354, 206), (140, 224, 244))
@@ -484,6 +593,32 @@ def render_char(c, mouth, blink):
     if "headphones" in accs:
         d.arc(P(112, 118, 448, 440), 200, 340, fill=det, width=int(18 * S))
         ell((96, 268, 164, 372), det); ell((396, 268, 464, 372), det); ell((108, 284, 152, 356), acc); ell((408, 284, 452, 356), acc)
+    if "piratehat" in accs:
+        d.polygon(P(112, 200, 152, 120, 280, 66, 408, 120, 448, 200, 360, 170, 280, 152, 200, 170), fill=(34, 32, 38))
+        d.line(P(112, 200, 200, 170, 280, 152, 360, 170, 448, 200), fill=(232, 190, 80), width=max(1, int(6 * S)))
+        d.polygon(P(404, 116, 482, 36, 464, 114), fill=acc)
+    if "bandana" in accs:
+        d.pieslice(P(120, 134, 440, 358), 180, 360, fill=det); d.rectangle(P(121, 226, 439, 250), fill=shade(det, 0.82))
+        for bx, by in ((190, 190), (250, 166), (310, 172), (370, 196), (222, 236)):
+            ell((bx - 7, by - 7, bx + 7, by + 7), (255, 255, 255))
+        ell((418, 218, 470, 262), det); d.polygon(P(452, 232, 496, 274, 472, 282, 440, 252), fill=det)
+    if "eyepatch" in accs:
+        line((126, 296, 194, 330), (30, 28, 34), 5); line((250, 330, 436, 290), (30, 28, 34), 5); ell((190, 312, 254, 390), (30, 28, 34))
+    if "wizardhat" in accs:
+        d.polygon(P(150, 184, 300, 14, 412, 184), fill=acc); ell((96, 150, 464, 214), shade(acc, 0.82))
+        d.polygon(P(195.9, 132, 377.7, 132, 396.2, 160, 171.2, 160), fill=det); d.polygon(P(*star(290, 100, 18)), fill=(255, 236, 150))
+    if "flatcap" in accs:
+        d.pieslice(P(126, 120, 434, 330), 180, 360, fill=acc); ell((170, 196, 420, 238), shade(acc, 0.8)); ell((268, 118, 292, 138), shade(acc, 0.8))
+    if "bigbow" in accs:
+        d.polygon(P(330, 152, 262, 108, 262, 196), fill=det); d.polygon(P(330, 152, 398, 108, 398, 196), fill=det); ell((314, 134, 346, 170), shade(det, 0.8))
+    if "starclip" in accs:
+        d.polygon(P(*star(150, 196, 26)), fill=(255, 230, 120)); d.polygon(P(*star(410, 196, 26)), fill=(255, 230, 120))
+    if "headset" in accs:
+        line((132, 312, 150, 420), (50, 50, 60), 6); line((150, 420, 196, 424), (50, 50, 60), 6); ell((190, 412, 214, 436), (50, 50, 60))
+    if "mustache" in accs:
+        ell((236, 384, 282, 402), hair); ell((278, 384, 324, 402), hair)
+    if "wand" in accs:
+        line((386, 652, 432, 540), (200, 160, 70), 8); d.polygon(P(*star(436, 516, 36)), fill=(255, 226, 110))
     return im.resize((int(560 * CHAR_SCALE), int(760 * CHAR_SCALE)), Image.LANCZOS)
 
 
