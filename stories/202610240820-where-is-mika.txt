@@ -1,0 +1,33 @@
+title: Where Is Mika?
+episode: 16
+scene: shopping mall
+
+Alex: あれ？ミカさんは どこですか？ | Huh? Where is Mika?
+Alex: すみません。トイレは どこですか？ | Excuse me. Where is the restroom?
+Mika: トイレは あの かいだんの となりですよ！ | The restroom is next to those stairs!
+Alex: あっ、ミカさん！どこに いましたか？ | Oh, Mika! Where were you?
+Mika: ここに いましたよ！ずっと まっていました。 | I was right here! I've been waiting the whole time.
+Alex: ごめんなさい！みちに まよいました。 | I'm sorry! I got lost.
+Mika: だいじょうぶです。いっしょに いきましょう！ | It's okay. Let's go together!
+
+vocab: あれ | are | Huh? / Oh? (expresses surprise here)
+vocab: ミカさん | Mika-san | Mika (polite form of address)
+vocab: どこ | doko | Where
+vocab: すみません | sumimasen | Excuse me / Sorry
+vocab: トイレ | toire | Restroom / Toilet
+vocab: あの | ano | That (over there, before a noun)
+vocab: かいだん | kaidan | Stairs
+vocab: となり | tonari | Next to / Beside
+vocab: よ | yo | Emphasis particle; adds information
+vocab: あっ | a | Oh! / Ah!
+vocab: ここ | koko | Here
+vocab: いました | imashita | Was / Were (for people and animals)
+vocab: ずっと | zutto | All along / The whole time
+vocab: まっていました | matte imashita | Was waiting
+vocab: ごめんなさい | gomennasai | I'm sorry
+vocab: みち | michi | Road / Way
+vocab: に | ni | In / On / At (particle; meaning depends on context)
+vocab: まよいました | mayoimashita | Got lost
+vocab: だいじょうぶ | daijoubu | Okay / All right
+vocab: いっしょに | issho ni | Together
+vocab: いきましょう | ikimashou | Let's go
