@@ -29,7 +29,7 @@ def make_cover(story, out):
     for nm, c in CHARS.items():
         s = T.sprite(nm, 1, False)
         fr.paste(s, (c["x"], T.CHAR_Y + 40), s)
-        p = T.pill(nm, c["accent"]); fr.paste(p, (c["x"] + s.width // 2 - p.width // 2, 370), p)
+        p = T.pill(c["label"], c["accent"]); fr.paste(p, (c["x"] + s.width // 2 - p.width // 2, 370), p)
     fr.paste(fg, (0, T.TABLE_TOP - 15), fg)
 
     # title card
