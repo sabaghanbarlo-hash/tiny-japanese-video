@@ -34,3 +34,10 @@ petals (sakura, fuji, castle), maple leaves (shrine, autumn), green bamboo leave
 Fallen petals / leaves also lie on the ground. Weather words in an outdoor story override the default (a rainy day at the park gets rain); force it with `weather: snow`, or turn it off with `weather: none`.
 
 Preview one frame: `python tinyvideo.py stories/xxx.txt --dummy-audio --preview out.png`. Contact sheets: `docs/new-backgrounds.jpg` and `docs/new-backgrounds-2.jpg`.
+
+## Characters
+15 original anime-style characters (all drawn in code): Mika, Alex, Haru, Sora, Rin, Yuki, Kenji, Hana, Ryu, Kai, Aoi, Emi, Taro, Sakuya, Daichi. Portraits: `docs/characters.jpg`.
+Pick two on the site, or add a line to the story: `cast: haru, rin` (left, right).
+`Mika:` always means the left character and `Alex:` the right one; you can also write the character's own name (`Haru: ...`).
+Each character has their own look, name tag and voice pitch (the two natural Japanese voices, shifted up or down).
+Add your own: copy a `char(...)` entry in `ROSTER` (tinyvideo.py) and run `python portraits.py` to refresh the portraits.

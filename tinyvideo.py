@@ -4,7 +4,7 @@
 Free stack: edge-tts (Japanese neural voices), Pillow (drawn characters + subtitles),
 ffmpeg (encode). Runs on GitHub Actions, nothing to install locally.
 """
-import time, argparse, asyncio, functools, glob, math, os, random, re, subprocess, sys, tempfile, wave
+import time, argparse, asyncio, functools, glob, inspect, math, os, random, re, subprocess, sys, tempfile, wave
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
@@ -12,12 +12,73 @@ W, H, FPS, SR = 1080, 1920, 30, 24000
 CHAR_SCALE, CHAR_Y = 0.9, 300
 TABLE_TOP, CARD_Y = 885, 1040
 
-CHARS = {
-    "Mika": dict(voice="ja-JP-NanamiNeural", hair=(74, 45, 38), skin=(255, 224, 205), top=(244, 168, 184),
-                 accent=(222, 110, 134), long_hair=True, x=16),
-    "Alex": dict(voice="ja-JP-KeitaNeural", hair=(139, 98, 64), skin=(250, 214, 190), top=(142, 178, 150),
-                 accent=(96, 150, 112), long_hair=False, x=W - 16 - int(560 * CHAR_SCALE)),
+# ---------- characters ----------
+# Two slots on screen: "Mika" = left, "Alex" = right. Which character stands in a slot comes from `cast: left, right` in the story.
+CHAR_DEFAULTS = dict(hair_style="short", eye=(55, 35, 42), pupil=False, outfit="plain", acc=(), acc_col=(226, 92, 92), mark=None, brow=None,
+                     trim=(250, 250, 250), pitch=None, tag="")
+F_VOICE, M_VOICE = "ja-JP-NanamiNeural", "ja-JP-KeitaNeural"
+
+
+def char(label, **kw):
+    c = dict(CHAR_DEFAULTS, label=label); c.update(kw)
+    return c
+
+
+ROSTER = {
+    "mika": char("Mika", voice=F_VOICE, hair=(74, 45, 38), skin=(255, 224, 205), top=(244, 168, 184), accent=(222, 110, 134), hair_style="long", acc=("flower",), tag="Cheerful"),
+    "alex": char("Alex", voice=M_VOICE, hair=(139, 98, 64), skin=(250, 214, 190), top=(142, 178, 150), accent=(96, 150, 112), hair_style="short", tag="Friendly"),
+    "haru": char("Haru", voice=M_VOICE, pitch="+12Hz", hair=(36, 50, 92), skin=(250, 216, 190), top=(232, 98, 80), accent=(214, 82, 64), hair_style="spiky",
+                 eye=(80, 176, 130), pupil=True, outfit="hoodie", mark="freckles", tag="Energetic"),
+    "sora": char("Sora", voice=M_VOICE, pitch="-8Hz", hair=(204, 210, 224), skin=(248, 222, 204), top=(46, 62, 112), accent=(70, 90, 150), hair_style="short",
+                 eye=(120, 150, 214), pupil=True, outfit="blazer", acc_col=(200, 70, 70), brow="sharp", tag="Cool"),
+    "rin": char("Rin", voice=F_VOICE, pitch="+22Hz", hair=(244, 148, 190), skin=(255, 226, 210), top=(250, 250, 252), accent=(60, 80, 150), hair_style="twintails",
+                eye=(206, 76, 128), pupil=True, outfit="sailor", acc=("ribbon",), acc_col=(230, 70, 90), tag="Playful"),
+    "yuki": char("Yuki", voice=F_VOICE, pitch="-10Hz", hair=(212, 230, 250), skin=(255, 230, 220), top=(142, 184, 226), accent=(110, 160, 220), hair_style="hime",
+                 eye=(110, 170, 230), pupil=True, outfit="kimono", acc_col=(236, 120, 150), tag="Calm"),
+    "kenji": char("Kenji", voice=M_VOICE, pitch="-2Hz", hair=(30, 30, 40), skin=(250, 218, 196), top=(74, 88, 104), accent=(80, 110, 140), hair_style="short",
+                  eye=(70, 60, 60), pupil=True, outfit="blazer", acc=("glasses",), acc_col=(200, 70, 70), tag="Bookish"),
+    "hana": char("Hana", voice=F_VOICE, pitch="+8Hz", hair=(170, 60, 70), skin=(255, 224, 205), top=(236, 140, 70), accent=(226, 120, 60), hair_style="bun",
+                 eye=(150, 60, 50), pupil=True, outfit="kimono", acc_col=(250, 226, 150), tag="Festival"),
+    "ryu": char("Ryu", voice=M_VOICE, pitch="-14Hz", hair=(28, 26, 30), skin=(246, 210, 184), top=(244, 244, 240), accent=(80, 80, 98), hair_style="spiky",
+                eye=(40, 30, 30), pupil=True, outfit="gi", acc=("headband",), acc_col=(210, 60, 60), mark="bandaid", brow="sharp", tag="Fighter"),
+    "kai": char("Kai", voice=M_VOICE, pitch="+6Hz", hair=(226, 184, 106), skin=(250, 214, 190), top=(40, 150, 170), accent=(36, 130, 150), hair_style="spiky",
+                eye=(120, 80, 50), pupil=True, outfit="jacket", acc=("goggles",), mark="freckles", tag="Explorer"),
+    "aoi": char("Aoi", voice=F_VOICE, pitch="+10Hz", hair=(70, 130, 220), skin=(252, 222, 202), top=(72, 120, 200), accent=(60, 110, 190), hair_style="ponytail",
+                eye=(50, 170, 170), pupil=True, outfit="jacket", acc_col=(250, 200, 60), tag="Sporty"),
+    "emi": char("Emi", voice=F_VOICE, pitch="+26Hz", hair=(252, 216, 120), skin=(255, 228, 212), top=(186, 160, 230), accent=(160, 130, 214), hair_style="bob",
+                eye=(230, 150, 70), pupil=True, outfit="hoodie", acc=("catears",), acc_col=(250, 170, 190), tag="Cute"),
+    "taro": char("Taro", voice=M_VOICE, pitch="-4Hz", hair=(92, 60, 44), skin=(248, 212, 186), top=(250, 250, 252), accent=(214, 84, 70), hair_style="short",
+                 outfit="chef", acc=("chefhat",), acc_col=(214, 84, 70), tag="Chef"),
+    "sakuya": char("Sakuya", voice=F_VOICE, pitch="-14Hz", hair=(62, 42, 96), skin=(255, 232, 222), top=(92, 58, 130), accent=(150, 90, 190), hair_style="hime",
+                   eye=(140, 96, 190), pupil=True, outfit="kimono", acc_col=(236, 200, 120), mark="mole", tag="Elegant"),
+    "daichi": char("Daichi", voice=M_VOICE, pitch="-22Hz", hair=(112, 78, 58), skin=(240, 202, 174), top=(120, 140, 128), accent=(90, 120, 104), hair_style="short",
+                   outfit="hoodie", acc=("headphones",), acc_col=(50, 50, 60), mark="stubble", tag="Chill"),
 }
+for _k, _v in ROSTER.items():
+    _v["id"] = _k
+CHARS = {"Mika": dict(ROSTER["mika"], x=16), "Alex": dict(ROSTER["alex"], x=W - 16 - int(560 * CHAR_SCALE))}
+
+
+def cast_ids(meta):
+    toks = [t for t in re.split(r"[\s,&/|+]+|\band\b", (meta.get("cast") or "").lower()) if t]
+    if not toks:
+        return "mika", "alex"
+    ids = (toks + ["alex" if toks[0] != "alex" else "mika"])[:2]
+    for x in ids:
+        if x not in ROSTER:
+            sys.exit(f"Unknown character '{x}' in cast. Choose from: {', '.join(ROSTER)}")
+    if ids[0] == ids[1]:
+        sys.exit("cast: pick two different characters")
+    return ids[0], ids[1]
+
+
+def apply_cast(meta):
+    """Put the chosen characters into the left (Mika) and right (Alex) slots."""
+    for slot, cid in zip(("Mika", "Alex"), cast_ids(meta)):
+        CHARS[slot].update(ROSTER[cid])
+    return CHARS["Mika"]["id"], CHARS["Alex"]["id"]
+
+
 SCENES = {
     "cafe": dict(top=(255, 246, 232), bot=(250, 228, 210), floor=(204, 160, 120), table=(228, 184, 140), edge=(176, 130, 92)),
     "station": dict(top=(196, 224, 246), bot=(236, 246, 252), floor=(150, 150, 164), table=(238, 204, 96), edge=(120, 120, 134)),
@@ -182,7 +243,7 @@ def parse_story(path):
         s = raw.strip()
         if not s or s.startswith("#"):
             continue
-        m = re.match(r"^(title|scene|episode|weather)\s*:\s*(.+)$", s, re.I)
+        m = re.match(r"^(title|scene|episode|weather|cast)\s*:\s*(.+)$", s, re.I)
         if m:
             meta[m[1].lower()] = m[2].strip()
             continue
@@ -195,14 +256,21 @@ def parse_story(path):
                 vocab.append(dict(jp=p[0], romaji=p[1], en=p[2]))
             continue
         m = re.match(r"^([A-Za-z]+)\s*[:：]\s*(.+)$", s)
-        if m and m[1].capitalize() in CHARS:
+        if m and m[1].lower() in ROSTER:
             p = [x.strip() for x in m[2].split("|")]
-            lines.append(dict(speaker=m[1].capitalize(), jp=p[0], en=p[1] if len(p) > 1 else "",
+            lines.append(dict(speaker=m[1].lower(), jp=p[0], en=p[1] if len(p) > 1 else "",
                               romaji=p[2] if len(p) > 2 else to_romaji(p[0])))
             continue
-        sys.exit(f"Cannot parse line (speakers must be {', '.join(CHARS)}): {s}")
+        sys.exit(f"Cannot parse line (speakers: Mika / Alex = left / right, or a cast character's name): {s}")
     if not lines:
         sys.exit("No dialogue lines found.")
+    left, right = cast_ids(meta)
+    slots = {"mika": "Mika", "alex": "Alex", left: "Mika", right: "Alex"}
+    for l in lines:
+        if l["speaker"] not in slots:
+            sys.exit(f"'{l['speaker']}' is not in this story's cast ({left}, {right}). Add it to the cast line, e.g. 'cast: {l['speaker']}, {right}'.")
+        l["speaker"] = slots[l["speaker"]]
+    apply_cast(meta)
     return meta, lines, vocab
 
 
@@ -236,7 +304,10 @@ def synth(text, speaker, out_wav, rate, dummy=False, voice=None, lang="ja"):
     for attempt in range(1, 6):          # Microsoft's endpoint sometimes answers 403 for a while; retry before downgrading
         try:
             import edge_tts
-            asyncio.run(edge_tts.Communicate(text, voice or CHARS[speaker]["voice"], rate=rate).save(mp3))
+            kw = {}
+            if not voice and CHARS.get(speaker, {}).get("pitch") and "pitch" in inspect.signature(edge_tts.Communicate.__init__).parameters:
+                kw["pitch"] = CHARS[speaker]["pitch"]
+            asyncio.run(edge_tts.Communicate(text, voice or CHARS[speaker]["voice"], rate=rate, **kw).save(mp3))
             ok = True
             break
         except Exception as e:
@@ -252,7 +323,7 @@ def synth(text, speaker, out_wav, rate, dummy=False, voice=None, lang="ja"):
         print(f"::warning::edge-tts unavailable ({last}); using the lower-quality gTTS fallback voice", file=sys.stderr)
         from gtts import gTTS
         gTTS(text, lang=lang).save(mp3)
-        if speaker == "Alex" and lang == "ja":
+        if CHARS.get(speaker, {}).get("voice") == M_VOICE and lang == "ja":
             af = ["-af", f"asetrate={int(SR * 0.86)},aresample={SR}"]
     sh(["ffmpeg", "-y", "-loglevel", "error", "-i", mp3, *af, "-ar", str(SR), "-ac", "1", out_wav])
 
@@ -268,45 +339,161 @@ def mouth_levels(audio, n):
 
 
 # ---------- characters ----------
-@functools.lru_cache(None)
-def sprite(name, mouth, blink):
-    c, S = CHARS[name], 2 * CHAR_SCALE
+def render_char(c, mouth, blink):
+    S = 2 * CHAR_SCALE
     w, h = int(560 * S), int(760 * S)
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
     P = lambda *v: [int(x * S) for x in v]
     ell = lambda box, fill: d.ellipse(P(*box), fill=fill)
-    ink, hair, skin, top, acc = (70, 45, 48), c["hair"], c["skin"], c["top"], c["accent"]
-    if c["long_hair"]:
+    shade = lambda col, f: tuple(int(v * f) for v in col)
+    line = lambda pts, fill, wd: d.line(P(*pts), fill=fill, width=max(1, int(wd * S)))
+    ink, hair, skin, top, acc, det = (70, 45, 48), c["hair"], c["skin"], c["top"], c["accent"], c["acc_col"]
+    hs, outfit, accs, white = c["hair_style"], c["outfit"], set(c["acc"]), (255, 255, 255)
+    # hair that sits behind the body
+    if hs in ("long", "hime"):
         d.rounded_rectangle(P(110, 170, 450, 590), radius=int(110 * S), fill=hair)
-    d.rounded_rectangle(P(185, 450, 375, 690), radius=int(60 * S), fill=top)           # body
-    d.polygon(P(245, 452, 280, 505, 315, 452), fill=skin)                              # neckline
+    elif hs == "twintails":
+        ell((50, 240, 170, 650), hair); ell((390, 240, 510, 650), hair)
+    elif hs == "ponytail":
+        ell((372, 170, 522, 570), hair)
+    elif hs == "bob":
+        d.rounded_rectangle(P(112, 170, 448, 440), radius=int(70 * S), fill=hair)
+    # body + outfit
+    if outfit == "hoodie":
+        ell((198, 428, 362, 522), shade(top, 0.8))
+    d.rounded_rectangle(P(185, 450, 375, 690), radius=int(60 * S), fill=top)
+    if outfit == "hoodie":
+        d.rounded_rectangle(P(225, 600, 335, 672), radius=int(24 * S), fill=shade(top, 0.86))
+    if outfit == "sailor":
+        d.polygon(P(185, 462, 280, 552, 375, 462, 375, 506, 280, 602, 185, 506), fill=acc)
+        line((190, 484, 280, 574), white, 4); line((370, 484, 280, 574), white, 4)
+    if outfit == "blazer":
+        d.polygon(P(247, 452, 280, 590, 313, 452), fill=white); d.polygon(P(262, 452, 280, 488, 298, 452), fill=skin)
+        d.polygon(P(274, 500, 286, 500, 291, 585, 280, 604, 269, 585), fill=det)
+        line((247, 452, 224, 566), shade(top, 0.7), 5); line((313, 452, 336, 566), shade(top, 0.7), 5)
+    elif outfit == "jacket":
+        d.rectangle(P(256, 452, 304, 690), fill=c["trim"]); d.polygon(P(262, 452, 280, 486, 298, 452), fill=skin)
+        line((256, 452, 256, 690), shade(top, 0.7), 5); line((304, 452, 304, 690), shade(top, 0.7), 5)
+        d.polygon(P(236, 446, 258, 452, 258, 506), fill=shade(top, 0.82)); d.polygon(P(324, 446, 302, 452, 302, 506), fill=shade(top, 0.82))
+    elif outfit == "chef":
+        d.polygon(P(245, 452, 280, 505, 315, 452), fill=skin)
+        for by in (530, 574, 618):
+            ell((248, by - 8, 264, by + 8), (190, 190, 200)); ell((296, by - 8, 312, by + 8), (190, 190, 200))
+        d.polygon(P(236, 452, 324, 452, 280, 524), fill=det)
+    else:
+        d.polygon(P(245, 452, 280, 505, 315, 452), fill=skin)                          # neckline
+        if outfit == "kimono":
+            line((250, 452, 300, 612), (250, 244, 236), 12); line((310, 452, 262, 612), (250, 244, 236), 12)
+            d.rounded_rectangle(P(185, 588, 375, 650), radius=int(14 * S), fill=det); ell((296, 596, 364, 644), shade(det, 0.85))
+        elif outfit == "gi":
+            line((250, 452, 296, 606), (200, 200, 196), 8); line((310, 452, 264, 606), (200, 200, 196), 8)
+            d.rectangle(P(185, 606, 375, 636), fill=(40, 40, 48)); ell((258, 600, 302, 648), (40, 40, 48))
+            d.polygon(P(280, 632, 262, 692, 278, 692), fill=(40, 40, 48)); d.polygon(P(280, 632, 302, 692, 286, 692), fill=(40, 40, 48))
+        elif outfit == "sailor":
+            d.polygon(P(280, 548, 236, 526, 236, 572), fill=det); d.polygon(P(280, 548, 324, 526, 324, 572), fill=det); ell((264, 534, 296, 562), shade(det, 0.85))
+        elif outfit == "hoodie":
+            line((262, 505, 258, 565), (250, 250, 250), 5); line((298, 505, 302, 565), (250, 250, 250), 5)
     ell((140, 500, 210, 650), top); ell((350, 500, 420, 650), top)                     # arms
     ell((148, 625, 205, 675), skin); ell((355, 625, 412, 675), skin)                   # hands
+    if "scarf" in accs:
+        d.rounded_rectangle(P(196, 438, 364, 486), radius=int(24 * S), fill=det); d.polygon(P(326, 470, 372, 482, 362, 614, 322, 602), fill=shade(det, 0.88))
     ell((125, 145, 435, 455), skin)                                                    # head
     d.pieslice(P(118, 136, 442, 460), 180, 360, fill=hair)                             # hair cap
-    if c["long_hair"]:
+    # front hair
+    if hs == "long":
         for x in range(150, 420, 48):
             ell((x - 34, 225, x + 34, 300 + (12 if (x // 48) % 2 else 0)), hair)
         ell((112, 280, 168, 520), hair); ell((392, 280, 448, 520), hair)
-        ell((340, 165, 392, 215), acc); ell((355, 180, 377, 200), (255, 240, 200))     # hair flower
-    else:
+    elif hs == "short":
         for x in range(135, 420, 58):
             d.polygon(P(x, 225, x + 58, 225, x + 29, 305), fill=hair)
         d.polygon(P(262, 120, 300, 120, 282, 165), fill=hair)
+    elif hs == "spiky":
+        for ang, tr in ((200, 230), (228, 262), (256, 240), (284, 276), (312, 246), (340, 226)):
+            tip = (280 + tr * math.cos(math.radians(ang)), 300 + tr * math.sin(math.radians(ang)))
+            b1 = (280 + 160 * math.cos(math.radians(ang - 16)), 300 + 160 * math.sin(math.radians(ang - 16)))
+            b2 = (280 + 160 * math.cos(math.radians(ang + 16)), 300 + 160 * math.sin(math.radians(ang + 16)))
+            d.polygon(P(b1[0], b1[1], tip[0], tip[1], b2[0], b2[1]), fill=hair)
+        for x in range(128, 430, 50):
+            d.polygon(P(x, 215, x + 50, 215, x + 25, 302 + (14 if (x // 50) % 2 else 0)), fill=hair)
+        d.polygon(P(122, 262, 92, 336, 152, 322), fill=hair); d.polygon(P(438, 262, 468, 336, 408, 322), fill=hair)
+    else:                                                                              # hime, twintails, bun, ponytail, bob: blunt bangs
+        d.rounded_rectangle(P(132, 200, 428, 302), radius=int(26 * S), fill=hair)
+        if hs == "hime":
+            ell((108, 250, 170, 570), hair); ell((390, 250, 452, 570), hair)
+        elif hs == "twintails":
+            ell((92, 232, 152, 288), det); ell((408, 232, 468, 288), det)
+        elif hs == "bun":
+            ell((118, 80, 232, 194), hair); ell((328, 80, 442, 194), hair); ell((156, 168, 196, 198), det); ell((364, 168, 404, 198), det)
+        elif hs == "ponytail":
+            ell((112, 230, 160, 380), hair); ell((372, 196, 424, 248), det)
+        elif hs == "bob":
+            ell((112, 250, 170, 440), hair); ell((390, 250, 448, 440), hair)
     for ex in (222, 338):                                                              # eyes
         if blink:
             d.arc(P(ex - 26, 335, ex + 26, 375), 200, 340, fill=ink, width=int(6 * S))
         else:
-            ell((ex - 24, 318, ex + 24, 382), (55, 35, 42))
+            y0, y1 = (324, 376) if c["brow"] == "sharp" else (318, 382)
+            ell((ex - 24, y0, ex + 24, y1), c["eye"])
+            if c["pupil"]:
+                ell((ex - 13, y0 + 12, ex + 13, y1 - 10), (35, 25, 34))
             ell((ex - 15, 330, ex + 3, 350), (255, 255, 255)); ell((ex + 6, 358, ex + 16, 368), (255, 255, 255))
     ell((168, 388, 215, 412), (250, 172, 170)); ell((345, 388, 392, 412), (250, 172, 170))  # blush
+    mk = c["mark"]
+    if mk == "freckles":
+        for fx, fy in ((176, 372), (192, 380), (208, 372), (352, 372), (368, 380), (384, 372)):
+            ell((fx - 4, fy - 4, fx + 4, fy + 4), (196, 120, 100))
+    elif mk == "bandaid":
+        d.rounded_rectangle(P(150, 386, 206, 406), radius=int(8 * S), fill=(246, 222, 176)); ell((172, 394, 178, 400), (222, 190, 140)); ell((184, 394, 190, 400), (222, 190, 140))
+    elif mk == "mole":
+        ell((366, 398, 376, 408), (90, 60, 60))
+    elif mk == "stubble":
+        for i in range(-5, 6):
+            for yy in (432, 444):
+                ell((280 + i * 17 - 2, yy - abs(i) * 3 - 2, 280 + i * 17 + 2, yy - abs(i) * 3 + 2), (126, 100, 90))
+    if c["brow"] == "sharp":
+        line((186, 296, 248, 312), shade(hair, 0.7), 8); line((374, 296, 312, 312), shade(hair, 0.7), 8)
     if mouth == 0:
         d.arc(P(262, 400, 298, 430), 20, 160, fill=ink, width=int(5 * S))
     elif mouth == 1:
         ell((268, 408, 292, 430), (120, 40, 52))
     else:
         ell((258, 405, 302, 442), (120, 40, 52)); ell((266, 424, 294, 440), (236, 120, 132))
+    # accessories
+    if "flower" in accs:
+        ell((340, 165, 392, 215), acc); ell((355, 180, 377, 200), (255, 240, 200))
+    if "headband" in accs:
+        d.rectangle(P(121, 212, 439, 244), fill=det)
+    if "goggles" in accs:
+        line((122, 210, 438, 210), (60, 62, 72), 22)
+        ell((196, 142, 274, 216), (60, 62, 72)); ell((206, 152, 264, 206), (140, 224, 244)); ell((286, 142, 364, 216), (60, 62, 72)); ell((296, 152, 354, 206), (140, 224, 244))
+    if "glasses" in accs:
+        for ex in (222, 338):
+            d.ellipse(P(ex - 44, 306, ex + 44, 394), outline=(60, 50, 60), width=max(2, int(6 * S)))
+        line((266, 348, 294, 348), (60, 50, 60), 6)
+    if "catears" in accs:
+        d.polygon(P(150, 190, 168, 84, 246, 150), fill=hair); d.polygon(P(410, 190, 392, 84, 314, 150), fill=hair)
+        d.polygon(P(168, 160, 176, 112, 214, 148), fill=det); d.polygon(P(392, 160, 384, 112, 346, 148), fill=det)
+    if "ribbon" in accs:
+        d.polygon(P(366, 176, 322, 148, 322, 204), fill=det); d.polygon(P(366, 176, 410, 148, 410, 204), fill=det); ell((352, 162, 380, 190), shade(det, 0.8))
+    if "chefhat" in accs:
+        rim = (214, 214, 222)
+        for bx in ((158, 36, 266, 138), (226, 6, 334, 116), (294, 36, 402, 138)):
+            d.ellipse(P(*bx), fill=(252, 252, 252), outline=rim)
+        d.rectangle(P(186, 112, 374, 160), fill=(252, 252, 252)); d.line(P(186, 160, 374, 160), fill=rim, width=max(1, int(3 * S)))
+    if "headphones" in accs:
+        d.arc(P(112, 118, 448, 440), 200, 340, fill=det, width=int(18 * S))
+        ell((96, 268, 164, 372), det); ell((396, 268, 464, 372), det); ell((108, 284, 152, 356), acc); ell((408, 284, 452, 356), acc)
     return im.resize((int(560 * CHAR_SCALE), int(760 * CHAR_SCALE)), Image.LANCZOS)
+
+
+@functools.lru_cache(None)
+def _sprite(cid, mouth, blink):
+    return render_char(ROSTER[cid], mouth, blink)
+
+
+def sprite(name, mouth, blink):
+    return _sprite(CHARS[name]["id"], mouth, blink)
 
 
 def pill(text, fill, fg=(255, 255, 255)):
@@ -796,7 +983,7 @@ def line_card(ln):
     parts = [(t, jp, (52, 40, 44), 82) for t in balanced(ln["jp"], jp, maxw)] + [("", None, None, 14)]
     parts += [(t, ro, (176, 110, 128), 49) for t in wrap(ln["romaji"], ro, maxw)] + [("", None, None, 18)]
     parts += [(t, en, (90, 78, 80), 54) for t in wrap(ln["en"], en, maxw)]
-    return card_image(ln["speaker"], CHARS[ln["speaker"]]["accent"], parts)
+    return card_image(CHARS[ln["speaker"]]["label"], CHARS[ln["speaker"]]["accent"], parts)
 
 
 def vocab_card(vocab, active=None):
@@ -953,7 +1140,7 @@ def build(story, rate, dummy, tmp):
     wx = pick_weather(meta, lines, meta["scene"]); print("Weather:", wx or "none")
     wxp = make_weather(wx, meta["scene"]) if wx else None
     cards = [line_card(l) for l in lines]; vcards = [vocab_card(vocab, j) for j in range(len(vocab))]
-    pills = {(nm, a): pill(nm, CHARS[nm]["accent"] if a else (226, 214, 206), (255, 255, 255) if a else (130, 112, 108))
+    pills = {(nm, a): pill(CHARS[nm]["label"], CHARS[nm]["accent"] if a else (226, 214, 206), (255, 255, 255) if a else (130, 112, 108))
              for nm in CHARS for a in (0, 1)}
 
     def frame(i):

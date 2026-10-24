@@ -1,0 +1,92 @@
+[
+ {
+  "id": "mika",
+  "name": "Mika",
+  "tag": "Cheerful",
+  "voice": "female"
+ },
+ {
+  "id": "alex",
+  "name": "Alex",
+  "tag": "Friendly",
+  "voice": "male"
+ },
+ {
+  "id": "haru",
+  "name": "Haru",
+  "tag": "Energetic",
+  "voice": "male"
+ },
+ {
+  "id": "sora",
+  "name": "Sora",
+  "tag": "Cool",
+  "voice": "male"
+ },
+ {
+  "id": "rin",
+  "name": "Rin",
+  "tag": "Playful",
+  "voice": "female"
+ },
+ {
+  "id": "yuki",
+  "name": "Yuki",
+  "tag": "Calm",
+  "voice": "female"
+ },
+ {
+  "id": "kenji",
+  "name": "Kenji",
+  "tag": "Bookish",
+  "voice": "male"
+ },
+ {
+  "id": "hana",
+  "name": "Hana",
+  "tag": "Festival",
+  "voice": "female"
+ },
+ {
+  "id": "ryu",
+  "name": "Ryu",
+  "tag": "Fighter",
+  "voice": "male"
+ },
+ {
+  "id": "kai",
+  "name": "Kai",
+  "tag": "Explorer",
+  "voice": "male"
+ },
+ {
+  "id": "aoi",
+  "name": "Aoi",
+  "tag": "Sporty",
+  "voice": "female"
+ },
+ {
+  "id": "emi",
+  "name": "Emi",
+  "tag": "Cute",
+  "voice": "female"
+ },
+ {
+  "id": "taro",
+  "name": "Taro",
+  "tag": "Chef",
+  "voice": "male"
+ },
+ {
+  "id": "sakuya",
+  "name": "Sakuya",
+  "tag": "Elegant",
+  "voice": "female"
+ },
+ {
+  "id": "daichi",
+  "name": "Daichi",
+  "tag": "Chill",
+  "voice": "male"
+ }
+]
