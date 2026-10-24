@@ -34,6 +34,13 @@ details summary{cursor:pointer;font-weight:600}
 .ok{color:var(--ok)}.err{color:var(--err)}
 video{width:100%;max-width:360px;border-radius:16px;display:block;margin:12px auto 0;background:#000}
 a{color:var(--pink)}
+.who{display:flex;justify-content:space-between;align-items:baseline;margin:12px 0 0}.who span{color:var(--pink);font-weight:700}
+.strip{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 10px;-webkit-overflow-scrolling:touch}
+.face{flex:0 0 auto;width:86px;padding:5px 2px;border:2px solid transparent;border-radius:16px;background:var(--field);color:var(--ink);font-weight:400;font-size:1rem;text-align:center}
+.face:hover{filter:none;border-color:var(--line)}
+.face img{width:72px;height:72px;border-radius:14px;display:block;margin:0 auto 4px}
+.face b{display:block;font-size:.82rem}.face small{display:block;color:var(--soft);font-size:.68rem}
+.face.on{border-color:var(--pink);background:#2a1f2a}
 </style>
 </head>
 <body>
@@ -42,9 +49,16 @@ a{color:var(--pink)}
 <p class="sub">Paste a script, press the button, get a Reel. <a href="queue.html">See the queue →</a></p>
 
 <div class="card">
+<label>Characters</label>
+<p class="hint" style="margin:0">Tap a face for each side. In the script, <code>Mika:</code> means the left character and <code>Alex:</code> the right one, or write the character's own name.</p>
+<div class="who"><b>Left</b><span id="nameL"></span></div><div class="strip" id="stripL"></div>
+<div class="who"><b>Right</b><span id="nameR"></span></div><div class="strip" id="stripR"></div>
+</div>
+
+<div class="card">
 <label for="script">Script</label>
 <textarea id="script" spellcheck="false"></textarea>
-<p class="hint">One line per speaker: <code>Mika: Japanese | English</code>. Speakers: Mika, Alex. Scenes: cafe, station, sakura. Romaji is automatic.</p>
+<p class="hint">One line per speaker: <code>Mika: Japanese | English</code>. Speakers: Mika (left) and Alex (right), or the names of the characters you picked. Scenes: auto, cafe, station, sakura, ramen, shrine, snow, rainy … Optional line <code>weather: rain</code> (petals, leaves, snow, rain, wind, none). Romaji is automatic.</p>
 <label for="caption" style="margin-top:14px">Instagram caption <span style="font-weight:400;color:var(--soft)">(optional – auto-written if empty)</span></label>
 <textarea id="caption" class="small" placeholder="Leave empty for an automatic caption with today's words and hashtags"></textarea>
 <div class="check"><input type="checkbox" id="post" checked><label for="post" style="margin:0">Post to Instagram when the video is ready</label></div>
@@ -83,7 +97,24 @@ vocab: どこですか | doko desu ka | Where is it?
 const get=k=>{try{return localStorage.getItem(k)||""}catch(e){return ""}};
 const set=(k,v)=>{try{v?localStorage.setItem(k,v):localStorage.removeItem(k)}catch(e){}};
 $("script").value=get("tjv_script")||SAMPLE;
-$("script").addEventListener("input",()=>set("tjv_script",$("script").value));
+$("script").addEventListener("input",()=>{set("tjv_script",$("script").value);const a=castL+castR;readCast();if(a!==castL+castR)drawStrips()});
+let ROSTER=[{id:"mika",name:"Mika",tag:"Cheerful"},{id:"alex",name:"Alex",tag:"Friendly"}],castL="mika",castR="alex";
+function readCast(){const m=$("script").value.match(/^cast\s*:\s*(.+)$/im);if(!m)return;const p=m[1].toLowerCase().split(/[\s,&]+/).filter(Boolean);if(p[0])castL=p[0];if(p[1])castR=p[1]}
+function writeCast(){let t=$("script").value;const line=`cast: ${castL}, ${castR}`;
+  if(/^cast\s*:.*$/im.test(t))t=t.replace(/^cast\s*:.*$/im,line);
+  else if(/^title\s*:.*$/im.test(t))t=t.replace(/^(title\s*:.*)$/im,"$1\n"+line);
+  else t=line+"\n"+t;
+  $("script").value=t;set("tjv_script",t)}
+function drawStrips(){
+  for(const [side,id,nm] of [["L","stripL","nameL"],["R","stripR","nameR"]]){
+    const cur=side==="L"?castL:castR,box=$(id),sx=box.scrollLeft;box.innerHTML="";
+    for(const r of ROSTER){const b=document.createElement("button");b.type="button";b.className="face"+(r.id===cur?" on":"");
+      b.innerHTML=`<img alt="" src="characters/${r.id}.png" onerror="this.style.visibility='hidden'"><b>${r.name}</b><small>${r.tag||""}</small>`;
+      b.onclick=()=>{if(side==="L")castL=r.id;else castR=r.id;writeCast();drawStrips()};box.appendChild(b)}
+    box.scrollLeft=sx;const me=ROSTER.find(r=>r.id===cur);$(nm).textContent=me?me.name:cur}
+  if(castL===castR)$("nameR").textContent+="  (pick two different characters)"}
+fetch("characters/roster.json").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.length){ROSTER=j;drawStrips()}}).catch(()=>{});
+readCast();drawStrips();
 $("token").value=get("tjv_token");
 if(!get("tjv_token"))$("setup").open=true;
 $("saveTok").onclick=()=>{set("tjv_token",$("token").value.trim());say("Token saved in this browser.","ok")};
@@ -96,17 +127,18 @@ function hdr(){return{Authorization:"Bearer "+get("tjv_token"),Accept:"applicati
 async function gh(path,opt={}){const r=await fetch(API+path,{...opt,headers:hdr()});if(!r.ok){let m="";try{m=(await r.json()).message}catch(e){}throw new Error(`GitHub ${r.status}: ${m||r.statusText}`)}return r.status===204?null:r.json()}
 function slug(t){return (t||"story").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,40)||"story"}
 function check(text){
-  const speakers=/^(mika|alex)\s*[:：]/i;let n=0;
+  const speakers=new RegExp("^("+ROSTER.map(r=>r.id).join("|")+")\\s*[:：]","i");let n=0;
   for(const raw of text.split("\n")){const l=raw.trim();if(!l||l.startsWith("#"))continue;
-    if(/^(title|scene|episode|vocab)\s*:/i.test(l))continue;
+    if(/^(title|scene|episode|vocab|weather|cast)\s*:/i.test(l))continue;
     if(speakers.test(l)){n++;continue}
-    throw new Error("Can't read this line (use Mika: or Alex:):\n"+l)}
+    throw new Error("Can't read this line (start with Mika:, Alex: or a picked character's name):\n"+l)}
   if(!n)throw new Error("No dialogue lines found.")}
 
 $("run").onclick=async()=>{
   const btn=$("run");$("result").innerHTML="";
   try{
     if(!get("tjv_token")){$("setup").open=true;throw new Error("Add your GitHub token first (setup box below).")}
+    readCast();if(castL===castR)throw new Error("Pick two different characters.");
     const text=$("script").value.trim();check(text);
     btn.disabled=true;
     const title=(text.match(/^title\s*:\s*(.+)$/im)||[])[1]||"story";
