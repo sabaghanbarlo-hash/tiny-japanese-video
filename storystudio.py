@@ -88,7 +88,7 @@ def slide_word(sl, seq, cfg):
     y = place(img, card_image(f"Word of the day · {seq.get('level', '')}".rstrip(" ·"), BRAND, parts), SAFE_TOP + 20, warns, "word card")
     ex = sl["example"]; jf = font(58)
     parts = [(t, jf, INK, 76) for t in balanced(ex["jp"], jf, 840)] + [("", None, None, 10)]
-    parts += lines_parts([ex.get("reading", "")], 34, (176, 110, 128), 46, False) + [("", None, None, 14)]
+    parts += lines_parts([ex.get("reading", "")], 44, (176, 110, 128), 58, False) + [("", None, None, 14)]
     parts += lines_parts([ex["en"]], 42, SOFT, 56, False)
     place(img, card_image("Example", (96, 150, 112), parts, min_h=300), y + 10, warns, "example card")
     footer(img, cfg)
@@ -102,8 +102,9 @@ def slide_quiz(sl, seq, cfg):
     parts += lines_parts([sl["question"]], 54, INK, 72) + [("", None, None, 20)]
     parts += [(f"{LETTERS[i]}    {o}", font(58, False), INK, 82) for i, o in enumerate(sl["options"])]
     y = place(img, card_image("Quick quiz", BRAND, parts, min_h=700), SAFE_TOP + 20, warns, "quiz card")
-    ImageDraw.Draw(img).text((W / 2, y + 60), "Reply with A, B, C or D - the answer is in the next Story!",
-                             font=font(36, False), fill=SOFT, anchor="mm")
+    d = ImageDraw.Draw(img)
+    d.text((W / 2, y + 70), "Reply A, B, C or D", font=font(56), fill=BRAND, anchor="mm")
+    d.text((W / 2, y + 140), "Answer in the next Story", font=font(42, False), fill=SOFT, anchor="mm")
     footer(img, cfg)
     return img, warns
 
@@ -119,6 +120,11 @@ def slide_reveal(sl, seq, cfg):
     d = ImageDraw.Draw(img)
     for i, t in enumerate(cta):
         d.text((W / 2, y + 60 + i * 56), t, font=font(40), fill=BRAND, anchor="mm")
+    if sl.get("teaser"):  # optional, e.g. "Tomorrow: 古い (old)" - gives followers a reason to come back
+        ty = y + 60 + len(cta) * 56 + 50
+        d.text((W / 2, ty), sl["teaser"], font=font(46), fill=INK, anchor="mm")
+        if ty + 30 > SAFE_BOTTOM:
+            warns.append(f"teaser line reaches y={ty + 30}, inside the bottom UI zone (>{SAFE_BOTTOM})")
     footer(img, cfg)
     return img, warns
 
@@ -256,7 +262,8 @@ def render_sequence(path, cfg, args, known_words):
     for f in glob.glob(os.path.join(out, "*")):
         os.unlink(f)
     slides_out, layout_warns, convo_info = [], [], None
-    for i, sl in enumerate(seq["slides"], 1):
+    # A slide with "skip": true is not rendered or posted, but still feeds the QC checks (e.g. word + quiz consistency).
+    for i, sl in enumerate([x for x in seq["slides"] if not x.get("skip")], 1):
         t = sl["type"]; base = f"{i:02d}-{t}"
         if t == "convo":
             if args.no_video:
@@ -282,7 +289,7 @@ def render_sequence(path, cfg, args, known_words):
                        "The Instagram API cannot add stickers (poll, quiz, link, question) or captions to Stories.",
                        "The API has no native scheduling: this project's scheduled workflow publishes at publish_at."],
         "manual_steps": [
-            "Optional: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version.",
+            "Recommended: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version. Sticker taps are the strongest engagement signal on Stories.",
             "Optional: add a Link sticker to the last Story by hand if you want a tappable link to the free lesson."
         ] if any(s["type"] == "quiz" for s in seq["slides"]) else [],
     }

@@ -25,3 +25,11 @@ Free: GitHub Actions + Pages (public repo), edge-tts voices (unofficial Microsof
 
 ## Next sequence
 Copy `nemui-01.json`, change the id and content, commit. The renderer warns if the same target word was already used.
+
+
+## Shorter sequences (optional, per sequence)
+Retention drops with every extra frame, so a sequence can leave a slide out: add `"skip": true` to that slide in the JSON.
+A skipped slide is not rendered or posted (remaining slides are renumbered), but it still feeds the QC checks, so the quiz/reveal consistency rules keep working.
+Suggested 4-frame order: `intro` -> `convo` (video) -> `quiz` -> `reveal`, with the `word` slide skipped and its example sentence moved into the reveal slide's `note` lines.
+Add a `"teaser"` to the reveal slide (e.g. `"Tomorrow: 古い (old)"`) to give people a reason to come back.
+Existing sequences are unchanged unless you edit them.
