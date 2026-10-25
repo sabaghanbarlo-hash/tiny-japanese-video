@@ -1,0 +1,24 @@
+title: I'm Allergic To...
+cast: mika, alex
+episode: 17
+scene: Japanese restaurant
+
+Mika: すみません！たまごの アレルギーが あります。 | Excuse me! I'm allergic to eggs.
+Alex: この りょうりに たまごが はいっていますか？ | Does this dish contain eggs?
+Mika: かくにんして ください。 | Please check.
+Alex: はい、かくにんします。 | Yes, I'll check.
+
+vocab: すみません | sumimasen | Excuse me / Sorry
+vocab: たまご | tamago | Egg
+vocab: アレルギー | arerugii | Allergy
+vocab: が | ga | Subject marker
+vocab: あります | arimasu | There is / I have
+vocab: この | kono | This (before a noun)
+vocab: りょうり | ryouri | Dish / Cooking
+vocab: に | ni | In / Inside
+vocab: はいっています | haitte imasu | Is contained / Has inside
+vocab: か | ka | Question particle
+vocab: かくにんして | kakunin shite | Check / Confirm
+vocab: ください | kudasai | Please do...
+vocab: はい | hai | Yes
+vocab: かくにんします | kakunin shimasu | I'll check / confirm
