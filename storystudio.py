@@ -262,7 +262,8 @@ def render_sequence(path, cfg, args, known_words):
     for f in glob.glob(os.path.join(out, "*")):
         os.unlink(f)
     slides_out, layout_warns, convo_info = [], [], None
-    for i, sl in enumerate(seq["slides"], 1):
+    # A slide with "skip": true is not rendered or posted, but still feeds the QC checks (e.g. word + quiz consistency).
+    for i, sl in enumerate([x for x in seq["slides"] if not x.get("skip")], 1):
         t = sl["type"]; base = f"{i:02d}-{t}"
         if t == "convo":
             if args.no_video:
