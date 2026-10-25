@@ -147,6 +147,7 @@ $("run").onclick=async()=>{
   try{
     if(!get("tjv_token")){$("setup").open=true;throw new Error("Add your GitHub token first (setup box below).")}
     readCast();if(castL===castR)throw new Error("Pick two different characters.");
+    writeCast();   // the picked characters always go into the script, even if you pasted a fresh one
     const text=$("script").value.trim();check(text);
     btn.disabled=true;
     const title=(text.match(/^title\s*:\s*(.+)$/im)||[])[1]||"story";

@@ -301,11 +301,26 @@ def parse_story(path):
         sys.exit(f"Cannot parse line (speakers: Mika / Alex = left / right, or a cast character's name): {s}")
     if not lines:
         sys.exit("No dialogue lines found.")
-    left, right = cast_ids(meta)
-    slots = {"mika": "Mika", "alex": "Alex", left: "Mika", right: "Alex"}
+    order = []
     for l in lines:
-        if l["speaker"] not in slots:
-            sys.exit(f"'{l['speaker']}' is not in this story's cast ({left}, {right}). Add it to the cast line, e.g. 'cast: {l['speaker']}, {right}'.")
+        if l["speaker"] not in order:
+            order.append(l["speaker"])
+    if len(order) > 2:
+        sys.exit("A story can only have two speakers (left and right); this one has " + str(len(order)) + ".")
+    if not meta.get("cast") and any(s not in ("mika", "alex") for s in order):
+        meta["cast"] = ", ".join(order)          # script written with real character names and no cast line: use them in speaking order
+    left, right = cast_ids(meta)
+    if all(s in ("mika", "alex") for s in order):
+        slots = {"mika": "Mika", "alex": "Alex"}    # classic Mika:/Alex: script = left/right, whoever was picked
+    else:
+        slots = {"mika": "Mika", "alex": "Alex", left: "Mika", right: "Alex"}
+    used = {slots[s] for s in order if s in slots}
+    for s in order:
+        if s not in slots:                          # a speaker who isn't in the cast: use a free slot instead of failing
+            free = [x for x in ("Mika", "Alex") if x not in used]
+            slots[s] = free[0]; used.add(free[0])
+            print(f"Note: '{s}' is not in the cast, so the {slots[s]} slot speaks their lines.")
+    for l in lines:
         l["speaker"] = slots[l["speaker"]]
     apply_cast(meta)
     return meta, lines, vocab
