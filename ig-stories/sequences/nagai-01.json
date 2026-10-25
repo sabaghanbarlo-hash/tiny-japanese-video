@@ -1,0 +1,84 @@
+{
+  "id": "nagai-01",
+  "title": "長い - long",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": true,
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-02T18:00:00+00:00",
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's long”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "長い",
+      "reading": "ながい",
+      "en": "long",
+      "example": {
+        "jp": "この川は長いです。",
+        "reading": "このかわはながいです。",
+        "en": "This river is long."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "長い · Long",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "この道は長いですか？",
+          "en": "Is this road long?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、少し長いです。",
+          "en": "Yes, it's a little long."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "頑張りましょう！",
+          "en": "Let's do our best!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "長い",
+      "question": "What does this word mean?",
+      "options": [
+        "Short",
+        "Long",
+        "Cheap",
+        "Happy"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "長い",
+      "reading": "ながい",
+      "en": "long",
+      "note": [
+        "長いです = It's long (polite).",
+        "The opposite is 短い (みじかい) = short."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 短い (short)"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "akarui-01",
+  "title": "明るい - bright",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": true,
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-07T18:00:00+00:00",
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's bright”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "明るい",
+      "reading": "あかるい",
+      "en": "bright",
+      "example": {
+        "jp": "この部屋は明るいです。",
+        "reading": "このへやはあかるいです。",
+        "en": "This room is bright."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "明るい · Bright",
+      "lines": [
+        {
+          "speaker": "Alex",
+          "jp": "この部屋は明るいですね。",
+          "en": "This room is bright."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "はい、窓が大きいです。",
+          "en": "Yes, the windows are big."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "いいですね！",
+          "en": "Nice!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "明るい",
+      "question": "What does this word mean?",
+      "options": [
+        "Dark",
+        "Bright",
+        "Short",
+        "Cheap"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "明るい",
+      "reading": "あかるい",
+      "en": "bright",
+      "note": [
+        "明るいです = It's bright (polite).",
+        "The opposite is 暗い (くらい) = dark."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 暗い (dark)"
+    }
+  ]
+}

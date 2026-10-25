@@ -1,0 +1,84 @@
+{
+  "id": "kawaii-01",
+  "title": "かわいい - cute",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": true,
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-05T18:00:00+00:00",
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's cute”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "かわいい",
+      "reading": "かわいい",
+      "en": "cute",
+      "example": {
+        "jp": "この犬はかわいいです。",
+        "reading": "このいぬはかわいいです。",
+        "en": "This dog is cute."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "かわいい · Cute",
+      "lines": [
+        {
+          "speaker": "Alex",
+          "jp": "この犬はかわいいですね。",
+          "en": "This dog is cute."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "はい、とてもかわいいです。",
+          "en": "Yes, it's very cute."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "いいですね！",
+          "en": "Nice!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "かわいい",
+      "question": "What does this word mean?",
+      "options": [
+        "Heavy",
+        "Cheap",
+        "Cute",
+        "Tired"
+      ],
+      "answer": 2
+    },
+    {
+      "type": "reveal",
+      "answer_label": "C",
+      "jp": "かわいい",
+      "reading": "かわいい",
+      "en": "cute",
+      "note": [
+        "かわいいです = It's cute (polite).",
+        "You can say it about animals, people and things."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 面白い (interesting)"
+    }
+  ]
+}

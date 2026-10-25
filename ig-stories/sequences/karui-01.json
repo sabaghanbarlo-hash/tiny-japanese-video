@@ -1,0 +1,85 @@
+{
+  "id": "karui-01",
+  "title": "軽い - light",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": true,
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-01T18:00:00+00:00",
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's light”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "軽い",
+      "reading": "かるい",
+      "en": "light",
+      "example": {
+        "jp": "この本は軽いです。",
+        "reading": "このほんはかるいです。",
+        "en": "This book is light."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "軽い · Light",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "このかばんは軽いですか？",
+          "en": "Is this bag light?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、とても軽いです。",
+          "en": "Yes, it's very light."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "いいですね！",
+          "en": "Nice!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "軽い",
+      "question": "What does this word mean?",
+      "options": [
+        "Heavy",
+        "Light",
+        "Sleepy",
+        "Long"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "軽い",
+      "reading": "かるい",
+      "en": "light",
+      "note": [
+        "軽いです = It's light (polite).",
+        "Here 軽い means light in weight.",
+        "The opposite is 重い (おもい) = heavy."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 長い (long)"
+    }
+  ]
+}

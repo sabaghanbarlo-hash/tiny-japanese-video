@@ -1,0 +1,84 @@
+{
+  "id": "semai-01",
+  "title": "狭い - cramped",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": true,
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-10T18:00:00+00:00",
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's cramped”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "狭い",
+      "reading": "せまい",
+      "en": "cramped",
+      "example": {
+        "jp": "この部屋は狭いです。",
+        "reading": "このへやはせまいです。",
+        "en": "This room is cramped."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "狭い · Cramped",
+      "lines": [
+        {
+          "speaker": "Alex",
+          "jp": "この部屋は狭いですね。",
+          "en": "This room is cramped."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "はい、ちょっと狭いです。",
+          "en": "Yes, it's a bit cramped."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "でも、かわいいです。",
+          "en": "But it's cute."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "狭い",
+      "question": "What does this word mean?",
+      "options": [
+        "Cramped",
+        "Spacious",
+        "Cold",
+        "Long"
+      ],
+      "answer": 0
+    },
+    {
+      "type": "reveal",
+      "answer_label": "A",
+      "jp": "狭い",
+      "reading": "せまい",
+      "en": "cramped",
+      "note": [
+        "狭いです = It's cramped / narrow (polite).",
+        "The opposite is 広い (ひろい) = spacious."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 若い (young)"
+    }
+  ]
+}

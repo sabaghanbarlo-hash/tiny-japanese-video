@@ -1,0 +1,84 @@
+{
+  "id": "tsuyoi-01",
+  "title": "強い - strong",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": true,
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-04T18:00:00+00:00",
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's strong”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "強い",
+      "reading": "つよい",
+      "en": "strong",
+      "example": {
+        "jp": "この犬は強いです。",
+        "reading": "このいぬはつよいです。",
+        "en": "This dog is strong."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "強い · Strong",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "この犬は強いですか？",
+          "en": "Is this dog strong?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、とても強いです。",
+          "en": "Yes, it's very strong."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "すごいですね！",
+          "en": "Wow!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "強い",
+      "question": "What does this word mean?",
+      "options": [
+        "Strong",
+        "Weak",
+        "Young",
+        "Cold"
+      ],
+      "answer": 0
+    },
+    {
+      "type": "reveal",
+      "answer_label": "A",
+      "jp": "強い",
+      "reading": "つよい",
+      "en": "strong",
+      "note": [
+        "強いです = It's strong (polite).",
+        "The opposite is 弱い (よわい) = weak."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: かわいい (cute)"
+    }
+  ]
+}

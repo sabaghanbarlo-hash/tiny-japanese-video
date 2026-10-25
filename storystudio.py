@@ -289,7 +289,7 @@ def render_sequence(path, cfg, args, known_words):
                        "The Instagram API cannot add stickers (poll, quiz, link, question) or captions to Stories.",
                        "The API has no native scheduling: this project's scheduled workflow publishes at publish_at."],
         "manual_steps": [
-            "Recommended: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version. Sticker taps are the strongest engagement signal on Stories.",
+            "Optional: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version. Sticker taps are the strongest engagement signal on Stories.",
             "Optional: add a Link sticker to the last Story by hand if you want a tappable link to the free lesson."
         ] if any(s["type"] == "quiz" for s in seq["slides"]) else [],
     }

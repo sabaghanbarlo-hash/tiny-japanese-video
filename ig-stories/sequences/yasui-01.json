@@ -1,0 +1,84 @@
+{
+  "id": "yasui-01",
+  "title": "安い - cheap",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": true,
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-10-30T18:00:00+00:00",
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's cheap”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "安い",
+      "reading": "やすい",
+      "en": "cheap",
+      "example": {
+        "jp": "このりんごは安いです。",
+        "reading": "このりんごはやすいです。",
+        "en": "This apple is cheap."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "安い · Cheap",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "このりんごは安いですか？",
+          "en": "Is this apple cheap?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、安いです。",
+          "en": "Yes, it's cheap."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "いいですね！",
+          "en": "Nice!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "安い",
+      "question": "What does this word mean?",
+      "options": [
+        "Big",
+        "Tired",
+        "Far",
+        "Cheap"
+      ],
+      "answer": 3
+    },
+    {
+      "type": "reveal",
+      "answer_label": "D",
+      "jp": "安い",
+      "reading": "やすい",
+      "en": "cheap",
+      "note": [
+        "安いです = It's cheap (polite).",
+        "Something that costs a lot is 高い (たかい)."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 重い (heavy)"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "kurai-01",
+  "title": "暗い - dark",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": true,
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-08T18:00:00+00:00",
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's dark”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "暗い",
+      "reading": "くらい",
+      "en": "dark",
+      "example": {
+        "jp": "この部屋は暗いです。",
+        "reading": "このへやはくらいです。",
+        "en": "This room is dark."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "暗い · Dark",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "ここは暗いですね。",
+          "en": "It's dark here."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、電気をつけましょう。",
+          "en": "Yes, let's turn on the light."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "はい！",
+          "en": "Yes!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "暗い",
+      "question": "What does this word mean?",
+      "options": [
+        "Bright",
+        "Old",
+        "Strong",
+        "Dark"
+      ],
+      "answer": 3
+    },
+    {
+      "type": "reveal",
+      "answer_label": "D",
+      "jp": "暗い",
+      "reading": "くらい",
+      "en": "dark",
+      "note": [
+        "暗いです = It's dark (polite).",
+        "The opposite is 明るい (あかるい) = bright."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 広い (spacious)"
+    }
+  ]
+}

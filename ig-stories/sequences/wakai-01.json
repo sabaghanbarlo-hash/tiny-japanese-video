@@ -1,0 +1,84 @@
+{
+  "id": "wakai-01",
+  "title": "若い - young",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": true,
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-11T18:00:00+00:00",
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“He's young”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "若い",
+      "reading": "わかい",
+      "en": "young",
+      "example": {
+        "jp": "彼は若いです。",
+        "reading": "かれはわかいです。",
+        "en": "He is young."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "若い · Young",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "あの人は若いですか？",
+          "en": "Is that person young?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、とても若いです。",
+          "en": "Yes, very young."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "そうですか！",
+          "en": "I see!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "若い",
+      "question": "What does this word mean?",
+      "options": [
+        "Old",
+        "Young",
+        "Light",
+        "Cheap"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "若い",
+      "reading": "わかい",
+      "en": "young",
+      "note": [
+        "若いです = He / she is young (polite).",
+        "The opposite is 年上 (としうえ) = older."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: a brand-new word!"
+    }
+  ]
+}

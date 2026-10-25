@@ -1,0 +1,84 @@
+{
+  "id": "hiroi-01",
+  "title": "広い - spacious",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": true,
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-09T18:00:00+00:00",
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's spacious”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "広い",
+      "reading": "ひろい",
+      "en": "spacious",
+      "example": {
+        "jp": "この公園は広いです。",
+        "reading": "このこうえんはひろいです。",
+        "en": "This park is spacious."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "広い · Spacious",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "この公園は広いですね。",
+          "en": "This park is spacious."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、とても広いです。",
+          "en": "Yes, it's very spacious."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "走りましょう！",
+          "en": "Let's run!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "広い",
+      "question": "What does this word mean?",
+      "options": [
+        "Cramped",
+        "Heavy",
+        "Spacious",
+        "Cute"
+      ],
+      "answer": 2
+    },
+    {
+      "type": "reveal",
+      "answer_label": "C",
+      "jp": "広い",
+      "reading": "ひろい",
+      "en": "spacious",
+      "note": [
+        "広いです = It's spacious / wide (polite).",
+        "The opposite is 狭い (せまい) = cramped."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 狭い (cramped)"
+    }
+  ]
+}

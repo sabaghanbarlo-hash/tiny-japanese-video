@@ -10,7 +10,8 @@
     "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
     "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
     "嬉しい is often written in hiragana (うれしい) in everyday text - confirm you want the kanji form.",
-    "会えて嬉しいです uses the te-form of 会う; may be above beginner level."
+    "会えて嬉しいです uses the te-form of 会う; may be above beginner level.",
+    "Meaning shortened to 'happy' so the quiz answer matches (QC rule)."
   ],
   "slides": [
     {
@@ -27,7 +28,7 @@
       "type": "word",
       "jp": "嬉しい",
       "reading": "うれしい",
-      "en": "happy / glad",
+      "en": "happy",
       "example": {
         "jp": "会えて嬉しいです。",
         "reading": "あえてうれしいです。",
@@ -73,7 +74,7 @@
       "answer_label": "C",
       "jp": "嬉しい",
       "reading": "うれしい",
-      "en": "happy / glad",
+      "en": "happy",
       "note": [
         "嬉しいです = I'm happy / glad (polite).",
         "The opposite feeling: 悲しい (かなしい) = sad."
