@@ -94,7 +94,7 @@
       "file": "03-convo.mp4",
       "poster": "03-convo-poster.jpg",
       "duration": 10.7,
-      "size_mb": 1.03,
+      "size_mb": 1.04,
       "audio": "real_voice",
       "audio_transcript": [
         "暑いですね。",
@@ -179,7 +179,7 @@
     "The API has no native scheduling: this project's scheduled workflow publishes at publish_at."
   ],
   "manual_steps": [
-    "Recommended: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version. Sticker taps are the strongest engagement signal on Stories.",
+    "Optional: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version. Sticker taps are the strongest engagement signal on Stories.",
     "Optional: add a Link sticker to the last Story by hand if you want a tappable link to the free lesson."
   ]
 }

@@ -1,0 +1,168 @@
+{
+  "id": "nagai-01",
+  "title": "長い - long",
+  "level": "N5",
+  "approved": true,
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-02T18:00:00+00:00",
+  "timezone": "UTC",
+  "ready_to_publish": true,
+  "qc": {
+    "errors": [],
+    "warnings": [
+      "clip is 11.4s (target 5-10s)"
+    ],
+    "checks": [
+      {
+        "check": "reading matches dictionary: target word",
+        "ok": true
+      },
+      {
+        "check": "reading matches dictionary: example sentence",
+        "ok": true
+      },
+      {
+        "check": "quiz has 3-4 unique options and exactly one valid correct answer",
+        "ok": true
+      },
+      {
+        "check": "quiz correct option equals the taught meaning",
+        "ok": true
+      },
+      {
+        "check": "reveal slide matches the quiz answer",
+        "ok": true
+      },
+      {
+        "check": "reveal slide repeats the same word and reading",
+        "ok": true
+      },
+      {
+        "check": "audio transcript == subtitles (both generated from the same text)",
+        "ok": true
+      }
+    ],
+    "uncertain": [
+      "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+      "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+    ],
+    "notes": [
+      "Automated checks only prove internal consistency. They cannot prove the Japanese is natural or correct.",
+      "Vocabulary/grammar level was NOT machine-checked; compare against your N4 target by eye."
+    ],
+    "japanese_verified": false,
+    "status": "ready"
+  },
+  "slides": [
+    {
+      "n": 1,
+      "type": "intro",
+      "kind": "image",
+      "file": "01-intro.jpg",
+      "content": {
+        "kicker": "Today's tiny word",
+        "headline": [
+          "How do you say",
+          "“It's long”",
+          "in Japanese?"
+        ],
+        "sub": "Tap to find out"
+      }
+    },
+    {
+      "n": 2,
+      "type": "convo",
+      "kind": "video",
+      "file": "02-convo.mp4",
+      "poster": "02-convo-poster.jpg",
+      "duration": 11.4,
+      "size_mb": 0.35,
+      "audio": "real_voice",
+      "audio_transcript": [
+        "この道は長いですか？",
+        "はい、少し長いです。",
+        "頑張りましょう！"
+      ],
+      "subtitles": [
+        {
+          "jp": "この道は長いですか？",
+          "en": "Is this road long?"
+        },
+        {
+          "jp": "はい、少し長いです。",
+          "en": "Yes, it's a little long."
+        },
+        {
+          "jp": "頑張りましょう！",
+          "en": "Let's do our best!"
+        }
+      ],
+      "content": {
+        "scene": "cafe",
+        "title": "長い · Long",
+        "lines": [
+          {
+            "speaker": "Mika",
+            "jp": "この道は長いですか？",
+            "en": "Is this road long?"
+          },
+          {
+            "speaker": "Alex",
+            "jp": "はい、少し長いです。",
+            "en": "Yes, it's a little long."
+          },
+          {
+            "speaker": "Mika",
+            "jp": "頑張りましょう！",
+            "en": "Let's do our best!"
+          }
+        ]
+      }
+    },
+    {
+      "n": 3,
+      "type": "quiz",
+      "kind": "image",
+      "file": "03-quiz.jpg",
+      "content": {
+        "jp": "長い",
+        "question": "What does this word mean?",
+        "options": [
+          "Short",
+          "Long",
+          "Cheap",
+          "Happy"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "n": 4,
+      "type": "reveal",
+      "kind": "image",
+      "file": "04-reveal.jpg",
+      "content": {
+        "answer_label": "B",
+        "jp": "長い",
+        "reading": "ながい",
+        "en": "long",
+        "note": [
+          "長いです = It's long (polite).",
+          "The opposite is 短い (みじかい) = short."
+        ],
+        "cta": "Tell us your answer in the comments!",
+        "teaser": "Tomorrow: 短い (short)"
+      }
+    }
+  ],
+  "source": "ig-stories/sequences/nagai-01.json",
+  "api_limits": [
+    "Stories are single-media: each slide is posted as its own Story.",
+    "The Instagram API cannot add stickers (poll, quiz, link, question) or captions to Stories.",
+    "The API has no native scheduling: this project's scheduled workflow publishes at publish_at."
+  ],
+  "manual_steps": [
+    "Optional: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version. Sticker taps are the strongest engagement signal on Stories.",
+    "Optional: add a Link sticker to the last Story by hand if you want a tappable link to the free lesson."
+  ]
+}

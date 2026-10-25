@@ -1,5 +1,14 @@
 [
   {
+    "id": "akarui-01",
+    "title": "明るい - bright",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-07T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "atarashii-01",
     "title": "新しい - new",
     "level": "N5",
@@ -36,6 +45,24 @@
     "status": "ready"
   },
   {
+    "id": "furui-01",
+    "title": "古い - old",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-10-29T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "hiroi-01",
+    "title": "広い - spacious",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-09T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "isogashii-01",
     "title": "忙しい - busy",
     "level": "N4",
@@ -45,12 +72,57 @@
     "status": "ready"
   },
   {
+    "id": "karui-01",
+    "title": "軽い - light",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-01T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "kawaii-01",
+    "title": "かわいい - cute",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-05T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "kurai-01",
+    "title": "暗い - dark",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-08T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "mijikai-01",
+    "title": "短い - short",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-03T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "muzukashii-01",
     "title": "難しい - difficult",
     "level": "N4",
     "approved": true,
     "ready_to_publish": true,
     "publish_at": "2026-10-25T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "nagai-01",
+    "title": "長い - long",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-02T18:00:00+00:00",
     "status": "ready"
   },
   {
@@ -72,6 +144,24 @@
     "status": "ready"
   },
   {
+    "id": "omoi-01",
+    "title": "重い - heavy",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-10-31T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "omoshiroi-01",
+    "title": "面白い - interesting",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-06T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "ookii-01",
     "title": "大きい - big",
     "level": "N5",
@@ -87,6 +177,15 @@
     "approved": true,
     "ready_to_publish": true,
     "publish_at": "2026-10-17T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "semai-01",
+    "title": "狭い - cramped",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-10T18:00:00+00:00",
     "status": "ready"
   },
   {
@@ -108,12 +207,39 @@
     "status": "ready"
   },
   {
+    "id": "tsuyoi-01",
+    "title": "強い - strong",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-04T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "ureshii-01",
     "title": "嬉しい - happy / glad",
     "level": "N4",
     "approved": true,
-    "ready_to_publish": false,
+    "ready_to_publish": true,
     "publish_at": "2026-10-26T18:00:00+00:00",
-    "status": "blocked"
+    "status": "ready"
+  },
+  {
+    "id": "wakai-01",
+    "title": "若い - young",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-11T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "yasui-01",
+    "title": "安い - cheap",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-10-30T18:00:00+00:00",
+    "status": "ready"
   }
 ]

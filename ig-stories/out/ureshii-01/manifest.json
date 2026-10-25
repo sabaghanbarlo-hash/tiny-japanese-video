@@ -6,12 +6,9 @@
   "reviewed_by": "Saba (Japanese reviewed by Claude, not a native speaker)",
   "publish_at": "2026-10-26T18:00:00+00:00",
   "timezone": "UTC",
-  "ready_to_publish": false,
+  "ready_to_publish": true,
   "qc": {
-    "errors": [
-      "quiz correct option 'Happy' != word meaning 'happy / glad'",
-      "reveal slide does not match the quiz answer"
-    ],
+    "errors": [],
     "warnings": [
       "clip is 10.6s (target 5-10s)"
     ],
@@ -29,8 +26,12 @@
         "ok": true
       },
       {
+        "check": "quiz correct option equals the taught meaning",
+        "ok": true
+      },
+      {
         "check": "reveal slide matches the quiz answer",
-        "ok": false
+        "ok": true
       },
       {
         "check": "reveal slide repeats the same word and reading",
@@ -45,14 +46,15 @@
       "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
       "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker.",
       "嬉しい is often written in hiragana (うれしい) in everyday text - confirm you want the kanji form.",
-      "会えて嬉しいです uses the te-form of 会う; may be above beginner level."
+      "会えて嬉しいです uses the te-form of 会う; may be above beginner level.",
+      "Meaning shortened to 'happy' so the quiz answer matches (QC rule)."
     ],
     "notes": [
       "Automated checks only prove internal consistency. They cannot prove the Japanese is natural or correct.",
       "Vocabulary/grammar level was NOT machine-checked; compare against your N4 target by eye."
     ],
     "japanese_verified": false,
-    "status": "blocked"
+    "status": "ready"
   },
   "slides": [
     {
@@ -78,7 +80,7 @@
       "content": {
         "jp": "嬉しい",
         "reading": "うれしい",
-        "en": "happy / glad",
+        "en": "happy",
         "example": {
           "jp": "会えて嬉しいです。",
           "reading": "あえてうれしいです。",
@@ -162,7 +164,7 @@
         "answer_label": "C",
         "jp": "嬉しい",
         "reading": "うれしい",
-        "en": "happy / glad",
+        "en": "happy",
         "note": [
           "嬉しいです = I'm happy / glad (polite).",
           "The opposite feeling: 悲しい (かなしい) = sad."
@@ -178,7 +180,7 @@
     "The API has no native scheduling: this project's scheduled workflow publishes at publish_at."
   ],
   "manual_steps": [
-    "Recommended: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version. Sticker taps are the strongest engagement signal on Stories.",
+    "Optional: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version. Sticker taps are the strongest engagement signal on Stories.",
     "Optional: add a Link sticker to the last Story by hand if you want a tappable link to the free lesson."
   ]
 }
