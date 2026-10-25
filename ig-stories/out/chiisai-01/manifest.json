@@ -11,7 +11,8 @@
     "errors": [],
     "warnings": [
       "target word: given reading 'ちいさい' differs from dictionary reading 'ちーさい' - verify",
-      "example sentence: given reading 'このねこはちいさいです。' differs from dictionary reading 'このねこはちーさいです。' - verify"
+      "example sentence: given reading 'このねこはちいさいです。' differs from dictionary reading 'このねこはちーさいです。' - verify",
+      "clip is 10.7s (target 5-10s)"
     ],
     "checks": [
       {
@@ -93,8 +94,8 @@
       "kind": "video",
       "file": "03-convo.mp4",
       "poster": "03-convo-poster.jpg",
-      "duration": 7.8,
-      "size_mb": 0.26,
+      "duration": 10.7,
+      "size_mb": 1.01,
       "audio": "real_voice",
       "audio_transcript": [
         "小さいですか？",
@@ -179,7 +180,7 @@
     "The API has no native scheduling: this project's scheduled workflow publishes at publish_at."
   ],
   "manual_steps": [
-    "Optional: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version.",
+    "Recommended: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version. Sticker taps are the strongest engagement signal on Stories.",
     "Optional: add a Link sticker to the last Story by hand if you want a tappable link to the free lesson."
   ]
 }
