@@ -1,0 +1,21 @@
+title: I Missed the Last Train!
+cast: mika, haru
+episode: 18
+scene: train station at night
+
+Mika: たいへん！さいしゅうでんしゃに おくれました！ | Oh no! I missed the last train!
+haru: えっ！どうしましょう？ | What?! What should we do?
+Mika: タクシーは ありますか？ | Are there any taxis?
+haru: あそこに タクシーのりばが あります！ | There's a taxi stand over there!
+
+vocab: たいへん | taihen | Oh no! / That's terrible!
+vocab: さいしゅうでんしゃ | saishuu densha | Last train
+vocab: に | ni | To / For (particle marking the train in this expression)
+vocab: おくれました | okuremashita | Was late / Missed (a train or appointment)
+vocab: えっ | e | Huh?! / What?!
+vocab: どうしましょう | dou shimashou | What should we do?
+vocab: タクシー | takushii | Taxi
+vocab: は | wa | Topic marker
+vocab: ありますか | arimasu ka | Is there? / Are there any?
+vocab: あそこ | asoko | Over there
+vocab: のりば | noriba | Boarding area / Stand
