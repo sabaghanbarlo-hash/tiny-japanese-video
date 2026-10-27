@@ -6,7 +6,7 @@ scene: shopping mall
 Mika: たいへん！スマホが ありません！ | Oh no! My phone is missing!
 emi: いつ なくしましたか？ | When did you lose it?
 emi: さっきまで ここに ありました。 | It was here just a moment ago.
-Alex: てんいんさんに きいてみましょう！ | Let's ask a staff member!
+Mika: てんいんさんに きいてみましょう！ | Let's ask a staff member!
 
 vocab: たいへん | taihen | Oh no! / That's terrible!
 vocab: スマホ | sumaho | Smartphone / Mobile phone
@@ -22,3 +22,4 @@ vocab: ありました | arimashita | There was / It was there
 vocab: てんいんさん | ten'in-san | Shop assistant / Store staff
 vocab: きいて | kiite | Ask / Listen (て-form of きく)
 vocab: みましょう | mimashou | Let's try doing...
+
