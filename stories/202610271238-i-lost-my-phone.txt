@@ -1,0 +1,24 @@
+title: I Lost My Phone!
+cast: mika, emi
+episode: 19
+scene: shopping mall
+
+Mika: たいへん！スマホが ありません！ | Oh no! My phone is missing!
+emi: いつ なくしましたか？ | When did you lose it?
+emi: さっきまで ここに ありました。 | It was here just a moment ago.
+Alex: てんいんさんに きいてみましょう！ | Let's ask a staff member!
+
+vocab: たいへん | taihen | Oh no! / That's terrible!
+vocab: スマホ | sumaho | Smartphone / Mobile phone
+vocab: が | ga | Subject marker
+vocab: ありません | arimasen | There isn't / I don't have
+vocab: いつ | itsu | When
+vocab: なくしました | nakushimashita | Lost (something)
+vocab: さっき | sakki | A moment ago / Just now
+vocab: まで | made | Until / Up to
+vocab: ここ | koko | Here
+vocab: に | ni | At / In (location particle)
+vocab: ありました | arimashita | There was / It was there
+vocab: てんいんさん | ten'in-san | Shop assistant / Store staff
+vocab: きいて | kiite | Ask / Listen (て-form of きく)
+vocab: みましょう | mimashou | Let's try doing...
