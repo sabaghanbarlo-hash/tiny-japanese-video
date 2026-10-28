@@ -1,0 +1,24 @@
+title: Taking a Taxi
+cast: mika, rei
+episode: 21
+scene: taxi
+
+Mika: すみません。ここに いってください。 | Excuse me. Please go here.
+rei: はい。どのくらい かかりますか？ | Okay. How long will it take?
+Mika: じゅっぷんぐらいです。 | About ten minutes.
+rei: ありがとうございます。いくらですか？ | Thank you. How much is it?
+Mika: にせんえんぐらいです。 | About 2,000 yen.
+
+vocab: すみません | sumimasen | Excuse me / Sorry
+vocab: ここ | koko | Here
+vocab: に | ni | To (destination particle)
+vocab: いって | itte | Go (て-form of いく)
+vocab: ください | kudasai | Please do...
+vocab: はい | hai | Yes / Okay
+vocab: どのくらい | dono kurai | How long / How much
+vocab: かかります | kakarimasu | Takes (time or money)
+vocab: じゅっぷん | juppun | Ten minutes
+vocab: ぐらい | gurai | About / Approximately
+vocab: ありがとうございます | arigatou gozaimasu | Thank you very much
+vocab: いくら | ikura | How much
+vocab: にせんえん | nisen en | 2,000 yen
