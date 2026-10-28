@@ -20,6 +20,8 @@ concurrency:
 jobs:
   delete:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
     steps:
       - uses: actions/checkout@v4
       - name: Validate and delete queued video
