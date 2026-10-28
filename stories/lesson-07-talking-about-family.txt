@@ -1,0 +1,13 @@
+# Tiny Japanese course lesson video
+title: Talking About Family
+episode: 7
+scene: home
+
+Mika: これはわたしのかぞくです。 | This is my family.
+Alex: そうですか。 | I see.
+Mika: こちらはあねです。 | This is my older sister.
+Mika: こちらはおとうとです。 | This is my younger brother.
+
+vocab: かぞく | kazoku | family
+vocab: あね | ane | older sister (your own)
+vocab: おとうと | otouto | younger brother

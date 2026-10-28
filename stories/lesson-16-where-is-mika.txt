@@ -1,0 +1,13 @@
+# Tiny Japanese course lesson video
+title: Where Is Mika?
+episode: 16
+scene: street
+
+Alex: ミカさんはどこですか？ | Where is Mika?
+Mika: ここにいます！ | I’m here!
+Alex: よかった！ | Thank goodness!
+Mika: いっしょにいきましょう。 | Let’s go together.
+
+vocab: どこ | doko | where
+vocab: ここ | koko | here
+vocab: いっしょに | issho ni | together

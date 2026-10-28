@@ -57,7 +57,13 @@ jobs:
           STRICT_VOICE: "1"
         run: |
           mkdir -p output
-          if [ -z "$STORY" ] || [ "$STORY" = "all" ]; then files=$(ls stories/*.txt); else files="$STORY"; fi
+          if [ -z "$STORY" ] || [ "$STORY" = "all" ]; then
+            files=$(ls stories/*.txt)
+          elif [ "$STORY" = "lesson-batch" ]; then
+            files=$(ls stories/lesson-*.txt)
+          else
+            files="$STORY"
+          fi
           for f in $files; do
             python tinyvideo.py "$f" -o "output/$(basename "${f%.txt}").mp4"
           done

@@ -1,0 +1,13 @@
+# Tiny Japanese course lesson video
+title: Finding Your Way
+episode: 12
+scene: street
+
+Alex: すみません。えきはどこですか？ | Excuse me. Where is the station?
+Mika: まっすぐいってください。 | Please go straight.
+Mika: みぎです。 | It is on the right.
+Alex: ありがとうございます！ | Thank you very much!
+
+vocab: えき | eki | station
+vocab: まっすぐ | massugu | straight ahead
+vocab: みぎ | migi | right

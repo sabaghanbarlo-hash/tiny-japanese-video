@@ -1,0 +1,14 @@
+# Tiny Japanese course lesson video
+title: At the Restaurant
+episode: 5
+scene: restaurant
+
+Mika: すみません。ふたりです。 | Excuse me. Two people.
+Alex: メニューをおねがいします。 | The menu, please.
+Mika: カレーをください。 | Curry, please.
+Alex: みずもおねがいします。 | Water too, please.
+
+vocab: ふたり | futari | two people
+vocab: メニュー | menyuu | menu
+vocab: カレー | karee | curry
+vocab: みず | mizu | water

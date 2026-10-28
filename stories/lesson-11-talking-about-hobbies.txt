@@ -1,0 +1,13 @@
+# Tiny Japanese course lesson video
+title: Talking About Hobbies
+episode: 11
+scene: park
+
+Mika: おんがくがすきです。 | I like music.
+Alex: わたしもすきです！ | I like it too!
+Mika: アニメがすきですか？ | Do you like anime?
+Alex: はい、だいすきです！ | Yes, I love it!
+
+vocab: おんがく | ongaku | music
+vocab: すき | suki | like
+vocab: だいすき | daisuki | love / really like

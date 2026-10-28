@@ -1,0 +1,13 @@
+# Tiny Japanese course lesson video
+title: At the Café
+episode: 4
+scene: cafe
+
+Mika: コーヒーをください。 | Coffee, please.
+Alex: わたしはおちゃをください。 | Tea for me, please.
+Mika: はい、どうぞ。 | Certainly. Here you are.
+Alex: ありがとうございます！ | Thank you very much!
+
+vocab: コーヒー | koohii | coffee
+vocab: おちゃ | ocha | tea
+vocab: ください | kudasai | please give me

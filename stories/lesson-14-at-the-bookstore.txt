@@ -1,0 +1,13 @@
+# Tiny Japanese course lesson video
+title: At the Bookstore
+episode: 14
+scene: bookstore
+
+Alex: すみません。本はどこですか？ | Excuse me. Where are the books?
+Mika: あそこです。 | Over there.
+Alex: この本はいくらですか？ | How much is this book?
+Mika: ごひゃくえんです。 | It is 500 yen.
+
+vocab: ほん | hon | book
+vocab: この | kono | this (before a noun)
+vocab: ごひゃくえん | gohyaku en | 500 yen

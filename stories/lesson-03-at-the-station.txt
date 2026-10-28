@@ -1,0 +1,13 @@
+# Tiny Japanese course lesson video
+title: At the Station
+episode: 3
+scene: station
+
+Alex: すみません。えきはどこですか？ | Excuse me. Where is the station?
+Mika: あそこです。 | It is over there.
+Alex: ありがとうございます。 | Thank you very much.
+Mika: どういたしまして。 | You’re welcome.
+
+vocab: えき | eki | station
+vocab: どこ | doko | where
+vocab: あそこ | asoko | over there

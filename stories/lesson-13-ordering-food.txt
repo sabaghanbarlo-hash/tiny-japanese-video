@@ -1,0 +1,13 @@
+# Tiny Japanese course lesson video
+title: Ordering Food
+episode: 13
+scene: restaurant
+
+Mika: すみません、メニューをください。 | Excuse me, the menu please.
+Alex: これをおねがいします。 | This one, please.
+Mika: からいですか？ | Is it spicy?
+Alex: はい、でもおいしいです！ | Yes, but it is delicious!
+
+vocab: メニュー | menyuu | menu
+vocab: これ | kore | this
+vocab: おいしい | oishii | delicious

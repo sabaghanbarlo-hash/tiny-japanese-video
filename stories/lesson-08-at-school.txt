@@ -1,0 +1,13 @@
+# Tiny Japanese course lesson video
+title: At School
+episode: 8
+scene: classroom
+
+Alex: これはなんですか？ | What is this?
+Mika: ほんです。 | It is a book.
+Alex: これはえんぴつですか？ | Is this a pencil?
+Mika: はい、そうです。 | Yes, that’s right.
+
+vocab: これ | kore | this
+vocab: ほん | hon | book
+vocab: えんぴつ | enpitsu | pencil

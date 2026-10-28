@@ -1,0 +1,13 @@
+# Tiny Japanese course lesson video
+title: We Missed the Train!
+episode: 15
+scene: station
+
+Alex: でんしゃにおくれました！ | We missed the train!
+Mika: つぎのでんしゃはなんじですか？ | What time is the next train?
+Alex: よじです。 | It is four o’clock.
+Mika: じゃあ、まちましょう。 | Then, let’s wait.
+
+vocab: でんしゃ | densha | train
+vocab: つぎ | tsugi | next
+vocab: まちましょう | machimashou | let’s wait

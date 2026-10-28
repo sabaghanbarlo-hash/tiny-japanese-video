@@ -1,0 +1,13 @@
+# Tiny Japanese course lesson video
+title: Making Plans
+episode: 10
+scene: cafe
+
+Mika: いっしょにコーヒーをのみませんか？ | Would you like to have coffee together?
+Alex: いいですね！ | That sounds good!
+Mika: さんじにあいましょう。 | Let’s meet at three.
+Alex: はい、またあとで！ | Okay, see you later!
+
+vocab: いっしょに | issho ni | together
+vocab: のみませんか | nomimasen ka | would you like to drink?
+vocab: あいましょう | aimashou | let’s meet

@@ -1,0 +1,13 @@
+# Tiny Japanese course lesson video
+title: I’m Allergic To…
+episode: 17
+scene: restaurant
+
+Alex: すみません。たまごアレルギーがあります。 | Excuse me. I have an egg allergy.
+Mika: たまごはだめですか？ | Are eggs not okay for you?
+Alex: はい、たべられません。 | Yes, I can’t eat them.
+Mika: わかりました。 | Understood.
+
+vocab: アレルギー | arerugii | allergy
+vocab: たまご | tamago | egg
+vocab: たべられません | taberaremasen | cannot eat
