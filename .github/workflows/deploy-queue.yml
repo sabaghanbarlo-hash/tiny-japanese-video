@@ -1,0 +1,40 @@
+name: Deploy queue page
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/queue.html"
+      - ".github/workflows/deploy-queue.yml"
+      - ".github/workflows/delete-queued-video.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build queue site
+        run: |
+          mkdir -p site/videos site/story-media
+          cp -r docs/* site/
+          cp output/*.mp4 site/videos/ 2>/dev/null || true
+          cp output/*.jpg site/videos/ 2>/dev/null || true
+          if [ -d ig-stories/out ]; then cp -r ig-stories/out/. site/story-media/; fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
