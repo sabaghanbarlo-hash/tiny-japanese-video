@@ -1,0 +1,24 @@
+title: My Room Key Doesn't Work!
+cast: sakuya, kenji
+episode: 20
+scene: hotel hallway
+
+sakuya: あれ？かぎが あきません！ | Huh? The door won't open!
+kenji: ほんとうですか？かして ください。 | Really? Let me see it, please.
+sakuya: すみません！へやに はいれません。 | Excuse me! I can't get into the room.
+kenji: フロントに ききましょう。 | Let's ask the front desk.
+
+vocab: あれ | are | Huh? / Oh?
+vocab: かぎ | kagi | Key
+vocab: が | ga | Subject marker
+vocab: あきません | akimasen | Won't open / Doesn't open
+vocab: ほんとう | hontou | Really / True
+vocab: ですか | desu ka | Question ending
+vocab: かして | kashite | Lend / Let me have (て-form of かす)
+vocab: ください | kudasai | Please
+vocab: すみません | sumimasen | Excuse me / Sorry
+vocab: へや | heya | Room
+vocab: に | ni | Into / To (destination particle)
+vocab: はいれません | hairemasen | Cannot enter / Can't get in
+vocab: フロント | furonto | Hotel front desk / Reception
+vocab: ききましょう | kikimashou | Let's ask
