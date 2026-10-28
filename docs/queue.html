@@ -27,6 +27,10 @@ nav{margin:0 0 18px}a{color:var(--pink)}
 .when.done{background:#1f2c24;color:var(--ok)}
 .when.wait{background:#322b1a;color:var(--warn)}
 .empty{color:var(--soft);padding:6px 2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font:inherit;font-size:.85rem;cursor:pointer;background:#2b2030;color:var(--ink)}
+.btn.delete{border-color:#7b3438;background:#3a2025;color:#ffb0ad}
+.btn:disabled{opacity:.55;cursor:wait}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;text-align:center}
 .stat b{display:block;font-size:1.6rem;color:var(--pink)}.stat span{color:var(--soft);font-size:.82rem}
@@ -83,7 +87,39 @@ function card(name,info,kind,slot){
   i.append(el("div","m",`${esc(info.scene)} · ${info.lines} lines · ${esc(prettyName(name))}`));
   const w=el("span","when "+(kind==="queued"?(slot.first?"next":""):kind==="posted"?"done":"wait"),
     kind==="queued"?(slot.first?"Posts next · ":"Posts ")+fmt(slot.date):kind==="posted"?"Posted ✓":"Waiting for its video");
-  i.append(w);c.append(i);return c}
+  i.append(w);
+  if(kind==="queued"){
+    const actions=el("div","actions");
+    const del=el("button","btn delete","Delete from queue");
+    del.type="button";del.onclick=()=>deleteQueued(name,del);
+    actions.append(del);i.append(actions);
+  }
+  c.append(i);return c}
+
+async function deleteQueued(name,button){
+  if(!confirm(`Delete “${name}” from the queue? This permanently removes its script and generated MP4/thumbnail from the repository. Already-posted videos are protected.`))return;
+  const token=prompt("Enter a fine-grained GitHub token for this repository with Actions: write permission. It is used only for this request and is not saved.");
+  if(!token)return;
+  button.disabled=true;button.textContent="Requesting…";$("err").textContent="";
+  try{
+    const r=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/delete-queued-video.yml/dispatches`,{
+      method:"POST",
+      headers:{"Accept":"application/vnd.github+json","Authorization":`Bearer ${token.trim()}`,"X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"},
+      body:JSON.stringify({ref:BRANCH,inputs:{story:name}})
+    });
+    if(!r.ok){
+      let detail="GitHub returned "+r.status;
+      try{const j=await r.json();if(j.message)detail+=": "+j.message}catch(e){}
+      throw new Error(detail);
+    }
+    button.textContent="Deletion workflow started";
+    alert("Deletion requested. GitHub Actions will remove the queued script and video, then redeploy the queue page. Refresh in about a minute.");
+  }catch(e){
+    button.disabled=false;button.textContent="Delete from queue";
+    $("err").textContent="Could not delete “"+name+"”: "+(e.message||e)+". Check that your token has Actions: write access to this repository.";
+  }
+}
+
 function play(name){const p=$("player");p.poster=`${base}videos/${name}.jpg`;p.src=`${base}videos/${name}.mp4`;$("dlg").showModal();p.play().catch(()=>{})}
 $("close").onclick=()=>{$("player").pause();$("dlg").close()};
 $("dlg").addEventListener("close",()=>$("player").pause());

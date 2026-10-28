@@ -1,0 +1,66 @@
+name: Delete queued video
+
+on:
+  workflow_dispatch:
+    inputs:
+      story:
+        description: "Queued story filename without extension"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: render
+  cancel-in-progress: false
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate and delete queued video
+        env:
+          STORY: ${{ inputs.story }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$STORY" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]]; then
+            echo "::error::Invalid story name."
+            exit 1
+          fi
+          if [[ ! -f "stories/$STORY.txt" ]]; then
+            echo "::error::Story does not exist."
+            exit 1
+          fi
+          if grep -Fxq "$STORY" posted.txt 2>/dev/null; then
+            echo "::error::This story is already marked as posted and cannot be deleted from the queue."
+            exit 1
+          fi
+          if [[ ! -f "output/$STORY.mp4" ]]; then
+            echo "::error::This story has no generated video and is not in the queue."
+            exit 1
+          fi
+          rm -f "stories/$STORY.txt" "output/$STORY.mp4" "output/$STORY.jpg"
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A stories output
+          git commit -m "Delete queued video: $STORY"
+          git push
+      - name: Build site
+        run: |
+          mkdir -p site/videos
+          cp -r docs/* site/
+          cp output/*.mp4 site/videos/ 2>/dev/null || true
+          cp output/*.jpg site/videos/ 2>/dev/null || true
+          mkdir -p site/story-media
+          if [ -d ig-stories/out ]; then cp -r ig-stories/out/. site/story-media/; fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          token: ${{ github.token }}
