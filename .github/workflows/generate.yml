@@ -65,13 +65,19 @@ jobs:
             files="$STORY"
           fi
           for f in $files; do
-            python tinyvideo.py "$f" -o "output/$(basename "${f%.txt}").mp4"
+            if grep -qiE '^format:[[:space:]]*story' "$f"; then
+              # Story mode: animated story (walking, acting, vocabulary). Writes the mp4, cover, srt and caption.
+              python story.py "$f" -o output
+            else
+              python tinyvideo.py "$f" -o "output/$(basename "${f%.txt}").mp4"
+            fi
           done
       - name: Covers (thumbnails)
         run: |
           mkdir -p output
           for f in stories/*.txt; do
             b=$(basename "${f%.txt}")
+            if grep -qiE '^format:[[:space:]]*story' "$f"; then continue; fi   # Story mode makes its own cover
             if [ ! -f "output/$b.jpg" ] || [ "$f" = "${STORY:-}" ] || [ "${STORY:-all}" = "all" ]; then
               python cover.py "$f" "output/$b.jpg" || echo "cover failed for $f"
             fi

@@ -1,0 +1,45 @@
+name: Story tests
+
+on:
+  push:
+    paths:
+      - "tinyjp/**"
+      - "tinyvideo.py"
+      - "story.py"
+      - "test_story.py"
+      - "story-examples/**"
+      - ".github/workflows/story-tests.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install fonts, ffmpeg, Python packages
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y fonts-noto-cjk ffmpeg
+          pip install -r requirements.txt
+      - name: Unit tests
+        run: python -m unittest test_story -v
+      - name: Smoke render (tones instead of voices, real encode)
+        run: |
+          python story.py story-examples/01-at-the-cafe-plain.txt -o /tmp/smoke --dummy-audio
+          python story.py story-examples/02-at-the-cafe.txt -o /tmp/smoke --dummy-audio
+          ffprobe -v error -show_entries stream=codec_name,width,height,duration -of default=nw=1 /tmp/smoke/01-at-the-cafe-plain.mp4
+          test -s /tmp/smoke/01-at-the-cafe-plain.jpg
+      - name: Real voices render (needs internet, uses the free Edge voices)
+        run: |
+          python story.py story-examples/01-at-the-cafe-plain.txt -o /tmp/real --preview /tmp/real/frames
+          ffprobe -v error -show_entries stream=codec_name,width,height,duration -of default=nw=1 /tmp/real/01-at-the-cafe-plain.mp4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: story-samples
+          path: |
+            /tmp/real
+            /tmp/smoke

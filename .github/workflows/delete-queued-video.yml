@@ -45,7 +45,7 @@ jobs:
             echo "::error::This story has no generated video and is not in the queue."
             exit 1
           fi
-          rm -f "stories/$STORY.txt" "output/$STORY.mp4" "output/$STORY.jpg"
+          rm -f "stories/$STORY.txt" "stories/$STORY.caption" "output/$STORY.mp4" "output/$STORY.jpg" "output/$STORY.srt" "output/$STORY.caption.txt"
           git config user.name "github-actions"
           git config user.email "actions@users.noreply.github.com"
           git add -A stories output
