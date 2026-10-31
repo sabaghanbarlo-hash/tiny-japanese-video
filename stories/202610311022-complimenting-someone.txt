@@ -1,0 +1,29 @@
+title: Complimenting Someone
+cast: mika, alex
+episode: 23
+scene: cherry blossom park
+
+Alex: ミカさん、そのふく、かわいいですね！ | Mika, your outfit is so cute!
+Mika: ありがとうございます！アレックスさんも かっこいいですよ。 | Thank you! You're handsome too, Alex.
+Alex: ほんとうですか？うれしいです！ | Really? I'm happy!
+Mika: その えがおも すてきですね。 | Your smile is lovely too.
+Alex: ありがとう！ミカさんと はなすのは たのしいです。 | Thanks! Talking with you is fun.
+
+vocab: その | sono | That (before a noun)
+vocab: ふく | fuku | Clothes / Outfit
+vocab: かわいい | kawaii | Cute
+vocab: ありがとうございます | arigatou gozaimasu | Thank you very much
+vocab: も | mo | Also / Too
+vocab: かっこいい | kakkoii | Cool / Handsome
+vocab: ですよ | desu yo | It is! (emphasis)
+vocab: ほんとう | hontou | Really / True
+vocab: ですか | desu ka | Question ending
+vocab: うれしい | ureshii | Happy / Glad
+vocab: えがお | egao | Smile
+vocab: すてき | suteki | Lovely / Wonderful
+vocab: ありがとう | arigatou | Thanks
+vocab: と | to | With (and)
+vocab: はなす | hanasu | To speak / Talk
+vocab: の | no | Turns a verb into a noun-like expression
+vocab: たのしい | tanoshii | Fun / Enjoyable
+vocab: です | desu | Polite sentence ending
