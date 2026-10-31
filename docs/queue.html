@@ -131,7 +131,7 @@ async function load(){
     const tr=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/git/trees/${BRANCH}?recursive=1`);
     if(!tr.ok)throw new Error("GitHub said "+tr.status+" (try again in a minute).");
     const tree=(await tr.json()).tree.map(x=>x.path);
-    const stories=tree.filter(p=>/^stories\/[^/]+\.txt$/.test(p)).map(p=>p.slice(8,-4)).sort();
+    const stories=tree.filter(p=>/^stories\/[^/]+\.txt$/.test(p)).map(p=>p.slice(8,-4)).filter(n=>!n.startsWith("lesson-")).sort();
     const videos=new Set(tree.filter(p=>/^output\/[^/]+\.mp4$/.test(p)).map(p=>p.slice(7,-4)));
     const pr=await fetch(`https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/posted.txt?t=${Date.now()}`);
     const posted=(pr.ok?await pr.text():"").split("\n").map(s=>s.trim()).filter(Boolean);
