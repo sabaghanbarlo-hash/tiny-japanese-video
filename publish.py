@@ -19,6 +19,11 @@ def caption():
         c = open(side, encoding="utf-8").read().strip()
         if c:
             return c
+    auto = os.path.splitext(mp4)[0] + ".caption.txt"          # written by story.py (Story mode)
+    if os.path.exists(auto):
+        c = open(auto, encoding="utf-8").read().strip()
+        if c:
+            return c
     title, vocab = "Tiny Japanese", []
     for l in open(story, encoding="utf-8"):
         l = l.strip()

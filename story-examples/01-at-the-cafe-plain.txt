@@ -1,0 +1,16 @@
+title: At the Cafe
+episode: 1
+scene: cafe
+
+Mika: こんにちは、アレックス！ | Hello, Alex!
+Alex: こんにちは、ミカ！ | Hello, Mika!
+Mika: コーヒーをください。 | Coffee, please.
+Alex: わたしも、コーヒーをください。 | Coffee for me too, please.
+Mika: おいしい！ | Delicious!
+Alex: ほんとうですね。 | It really is.
+Mika: またね！ | See you!
+Alex: またね！ | See you!
+
+vocab: コーヒー | coffee
+vocab: ください | please give me
+vocab: おいしい | delicious

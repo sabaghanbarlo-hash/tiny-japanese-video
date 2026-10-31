@@ -280,7 +280,7 @@ def parse_story(path):
         s = raw.strip()
         if not s or s.startswith("#"):
             continue
-        m = re.match(r"^(title|scene|episode|weather|cast)\s*:\s*(.+)$", s, re.I)
+        m = re.match(r"^(title|scene|episode|weather|cast|format)\s*:\s*(.+)$", s, re.I)
         if m:
             meta[m[1].lower()] = m[2].strip()
             continue
@@ -391,7 +391,7 @@ def mouth_levels(audio, n):
 
 
 # ---------- characters ----------
-def render_char(c, mouth, blink):
+def render_char(c, mouth, blink, arms=True, expr="neutral"):
     S = 2 * CHAR_SCALE
     w, h = int(560 * S), int(760 * S)
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
@@ -501,8 +501,9 @@ def render_char(c, mouth, blink):
         elif outfit == "hoodie":
             line((262, 505, 258, 565), (250, 250, 250), 5); line((298, 505, 302, 565), (250, 250, 250), 5)
     arm = c["arm"] or top
-    ell((140, 500, 210, 650), arm); ell((350, 500, 420, 650), arm)                     # arms
-    ell((148, 625, 205, 675), skin); ell((355, 625, 412, 675), skin)                   # hands
+    if arms:
+        ell((140, 500, 210, 650), arm); ell((350, 500, 420, 650), arm)                 # arms
+        ell((148, 625, 205, 675), skin); ell((355, 625, 412, 675), skin)               # hands
     if outfit == "samurai":
         d.rounded_rectangle(P(122, 468, 212, 538), radius=int(22 * S), fill=shade(det, 0.92)); d.rounded_rectangle(P(348, 468, 438, 538), radius=int(22 * S), fill=shade(det, 0.92))
         for yy in (488, 508):
@@ -551,10 +552,12 @@ def render_char(c, mouth, blink):
                 ell((384 - k * 3, 300 + k * 52, 448 - k * 3, 366 + k * 52), hair)
             ell((372, 640, 424, 690), det)
     for ex in (222, 338):                                                              # eyes
-        if blink:
+        if blink or expr in ("happy", "embarrassed", "laugh"):
             d.arc(P(ex - 26, 335, ex + 26, 375), 200, 340, fill=ink, width=int(6 * S))
         else:
             y0, y1 = (324, 376) if c["brow"] == "sharp" else (318, 382)
+            if expr in ("surprised", "excited"):
+                y0, y1 = y0 - 8, y1 + 8
             ell((ex - 24, y0, ex + 24, y1), c["eye"])
             if c["pupil"]:
                 ell((ex - 13, y0 + 12, ex + 13, y1 - 10), (35, 25, 34))
@@ -576,7 +579,30 @@ def render_char(c, mouth, blink):
                 ell((280 + i * 17 - 2, yy - abs(i) * 3 - 2, 280 + i * 17 + 2, yy - abs(i) * 3 + 2), (126, 100, 90))
     if c["brow"] == "sharp":
         line((186, 296, 248, 312), shade(hair, 0.7), 8); line((374, 296, 312, 312), shade(hair, 0.7), 8)
-    if mouth == 0:
+    if expr in ("sad", "worried"):                                                     # story expressions: brows, blush, sweat drop
+        tl = 10 if expr == "sad" else 14
+        line((190, 292 - tl, 250, 300 + tl // 2), shade(hair, 0.7), 8); line((370, 292 - tl, 310, 300 + tl // 2), shade(hair, 0.7), 8)
+    elif expr == "confused":
+        line((190, 286, 250, 300), shade(hair, 0.7), 8); line((310, 304, 370, 290), shade(hair, 0.7), 8)
+    elif expr in ("surprised", "excited"):
+        line((190, 280, 250, 282), shade(hair, 0.7), 8); line((310, 282, 370, 280), shade(hair, 0.7), 8)
+    elif expr in ("embarrassed", "shy"):
+        line((190, 300, 250, 292), shade(hair, 0.7), 7); line((370, 300, 310, 292), shade(hair, 0.7), 7)
+    if expr in ("embarrassed", "shy", "happy", "excited"):
+        ell((158, 384, 222, 418), (248, 150, 154)); ell((338, 384, 402, 418), (248, 150, 154))
+    if expr in ("embarrassed", "worried"):
+        d.polygon(P(420, 262, 408, 292, 432, 292), fill=(169, 208, 245)); ell((406, 284, 434, 312), (169, 208, 245))
+    if mouth == 0 and expr in ("happy", "excited"):
+        d.arc(P(250, 392, 310, 436), 10, 170, fill=ink, width=int(6 * S))
+        if expr == "excited":
+            d.pieslice(P(256, 400, 304, 440), 0, 180, fill=(120, 40, 52))
+    elif mouth == 0 and expr in ("sad", "worried"):
+        d.arc(P(260, 414, 300, 440), 200, 340, fill=ink, width=int(5 * S))
+    elif mouth == 0 and expr == "surprised":
+        ell((268, 408, 292, 436), (120, 40, 52))
+    elif mouth == 0 and expr in ("confused", "embarrassed", "shy"):
+        line((262, 420, 274, 414, 286, 422, 298, 414), ink, 5)
+    elif mouth == 0:
         d.arc(P(262, 400, 298, 430), 20, 160, fill=ink, width=int(5 * S))
     elif mouth == 1:
         ell((268, 408, 292, 430), (120, 40, 52))
