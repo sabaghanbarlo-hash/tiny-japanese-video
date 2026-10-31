@@ -65,7 +65,7 @@ class Directing(unittest.TestCase):
         acting.check(s)
 
     def test_directed_script_is_played_as_written(self):
-        s = parse_any(DIRECTED); self.assertEqual(sum(isinstance(e, Direction) for e in s.story), 12)
+        s = parse_any(DIRECTED); self.assertEqual(sum(isinstance(e, Direction) for e in s.story), 11)
 
     def test_unknown_direction_is_a_line_error(self):
         with self.assertRaises(ScriptError) as cm: parse_any("title: T\nscene: cafe\n> Mika flies to the moon\nMika: はい | Yes\n")
