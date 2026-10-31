@@ -53,6 +53,12 @@ a{color:var(--pink)}
 <p class="sub">Paste a script, press the button, get a Reel. <a href="queue.html">See the queue →</a></p>
 
 <div class="card">
+<label>Format</label>
+<div class="chips" id="fmt"><button type="button" class="chip" data-f="small">Small</button><button type="button" class="chip" data-f="story">Story</button></div>
+<p class="hint" id="fmtHint" style="margin:8px 0 0"></p>
+</div>
+
+<div class="card">
 <label>Characters</label>
 <p class="hint" style="margin:0">Tap a face for each side. In the script, <code>Mika:</code> means the left character and <code>Alex:</code> the right one, or write the character's own name.</p>
 <div class="chips" id="chips"></div>
@@ -63,9 +69,10 @@ a{color:var(--pink)}
 <div class="card">
 <label for="script">Script</label>
 <textarea id="script" spellcheck="false"></textarea>
-<p class="hint">One line per speaker: <code>Mika: Japanese | English</code>. Speakers: Mika (left) and Alex (right), or the names of the characters you picked. Scenes: auto, cafe, station, sakura, ramen, shrine, snow, rainy … Optional line <code>weather: rain</code> (petals, leaves, snow, rain, wind, none). Romaji is automatic.</p>
+<p class="hint" id="hintSmall">One line per speaker: <code>Mika: Japanese | English</code>. Speakers: Mika (left) and Alex (right), or the names of the characters you picked. Scenes: auto, cafe, station, sakura, ramen, shrine, snow, rainy … Optional line <code>weather: rain</code> (petals, leaves, snow, rain, wind, none). Romaji is automatic.</p>
 <label for="caption" style="margin-top:14px">Instagram caption <span style="font-weight:400;color:var(--soft)">(optional – auto-written if empty)</span></label>
 <textarea id="caption" class="small" placeholder="Leave empty for an automatic caption with today's words and hashtags"></textarea>
+<p class="hint" id="hintStory" style="display:none">Same script as Small: <code>Mika: Japanese | English</code> lines, <code>vocab:</code> lines, optional <code>cast:</code>. The characters walk around a place and act the story out; romaji is automatic. Places (<code>scene:</code>): auto, cafe, bakery, restaurant, station, metro, park, classroom, supermarket, bookstore, market, library, museum, tower, airport, beach, apartment, street. Want to direct it yourself? Add lines like <code>&gt; Mika walks to counter</code> (see STORY_DIRECTING.md in the repository).</p>
 <div class="check"><input type="checkbox" id="post" checked><label for="post" style="margin:0">Post to Instagram when the video is ready</label></div>
 <button id="run">Make video</button>
 </div>
@@ -99,6 +106,23 @@ Alex: ありがとうございます！ | Thank you!
 vocab: えき | eki | station
 vocab: どこですか | doko desu ka | Where is it?
 `;
+const STORY_SAMPLE=`title: At the Cafe
+episode: 1
+scene: auto
+
+Mika: こんにちは、アレックス！ | Hello, Alex!
+Alex: こんにちは、ミカ！ | Hello, Mika!
+Mika: コーヒーをください。 | Coffee, please.
+Alex: わたしも、コーヒーをください。 | Coffee for me too, please.
+Mika: おいしい！ | Delicious!
+Alex: ほんとうですね。 | It really is.
+Mika: またね！ | See you!
+Alex: またね！ | See you!
+
+vocab: コーヒー | coffee
+vocab: ください | please give me
+vocab: おいしい | delicious
+`;
 const get=k=>{try{return localStorage.getItem(k)||""}catch(e){return ""}};
 const set=(k,v)=>{try{v?localStorage.setItem(k,v):localStorage.removeItem(k)}catch(e){}};
 $("script").value=get("tjv_script")||SAMPLE;
@@ -121,8 +145,17 @@ function drawStrips(){
       b.onclick=()=>{if(side==="L")castL=r.id;else castR=r.id;writeCast();drawStrips()};box.appendChild(b)}
     box.scrollLeft=sx;const me=ROSTER.find(r=>r.id===cur);$(nm).textContent=me?me.name:cur}
   if(castL===castR)$("nameR").textContent+="  (pick two different characters)"}
+let FMT=get("tjv_format")==="story"?"story":"small";
+function setFormat(f){FMT=f;set("tjv_format",f);
+  for(const b of $("fmt").children)b.className="chip"+(b.dataset.f===f?" on":"");
+  const t=$("script").value.trim();
+  if(!t||t===SAMPLE.trim()||t===STORY_SAMPLE.trim()){$("script").value=f==="story"?STORY_SAMPLE:SAMPLE;set("tjv_script",$("script").value);readCast()}
+  $("hintSmall").style.display=f==="small"?"":"none";$("hintStory").style.display=f==="story"?"":"none";
+  $("fmtHint").textContent=f==="story"?"Story: the characters walk around a place and act out the story, then the words are shown one by one.":"Small: two characters sit in a scene and chat.";
+  $("run").textContent=f==="story"?"Make story video":"Make video"}
+for(const b of $("fmt").children)b.onclick=()=>{setFormat(b.dataset.f);drawStrips()};
 fetch("characters/roster.json").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.length){ROSTER=j;drawChips();drawStrips()}}).catch(()=>{});
-readCast();drawChips();drawStrips();
+readCast();drawChips();drawStrips();setFormat(FMT);
 $("token").value=get("tjv_token");
 if(!get("tjv_token"))$("setup").open=true;
 $("saveTok").onclick=()=>{set("tjv_token",$("token").value.trim());say("Token saved in this browser.","ok")};
@@ -137,7 +170,8 @@ function slug(t){return (t||"story").toLowerCase().replace(/[^a-z0-9]+/g,"-").re
 function check(text){
   const speakers=new RegExp("^("+ROSTER.map(r=>r.id).join("|")+")\\s*[:：]","i");let n=0;
   for(const raw of text.split("\n")){const l=raw.trim();if(!l||l.startsWith("#"))continue;
-    if(/^(title|scene|episode|vocab|weather|cast)\s*:/i.test(l))continue;
+    if(/^(title|scene|episode|vocab|weather|cast|format|cover)\s*:/i.test(l))continue;
+    if(FMT==="story"&&/^(>|&|@scene\b)/i.test(l))continue;
     if(speakers.test(l)){n++;continue}
     throw new Error("Can't read this line (start with Mika:, Alex: or a picked character's name):\n"+l)}
   if(!n)throw new Error("No dialogue lines found.")}
@@ -148,7 +182,9 @@ $("run").onclick=async()=>{
     if(!get("tjv_token")){$("setup").open=true;throw new Error("Add your GitHub token first (setup box below).")}
     readCast();if(castL===castR)throw new Error("Pick two different characters.");
     writeCast();   // the picked characters always go into the script, even if you pasted a fresh one
-    const text=$("script").value.trim();check(text);
+    let text=$("script").value.trim().replace(/^format\s*:.*\n?/gim,"").trim();
+    if(FMT==="story")text=/^title\s*:.*$/im.test(text)?text.replace(/^(title\s*:.*)$/im,"$1\nformat: story"):"format: story\n"+text;
+    check(text);
     btn.disabled=true;
     const title=(text.match(/^title\s*:\s*(.+)$/im)||[])[1]||"story";
     const stamp=new Date().toISOString().slice(0,16).replace(/[-:T]/g,"");
