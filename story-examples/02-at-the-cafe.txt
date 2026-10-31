@@ -1,0 +1,26 @@
+title: At the Cafe
+episode: 1
+scene: cafe
+
+@scene cafe
+> Mika enters left
+& Alex enters right
+> Mika waves
+Mika: こんにちは！ | Hello!
+> Alex nods
+Alex: こんにちは。 | Hello.
+> Mika walks to counter
+Mika: コーヒーをください。 | Coffee, please.
+> Mika buys a coffee
+> Alex walks to counter
+Alex: わたしも、コーヒーをください。 | Coffee for me too, please.
+> Alex buys a coffee
+> Mika drinks the coffee
+Mika: おいしい！ | Delicious!
+> Alex looks happy
+> Both wave
+Alex: またね！ | See you!
+
+vocab: コーヒー | coffee
+vocab: ください | please give me
+vocab: おいしい | delicious
