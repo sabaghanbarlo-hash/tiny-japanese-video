@@ -32,3 +32,14 @@ jobs:
           python story.py story-examples/02-at-the-cafe.txt -o /tmp/smoke --dummy-audio
           ffprobe -v error -show_entries stream=codec_name,width,height,duration -of default=nw=1 /tmp/smoke/01-at-the-cafe-plain.mp4
           test -s /tmp/smoke/01-at-the-cafe-plain.jpg
+      - name: Real voices render (needs internet, uses the free Edge voices)
+        run: |
+          python story.py story-examples/01-at-the-cafe-plain.txt -o /tmp/real --preview /tmp/real/frames
+          ffprobe -v error -show_entries stream=codec_name,width,height,duration -of default=nw=1 /tmp/real/01-at-the-cafe-plain.mp4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: story-samples
+          path: |
+            /tmp/real
+            /tmp/smoke
