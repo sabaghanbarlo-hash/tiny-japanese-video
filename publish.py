@@ -35,7 +35,7 @@ def caption():
     out = f"{title} 🌸\nLearn Japanese one tiny story at a time.\n"
     if vocab:
         out += "\nToday's words:\n" + "\n".join(vocab) + "\n"
-    return out + "\nSave this to practice later! 💌\n#learnjapanese #japanese #nihongo #japaneselanguage #jlpt #japanesefortbeginners"
+    return out + "\nSave this to practice later! 💌\n#learnjapanese #japanese #nihongo #japaneselanguage #jlpt #japaneseforbeginners"
 
 
 MCP_URL = "https://connect.composio.dev/mcp"

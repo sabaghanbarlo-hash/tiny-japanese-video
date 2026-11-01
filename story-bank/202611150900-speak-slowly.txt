@@ -1,0 +1,14 @@
+title: Speak Slowly, Please
+cast: mika, alex
+episode: 36
+scene: station
+
+Mika: すみません、にほんごが すこし わかります。 | Excuse me, I understand a little Japanese.
+Alex: はい、なんですか。 | Yes, what is it?
+Mika: ゆっくり はなして ください。 | Please speak slowly.
+Alex: はい。ゆっくり いいますね。 | Okay. I'll say it slowly.
+Mika: もういちど おねがいします。 | One more time, please.
+
+vocab: ゆっくり | yukkuri | Slowly
+vocab: もういちど | mou ichido | One more time
+vocab: わかります | wakarimasu | I understand

@@ -1,0 +1,14 @@
+title: Ramen Ticket Machine
+cast: mika, alex
+episode: 25
+scene: ramen
+
+Mika: あれ？ メニューが ありません。 | Huh? There's no menu.
+Alex: あの きかいで チケットを かいます。 | You buy a ticket at that machine.
+Mika: ラーメンの ボタンは どれですか。 | Which button is the ramen?
+Alex: これです。ふつうの ラーメンは ななひゃくえんです。 | This one. Regular ramen is 700 yen.
+Mika: ありがとう！ チケットを わたしますね。 | Thanks! I'll hand over the ticket.
+
+vocab: きかい | kikai | Machine
+vocab: ボタン | botan | Button
+vocab: どれですか | dore desu ka | Which one is it?

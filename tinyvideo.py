@@ -1287,7 +1287,7 @@ def build(story, rate, dummy, tmp):
         x = read_wav(wav); ln["start"], ln["end"] = t, t + len(x) / SR
         chunks += [x, np.zeros(int(0.5 * SR), np.float32)]; t = ln["end"] + 0.5
     # Key words: say each one out loud (Japanese, then its English meaning, then Japanese again).
-    vocab = vocab[:5]
+    vocab = vocab[:int(os.environ.get("MAX_VOCAB", "3"))]   # 3 key words keeps reels short (set MAX_VOCAB=5 for the old length)
     vstart, talk = t, list(lines)
     for j, v in enumerate(vocab):
         jp_say = re.sub(r"[〜~]+", "、", v["jp"]).strip("、 ") or v["jp"]

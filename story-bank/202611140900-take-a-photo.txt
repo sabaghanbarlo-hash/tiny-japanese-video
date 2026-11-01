@@ -1,0 +1,13 @@
+title: Take a Photo for Us
+cast: mika, alex
+episode: 35
+scene: shrine
+
+Mika: すみません、しゃしんを おねがいします。 | Excuse me, could you take a photo, please?
+Alex: はい、いいですよ。いきますよ。はい、チーズ！ | Sure. Here we go. Say cheese!
+Mika: ありがとうございました！ | Thank you so much!
+Alex: どういたしまして。 | You're welcome.
+
+vocab: しゃしん | shashin | Photo
+vocab: おねがいします | onegaishimasu | Please (a request)
+vocab: どういたしまして | douitashimashite | You're welcome

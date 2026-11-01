@@ -1,0 +1,15 @@
+title: Vegetarian in Japan
+cast: mika, alex
+episode: 29
+scene: restaurant
+
+Mika: すみません、わたしは ベジタリアンです。 | Excuse me, I'm vegetarian.
+Alex: はい、わかりました。 | Okay, understood.
+Mika: この りょうりに にくは はいっていますか。 | Does this dish have meat in it?
+Alex: はい、ぶたにくが はいっています。 | Yes, it has pork in it.
+Mika: にくが ない りょうりは ありますか。 | Do you have a dish without meat?
+Alex: はい、やさいの カレーが ありますよ。 | Yes, we have a vegetable curry.
+
+vocab: ベジタリアン | bejitarian | Vegetarian
+vocab: にく | niku | Meat
+vocab: ありますか | arimasu ka | Do you have it?
