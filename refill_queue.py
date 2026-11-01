@@ -3,8 +3,8 @@
 
 Run by .github/workflows/daily-refill.yml. Steps:
   1. Count videos that are waiting to be posted (rendered, or scripted with a .caption file).
-  2. If fewer than DAYS_AHEAD, add stories: first from story-bank/, then (only if
-     ANTHROPIC_API_KEY is set) written fresh by Claude. Every script is checked with
+  2. If fewer than DAYS_AHEAD, add stories: first from story-bank/, then written fresh by a
+     free AI model (GitHub Models, no key needed; Claude if you add ANTHROPIC_API_KEY). Every script is checked with
      the renderer's own parser before it is accepted.
   3. Print the list of stories that still need rendering to $GITHUB_OUTPUT (render=...).
 
@@ -17,7 +17,8 @@ from datetime import datetime, timedelta, timezone
 AHEAD = int(os.environ.get("DAYS_AHEAD", "5") or 5)
 DRY = "--dry-run" in sys.argv
 BANK = "story-bank"
-MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-5-5")
+MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-5-5")       # only used if you add an ANTHROPIC_API_KEY
+GH_MODEL = os.environ.get("GH_MODEL", "openai/gpt-4.1-mini")           # free: GitHub Models, uses the workflow's own token
 SCENES = ("cafe station sakura restaurant store bookstore classroom home airport street park beach hospital ramen "
           "shrine fuji matsuri arcade aquarium onsen snow bakery rainy karaoke rooftop izakaya commute sushi bamboo "
           "autumn castle sunset flowers").split()
@@ -130,19 +131,45 @@ Rules:
 Return ONLY JSON: {{"title": str, "scene": str, "hook": str, "value": str, "lines": [{{"speaker": "Mika"|"Alex", "jp": str, "en": str}}], "vocab": [{{"jp": str, "romaji": str, "en": str}}]}}"""
 
 
-def llm_story(titles):
-    key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
-    if not key:
+def llm_available():
+    return os.environ.get("NO_LLM") != "1" and bool(os.environ.get("GITHUB_TOKEN", "").strip()
+                                                    or os.environ.get("ANTHROPIC_API_KEY", "").strip())
+
+
+def call_llm(prompt):
+    """Returns the model's text, or None. Free route: GitHub Models with the workflow's GITHUB_TOKEN (needs
+    `permissions: models: read`). If you ever add an ANTHROPIC_API_KEY secret, that is used instead."""
+    ak, gh = os.environ.get("ANTHROPIC_API_KEY", "").strip(), os.environ.get("GITHUB_TOKEN", "").strip()
+    if ak:
+        body = json.dumps({"model": MODEL, "max_tokens": 1500, "messages": [{"role": "user", "content": prompt}]}).encode()
+        req = urllib.request.Request("https://api.anthropic.com/v1/messages", body, {
+            "x-api-key": ak, "anthropic-version": "2023-06-01", "content-type": "application/json"})
+        get = lambda r: "".join(b.get("text", "") for b in r["content"])
+    elif gh:
+        body = json.dumps({"model": GH_MODEL, "temperature": 0.7, "max_tokens": 1500,
+                           "messages": [{"role": "user", "content": prompt}]}).encode()
+        req = urllib.request.Request("https://models.github.ai/inference/chat/completions", body, {
+            "Authorization": f"Bearer {gh}", "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28", "Content-Type": "application/json"})
+        get = lambda r: r["choices"][0]["message"]["content"]
+    else:
         return None
-    body = json.dumps({"model": MODEL, "max_tokens": 1500, "messages": [
-        {"role": "user", "content": PROMPT.format(used="; ".join(titles[-60:]) or "none", scenes=", ".join(SCENES))}]}).encode()
-    req = urllib.request.Request("https://api.anthropic.com/v1/messages", body, {
-        "x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"})
     try:
-        txt = "".join(b.get("text", "") for b in json.load(urllib.request.urlopen(req, timeout=120))["content"])
+        return get(json.load(urllib.request.urlopen(req, timeout=120)))
+    except urllib.error.HTTPError as e:
+        log(f"::warning::AI call failed: HTTP {e.code} {'(rate limit, try again tomorrow)' if e.code == 429 else ''}")
+    except (urllib.error.URLError, ValueError, KeyError, IndexError) as e:
+        log(f"::warning::AI call failed: {str(e)[:200]}")
+    return None
+
+
+def llm_story(titles):
+    txt = call_llm(PROMPT.format(used="; ".join(titles[-60:]) or "none", scenes=", ".join(SCENES)))
+    if not txt:
+        return None
+    try:
         return json.loads(txt[txt.index("{"):txt.rindex("}") + 1])
-    except (urllib.error.URLError, ValueError, KeyError) as e:
-        log(f"::warning::Claude call failed: {str(e)[:200]}")
+    except ValueError:
         return None
 
 
@@ -152,6 +179,7 @@ def valid(d, titles):
         return bool(d["title"] not in titles and d["scene"] in SCENES and 4 <= len(L) <= 7 and len(V) == 3
                 and all(x["speaker"] in ("Mika", "Alex") and JP.search(x["jp"]) and x["en"].strip() for x in L)
                 and all(JP.search(v["jp"]) and v["romaji"].strip() and v["en"].strip() for v in V)
+                and all(v["jp"].replace(" ", "") in "".join(x["jp"] for x in L).replace(" ", "") for v in V)
                 and 0 < len(d["hook"]) <= 90 and d["value"].strip())
     except (KeyError, TypeError):
         return False
@@ -168,7 +196,7 @@ def write_llm(d, name, episode):
 
 
 def add_from_llm(need):
-    if not os.environ.get("ANTHROPIC_API_KEY", "").strip():
+    if not llm_available():
         return []
     added, titles, fails = [], used_titles(), 0
     ep = 1 + max([int(m.group(1)) for f in glob.glob("stories/*.txt") for l in open(f, encoding="utf-8")
@@ -179,7 +207,7 @@ def add_from_llm(need):
         d = llm_story(titles)
         if not d or not valid(d, titles):
             fails += 1
-            log("::warning::Claude story rejected (invalid shape or repeated title)")
+            log("::warning::AI story rejected (invalid shape or repeated title)")
             continue
         slug = re.sub(r"[^a-z0-9]+", "-", d["title"].lower()).strip("-")[:40] or "story"
         name = next_name(slug, len(added))
@@ -201,8 +229,8 @@ def main():
     if len(added) < need:
         added += add_from_llm(need - len(added))
     if len(added) < need:
-        log(f"::warning::Queue is short by {need - len(added)}: story-bank is empty and no ANTHROPIC_API_KEY secret "
-            f"(or the model returned nothing usable). Add stories to {BANK}/ or add the secret.")
+        log(f"::warning::Queue is short by {need - len(added)}: story-bank is empty and the free AI model "
+            f"returned nothing usable (rate limit, or no models: read permission). Add stories to {BANK}/.")
     render = [] if DRY else to_render()
     log("Added:", added or "nothing", "| To render:", render or "nothing")
     out = os.environ.get("GITHUB_OUTPUT")

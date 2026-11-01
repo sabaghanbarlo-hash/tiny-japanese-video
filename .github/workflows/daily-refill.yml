@@ -1,7 +1,7 @@
 name: Daily refill
 
 # Keeps the Instagram queue a few days ahead: writes new scripts (story-bank/, then Claude if
-# ANTHROPIC_API_KEY is set), renders ONLY the new ones, and redeploys the site so the video URLs exist
+# a free AI model), renders ONLY the new ones, and redeploys the site so the video URLs exist
 # before daily-reel.yml posts. Runs before the daily post. Safe to run by hand any time.
 
 on:
@@ -17,6 +17,7 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  models: read      # free AI scripts via GitHub Models (no API key)
 
 concurrency:
   group: render
@@ -39,7 +40,8 @@ jobs:
         id: plan
         env:
           DAYS_AHEAD: ${{ github.event.inputs.days_ahead || '5' }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # optional, leave unset to stay free
         run: python refill_queue.py
       - name: System dependencies
         if: ${{ steps.plan.outputs.render != '' }}
