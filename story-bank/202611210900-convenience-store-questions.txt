@@ -1,0 +1,15 @@
+title: Convenience Store Questions
+cast: mika, alex
+episode: 42
+scene: store
+
+Mika: これを おねがいします。 | This one, please.
+Alex: あたためますか。 | Would you like it heated?
+Mika: はい、おねがいします。 | Yes, please.
+Alex: おはしは いりますか。 | Do you need chopsticks?
+Mika: はい、おねがいします。ふくろは いりません。 | Yes, please. I don't need a bag.
+Alex: かしこまりました。 | Certainly.
+
+vocab: あたためますか | atatamemasu ka | Would you like it heated?
+vocab: おはし | ohashi | Chopsticks
+vocab: いりません | irimasen | I don't need it

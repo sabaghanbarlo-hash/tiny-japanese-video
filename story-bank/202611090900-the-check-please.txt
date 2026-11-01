@@ -1,0 +1,14 @@
+title: The Check, Please
+cast: mika, alex
+episode: 30
+scene: izakaya
+
+Mika: すみません！ | Excuse me!
+Alex: はい。 | Yes?
+Mika: おかいけいを おねがいします。 | The check, please.
+Alex: はい、しょうしょう おまちください。 | Certainly, one moment please.
+Mika: ありがとうございます。 | Thank you.
+
+vocab: おかいけいを おねがいします | okaikei o onegaishimasu | The check, please
+vocab: しょうしょう おまちください | shoushou omachi kudasai | One moment, please
+vocab: すみません | sumimasen | Excuse me

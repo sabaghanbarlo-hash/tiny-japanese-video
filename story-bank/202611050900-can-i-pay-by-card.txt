@@ -1,0 +1,14 @@
+title: Can I Pay by Card?
+cast: mika, alex
+episode: 26
+scene: store
+
+Mika: すみません、これを ください。 | Excuse me, I'll take this, please.
+Alex: はい、せんごひゃくえんです。 | Sure, that's 1,500 yen.
+Mika: カードは つかえますか。 | Can I use a card?
+Alex: すみません、げんきんだけです。 | Sorry, cash only.
+Mika: だいじょうぶです。げんきんで はらいます。 | That's okay. I'll pay in cash.
+
+vocab: カードは つかえますか | kaado wa tsukaemasu ka | Can I use a card?
+vocab: げんきん | genkin | Cash
+vocab: だいじょうぶです | daijoubu desu | It's okay

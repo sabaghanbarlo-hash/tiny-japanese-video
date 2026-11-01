@@ -1,0 +1,14 @@
+title: Tax-Free, Please
+cast: mika, alex
+episode: 41
+scene: store
+
+Mika: すみません、めんぜいに できますか。 | Excuse me, can I get this tax-free?
+Alex: はい、パスポートを おねがいします。 | Yes, your passport, please.
+Mika: はい、どうぞ。 | Here you go.
+Alex: ありがとうございます。こちらに サインを おねがいします。 | Thank you. Please sign here.
+Mika: わかりました。 | Okay.
+
+vocab: めんぜい | menzei | Tax-free
+vocab: パスポート | pasupooto | Passport
+vocab: サイン | sain | Signature

@@ -1,0 +1,14 @@
+title: What Do You Recommend?
+cast: mika, alex
+episode: 34
+scene: sushi
+
+Mika: すみません、おすすめは なんですか。 | Excuse me, what do you recommend?
+Alex: きょうは まぐろが おすすめです。 | Today I recommend the tuna.
+Mika: じゃあ、それを ください。 | Then I'll have that, please.
+Alex: はい。わさびは だいじょうぶですか。 | Okay. Is wasabi alright?
+Mika: すこしだけ おねがいします。 | Just a little, please.
+
+vocab: おすすめ | osusume | Recommendation
+vocab: まぐろ | maguro | Tuna
+vocab: すこし | sukoshi | A little

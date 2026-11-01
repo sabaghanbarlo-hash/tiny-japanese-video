@@ -1,0 +1,15 @@
+title: Which Thank You?
+cast: mika, alex
+episode: 32
+scene: store
+
+Mika: これ、ありがとう！ | Thanks for this!
+Alex: ミカ、おみせの ひとには ていねいに いいましょう。 | Mika, let's be polite with shop staff.
+Mika: ていねい？ | Polite?
+Alex: ありがとうございます、と いいます。 | You say "arigatou gozaimasu."
+Mika: ありがとうございます！ | Thank you very much!
+Alex: そうです！ じょうずです！ | Right! Well done!
+
+vocab: ありがとう | arigatou | Thanks (casual)
+vocab: ありがとうございます | arigatou gozaimasu | Thank you (polite)
+vocab: ていねい | teinei | Polite

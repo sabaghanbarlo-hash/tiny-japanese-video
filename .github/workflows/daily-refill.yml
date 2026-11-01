@@ -1,0 +1,108 @@
+name: Daily refill
+
+# Keeps the Instagram queue a few days ahead: writes new scripts (story-bank/, then Claude if
+# a free AI model), renders ONLY the new ones, and redeploys the site so the video URLs exist
+# before daily-reel.yml posts. Runs before the daily post. Safe to run by hand any time.
+
+on:
+  schedule:
+    - cron: "30 6 * * *"
+  workflow_dispatch:
+    inputs:
+      days_ahead:
+        description: "How many unposted videos to keep ready"
+        default: "5"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  models: read      # free AI scripts via GitHub Models (no API key)
+
+concurrency:
+  group: render
+  cancel-in-progress: false
+
+jobs:
+  refill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    outputs:
+      render: ${{ steps.plan.outputs.render }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Plan and write scripts
+        id: plan
+        env:
+          DAYS_AHEAD: ${{ github.event.inputs.days_ahead || '5' }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # optional, leave unset to stay free
+        run: python refill_queue.py
+      - name: System dependencies
+        if: ${{ steps.plan.outputs.render != '' }}
+        timeout-minutes: 12
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          sudo rm -f /etc/apt/sources.list.d/microsoft-prod.list /etc/apt/sources.list.d/microsoft-prod.sources /etc/apt/sources.list.d/mono-official-stable.list
+          ok=0
+          for i in 1 2 3; do
+            sudo timeout 120 apt-get update -y -o Acquire::Retries=3 -o Acquire::http::Timeout=20 || true
+            if sudo timeout 240 apt-get install -y --no-install-recommends -o Acquire::http::Timeout=20 ffmpeg fonts-noto-cjk; then ok=1; break; fi
+            sudo pkill -f apt-get || true; sudo dpkg --configure -a || true; sleep 10
+          done
+          if [ "$ok" != 1 ]; then echo "::error::apt install of ffmpeg/fonts failed - re-run the workflow"; exit 1; fi
+      - name: Render new stories only
+        if: ${{ steps.plan.outputs.render != '' }}
+        env:
+          RENDER: ${{ steps.plan.outputs.render }}
+          STRICT_VOICE: "1"
+        run: |
+          mkdir -p output
+          for f in $RENDER; do
+            b=$(basename "${f%.txt}")
+            if grep -qiE '^format:[[:space:]]*story' "$f"; then
+              python story.py "$f" -o output
+            else
+              python tinyvideo.py "$f" -o "output/$b.mp4"
+              python cover.py "$f" "output/$b.jpg" || echo "cover failed for $f"
+            fi
+            test -f "output/$b.mp4" || { echo "::error::render produced no video for $f"; exit 1; }
+          done
+      - name: Commit scripts and videos
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A stories story-bank output
+          git commit -m "Refill queue [skip ci]" || { echo "nothing to commit"; exit 0; }
+          git pull --rebase
+          git push
+      - name: Build site
+        if: ${{ steps.plan.outputs.render != '' }}
+        run: |
+          mkdir -p site/videos
+          cp -r docs/* site/
+          cp output/*.mp4 site/videos/
+          cp output/*.jpg site/videos/ 2>/dev/null || true
+          mkdir -p site/story-media
+          if [ -d ig-stories/out ]; then cp -r ig-stories/out/. site/story-media/; fi
+      - uses: actions/upload-pages-artifact@v3
+        if: ${{ steps.plan.outputs.render != '' }}
+        with:
+          path: site
+
+  deploy:
+    needs: refill
+    if: ${{ needs.refill.outputs.render != '' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

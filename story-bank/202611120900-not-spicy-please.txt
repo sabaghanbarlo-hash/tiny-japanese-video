@@ -1,0 +1,14 @@
+title: Not Spicy, Please
+cast: mika, alex
+episode: 33
+scene: restaurant
+
+Mika: これは からいですか。 | Is this spicy?
+Alex: はい、ちょっと からいです。 | Yes, it's a little spicy.
+Mika: からくしないで ください。 | Please make it not spicy.
+Alex: わかりました。 | Understood.
+Mika: ありがとうございます！ | Thank you!
+
+vocab: からい | karai | Spicy
+vocab: からくしないで ください | karaku shinaide kudasai | Please make it not spicy
+vocab: わかりました | wakarimashita | Understood
