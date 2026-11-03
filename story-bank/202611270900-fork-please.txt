@@ -1,0 +1,14 @@
+title: Fork, Please
+cast: mika, alex
+episode: 48
+scene: restaurant
+
+Mika: すみません、フォークは ありますか。 | Excuse me, do you have a fork?
+Alex: はい、ありますよ。すこし まって ください。 | Yes, we do. Please wait a moment.
+Mika: おはしは ちょっと むずかしいです。 | Chopsticks are a little difficult.
+Alex: だいじょうぶです。フォークと スプーンを どうぞ。 | No problem. Here's a fork and a spoon.
+Mika: ありがとうございます！ | Thank you!
+
+vocab: フォークは ありますか | fooku wa arimasu ka | Do you have a fork?
+vocab: むずかしい | muzukashii | Difficult
+vocab: スプーン | supuun | Spoon
