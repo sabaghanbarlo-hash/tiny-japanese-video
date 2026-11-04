@@ -1,0 +1,14 @@
+title: Where Is the Toilet?
+cast: mika, alex
+episode: 24
+scene: airport
+
+Mika: すみません、トイレは どこですか。 | Excuse me, where is the toilet?
+Alex: あそこです。まっすぐ いって ください。 | Over there. Please go straight.
+Mika: まっすぐ ですね。 | Straight ahead, right?
+Alex: はい、みぎに ありますよ。 | Yes, it's on the right.
+Mika: ありがとうございます！ | Thank you!
+
+vocab: トイレは どこですか | toire wa doko desu ka | Where is the toilet?
+vocab: まっすぐ | massugu | Straight
+vocab: みぎ | migi | Right

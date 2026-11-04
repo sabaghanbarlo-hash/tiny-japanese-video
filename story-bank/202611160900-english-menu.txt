@@ -1,0 +1,14 @@
+title: English Menu?
+cast: mika, alex
+episode: 37
+scene: cafe
+
+Mika: すみません、えいごの メニューは ありますか。 | Excuse me, do you have an English menu?
+Alex: はい、どうぞ。 | Yes, here you are.
+Mika: ありがとうございます！ | Thank you!
+Alex: きまったら よんでください。 | Call me when you've decided.
+Mika: はい、わかりました。 | Okay, got it.
+
+vocab: えいご | eigo | English
+vocab: メニュー | menyuu | Menu
+vocab: どうぞ | douzo | Here you are

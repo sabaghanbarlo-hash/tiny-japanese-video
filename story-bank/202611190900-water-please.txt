@@ -1,0 +1,14 @@
+title: Water, Please
+cast: mika, alex
+episode: 40
+scene: restaurant
+
+Mika: すみません、おみずを おねがいします。 | Excuse me, water, please.
+Alex: はい、つめたい おみずと あたたかい おちゃが ありますよ。 | Sure, we have cold water and warm tea.
+Mika: つめたい おみずを ください。 | Cold water, please.
+Alex: はい、どうぞ。 | Here you go.
+Mika: ありがとうございます！ | Thank you!
+
+vocab: おみず | omizu | Water
+vocab: つめたい | tsumetai | Cold
+vocab: あたたかい | atatakai | Warm

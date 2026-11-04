@@ -1,0 +1,14 @@
+title: Can I Take Photos?
+cast: mika, alex
+episode: 46
+scene: castle
+
+Mika: すみません、ここで しゃしんを とっても いいですか。 | Excuse me, may I take photos here?
+Alex: はい、いいですよ。 | Yes, you may.
+Mika: フラッシュは だいじょうぶですか。 | Is flash okay?
+Alex: すみません、フラッシュは だめです。 | Sorry, no flash.
+Mika: わかりました。ありがとうございます！ | Understood. Thank you!
+
+vocab: しゃしんを とっても いいですか | shashin o tottemo ii desu ka | May I take photos?
+vocab: フラッシュ | furasshu | Flash
+vocab: だめです | dame desu | Not allowed

@@ -1,0 +1,14 @@
+title: Itadakimasu
+cast: mika, alex
+episode: 28
+scene: home
+
+Mika: いただきます！ | Let's eat! (said before a meal)
+Alex: いただきます！ | Let's eat!
+Mika: んー、おいしい！ | Mmm, delicious!
+Alex: ぜんぶ たべましょう。 | Let's eat it all.
+Mika: ごちそうさまでした！ | Thank you for the meal!
+
+vocab: いただきます | itadakimasu | Said before eating
+vocab: ごちそうさまでした | gochisousama deshita | Said after eating
+vocab: おいしい | oishii | Delicious

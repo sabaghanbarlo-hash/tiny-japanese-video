@@ -1,0 +1,15 @@
+title: Tattoo at the Onsen
+cast: mika, alex
+episode: 27
+scene: onsen
+
+Mika: すみません、タトゥーが ありますが、だいじょうぶですか。 | Excuse me, I have a tattoo. Is that okay?
+Alex: すみません、タトゥーは ちょっと…。 | Sorry, tattoos are a bit...difficult.
+Mika: シールは どうですか。 | What about a sticker?
+Alex: はい、シールなら だいじょうぶです。 | Yes, a sticker is fine.
+Mika: ありがとうございます！ | Thank you!
+Alex: ごゆっくり どうぞ。 | Please take your time.
+
+vocab: タトゥー | tatoo | Tattoo
+vocab: だいじょうぶですか | daijoubu desu ka | Is it okay?
+vocab: ごゆっくり どうぞ | goyukkuri douzo | Please take your time

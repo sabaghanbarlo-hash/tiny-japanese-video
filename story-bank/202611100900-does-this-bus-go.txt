@@ -1,0 +1,14 @@
+title: Does This Bus Go There?
+cast: mika, alex
+episode: 31
+scene: commute
+
+Mika: すみません、この バスは えきに いきますか。 | Excuse me, does this bus go to the station?
+Alex: はい、いきますよ。 | Yes, it does.
+Mika: いくらですか。 | How much is it?
+Alex: にひゃくにじゅうえんです。 | It's 220 yen.
+Mika: ありがとうございます！ | Thank you!
+
+vocab: バス | basu | Bus
+vocab: いきますか | ikimasu ka | Does it go?
+vocab: いくらですか | ikura desu ka | How much is it?

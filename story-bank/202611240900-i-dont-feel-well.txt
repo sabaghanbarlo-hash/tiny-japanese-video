@@ -1,0 +1,15 @@
+title: I Don't Feel Well
+cast: mika, alex
+episode: 45
+scene: hospital
+
+Mika: すみません、きぶんが わるいです。 | Excuse me, I don't feel well.
+Alex: どう しましたか。 | What's wrong?
+Mika: あたまが いたいです。 | I have a headache.
+Alex: ねつは ありますか。 | Do you have a fever?
+Mika: はい、すこし あります。 | Yes, a little.
+Alex: そこに すわって まって ください。 | Please sit there and wait.
+
+vocab: きぶんが わるいです | kibun ga warui desu | I don't feel well
+vocab: あたま | atama | Head
+vocab: ねつ | netsu | Fever

@@ -1,0 +1,14 @@
+title: Can You Hold My Luggage?
+cast: mika, alex
+episode: 39
+scene: station
+
+Mika: すみません、にもつを あずかって もらえますか。 | Excuse me, could you hold my luggage?
+Alex: はい、だいじょうぶですよ。 | Yes, that's fine.
+Mika: ごご ごじまで おねがいします。 | Until 5 p.m., please.
+Alex: わかりました。ここに なまえを かいて ください。 | Understood. Please write your name here.
+Mika: はい。ありがとうございます！ | Okay. Thank you!
+
+vocab: にもつ | nimotsu | Luggage
+vocab: あずかって もらえますか | azukatte moraemasu ka | Could you hold it for me?
+vocab: なまえ | namae | Name

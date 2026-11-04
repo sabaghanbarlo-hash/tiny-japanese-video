@@ -1,0 +1,14 @@
+title: Last Train?
+cast: mika, alex
+episode: 51
+scene: station
+
+Mika: すみません、さいごの でんしゃは なんじですか。 | Excuse me, what time is the last train?
+Alex: ええと、じゅうにじ ごじゅっぷんです。 | Let me see, it's 12:50.
+Mika: じゅうにじ ごじゅっぷん ですね。 | 12:50, right?
+Alex: はい。でも、いそいで ください。 | Yes. But please hurry.
+Mika: ありがとうございます！ | Thank you!
+
+vocab: さいごの でんしゃ | saigo no densha | Last train
+vocab: なんじですか | nanji desu ka | What time is it?
+vocab: いそいで ください | isoide kudasai | Please hurry

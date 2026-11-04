@@ -1,0 +1,14 @@
+title: No Thank You
+cast: mika, alex
+episode: 44
+scene: street
+
+Alex: おねえさん、いかがですか。 | Miss, would you like to try?
+Mika: すみません、けっこうです。 | Sorry, no thank you.
+Alex: ちょっと だけ どうぞ。 | Just a little, please.
+Mika: ありがとうございます。でも、だいじょうぶです。 | Thank you. But I'm fine.
+Alex: わかりました。 | I see.
+
+vocab: けっこうです | kekkou desu | No thank you
+vocab: いかがですか | ikaga desu ka | Would you like some?
+vocab: だいじょうぶです | daijoubu desu | I'm fine / No need

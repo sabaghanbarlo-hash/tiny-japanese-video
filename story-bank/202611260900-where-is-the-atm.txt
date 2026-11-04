@@ -1,0 +1,14 @@
+title: Where Is the ATM?
+cast: mika, alex
+episode: 47
+scene: street
+
+Mika: すみません、ATMは どこですか。 | Excuse me, where is the ATM?
+Alex: コンビニの なかに ありますよ。 | There's one inside the convenience store.
+Mika: ありがとうございます。かいがいの カードも つかえますか。 | Thank you. Can I use an overseas card too?
+Alex: はい、つかえますよ。えいごも えらべます。 | Yes, you can. You can choose English too.
+Mika: ありがとうございます！ | Thank you!
+
+vocab: ATMは どこですか | ee tii emu wa doko desu ka | Where is the ATM?
+vocab: かいがい | kaigai | Overseas
+vocab: えらべます | erabemasu | You can choose

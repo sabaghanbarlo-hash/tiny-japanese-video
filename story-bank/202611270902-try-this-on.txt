@@ -1,0 +1,14 @@
+title: Can I Try This On?
+cast: mika, alex
+episode: 50
+scene: store
+
+Mika: すみません、これを ためして みても いいですか。 | Excuse me, may I try this on?
+Alex: はい、どうぞ。あちらです。 | Yes, please. Over there.
+Mika: すこし ちいさいです。もっと おおきい サイズは ありますか。 | It's a little small. Do you have a bigger size?
+Alex: はい、ございます。ちょっと おまちください。 | Yes, we do. One moment, please.
+Mika: ありがとうございます！ | Thank you!
+
+vocab: ためして みても いいですか | tameshite mite mo ii desu ka | May I try it on?
+vocab: おおきい | ookii | Big
+vocab: サイズ | saizu | Size

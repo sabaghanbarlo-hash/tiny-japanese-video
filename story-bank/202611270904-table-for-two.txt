@@ -1,0 +1,15 @@
+title: Table for Two
+cast: mika, alex
+episode: 52
+scene: izakaya
+
+Alex: いらっしゃいませ。 | Welcome.
+Mika: ふたりです。よやくは して いません。 | Two people. We don't have a reservation.
+Alex: だいじょうぶです。こちらへ どうぞ。 | That's fine. This way, please.
+Mika: ありがとうございます。 | Thank you.
+Alex: おのみものは なんに しますか。 | What would you like to drink?
+Mika: おちゃを ふたつ おねがいします。 | Two teas, please.
+
+vocab: ふたり | futari | Two people
+vocab: よやく | yoyaku | Reservation
+vocab: こちらへ どうぞ | kochira e douzo | This way, please

@@ -1,0 +1,14 @@
+title: Nearest Station?
+cast: mika, alex
+episode: 43
+scene: street
+
+Mika: すみません、いちばん ちかい えきは どこですか。 | Excuse me, where is the nearest station?
+Alex: あの かどを ひだりに まがって ください。 | Turn left at that corner.
+Mika: ひだりですね。とおいですか。 | Left, right? Is it far?
+Alex: いいえ、あるいて ごふんです。 | No, it's five minutes on foot.
+Mika: ありがとうございます！ | Thank you!
+
+vocab: いちばん ちかい | ichiban chikai | Nearest
+vocab: ひだり | hidari | Left
+vocab: あるいて | aruite | On foot

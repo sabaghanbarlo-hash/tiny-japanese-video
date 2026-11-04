@@ -1,0 +1,14 @@
+title: Looking for Souvenirs
+cast: mika, alex
+episode: 53
+scene: airport
+
+Mika: すみません、おみやげを さがして います。 | Excuse me, I'm looking for souvenirs.
+Alex: おかしは どうですか。にんきですよ。 | How about sweets? They're popular.
+Mika: いいですね。いくらですか。 | Nice. How much are they?
+Alex: ひとつ ごひゃくえんです。 | 500 yen each.
+Mika: じゃあ、みっつ ください。 | Then three, please.
+
+vocab: おみやげ | omiyage | Souvenir
+vocab: さがして います | sagashite imasu | I'm looking for
+vocab: にんき | ninki | Popular
