@@ -273,6 +273,18 @@ def to_romaji(t):
         return ""
 
 
+try:                                   # better romaji (wa/o/e particles, word spaces); falls back to pykakasi
+    from romaji_fix import to_romaji as _better_romaji
+    _old_to_romaji = to_romaji
+    def to_romaji(t):
+        try:
+            return _better_romaji(t)
+        except Exception:
+            return _old_to_romaji(t)
+except Exception:
+    pass
+
+
 # ---------- script parsing ----------
 def parse_story(path):
     meta, lines, vocab = {"title": "Tiny Story", "scene": "auto", "episode": ""}, [], []
@@ -1291,8 +1303,12 @@ def build(story, rate, dummy, tmp):
     vstart, talk = t, list(lines)
     for j, v in enumerate(vocab):
         jp_say = re.sub(r"[〜~]+", "、", v["jp"]).strip("、 ") or v["jp"]
-        en_say = "means " + v["en"].replace("~", "something")
-        steps = [(jp_say, "jp"), (en_say, "en"), (jp_say, "jp")]
+        en_say = v["en"].replace("~", "something")
+        if os.environ.get("RECAP_STYLE", "short") == "short":
+            steps = [(jp_say, "jp"), (en_say, "en")]            # say it once + English, no repeat (shorter reel)
+        else:
+            en_say = "means " + en_say
+            steps = [(jp_say, "jp"), (en_say, "en"), (jp_say, "jp")]
         v["start"] = t
         for k, (txt, kind) in enumerate(steps):
             wav = os.path.join(tmp, f"v{j}_{k}.wav")
@@ -1303,7 +1319,7 @@ def build(story, rate, dummy, tmp):
             x = read_wav(wav)
             if kind == "jp":
                 talk.append(dict(speaker="Mika", start=t, end=t + len(x) / SR))
-            gap = 0.45 if k < 2 else 0.9
+            gap = (0.35 if k < len(steps) - 1 else 0.7) if os.environ.get("RECAP_STYLE", "short") == "short" else (0.45 if k < 2 else 0.9)
             chunks += [x, np.zeros(int(gap * SR), np.float32)]; t += len(x) / SR + gap
         v["end"] = t
     total = t + (0.6 if vocab else 1.2)
