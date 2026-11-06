@@ -88,7 +88,7 @@ def add_from_bank(need):
         if os.path.exists(cap):
             shutil.copy(cap, f"stories/{name}.caption")
         else:
-            open(f"stories/{name}.caption", "w", encoding="utf-8").write(f"{slug.replace('-', ' ').title()} 🌸\n\n{TAGS}\n")
+            open(f"stories/{name}.caption", "w", encoding="utf-8").write(f"{slug.replace('-', ' ').title()} in Japanese 🌸 Say it like this 👇\n\nSend this to someone learning Japanese 💌\n\n{TAGS}\n")
         if check(f"stories/{name}.txt"):
             os.remove(txt)
             if os.path.exists(cap):
