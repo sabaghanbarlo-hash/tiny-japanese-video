@@ -13,7 +13,7 @@ KEY = os.environ["COMPOSIO_API_KEY"].strip()
 url = f'{os.environ.get("PAGES_BASE", "").rstrip("/")}/videos/{os.path.basename(mp4)}'
 
 
-def caption():
+def _caption():
     side = os.path.splitext(story)[0] + ".caption"
     if os.path.exists(side):
         c = open(side, encoding="utf-8").read().strip()
@@ -36,6 +36,11 @@ def caption():
     if vocab:
         out += "\nToday's words:\n" + "\n".join(vocab) + "\n"
     return out + "\nSave this to practice later! 💌\n#learnjapanese #japanese #nihongo #japaneselanguage #jlpt #japaneseforbeginners"
+
+
+def caption():
+    from tinyjp.meta import clean_caption          # drop stray generator notes before posting
+    return clean_caption(_caption())
 
 
 MCP_URL = "https://connect.composio.dev/mcp"
