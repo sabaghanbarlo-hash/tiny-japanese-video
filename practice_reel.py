@@ -102,7 +102,7 @@ def main():
         meta, lines, audio, n, frame = build(a.story, a.rate, a.dummy_audio, tmp)
         wav = os.path.join(tmp, "final.wav"); tv.write_wav(wav, audio)
         p = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-i", wav,
-                              "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
+                              "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
                               "-movflags", "+faststart", "-t", f"{n / FPS:.2f}", a.out], stdin=subprocess.PIPE)
         for i in range(n):
             p.stdin.write(frame(i).tobytes())
