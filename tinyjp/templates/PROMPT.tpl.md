@@ -11,6 +11,9 @@ Write ONE complete script, ready to paste into the Tiny Japanese studio (Story b
 ## Content rules
 - Beginner level (JLPT N5/N4) unless the idea asks for another level. Short, natural, everyday Japanese. Use hiragana/katakana and simple kanji.
 - 8-12 spoken lines (about 60-90 seconds). A clear beginning, one small problem or event, a happy ending.
+- OPENING RULE (it decides whether people keep watching): the first spoken line must already contain the phrase the viewer came for. No greeting-only opener (no bare こんにちは or いらっしゃいませ) and no small talk before the point. A greeting is fine only inside a line that also carries the key phrase (for example "すみません、この バスは えきに いきますか。"). The example script below opens with a greeting only to show the format; do not copy that opening.
+- Start in the middle of the situation (a problem, a question, a surprise). Use the key phrase again naturally before the end, and let the last line echo the first so the Reel loops.
+- Title: 3-6 words, specific and useful ("Does This Bus Go There?"). It is shown large on screen for the first 3 seconds.
 - Every spoken line is: Speaker: Japanese | English. The English is natural, not word for word. Romaji is added automatically.
 - 3-4 `vocab:` lines at the end, taken from the story: `vocab: コーヒー | coffee`.
 - Keep the story physically active: they walk to places, react, hold, eat and drink things, not just stand and talk.
