@@ -108,6 +108,12 @@ def main():
             p.stdin.write(frame(i).tobytes())
         p.stdin.close(); p.wait()
         print(f"Wrote {a.out} ({n / FPS:.1f}s)")
+    meta2, _l, vocab = tv.parse_story(a.story)
+    k = vocab[0]
+    cap = (f"{meta2['title']} 🌸\n\nSay it out loud:\n• {k['jp']} ({k['romaji']}) — {k['en']}\n\n"
+           "Send this to a friend who is learning Japanese 💌\nSmall steps. Big dreams.\n\n"
+           "#learnjapanese #japanesebeginner #japanese #jlpt #nihongo #japaneselesson #languagelearning #tinyjapanese")
+    open(os.path.splitext(a.out)[0] + ".caption.txt", "w", encoding="utf-8").write(cap)
 
 
 if __name__ == "__main__":
