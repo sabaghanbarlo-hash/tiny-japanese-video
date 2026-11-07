@@ -1,5 +1,6 @@
 title: Introduce yourself in Japanese in 10 seconds
 episode: 1
+format: practice
 scene: cafe
 weather: none
 
