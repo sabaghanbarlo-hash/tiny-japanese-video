@@ -68,6 +68,9 @@ jobs:
             if grep -qiE '^format:[[:space:]]*story' "$f"; then
               # Story mode: animated story (walking, acting, vocabulary). Writes the mp4, cover, srt and caption.
               python story.py "$f" -o output
+            elif grep -qiE '^format:[[:space:]]*practice' "$f"; then
+              # Practice mode: short say-it-out-loud reel (practice_reel.py)
+              python practice_reel.py "$f" -o "output/$(basename "${f%.txt}").mp4"
             else
               python tinyvideo.py "$f" -o "output/$(basename "${f%.txt}").mp4"
             fi
@@ -82,6 +85,13 @@ jobs:
               python cover.py "$f" "output/$b.jpg" || echo "cover failed for $f"
             fi
           done
+        env:
+          STORY: ${{ github.event.inputs.story }}
+      - name: Cover for a practice reel
+        if: ${{ startsWith(github.event.inputs.story, 'practice/') }}
+        run: |
+          b=$(basename "${STORY%.txt}")
+          python cover.py "$STORY" "output/$b.jpg" || echo "cover failed for $STORY"
         env:
           STORY: ${{ github.event.inputs.story }}
       - name: Commit videos
