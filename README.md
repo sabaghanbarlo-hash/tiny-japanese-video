@@ -48,3 +48,12 @@ Pick two on the site (filter by group), or add a line to the story: `cast: kage,
 `Mika:` always means the left character and `Alex:` the right one; you can also write the character's own name (`Kage: ...`).
 Each has their own look, name tag and voice pitch (the two natural Japanese voices, shifted up or down).
 Add your own: copy a `char(...)` entry in `ROSTER` (tinyvideo.py) and run `python portraits.py` to refresh the portraits.
+
+## Practice reels (side generator)
+A second, shorter format that lives next to the original system (nothing above changes). About 20 seconds: big hook, 3 short lines, "Your turn! Say it out loud!" with a 3-2-1 countdown, Mika says the phrase, then "Save this / send it to a study buddy". No vocab recap.
+
+1. Add a file in `practice/` using the normal story format (the FIRST `vocab:` line is the phrase to practise), e.g. `practice/01-introduce-yourself.txt`.
+2. Actions -> *Practice reel (side generator)* -> Run workflow (story path or `all`).
+3. Download the MP4 from the run's *practice-videos* artifact. It does not post to Instagram or join the queue.
+
+Local run: `python practice_reel.py practice/01-introduce-yourself.txt -o output/practice/01.mp4`
