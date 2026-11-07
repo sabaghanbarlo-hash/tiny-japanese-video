@@ -1,0 +1,52 @@
+name: Practice reel (side generator)
+
+on:
+  workflow_dispatch:
+    inputs:
+      story:
+        description: "Practice story file (e.g. practice/01-introduce-yourself.txt) or 'all'"
+        default: "all"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: practice-render
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: System dependencies
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          sudo rm -f /etc/apt/sources.list.d/microsoft-prod.list /etc/apt/sources.list.d/microsoft-prod.sources /etc/apt/sources.list.d/mono-official-stable.list
+          ok=0
+          for i in 1 2 3; do
+            sudo timeout 120 apt-get update -y -o Acquire::Retries=3 -o Acquire::http::Timeout=20 || true
+            if sudo timeout 240 apt-get install -y --no-install-recommends -o Acquire::http::Timeout=20 ffmpeg fonts-noto-cjk; then ok=1; break; fi
+            sudo pkill -f apt-get || true; sudo dpkg --configure -a || true; sleep 10
+          done
+          if [ "$ok" != 1 ]; then echo "::error::apt install failed - re-run the workflow"; exit 1; fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Render
+        env:
+          STORY: ${{ github.event.inputs.story }}
+        run: |
+          mkdir -p output/practice
+          if [ -z "$STORY" ] || [ "$STORY" = "all" ]; then files=$(ls practice/*.txt); else files="$STORY"; fi
+          for f in $files; do
+            python practice_reel.py "$f" -o "output/practice/$(basename "${f%.txt}").mp4"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: practice-videos
+          path: output/practice/*.mp4
