@@ -3,10 +3,10 @@ cast: mika, alex
 episode: 49
 scene: bakery
 
-Alex: いらっしゃいませ。 | Welcome.
-Mika: これを ふたつ ください。 | Two of these, please.
-Alex: ここで たべますか。もちかえりますか。 | Will you eat here, or take it away?
+Alex: いらっしゃいませ。ここで たべますか。もちかえりますか。 | Welcome. Will you eat here, or take it away?
 Mika: もちかえりで おねがいします。 | To go, please.
+Alex: なにに しますか。 | What will you have?
+Mika: これを ふたつ ください。 | Two of these, please.
 Alex: かしこまりました。 | Certainly.
 
 vocab: ふたつ | futatsu | Two (things)
