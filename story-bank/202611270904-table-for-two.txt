@@ -3,8 +3,8 @@ cast: mika, alex
 episode: 52
 scene: izakaya
 
-Alex: いらっしゃいませ。 | Welcome.
-Mika: ふたりです。よやくは して いません。 | Two people. We don't have a reservation.
+Alex: いらっしゃいませ。ふたりですか。 | Welcome. Two people?
+Mika: はい、ふたりです。よやくは して いません。 | Yes, two. We don't have a reservation.
 Alex: だいじょうぶです。こちらへ どうぞ。 | That's fine. This way, please.
 Mika: ありがとうございます。 | Thank you.
 Alex: おのみものは なんに しますか。 | What would you like to drink?
