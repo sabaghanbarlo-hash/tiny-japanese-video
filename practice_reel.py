@@ -16,18 +16,30 @@ HOOK = 2.0
 
 
 
+BRAND = tv.BRAND
 RED, GREEN = (214, 83, 79), (79, 154, 110)
 
 
-def badge(img, kind):
-    """Sticker in the top-right corner of a card: red X (mistake) or green check (correct)."""
-    d = ImageDraw.Draw(img); cx, cy, r = img.width - 100, 44, 40
-    d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=RED if kind == "x" else GREEN, outline=(255, 255, 255, 255), width=5)
+def sticker(kind, size=88):
+    """Round sticker: red X (mistake), green check (correct) or a brand-coloured microphone (say it out loud)."""
+    s = Image.new("RGBA", (size, size), (0, 0, 0, 0)); d = ImageDraw.Draw(s); c = size // 2
+    d.ellipse((2, 2, size - 3, size - 3), fill={"x": RED, "ok": GREEN}.get(kind, BRAND), outline=(255, 255, 255, 255), width=5)
+    w = (255, 255, 255, 255)
     if kind == "x":
-        d.line((cx - 15, cy - 15, cx + 15, cy + 15), fill=(255, 255, 255, 255), width=10); d.line((cx - 15, cy + 15, cx + 15, cy - 15), fill=(255, 255, 255, 255), width=10)
-    else:
-        d.line([(cx - 18, cy + 1), (cx - 5, cy + 14), (cx + 18, cy - 14)], fill=(255, 255, 255, 255), width=10, joint="curve")
+        d.line((c - 15, c - 15, c + 15, c + 15), fill=w, width=10); d.line((c - 15, c + 15, c + 15, c - 15), fill=w, width=10)
+    elif kind == "ok":
+        d.line([(c - 18, c + 1), (c - 5, c + 14), (c + 18, c - 14)], fill=w, width=10, joint="curve")
+    else:  # microphone
+        d.rounded_rectangle((c - 9, c - 24, c + 9, c + 6), radius=9, fill=w)
+        d.arc((c - 16, c - 14, c + 16, c + 16), 20, 160, fill=w, width=5)
+        d.line((c, c + 16, c, c + 25), fill=w, width=5); d.line((c - 9, c + 25, c + 9, c + 25), fill=w, width=5)
+    return s
+
+
+def badge(img, kind):
+    s = sticker(kind); img.paste(s, (img.width - 144, 0), s)
     return img
+
 
 def jcard(tag, color, jp, ro, en, jp_color, kind):
     maxw = 840
@@ -126,13 +138,65 @@ def build(story, rate, dummy, tmp, style="practice"):
     return meta, lines, audio, n, frame
 
 
+def chip_row(kind, text, w=900):
+    f = tv.font(36)
+    while f.size > 24 and f.getlength(text) > w - 150:
+        f = tv.font(f.size - 2)
+    im = Image.new("RGBA", (w, 84), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    d.rounded_rectangle((0, 0, w - 1, 83), radius=42, fill=(255, 233, 231, 240) if kind == "x" else (230, 245, 235, 240))
+    s = sticker(kind, 64); im.paste(s, (12, 10), s)
+    d.text((100, 42), text, font=f, fill=RED if kind == "x" else (46, 110, 76), anchor="lm")
+    return im
+
+
+def make_cover(story, out, style):
+    """Professional thumbnail for the practice formats (same look as cover.py, but built for the format)."""
+    meta, lines, vocab = tv.parse_story(story); key = vocab[0]; mistake = style == "mistake"
+    meta["scene"] = tv.pick_scene(meta, lines)
+    bg, fg = tv.make_scene(meta["scene"], meta, header=False)
+    fr = bg.copy()
+    ep = f"EP {meta['episode']}" if meta.get("episode") else ""
+    badges = [tv.pill("DON'T SAY THIS" if mistake else "SAY IT OUT LOUD", RED if mistake else BRAND)] + ([tv.pill(ep, (60, 45, 48))] if ep else [])
+    total = sum(b.width for b in badges) + 16 * (len(badges) - 1); x = (W - total) // 2
+    for b in badges:
+        fr.paste(b, (x, 150), b); x += b.width + 16
+    for nm, c in tv.CHARS.items():
+        s = tv.sprite(nm, 1, False); fr.paste(s, (c["x"], tv.CHAR_Y + 40), s)
+        p = tv.pill(c["label"], c["accent"]); fr.paste(p, (c["x"] + s.width // 2 - p.width // 2, 370), p)
+    fr.paste(fg, (0, tv.TABLE_TOP - 15), fg)
+    for size in (112, 100, 88, 76, 64):
+        f = tv.font(size); ls = tv.wrap(meta["title"], f, 820)
+        if len(ls) <= 3:
+            break
+    parts = [(t, f, (52, 40, 44), int(size * 1.18)) for t in ls]
+    sf = tv.font(44, False)
+    if mistake:
+        parts += [("", None, None, 36), ("Don't make this mistake", sf, RED, 60)]
+    else:
+        pf = tv.font(64)
+        while pf.size > 40 and pf.getlength(key["jp"]) > 820:
+            pf = tv.font(pf.size - 4)
+        parts += [("", None, None, 30), (key["jp"], pf, BRAND, 88), (f'{key["romaji"]} = {key["en"]}', tv.font(38, False), (120, 98, 104), 58)]
+    card = tv.card_image("Common mistake" if mistake else "Japanese practice", RED if mistake else BRAND, parts, min_h=470)
+    badge(card, "x" if mistake else "mic")
+    fr.paste(card, (20, 1020), card)
+    if mistake:
+        y = 1020 + card.height + 4
+        for kind, txt in (("x", f'{lines[0]["jp"]} = {lines[0]["en"]}'), ("ok", f'{key["jp"]} = {key["en"]}')):
+            im = chip_row(kind, txt); fr.paste(im, ((W - im.width) // 2, y), im); y += 100
+    fr.convert("RGB").save(out, quality=90, optimize=True)
+    print("Wrote", out)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("story"); ap.add_argument("-o", "--out", default="output/practice/video.mp4")
-    ap.add_argument("--rate", default="-8%"); ap.add_argument("--dummy-audio", action="store_true"); ap.add_argument("--style", choices=["practice", "mistake"])
+    ap.add_argument("--rate", default="-8%"); ap.add_argument("--dummy-audio", action="store_true"); ap.add_argument("--style", choices=["practice", "mistake"]); ap.add_argument("--cover-only", action="store_true")
     a = ap.parse_args()
     style = a.style or ("mistake" if re.search(r"^format:\s*mistake", open(a.story, encoding="utf-8").read(), re.I | re.M) else "practice")
     os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
+    if a.cover_only:
+        make_cover(a.story, os.path.splitext(a.out)[0] + ".jpg", style); return
     with tempfile.TemporaryDirectory() as tmp:
         meta, lines, audio, n, frame = build(a.story, a.rate, a.dummy_audio, tmp, style)
         wav = os.path.join(tmp, "final.wav"); tv.write_wav(wav, audio)
@@ -154,6 +218,7 @@ def main():
            "Send this to a friend who is learning Japanese 💌\nSmall steps. Big dreams.\n\n"
            "#learnjapanese #japanesebeginner #japanese #jlpt #nihongo #japaneselesson #languagelearning #tinyjapanese")
     open(os.path.splitext(a.out)[0] + ".caption.txt", "w", encoding="utf-8").write(cap)
+    make_cover(a.story, os.path.splitext(a.out)[0] + ".jpg", style)
 
 
 if __name__ == "__main__":
