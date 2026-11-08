@@ -1,0 +1,11 @@
+title: Don't say this to your teacher in Japanese
+episode: 3
+format: mistake
+scene: classroom
+weather: none
+
+Alex: おはよう！ | Morning! (too casual!)
+Mika: それはちがうよ！ | That's not right!
+Mika: おはようございます！ | Good morning! (polite)
+
+vocab: おはようございます | ohayou gozaimasu | Good morning (polite)
