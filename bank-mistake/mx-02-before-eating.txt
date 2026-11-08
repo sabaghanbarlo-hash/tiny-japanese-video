@@ -1,0 +1,11 @@
+title: Never say this before you eat in Japan
+episode: 2
+format: mistake
+scene: restaurant
+weather: none
+
+Alex: ありがとう！ | Thank you! (before a meal?)
+Mika: あれ？ちがうよ！ | Huh? Not that one!
+Mika: いただきます！ | Let's eat!
+
+vocab: いただきます | itadakimasu | Let's eat! (thanks for the food)
