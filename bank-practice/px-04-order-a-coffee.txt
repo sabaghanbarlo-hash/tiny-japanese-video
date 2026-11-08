@@ -1,0 +1,11 @@
+title: Order a coffee in Japanese in 10 seconds
+episode: 4
+format: practice
+scene: restaurant
+weather: none
+
+Mika: ご注文は？ | What would you like?
+Alex: コーヒーをください。 | Coffee, please.
+Mika: はい、どうぞ。 | Here you go.
+
+vocab: コーヒーをください | koohii o kudasai | Coffee, please
