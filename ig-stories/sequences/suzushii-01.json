@@ -1,0 +1,84 @@
+{
+  "id": "suzushii-01",
+  "title": "涼しい - cool",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's cool”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "涼しい",
+      "reading": "すずしい",
+      "en": "cool",
+      "example": {
+        "jp": "ここは涼しいです。",
+        "reading": "ここはすずしいです。",
+        "en": "It's cool here."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "sunset",
+      "title": "涼しい · Cool",
+      "lines": [
+        {
+          "speaker": "Alex",
+          "jp": "ここは涼しいですね。",
+          "en": "It's cool here."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "はい、風がありますから。",
+          "en": "Yes, because there's a breeze."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "気持ちいいですね。",
+          "en": "It feels nice."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "涼しい",
+      "question": "What does this word mean?",
+      "options": [
+        "Cool",
+        "Hot",
+        "Long",
+        "Strong"
+      ],
+      "answer": 0
+    },
+    {
+      "type": "reveal",
+      "answer_label": "A",
+      "jp": "涼しい",
+      "reading": "すずしい",
+      "en": "cool",
+      "note": [
+        "涼しいです = It's cool / refreshing (polite).",
+        "It's a pleasant cool. For cold weather, use 寒い (さむい)."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 優しい (kind)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-20T18:00:00+00:00"
+}

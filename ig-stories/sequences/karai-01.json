@@ -1,0 +1,84 @@
+{
+  "id": "karai-01",
+  "title": "辛い - spicy",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's spicy”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "辛い",
+      "reading": "からい",
+      "en": "spicy",
+      "example": {
+        "jp": "これは辛いです。",
+        "reading": "これはからいです。",
+        "en": "This is spicy."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "ramen",
+      "title": "辛い · Spicy",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "これはからいですか？",
+          "en": "Is this spicy?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、とてもからいです！",
+          "en": "Yes, very spicy!"
+        },
+        {
+          "speaker": "Mika",
+          "jp": "水をください！",
+          "en": "Water, please!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "辛い",
+      "question": "What does this word mean?",
+      "options": [
+        "Sweet",
+        "Spicy",
+        "Young",
+        "Dark"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "辛い",
+      "reading": "からい",
+      "en": "spicy",
+      "note": [
+        "辛いです = It's spicy (polite).",
+        "Same kanji, other reading: つらい = hard / painful."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 速い (fast)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-16T18:00:00+00:00"
+}

@@ -1,0 +1,84 @@
+{
+  "id": "yasashii-01",
+  "title": "優しい - kind",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“He's kind”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "優しい",
+      "reading": "やさしい",
+      "en": "kind",
+      "example": {
+        "jp": "先生は優しいです。",
+        "reading": "せんせいはやさしいです。",
+        "en": "The teacher is kind."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "classroom",
+      "title": "優しい · Kind",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "あの先生は優しいですね。",
+          "en": "That teacher is kind."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、いつも優しいです。",
+          "en": "Yes, always kind."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "わたしも好きです。",
+          "en": "I like them too."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "優しい",
+      "question": "What does this word mean?",
+      "options": [
+        "Scary",
+        "Kind",
+        "Noisy",
+        "Sleepy"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "優しい",
+      "reading": "やさしい",
+      "en": "kind",
+      "note": [
+        "優しいです = He / she is kind (polite).",
+        "易しい (やさしい) = easy. Same sound, different kanji."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 怖い (scary)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-21T18:00:00+00:00"
+}

@@ -1,0 +1,84 @@
+{
+  "id": "amai-01",
+  "title": "甘い - sweet",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's sweet”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "甘い",
+      "reading": "あまい",
+      "en": "sweet",
+      "example": {
+        "jp": "このおかしは甘いです。",
+        "reading": "このおかしはあまいです。",
+        "en": "This snack is sweet."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "bakery",
+      "title": "甘い · Sweet",
+      "lines": [
+        {
+          "speaker": "Alex",
+          "jp": "このケーキは甘いですね。",
+          "en": "This cake is sweet."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "はい。でも、おいしいです。",
+          "en": "Yes. But it's delicious."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "わたしも食べます！",
+          "en": "I'll eat it too!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "甘い",
+      "question": "What does this word mean?",
+      "options": [
+        "Sweet",
+        "Spicy",
+        "Cold",
+        "Far"
+      ],
+      "answer": 0
+    },
+    {
+      "type": "reveal",
+      "answer_label": "A",
+      "jp": "甘い",
+      "reading": "あまい",
+      "en": "sweet",
+      "note": [
+        "甘いです = It's sweet (polite).",
+        "Not sweet but hot and spicy? That's 辛い (からい)."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 辛い (spicy)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-15T18:00:00+00:00"
+}

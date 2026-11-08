@@ -1,0 +1,84 @@
+{
+  "id": "kowai-01",
+  "title": "怖い - scary",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's scary”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "怖い",
+      "reading": "こわい",
+      "en": "scary",
+      "example": {
+        "jp": "この映画は怖いです。",
+        "reading": "このえいがはこわいです。",
+        "en": "This movie is scary."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "home",
+      "title": "怖い · Scary",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "この映画は怖いですか？",
+          "en": "Is this movie scary?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、とても怖いです！",
+          "en": "Yes, very scary!"
+        },
+        {
+          "speaker": "Mika",
+          "jp": "じゃあ、見ません。",
+          "en": "Then I won't watch it."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "怖い",
+      "question": "What does this word mean?",
+      "options": [
+        "Funny",
+        "Scary",
+        "Cheap",
+        "Light"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "怖い",
+      "reading": "こわい",
+      "en": "scary",
+      "note": [
+        "怖いです = It's scary (polite).",
+        "Also for fear: 犬が怖いです = I'm afraid of dogs."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 痛い (painful)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-22T18:00:00+00:00"
+}

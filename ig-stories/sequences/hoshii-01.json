@@ -1,0 +1,84 @@
+{
+  "id": "hoshii-01",
+  "title": "欲しい - want",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“I want it”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "欲しい",
+      "reading": "ほしい",
+      "en": "want",
+      "example": {
+        "jp": "水が欲しいです。",
+        "reading": "みずがほしいです。",
+        "en": "I want water."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "store",
+      "title": "欲しい · Want",
+      "lines": [
+        {
+          "speaker": "Alex",
+          "jp": "何が欲しいですか？",
+          "en": "What do you want?"
+        },
+        {
+          "speaker": "Mika",
+          "jp": "新しいかばんが欲しいです。",
+          "en": "I want a new bag."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "いいですね！",
+          "en": "Nice!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "欲しい",
+      "question": "What does this word mean?",
+      "options": [
+        "Hot",
+        "Want",
+        "Far",
+        "Busy"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "欲しい",
+      "reading": "ほしい",
+      "en": "want",
+      "note": [
+        "欲しいです = I want it (polite).",
+        "The thing you want takes が: かばんが欲しい."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: うるさい (noisy)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-24T18:00:00+00:00"
+}
