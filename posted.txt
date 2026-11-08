@@ -33,3 +33,4 @@
 202611040814-ramen-ticket-machine
 202611040815-can-i-pay-by-card
 202611040816-tattoo-at-the-onsen
+202611040817-itadakimasu
