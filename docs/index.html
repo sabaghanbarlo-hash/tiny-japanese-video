@@ -54,7 +54,7 @@ a{color:var(--pink)}
 
 <div class="card">
 <label>Format</label>
-<div class="chips" id="fmt"><button type="button" class="chip" data-f="small">Small</button><button type="button" class="chip" data-f="story">Story</button><button type="button" class="chip" data-f="practice">Practice</button></div>
+<div class="chips" id="fmt"><button type="button" class="chip" data-f="small">Small</button><button type="button" class="chip" data-f="story">Story</button><button type="button" class="chip" data-f="practice">Practice</button><button type="button" class="chip" data-f="mistake">Mistake &amp; fix</button></div>
 <p class="hint" id="fmtHint" style="margin:8px 0 0"></p>
 </div>
 
@@ -72,6 +72,7 @@ a{color:var(--pink)}
 <p class="hint" id="hintSmall">One line per speaker: <code>Mika: Japanese | English</code>. Speakers: Mika (left) and Alex (right), or the names of the characters you picked. Scenes: auto, cafe, station, sakura, ramen, shrine, snow, rainy … Optional line <code>weather: rain</code> (petals, leaves, snow, rain, wind, none). Romaji is automatic.</p>
 <label for="caption" style="margin-top:14px">Instagram caption <span style="font-weight:400;color:var(--soft)">(optional – auto-written if empty)</span></label>
 <textarea id="caption" class="small" placeholder="Leave empty for an automatic caption with today's words and hashtags"></textarea>
+<p class="hint" id="hintMistake" style="display:none">Mistake &amp; fix reel (~22 seconds): <code>title:</code> is the hook (e.g. "Never say this to greet someone in Japanese"). The FIRST dialogue line is the MISTAKE (put what it wrongly means in the English part), the LAST line is the CORRECT phrase, with a short reaction line in between. Add ONE <code>vocab: Japanese | romaji | English</code> line for the correct phrase. Pick the characters above.</p>
 <p class="hint" id="hintPractice" style="display:none">Short practice reel (~20 seconds): <code>title:</code> becomes the big hook (e.g. "Introduce yourself in Japanese in 10 seconds"), then about 3 short lines like <code>Mika: Japanese | English</code>, then ONE <code>vocab: Japanese | romaji | English</code> line. That phrase is what the viewer says out loud during the 3-2-1 countdown. Pick the characters above.</p>
 <p class="hint" id="hintStory" style="display:none">Same script as Small: <code>Mika: Japanese | English</code> lines, <code>vocab:</code> lines, optional <code>cast:</code>. The characters walk around a place and act the story out; romaji is automatic. Places (<code>scene:</code>): auto, cafe, bakery, restaurant, station, metro, park, classroom, supermarket, bookstore, market, library, museum, tower, airport, beach, apartment, street. Want to direct it yourself? Add lines like <code>&gt; Mika walks to counter</code> (see STORY_DIRECTING.md in the repository).</p>
 <div class="check"><input type="checkbox" id="post" checked><label for="post" style="margin:0">Post to Instagram when the video is ready</label></div>
@@ -146,6 +147,17 @@ function drawStrips(){
       b.onclick=()=>{if(side==="L")castL=r.id;else castR=r.id;writeCast();drawStrips()};box.appendChild(b)}
     box.scrollLeft=sx;const me=ROSTER.find(r=>r.id===cur);$(nm).textContent=me?me.name:cur}
   if(castL===castR)$("nameR").textContent+="  (pick two different characters)"}
+const MISTAKE_SAMPLE=`title: Never say this to greet someone in Japanese
+episode: 2
+scene: cafe
+weather: none
+
+Alex: さようなら！ | Goodbye! (not hello!)
+Mika: ちがうよ！ | No, that's wrong!
+Mika: こんにちは！ | Hello!
+
+vocab: こんにちは | konnichiwa | Hello
+`;
 const PRACTICE_SAMPLE=`title: Introduce yourself in Japanese in 10 seconds
 episode: 1
 scene: cafe
@@ -157,14 +169,14 @@ Mika: ミカです。 | I'm Mika.
 
 vocab: はじめまして | hajimemashite | Nice to meet you
 `;
-let FMT=["story","practice"].includes(get("tjv_format"))?get("tjv_format"):"small";
+let FMT=["story","practice","mistake"].includes(get("tjv_format"))?get("tjv_format"):"small";
 function setFormat(f){FMT=f;set("tjv_format",f);
   for(const b of $("fmt").children)b.className="chip"+(b.dataset.f===f?" on":"");
   const t=$("script").value.trim();
-  if(!t||t===SAMPLE.trim()||t===STORY_SAMPLE.trim()||t===PRACTICE_SAMPLE.trim()){$("script").value=f==="story"?STORY_SAMPLE:f==="practice"?PRACTICE_SAMPLE:SAMPLE;set("tjv_script",$("script").value);readCast()}
-  $("hintSmall").style.display=f==="small"?"":"none";$("hintStory").style.display=f==="story"?"":"none";$("hintPractice").style.display=f==="practice"?"":"none";
-  $("fmtHint").textContent=f==="story"?"Story: the characters walk around a place and act out the story, then the words are shown one by one.":f==="practice"?"Practice: short reel with a hook, 3 quick lines, then the viewer says the phrase out loud.":"Small: two characters sit in a scene and chat.";
-  $("run").textContent=f==="story"?"Make story video":f==="practice"?"Make practice video":"Make video"}
+  if(!t||t===SAMPLE.trim()||t===STORY_SAMPLE.trim()||t===PRACTICE_SAMPLE.trim()||t===MISTAKE_SAMPLE.trim()){$("script").value=f==="story"?STORY_SAMPLE:f==="practice"?PRACTICE_SAMPLE:f==="mistake"?MISTAKE_SAMPLE:SAMPLE;set("tjv_script",$("script").value);readCast()}
+  $("hintSmall").style.display=f==="small"?"":"none";$("hintStory").style.display=f==="story"?"":"none";$("hintPractice").style.display=f==="practice"?"":"none";$("hintMistake").style.display=f==="mistake"?"":"none";
+  $("fmtHint").textContent=f==="story"?"Story: the characters walk around a place and act out the story, then the words are shown one by one.":f==="practice"?"Practice: short reel with a hook, 3 quick lines, then the viewer says the phrase out loud.":f==="mistake"?"Mistake & fix: one character says it wrong, the other corrects it, then the viewer says the right phrase.":"Small: two characters sit in a scene and chat.";
+  $("run").textContent=f==="story"?"Make story video":f==="practice"?"Make practice video":f==="mistake"?"Make mistake video":"Make video"}
 for(const b of $("fmt").children)b.onclick=()=>{setFormat(b.dataset.f);drawStrips()};
 fetch("characters/roster.json").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.length){ROSTER=j;drawChips();drawStrips()}}).catch(()=>{});
 readCast();drawChips();drawStrips();setFormat(FMT);
@@ -195,13 +207,13 @@ $("run").onclick=async()=>{
     readCast();if(castL===castR)throw new Error("Pick two different characters.");
     writeCast();   // the picked characters always go into the script, even if you pasted a fresh one
     let text=$("script").value.trim().replace(/^format\s*:.*\n?/gim,"").trim();
-    if(FMT==="practice"&&!/^vocab\s*:/im.test(text))throw new Error("Add one vocab: Japanese | romaji | English line: it is the phrase people practise.");
-    if(FMT==="story"||FMT==="practice")text=/^title\s*:.*$/im.test(text)?text.replace(/^(title\s*:.*)$/im,"$1\nformat: "+FMT):"format: "+FMT+"\n"+text;
+    if((FMT==="practice"||FMT==="mistake")&&!/^vocab\s*:/im.test(text))throw new Error("Add one vocab: Japanese | romaji | English line: it is the phrase people practise.");
+    if(FMT==="story"||FMT==="practice"||FMT==="mistake")text=/^title\s*:.*$/im.test(text)?text.replace(/^(title\s*:.*)$/im,"$1\nformat: "+FMT):"format: "+FMT+"\n"+text;
     check(text);
     btn.disabled=true;
     const title=(text.match(/^title\s*:\s*(.+)$/im)||[])[1]||"story";
     const stamp=new Date().toISOString().slice(0,16).replace(/[-:T]/g,"");
-    const base=`${FMT==="practice"?"practice":"stories"}/${stamp}-${slug(title)}`;
+    const base=`${FMT==="practice"||FMT==="mistake"?"practice":"stories"}/${stamp}-${slug(title)}`;
     const post=$("post").checked;
     say("Saving script…");
     await gh(`/contents/${base}.txt`,{method:"PUT",body:JSON.stringify({message:"Add story: "+title,content:b64(text+"\n"),branch:BRANCH})});
