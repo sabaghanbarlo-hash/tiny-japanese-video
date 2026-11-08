@@ -1,0 +1,11 @@
+title: Count to three in Japanese in 10 seconds
+episode: 7
+format: practice
+scene: park
+weather: none
+
+Mika: いち、に、さん！ | One, two, three!
+Alex: よん、ご、ろく！ | Four, five, six!
+Mika: すごい！ | Awesome!
+
+vocab: いち、に、さん | ichi, ni, san | One, two, three
