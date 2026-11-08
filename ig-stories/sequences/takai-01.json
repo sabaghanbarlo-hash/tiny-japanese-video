@@ -3,7 +3,7 @@
   "title": "高い - expensive",
   "level": "N5",
   "scene": "sakura",
-  "approved": false,
+  "approved": true,
   "uncertain": [
     "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
     "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
@@ -78,5 +78,7 @@
       "cta": "Tell us your answer in the comments!",
       "teaser": "Tomorrow: いい (good)"
     }
-  ]
+  ],
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-12T18:00:00+00:00"
 }
