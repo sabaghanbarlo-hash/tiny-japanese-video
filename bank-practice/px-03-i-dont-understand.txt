@@ -1,0 +1,11 @@
+title: Say I don't understand in Japanese
+episode: 3
+format: practice
+scene: classroom
+weather: none
+
+Mika: 日本語、わかりますか？ | Do you understand Japanese?
+Alex: すみません、わかりません。 | Sorry, I don't understand.
+Mika: だいじょうぶですよ！ | It's okay!
+
+vocab: わかりません | wakarimasen | I don't understand
