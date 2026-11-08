@@ -1,0 +1,11 @@
+title: Say thank you in Japanese in 10 seconds
+episode: 2
+format: practice
+scene: cafe
+weather: none
+
+Mika: コーヒーをどうぞ。 | Here's your coffee.
+Alex: ありがとうございます！ | Thank you very much!
+Mika: どういたしまして。 | You're welcome.
+
+vocab: ありがとうございます | arigatou gozaimasu | Thank you very much
