@@ -68,7 +68,7 @@ jobs:
             if grep -qiE '^format:[[:space:]]*story' "$f"; then
               # Story mode: animated story (walking, acting, vocabulary). Writes the mp4, cover, srt and caption.
               python story.py "$f" -o output
-            elif grep -qiE '^format:[[:space:]]*practice' "$f"; then
+            elif grep -qiE '^format:[[:space:]]*(practice|mistake)' "$f"; then
               # Practice mode: short say-it-out-loud reel (practice_reel.py)
               python practice_reel.py "$f" -o "output/$(basename "${f%.txt}").mp4"
             else
