@@ -87,13 +87,6 @@ jobs:
           done
         env:
           STORY: ${{ github.event.inputs.story }}
-      - name: Cover for a practice reel
-        if: ${{ startsWith(github.event.inputs.story, 'practice/') }}
-        run: |
-          b=$(basename "${STORY%.txt}")
-          python cover.py "$STORY" "output/$b.jpg" || echo "cover failed for $STORY"
-        env:
-          STORY: ${{ github.event.inputs.story }}
       - name: Commit videos
         run: |
           git config user.name "github-actions"
