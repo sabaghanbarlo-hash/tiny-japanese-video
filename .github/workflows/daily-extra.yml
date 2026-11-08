@@ -1,0 +1,63 @@
+name: Daily extra reels (Practice and Mistake & fix)
+
+# Two extra Reels every day, each at its own time (your original daily reel keeps its 09:00 UTC slot):
+#   17:00 UTC  ->  Practice reel          01:00 UTC  ->  Mistake & fix reel
+# Scripts are taken in order from bank-practice/ and bank-mistake/. Each run hands the next unused script to
+# generate.yml, the same pipeline as the website: render, cover, deploy, post to Instagram.
+# Run by hand any time: Actions -> this workflow -> Run workflow (set post=false to only render).
+
+on:
+  schedule:
+    - cron: "0 17 * * *"
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+    inputs:
+      pool:
+        description: "practice or mistake"
+        default: "practice"
+      post:
+        description: "true = post to Instagram, false = only render (the script is not used up)"
+        default: "true"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: tiny-japanese-extra
+  cancel-in-progress: false
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      IN_POOL: ${{ github.event.inputs.pool }}
+      IN_POST: ${{ github.event.inputs.post }}
+      SCHED: ${{ github.event.schedule }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pick the next script
+        id: pick
+        run: |
+          if [ -n "$IN_POOL" ]; then POOL="$IN_POOL"; elif [ "$SCHED" = "0 1 * * *" ]; then POOL=mistake; else POOL=practice; fi
+          case "$POOL" in practice|mistake) ;; *) echo "::error::pool must be practice or mistake"; exit 1;; esac
+          NEXT="$(python3 pick_extra.py "$POOL")"
+          echo "next=$NEXT" >> "$GITHUB_OUTPUT"
+          if [ -z "$NEXT" ]; then echo "::warning::bank-$POOL/ is empty - nothing to post."; else echo "Next up: $NEXT"; fi
+      - name: Render and post (generate.yml)
+        if: ${{ steps.pick.outputs.next != '' }}
+        env:
+          NEXT: ${{ steps.pick.outputs.next }}
+        run: gh workflow run generate.yml --ref main -f story="$NEXT" -f post="${IN_POST:-true}"
+      - name: Mark the script as used
+        if: ${{ steps.pick.outputs.next != '' && github.event.inputs.post != 'false' }}
+        env:
+          NEXT: ${{ steps.pick.outputs.next }}
+        run: |
+          basename "${NEXT%.txt}" >> posted-extra.txt
+          git config user.name "github-actions"; git config user.email "actions@users.noreply.github.com"
+          git add posted-extra.txt
+          git commit -m "Extra reel handed over: $(basename "${NEXT%.txt}") [skip ci]" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase -q && git push -q && break; sleep 5; done
