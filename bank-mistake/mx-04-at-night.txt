@@ -1,0 +1,11 @@
+title: Never say this at night in Japanese
+episode: 4
+format: mistake
+scene: home
+weather: none
+
+Alex: おはよう！ | Good morning! (at night!)
+Mika: ちがうよ！ | No, that's wrong!
+Mika: おやすみなさい！ | Good night!
+
+vocab: おやすみなさい | oyasumi nasai | Good night
