@@ -1,0 +1,11 @@
+title: Introduce yourself in Japanese in 10 seconds
+episode: 1
+format: practice
+scene: cafe
+weather: none
+
+Mika: はじめまして！ | Nice to meet you!
+Alex: アレックスです。 | I'm Alex.
+Mika: ミカです。 | I'm Mika.
+
+vocab: はじめまして | hajimemashite | Nice to meet you
