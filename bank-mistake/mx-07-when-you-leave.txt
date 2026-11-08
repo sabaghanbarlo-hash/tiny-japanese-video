@@ -1,0 +1,11 @@
+title: Don't say this when you leave in Japanese
+episode: 7
+format: mistake
+scene: station
+weather: none
+
+Alex: こんにちは！ | Hello! (when leaving!)
+Mika: それはちがうよ！ | That's not right!
+Mika: じゃあね！ | See you!
+
+vocab: じゃあね | jaa ne | See you!
