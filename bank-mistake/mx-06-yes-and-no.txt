@@ -1,0 +1,11 @@
+title: Don't mix up yes and no in Japanese
+episode: 6
+format: mistake
+scene: street
+weather: none
+
+Alex: いいえ！ | Yes? (it means NO!)
+Mika: ちがうよ！ | No, that's wrong!
+Mika: はい！ | Yes!
+
+vocab: はい | hai | Yes
