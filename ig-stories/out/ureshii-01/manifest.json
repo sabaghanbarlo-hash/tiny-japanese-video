@@ -9,9 +9,7 @@
   "ready_to_publish": true,
   "qc": {
     "errors": [],
-    "warnings": [
-      "clip is 10.6s (target 5-10s)"
-    ],
+    "warnings": [],
     "checks": [
       {
         "check": "reading matches dictionary: target word",
@@ -94,8 +92,8 @@
       "kind": "video",
       "file": "03-convo.mp4",
       "poster": "03-convo-poster.jpg",
-      "duration": 10.6,
-      "size_mb": 0.33,
+      "duration": 9.7,
+      "size_mb": 0.37,
       "audio": "real_voice",
       "audio_transcript": [
         "嬉しいですか？",

@@ -10,7 +10,7 @@
   "qc": {
     "errors": [],
     "warnings": [
-      "clip is 11.2s (target 5-10s)"
+      "clip is 10.2s (target 5-10s)"
     ],
     "checks": [
       {
@@ -92,8 +92,8 @@
       "kind": "video",
       "file": "03-convo.mp4",
       "poster": "03-convo-poster.jpg",
-      "duration": 11.2,
-      "size_mb": 0.34,
+      "duration": 10.2,
+      "size_mb": 0.39,
       "audio": "real_voice",
       "audio_transcript": [
         "これ、おいしいですか？",

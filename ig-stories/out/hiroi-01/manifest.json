@@ -10,7 +10,7 @@
   "qc": {
     "errors": [],
     "warnings": [
-      "clip is 11.6s (target 5-10s)"
+      "clip is 10.6s (target 5-10s)"
     ],
     "checks": [
       {
@@ -75,8 +75,8 @@
       "kind": "video",
       "file": "02-convo.mp4",
       "poster": "02-convo-poster.jpg",
-      "duration": 11.6,
-      "size_mb": 0.38,
+      "duration": 10.6,
+      "size_mb": 0.41,
       "audio": "real_voice",
       "audio_transcript": [
         "この公園は広いですね。",

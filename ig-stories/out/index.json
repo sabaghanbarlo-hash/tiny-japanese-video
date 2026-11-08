@@ -9,12 +9,30 @@
     "status": "ready"
   },
   {
+    "id": "amai-01",
+    "title": "甘い - sweet",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-15T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "atarashii-01",
     "title": "新しい - new",
     "level": "N5",
     "approved": true,
     "ready_to_publish": true,
     "publish_at": "2026-10-24T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "atatakai-01",
+    "title": "暖かい - warm",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-19T18:00:00+00:00",
     "status": "ready"
   },
   {
@@ -54,6 +72,15 @@
     "status": "ready"
   },
   {
+    "id": "hayai-01",
+    "title": "速い - fast",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-17T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "hiroi-01",
     "title": "広い - spacious",
     "level": "N5",
@@ -63,12 +90,48 @@
     "status": "ready"
   },
   {
+    "id": "hoshii-01",
+    "title": "欲しい - want",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-24T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "ii-01",
+    "title": "いい - good",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-13T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "isogashii-01",
     "title": "忙しい - busy",
     "level": "N4",
     "approved": true,
     "ready_to_publish": true,
     "publish_at": "2026-10-18T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "itai-01",
+    "title": "痛い - painful",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-23T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "karai-01",
+    "title": "辛い - spicy",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-16T18:00:00+00:00",
     "status": "ready"
   },
   {
@@ -87,6 +150,15 @@
     "approved": true,
     "ready_to_publish": true,
     "publish_at": "2026-11-05T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "kowai-01",
+    "title": "怖い - scary",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-22T18:00:00+00:00",
     "status": "ready"
   },
   {
@@ -171,6 +243,15 @@
     "status": "ready"
   },
   {
+    "id": "osoi-01",
+    "title": "遅い - slow",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-18T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "samui-01",
     "title": "寒い - cold (weather)",
     "level": "N5",
@@ -186,6 +267,24 @@
     "approved": true,
     "ready_to_publish": true,
     "publish_at": "2026-11-10T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "suzushii-01",
+    "title": "涼しい - cool",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-20T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "takai-01",
+    "title": "高い - expensive",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-12T18:00:00+00:00",
     "status": "ready"
   },
   {
@@ -225,12 +324,39 @@
     "status": "ready"
   },
   {
+    "id": "urusai-01",
+    "title": "うるさい - noisy",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-25T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "wakai-01",
     "title": "若い - young",
     "level": "N5",
     "approved": true,
     "ready_to_publish": true,
     "publish_at": "2026-11-11T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "warui-01",
+    "title": "悪い - bad",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-14T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "yasashii-01",
+    "title": "優しい - kind",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-21T18:00:00+00:00",
     "status": "ready"
   },
   {

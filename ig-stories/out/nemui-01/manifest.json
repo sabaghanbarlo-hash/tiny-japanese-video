@@ -9,9 +9,7 @@
   "ready_to_publish": true,
   "qc": {
     "errors": [],
-    "warnings": [
-      "clip is 11.0s (target 5-10s)"
-    ],
+    "warnings": [],
     "checks": [
       {
         "check": "reading matches dictionary: target word",
@@ -93,8 +91,8 @@
       "kind": "video",
       "file": "03-convo.mp4",
       "poster": "03-convo-poster.jpg",
-      "duration": 11.0,
-      "size_mb": 0.36,
+      "duration": 10.0,
+      "size_mb": 0.39,
       "audio": "real_voice",
       "audio_transcript": [
         "眠いですか？",

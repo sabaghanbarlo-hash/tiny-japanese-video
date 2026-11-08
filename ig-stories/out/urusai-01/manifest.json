@@ -1,0 +1,168 @@
+{
+  "id": "urusai-01",
+  "title": "うるさい - noisy",
+  "level": "N4",
+  "approved": true,
+  "reviewed_by": "Auto-approved at Saba's request for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-25T18:00:00+00:00",
+  "timezone": "UTC",
+  "ready_to_publish": true,
+  "qc": {
+    "errors": [],
+    "warnings": [
+      "clip is 10.6s (target 5-10s)"
+    ],
+    "checks": [
+      {
+        "check": "reading matches dictionary: target word",
+        "ok": true
+      },
+      {
+        "check": "reading matches dictionary: example sentence",
+        "ok": true
+      },
+      {
+        "check": "quiz has 3-4 unique options and exactly one valid correct answer",
+        "ok": true
+      },
+      {
+        "check": "quiz correct option equals the taught meaning",
+        "ok": true
+      },
+      {
+        "check": "reveal slide matches the quiz answer",
+        "ok": true
+      },
+      {
+        "check": "reveal slide repeats the same word and reading",
+        "ok": true
+      },
+      {
+        "check": "audio transcript == subtitles (both generated from the same text)",
+        "ok": true
+      }
+    ],
+    "uncertain": [
+      "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+      "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+    ],
+    "notes": [
+      "Automated checks only prove internal consistency. They cannot prove the Japanese is natural or correct.",
+      "Vocabulary/grammar level was NOT machine-checked; compare against your N4 target by eye."
+    ],
+    "japanese_verified": false,
+    "status": "ready"
+  },
+  "slides": [
+    {
+      "n": 1,
+      "type": "intro",
+      "kind": "image",
+      "file": "01-intro.jpg",
+      "content": {
+        "kicker": "Today's tiny word",
+        "headline": [
+          "How do you say",
+          "“It's noisy”",
+          "in Japanese?"
+        ],
+        "sub": "Tap to find out"
+      }
+    },
+    {
+      "n": 2,
+      "type": "convo",
+      "kind": "video",
+      "file": "02-convo.mp4",
+      "poster": "02-convo-poster.jpg",
+      "duration": 10.6,
+      "size_mb": 0.43,
+      "audio": "real_voice",
+      "audio_transcript": [
+        "ここはうるさいですね。",
+        "はい、人が多いです。",
+        "外へ行きましょう。"
+      ],
+      "subtitles": [
+        {
+          "jp": "ここはうるさいですね。",
+          "en": "It's noisy here."
+        },
+        {
+          "jp": "はい、人が多いです。",
+          "en": "Yes, there are many people."
+        },
+        {
+          "jp": "外へ行きましょう。",
+          "en": "Let's go outside."
+        }
+      ],
+      "content": {
+        "scene": "arcade",
+        "title": "うるさい · Noisy",
+        "lines": [
+          {
+            "speaker": "Mika",
+            "jp": "ここはうるさいですね。",
+            "en": "It's noisy here."
+          },
+          {
+            "speaker": "Alex",
+            "jp": "はい、人が多いです。",
+            "en": "Yes, there are many people."
+          },
+          {
+            "speaker": "Mika",
+            "jp": "外へ行きましょう。",
+            "en": "Let's go outside."
+          }
+        ]
+      }
+    },
+    {
+      "n": 3,
+      "type": "quiz",
+      "kind": "image",
+      "file": "03-quiz.jpg",
+      "content": {
+        "jp": "うるさい",
+        "question": "What does this word mean?",
+        "options": [
+          "Quiet",
+          "Warm",
+          "Noisy",
+          "Short"
+        ],
+        "answer": 2
+      }
+    },
+    {
+      "n": 4,
+      "type": "reveal",
+      "kind": "image",
+      "file": "04-reveal.jpg",
+      "content": {
+        "answer_label": "C",
+        "jp": "うるさい",
+        "reading": "うるさい",
+        "en": "noisy",
+        "note": [
+          "うるさいです = It's noisy (polite).",
+          "Said to a person, うるさい！ can mean \"Shut up!\" - rude."
+        ],
+        "cta": "Tell us your answer in the comments!",
+        "teaser": "Tomorrow: another tiny word!"
+      }
+    }
+  ],
+  "source": "ig-stories/sequences/urusai-01.json",
+  "api_limits": [
+    "Stories are single-media: each slide is posted as its own Story.",
+    "The Instagram API cannot add stickers (poll, quiz, link, question) or captions to Stories.",
+    "The API has no native scheduling: this project's scheduled workflow publishes at publish_at."
+  ],
+  "manual_steps": [
+    "Optional: post the quiz slide by hand in the Instagram app and add the native Quiz sticker (options from the quiz slide, correct answer set) instead of the text-reply version. Sticker taps are the strongest engagement signal on Stories.",
+    "Optional: add a Link sticker to the last Story by hand if you want a tappable link to the free lesson."
+  ]
+}

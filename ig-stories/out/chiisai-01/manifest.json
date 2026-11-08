@@ -11,8 +11,7 @@
     "errors": [],
     "warnings": [
       "target word: given reading 'ちいさい' differs from dictionary reading 'ちーさい' - verify",
-      "example sentence: given reading 'このねこはちいさいです。' differs from dictionary reading 'このねこはちーさいです。' - verify",
-      "clip is 10.7s (target 5-10s)"
+      "example sentence: given reading 'このねこはちいさいです。' differs from dictionary reading 'このねこはちーさいです。' - verify"
     ],
     "checks": [
       {
@@ -94,8 +93,8 @@
       "kind": "video",
       "file": "03-convo.mp4",
       "poster": "03-convo-poster.jpg",
-      "duration": 10.7,
-      "size_mb": 1.01,
+      "duration": 9.7,
+      "size_mb": 0.96,
       "audio": "real_voice",
       "audio_transcript": [
         "小さいですか？",
