@@ -1,0 +1,11 @@
+title: Don't say this when you get home in Japanese
+episode: 5
+format: mistake
+scene: home
+weather: none
+
+Alex: いってきます！ | I'm leaving! (but he's home!)
+Mika: あれ？ちがうよ！ | Huh? Wrong one!
+Mika: ただいま！ | I'm home!
+
+vocab: ただいま | tadaima | I'm home
