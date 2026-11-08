@@ -1,0 +1,11 @@
+title: Say delicious in Japanese in 10 seconds
+episode: 6
+format: practice
+scene: bakery
+weather: none
+
+Mika: このケーキ、どう？ | How is this cake?
+Alex: おいしい！ | Delicious!
+Mika: よかった！ | I'm glad!
+
+vocab: おいしい | oishii | Delicious
