@@ -1,0 +1,11 @@
+title: Say excuse me in Japanese in 10 seconds
+episode: 5
+format: practice
+scene: station
+weather: none
+
+Alex: すみません！ | Excuse me!
+Mika: はい、なんですか？ | Yes, what is it?
+Alex: えきはどこですか？ | Where is the station?
+
+vocab: すみません | sumimasen | Excuse me
