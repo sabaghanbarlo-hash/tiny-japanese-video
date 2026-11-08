@@ -1,0 +1,82 @@
+{
+  "id": "atatakai-01",
+  "title": "暖かい - warm",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": false,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's warm”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "暖かい",
+      "reading": "あたたかい",
+      "en": "warm",
+      "example": {
+        "jp": "今日は暖かいです。",
+        "reading": "きょうはあたたかいです。",
+        "en": "Today is warm."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "park",
+      "title": "暖かい · Warm",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "今日は暖かいですね。",
+          "en": "Today is warm."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、いい天気です。",
+          "en": "Yes, it's nice weather."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "公園へ行きましょう！",
+          "en": "Let's go to the park!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "暖かい",
+      "question": "What does this word mean?",
+      "options": [
+        "Cold",
+        "Heavy",
+        "Busy",
+        "Warm"
+      ],
+      "answer": 3
+    },
+    {
+      "type": "reveal",
+      "answer_label": "D",
+      "jp": "暖かい",
+      "reading": "あたたかい",
+      "en": "warm",
+      "note": [
+        "暖かいです = It's warm (polite).",
+        "Warm things you touch (tea, food) use 温かい. Same sound!"
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 涼しい (cool)"
+    }
+  ]
+}

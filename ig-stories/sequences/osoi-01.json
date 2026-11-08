@@ -1,0 +1,82 @@
+{
+  "id": "osoi-01",
+  "title": "遅い - slow",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": false,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's slow”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "遅い",
+      "reading": "おそい",
+      "en": "slow",
+      "example": {
+        "jp": "電車は遅いです。",
+        "reading": "でんしゃはおそいです。",
+        "en": "The train is slow."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "commute",
+      "title": "遅い · Slow",
+      "lines": [
+        {
+          "speaker": "Alex",
+          "jp": "電車が遅いですね。",
+          "en": "The train is slow."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "はい、遅いです。",
+          "en": "Yes, it's slow."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "ちょっと待ちましょう。",
+          "en": "Let's wait a little."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "遅い",
+      "question": "What does this word mean?",
+      "options": [
+        "Fast",
+        "Slow",
+        "Bright",
+        "Cheap"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "遅い",
+      "reading": "おそい",
+      "en": "slow",
+      "note": [
+        "遅いです = It's slow / late (polite).",
+        "The opposite is 速い (はやい) = fast."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 暖かい (warm)"
+    }
+  ]
+}

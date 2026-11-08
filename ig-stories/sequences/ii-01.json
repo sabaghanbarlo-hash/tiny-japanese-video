@@ -1,0 +1,82 @@
+{
+  "id": "ii-01",
+  "title": "いい - good",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": false,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's good”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "いい",
+      "reading": "いい",
+      "en": "good",
+      "example": {
+        "jp": "この本はいいです。",
+        "reading": "このほんはいいです。",
+        "en": "This book is good."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "いい · Good",
+      "lines": [
+        {
+          "speaker": "Alex",
+          "jp": "このお茶はどうですか？",
+          "en": "How is this tea?"
+        },
+        {
+          "speaker": "Mika",
+          "jp": "とてもいいです！",
+          "en": "Very good!"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "よかった！",
+          "en": "Glad to hear it!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "いい",
+      "question": "What does this word mean?",
+      "options": [
+        "Bad",
+        "Slow",
+        "Good",
+        "Heavy"
+      ],
+      "answer": 2
+    },
+    {
+      "type": "reveal",
+      "answer_label": "C",
+      "jp": "いい",
+      "reading": "いい",
+      "en": "good",
+      "note": [
+        "いいです = It's good / fine (polite).",
+        "The opposite is 悪い (わるい) = bad."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 悪い (bad)"
+    }
+  ]
+}

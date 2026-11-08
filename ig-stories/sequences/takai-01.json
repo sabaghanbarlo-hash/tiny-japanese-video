@@ -1,0 +1,82 @@
+{
+  "id": "takai-01",
+  "title": "高い - expensive",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": false,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's expensive”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "高い",
+      "reading": "たかい",
+      "en": "expensive",
+      "example": {
+        "jp": "このかばんは高いです。",
+        "reading": "このかばんはたかいです。",
+        "en": "This bag is expensive."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "store",
+      "title": "高い · Expensive",
+      "lines": [
+        {
+          "speaker": "Alex",
+          "jp": "このかばんは高いですね。",
+          "en": "This bag is expensive."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "はい、ちょっと高いです。",
+          "en": "Yes, a little expensive."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "でも、かわいいですよ！",
+          "en": "But it's cute!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "高い",
+      "question": "What does this word mean?",
+      "options": [
+        "Cheap",
+        "Expensive",
+        "Small",
+        "Hot"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "高い",
+      "reading": "たかい",
+      "en": "expensive",
+      "note": [
+        "高いです = It's expensive (polite).",
+        "高い also means tall / high. Opposite of expensive: 安い (やすい)."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: いい (good)"
+    }
+  ]
+}

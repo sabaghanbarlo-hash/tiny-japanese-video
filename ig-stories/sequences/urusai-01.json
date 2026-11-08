@@ -1,0 +1,82 @@
+{
+  "id": "urusai-01",
+  "title": "うるさい - noisy",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": false,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's noisy”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "うるさい",
+      "reading": "うるさい",
+      "en": "noisy",
+      "example": {
+        "jp": "ここはうるさいです。",
+        "reading": "ここはうるさいです。",
+        "en": "It's noisy here."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "arcade",
+      "title": "うるさい · Noisy",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "ここはうるさいですね。",
+          "en": "It's noisy here."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、人が多いです。",
+          "en": "Yes, there are many people."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "外へ行きましょう。",
+          "en": "Let's go outside."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "うるさい",
+      "question": "What does this word mean?",
+      "options": [
+        "Quiet",
+        "Warm",
+        "Noisy",
+        "Short"
+      ],
+      "answer": 2
+    },
+    {
+      "type": "reveal",
+      "answer_label": "C",
+      "jp": "うるさい",
+      "reading": "うるさい",
+      "en": "noisy",
+      "note": [
+        "うるさいです = It's noisy (polite).",
+        "Said to a person, うるさい！ can mean \"Shut up!\" - rude."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: another tiny word!"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "id": "itai-01",
+  "title": "痛い - painful",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": false,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It hurts”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "痛い",
+      "reading": "いたい",
+      "en": "painful",
+      "example": {
+        "jp": "頭が痛いです。",
+        "reading": "あたまがいたいです。",
+        "en": "I have a headache."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "hospital",
+      "title": "痛い · Painful",
+      "lines": [
+        {
+          "speaker": "Alex",
+          "jp": "どうしましたか？",
+          "en": "What's wrong?"
+        },
+        {
+          "speaker": "Mika",
+          "jp": "頭が痛いです。",
+          "en": "I have a headache."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "だいじょうぶですか？",
+          "en": "Are you OK?"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "痛い",
+      "question": "What does this word mean?",
+      "options": [
+        "Painful",
+        "Sweet",
+        "Sleepy",
+        "Kind"
+      ],
+      "answer": 0
+    },
+    {
+      "type": "reveal",
+      "answer_label": "A",
+      "jp": "痛い",
+      "reading": "いたい",
+      "en": "painful",
+      "note": [
+        "痛いです = It hurts / it's painful.",
+        "Said alone, 痛い！ means \"Ouch!\""
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 欲しい (want)"
+    }
+  ]
+}
