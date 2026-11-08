@@ -1,0 +1,11 @@
+title: Never say this to greet someone in Japanese
+episode: 2
+format: mistake
+scene: cafe
+weather: none
+
+Alex: さようなら！ | Goodbye! (not hello!)
+Mika: ちがうよ！ | No, that's wrong!
+Mika: こんにちは！ | Hello!
+
+vocab: こんにちは | konnichiwa | Hello
