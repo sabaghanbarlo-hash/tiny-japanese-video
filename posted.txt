@@ -35,3 +35,4 @@
 202611040816-tattoo-at-the-onsen
 202611040817-itadakimasu
 px-01-introduce-yourself
+mx-01-greeting
