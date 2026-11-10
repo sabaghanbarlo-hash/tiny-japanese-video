@@ -38,3 +38,4 @@ px-01-introduce-yourself
 mx-01-greeting
 202611051450-vegetarian-in-japan
 px-02-say-thank-you
+mx-02-before-eating
