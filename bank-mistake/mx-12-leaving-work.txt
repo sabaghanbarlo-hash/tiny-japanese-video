@@ -1,0 +1,11 @@
+title: Alex said this when leaving work at 5 pm. Oops!
+episode: 12
+format: mistake
+scene: station
+weather: none
+
+Alex: おやすみなさい！ | Good night! (it's 5 pm!)
+Mika: まだ ゆうがただよ！ | It's still evening!
+Mika: おつかれさまでした！ | Thanks for your hard work!
+
+vocab: おつかれさまでした | otsukaresama deshita | Thanks for your hard work
