@@ -1,0 +1,11 @@
+title: Alex met his old friend. Never say this in Japanese!
+episode: 13
+format: mistake
+scene: park
+weather: none
+
+Alex: はじめまして！ | Nice to meet you! (to an old friend?!)
+Mika: ともだちでしょ！ | We're friends!
+Mika: ひさしぶり！ | Long time no see!
+
+vocab: ひさしぶり | hisashiburi | Long time no see
