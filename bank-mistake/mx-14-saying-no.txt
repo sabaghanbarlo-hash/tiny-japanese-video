@@ -1,0 +1,11 @@
+title: Alex said no like this. Never do it in Japan!
+episode: 14
+format: mistake
+scene: cafe
+weather: none
+
+Alex: いや！ | No! (very harsh!)
+Mika: ちょっと きびしいよ！ | That's a bit harsh!
+Mika: だいじょうぶです。 | I'm okay, thank you.
+
+vocab: だいじょうぶです | daijoubu desu | I'm okay, thank you
