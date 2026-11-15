@@ -1,0 +1,11 @@
+title: Alex said this after the meal. Big mistake!
+episode: 9
+format: mistake
+scene: restaurant
+weather: none
+
+Alex: いただきます！ | Let's eat! (but the plate is empty!)
+Mika: もう たべたよ！ | We already ate!
+Mika: ごちそうさまでした！ | Thank you for the meal!
+
+vocab: ごちそうさまでした | gochisousama deshita | Thank you for the meal
