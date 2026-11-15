@@ -1,0 +1,11 @@
+title: It's freezing in Japan! Say this like a local
+episode: 12
+format: practice
+scene: snow
+weather: none
+
+Alex: さむい！ | It's cold!
+Mika: ほんとうに さむいね。 | It's really cold, isn't it?
+Alex: あたたかい コーヒーを のもう！ | Let's drink hot coffee!
+
+vocab: さむい | samui | It's cold
