@@ -1,0 +1,11 @@
+title: Alex just met Mika. Say what you like in Japanese!
+episode: 14
+format: practice
+scene: sushi
+weather: none
+
+Mika: すきな たべものは？ | What's your favorite food?
+Alex: すしが すきです！ | I like sushi!
+Mika: わたしも！ いっしょに たべよう！ | Me too! Let us eat together!
+
+vocab: すしが すきです | sushi ga suki desu | I like sushi
