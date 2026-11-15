@@ -1,0 +1,11 @@
+title: Alex is starving at a ramen shop. Order like this!
+episode: 10
+format: practice
+scene: ramen
+weather: none
+
+Alex: おなかが すいた！ | I'm hungry!
+Mika: なにを たべますか？ | What will you eat?
+Alex: ラーメンを ください！ | Ramen, please!
+
+vocab: ラーメンを ください | raamen o kudasai | Ramen, please
