@@ -1,0 +1,11 @@
+title: Alex stepped on Mika's foot. Say sorry in Japanese!
+episode: 11
+format: practice
+scene: street
+weather: none
+
+Mika: いたい！ | Ouch!
+Alex: ごめんなさい！ | I'm so sorry!
+Mika: だいじょうぶ。 でも ゆっくり あるいて！ | It's okay. But walk slowly!
+
+vocab: ごめんなさい | gomen nasai | I'm sorry
