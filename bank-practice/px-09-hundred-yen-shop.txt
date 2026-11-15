@@ -1,0 +1,11 @@
+title: Alex found a 100 yen shop. Ask the price like this!
+episode: 9
+format: practice
+scene: store
+weather: none
+
+Alex: これ、いくらですか？ | How much is this?
+Mika: ひゃくえんです！ | It's 100 yen!
+Alex: やすい！ ぜんぶ ください！ | So cheap! I'll take everything!
+
+vocab: いくらですか | ikura desu ka | How much is it?
