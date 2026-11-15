@@ -53,3 +53,4 @@ px-06-say-delicious
 mx-06-yes-and-no
 202611101506-sushi-recommendation
 px-07-count-to-three
+mx-07-when-you-leave
