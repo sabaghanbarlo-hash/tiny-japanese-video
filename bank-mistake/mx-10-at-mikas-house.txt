@@ -1,0 +1,11 @@
+title: Alex walked into Mika's house. Never say this!
+episode: 10
+format: mistake
+scene: home
+weather: none
+
+Alex: ただいま！ | I'm home! (it is not his house!)
+Mika: ここは わたしの いえだよ！ | This is MY house!
+Mika: おじゃまします！ | Excuse me for coming in!
+
+vocab: おじゃまします | ojamashimasu | Excuse me for coming in
