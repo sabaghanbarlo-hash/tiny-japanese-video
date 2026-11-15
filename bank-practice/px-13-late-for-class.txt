@@ -1,0 +1,11 @@
+title: Alex is late for class again! Say this in Japanese
+episode: 13
+format: practice
+scene: classroom
+weather: none
+
+Mika: また おそいよ！ | Late again!
+Alex: おくれて すみません！ | Sorry I'm late!
+Mika: はやく すわって！ | Sit down quickly!
+
+vocab: おくれて すみません | okurete sumimasen | Sorry I'm late
