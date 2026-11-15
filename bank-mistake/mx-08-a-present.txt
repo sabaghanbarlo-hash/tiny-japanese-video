@@ -1,0 +1,11 @@
+title: Alex got a present. Never say this in Japanese!
+episode: 8
+format: mistake
+scene: home
+weather: none
+
+Alex: ごめんなさい！ | Sorry! (for a present?!)
+Mika: ちがうよ！ プレゼントだよ！ | No! It's a present!
+Mika: ありがとう！ | Thank you!
+
+vocab: ありがとう | arigatou | Thank you
