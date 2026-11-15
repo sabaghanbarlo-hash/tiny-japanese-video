@@ -1,0 +1,11 @@
+title: Alex got lost in Tokyo. Say this to get help!
+episode: 8
+format: practice
+scene: station
+weather: none
+
+Alex: あれ？ えきは どこですか？ | Huh? Where is the station?
+Mika: うしろですよ！ | It's right behind you!
+Alex: えっ！ | What?!
+
+vocab: えきは どこですか | eki wa doko desu ka | Where is the station?
