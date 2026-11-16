@@ -51,6 +51,33 @@ def jcard(tag, color, jp, ro, en, jp_color, kind):
     return badge(tv.card_image(tag, color, parts), kind)
 
 
+HANDLE, OTHER_NAME, OTHER_HANDLE, OTHER_FLAG = "@tinyjapanes", "French", "@tiny.french", "🇫🇷"
+SERIES = {"practice": "Say it out loud", "mistake": "Never say this"}
+
+
+def cta_parts(follow, mistake, wrong):
+    """End card: alternates between a specific share ask and a follow ask (odd/even episode)."""
+    ink, soft = (52, 40, 44), (120, 98, 104)
+    if follow:
+        return [("Follow for a new phrase", tv.font(58), ink, 84), ("every single day", tv.font(58), ink, 84), (HANDLE, tv.font(46, False), BRAND, 70)]
+    if mistake and wrong:
+        return [("Send this to a friend", tv.font(56), ink, 80), ("who still says", tv.font(44, False), soft, 64), (wrong, tv.font(60), RED, 84)]
+    return [("Send this to a friend", tv.font(60), ink, 90), ("who is learning Japanese", tv.font(44, False), soft, 70)]
+
+
+def caption(meta, lines, vocab, style):
+    k = vocab[0]; wrong = lines[0]["jp"].strip("！!。？? ")
+    if style == "mistake":
+        head = f"{meta['title']} 🌸\n\nDo not say: {lines[0]['jp']} 😅\nSay this instead: {k['jp']} ({k['romaji']}) — {k['en']}\n\n"
+        share = f"Send this to a friend who says {wrong} 😅" if len(wrong) <= 16 else "Send this to a friend who is learning Japanese 💌"
+        tags = "#learnjapanese #japanesemistakes #japanesebeginner #japanese #nihongo #japaneselesson #languagelearning #tinyjapanese"
+    else:
+        head = f"{meta['title']} 🌸\n\nSay it out loud:\n• {k['jp']} ({k['romaji']}) — {k['en']}\n\n"
+        share = "Send this to a friend who is learning Japanese 💌"
+        tags = "#learnjapanese #japanesebeginner #japanese #jlpt #nihongo #japaneselesson #languagelearning #tinyjapanese"
+    return head + share + f"\nFollow {HANDLE} for a new phrase every day 🌸\nAlso learning {OTHER_NAME}? {OTHER_HANDLE} {OTHER_FLAG}\n\n" + tags
+
+
 def silence(sec):
     return np.zeros(int(sec * SR), np.float32)
 
@@ -68,6 +95,11 @@ def build(story, rate, dummy, tmp, style="practice"):
     mistake = style == "mistake"
     if mistake and len(lines) < 2:
         sys.exit("Mistake & fix needs at least 2 lines: first the MISTAKE, then the correction.")
+    ep = str(meta.get("episode", "1")).strip()
+    follow = ep.isdigit() and int(ep) % 2 == 0   # even episodes ask to follow, odd ones ask to share
+    wrong = lines[0]["jp"].strip("！!。？? ")
+    if len(wrong) > 16:
+        wrong = ""
     ks = lines[-1]["speaker"] if mistake else "Mika"   # who says the key phrase: the one who corrects
     key = vocab[0]
     chunks, t = [silence(0.15)], 0.15
@@ -86,7 +118,7 @@ def build(story, rate, dummy, tmp, style="practice"):
         chunks += [x, silence(1.0 - len(x) / SR)]; t += 1.0
     wav = os.path.join(tmp, "key.wav"); tv.synth(re.sub(r"[〜~]+", "、", key["jp"]).strip("、 "), ks, wav, "-20%", dummy)
     x = tv.read_wav(wav); key0 = t; talk.append(dict(speaker=ks, start=t, end=t + len(x) / SR)); chunks += [x, silence(0.3)]; t += len(x) / SR + 0.3
-    wav = os.path.join(tmp, "end.wav"); tv.synth("Now you will not make that mistake! Save this, and send it to a friend." if mistake else "Perfect! Save this, and send it to a study buddy.", "Narrator", wav, "+5%", dummy, voice="en-US-AriaNeural", lang="en")
+    wav = os.path.join(tmp, "end.wav"); tv.synth(("Now you will not make that mistake! " + ("Follow us for a new phrase every day!" if follow else "Send this to a friend who still does it.")) if mistake else ("Perfect! Follow us for a new phrase every day!" if follow else "Perfect! Send this to a friend who is learning Japanese."), "Narrator", wav, "+5%", dummy, voice="en-US-AriaNeural", lang="en")
     x = tv.read_wav(wav); end0 = t; chunks += [x, silence(0.6)]; t += len(x) / SR + 0.6
     total = t
     audio = np.concatenate(chunks); audio = audio / max(0.01, np.abs(audio).max()) * 0.9
@@ -104,8 +136,8 @@ def build(story, rate, dummy, tmp, style="practice"):
     done_card = tv.card_image("Perfect!", (79, 154, 110), pt, min_h=420)
     if mistake:
         badge(turn_card, "ok"); badge(done_card, "ok")
-    cta_card = tv.card_image("Tiny Japanese", tv.BRAND, ([("Save this so you never", tv.font(56), (52, 40, 44), 80), ("make this mistake again", tv.font(56), (52, 40, 44), 90), ("Send it to a study buddy", tv.font(40, False), (120, 98, 104), 64)] if mistake else [("Save this for later", tv.font(60), (52, 40, 44), 90), ("Send it to a study buddy", tv.font(44, False), (120, 98, 104), 70)]), min_h=380)
-    banner = tv.hook_banner(meta, "Tiny Japanese")
+    cta_card = tv.card_image("Tiny Japanese", tv.BRAND, cta_parts(follow, mistake, wrong), min_h=380)
+    banner = tv.hook_banner(meta, f"Tiny Japanese · {SERIES[style]} #{ep}")
     pills = {(nm, a): tv.pill(tv.CHARS[nm]["label"], tv.CHARS[nm]["accent"] if a else (226, 214, 206), (255, 255, 255) if a else (130, 112, 108)) for nm in tv.CHARS for a in (0, 1)}
 
     def frame(i):
@@ -160,7 +192,7 @@ def make_cover(story, out, style):
     meta["scene"] = tv.pick_scene(meta, lines)
     bg, fg = tv.make_scene(meta["scene"], meta, header=False)
     fr = bg.copy()
-    ep = f"EP {meta['episode']}" if meta.get("episode") else ""
+    ep = f"#{meta['episode']}" if meta.get("episode") else ""
     badges = [tv.pill("DON'T SAY THIS" if mistake else "SAY IT OUT LOUD", RED if mistake else BRAND)] + ([tv.pill(ep, (60, 45, 48))] if ep else [])
     total = sum(b.width for b in badges) + 16 * (len(badges) - 1); x = (W - total) // 2
     for b in badges:
@@ -213,15 +245,7 @@ def main():
         p.stdin.close(); p.wait()
         print(f"Wrote {a.out} ({n / FPS:.1f}s)")
     meta2, l2, vocab = tv.parse_story(a.story)
-    k = vocab[0]
-    if style == "mistake":
-        cap = (f"{meta2['title']} 🌸\n\nDo not say: {l2[0]['jp']} 😅\nSay this instead: {k['jp']} ({k['romaji']}) — {k['en']}\n\n"
-               "Send this to a friend who is learning Japanese 💌\nSmall steps. Big dreams.\n\n"
-               "#learnjapanese #japanesemistakes #japanesebeginner #japanese #nihongo #japaneselesson #languagelearning #tinyjapanese")
-    else:
-      cap = (f"{meta2['title']} 🌸\n\nSay it out loud:\n• {k['jp']} ({k['romaji']}) — {k['en']}\n\n"
-           "Send this to a friend who is learning Japanese 💌\nSmall steps. Big dreams.\n\n"
-           "#learnjapanese #japanesebeginner #japanese #jlpt #nihongo #japaneselesson #languagelearning #tinyjapanese")
+    cap = caption(meta2, l2, vocab, style)
     open(os.path.splitext(a.out)[0] + ".caption.txt", "w", encoding="utf-8").write(cap)
     make_cover(a.story, os.path.splitext(a.out)[0] + ".jpg", style)
 
