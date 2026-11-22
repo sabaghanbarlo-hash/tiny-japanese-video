@@ -1,0 +1,11 @@
+title: Alex asked for the bill like this in Japan. Awkward!
+episode: 16
+format: mistake
+scene: restaurant
+weather: none
+
+Alex: おかね ください！ | Give me money! (he meant: the bill)
+Mika: えっ！？ ちがうよ！ | Huh?! No!
+Mika: おかいけい おねがいします！ | The bill, please!
+
+vocab: おかいけい おねがいします | okaikei onegaishimasu | The bill, please
