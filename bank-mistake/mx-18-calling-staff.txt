@@ -1,0 +1,11 @@
+title: Alex called the waiter like this. Never do it in Japan!
+episode: 18
+format: mistake
+scene: izakaya
+weather: none
+
+Alex: おい！ | Hey you! (very rude!)
+Mika: しつれいだよ！ | That's rude!
+Mika: すみません！ | Excuse me!
+
+vocab: すみません | sumimasen | Excuse me (to call staff)
