@@ -1,0 +1,11 @@
+title: Is this seat free? Ask like a local in Japan
+episode: 21
+format: practice
+scene: station
+weather: none
+
+Alex: すみません、ここ、いいですか？ | Excuse me, is this seat free?
+Mika: はい、どうぞ！ | Yes, go ahead!
+Alex: ありがとう！ | Thank you!
+
+vocab: ここ、いいですか | koko, ii desu ka | Is this seat free?
