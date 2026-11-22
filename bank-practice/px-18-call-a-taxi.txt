@@ -1,0 +1,11 @@
+title: Alex is late. Ask for a taxi like this in Japan
+episode: 18
+format: practice
+scene: street
+weather: none
+
+Alex: タクシーを おねがいします。 | A taxi, please.
+Mika: どこまで ですか？ | Where to?
+Alex: えきまで おねがいします！ | To the station, please!
+
+vocab: えきまで おねがいします | eki made onegaishimasu | To the station, please
