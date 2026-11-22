@@ -1,0 +1,11 @@
+title: One more, please! Order again like this in Japan
+episode: 20
+format: practice
+scene: izakaya
+weather: none
+
+Alex: おいしい！ | Delicious!
+Mika: もっと たべる？ | Want more?
+Alex: もう ひとつ ください！ | One more, please!
+
+vocab: もう ひとつ ください | mou hitotsu kudasai | One more, please
