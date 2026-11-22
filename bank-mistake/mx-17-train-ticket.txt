@@ -1,0 +1,11 @@
+title: Alex wants a train ticket. Say this in Japan
+episode: 17
+format: practice
+scene: station
+weather: none
+
+Alex: きっぷを ください！ | A ticket, please!
+Mika: どこまで ですか？ | To where?
+Alex: とうきょうまで！ | To Tokyo!
+
+vocab: きっぷを ください | kippu o kudasai | A ticket, please
