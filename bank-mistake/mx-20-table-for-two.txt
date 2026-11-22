@@ -1,0 +1,11 @@
+title: Alex asked for a table for two like this. Oops!
+episode: 20
+format: mistake
+scene: restaurant
+weather: none
+
+Alex: ふたつ おねがいします！ | Two things, please! (he meant: two people)
+Mika: ひとじゃ ないよ！ | We are not things!
+Mika: ふたりです！ | Two people!
+
+vocab: ふたりです | futari desu | Two people
