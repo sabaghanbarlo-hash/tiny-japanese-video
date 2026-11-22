@@ -1,0 +1,11 @@
+title: Can Alex pay by card? Ask this at any shop in Japan
+episode: 16
+format: practice
+scene: store
+weather: none
+
+Alex: これ ください。 | This one, please.
+Mika: はい、ごひゃくえんです。 | Sure, that's 500 yen.
+Alex: カードで いいですか？ | Can I pay by card?
+
+vocab: カードで いいですか | kaado de ii desu ka | Can I pay by card?
