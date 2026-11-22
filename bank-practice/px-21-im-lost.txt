@@ -1,0 +1,11 @@
+title: Alex is totally lost. Say this in Japanese
+episode: 21
+format: practice
+scene: street
+weather: none
+
+Alex: みちに まよいました。 | I'm lost.
+Mika: だいじょうぶ！ いっしょに いこう。 | It's okay! Let's go together.
+Alex: ありがとう！ | Thank you!
+
+vocab: みちに まよいました | michi ni mayoimashita | I'm lost
