@@ -1,0 +1,11 @@
+title: Where do I change trains? Ask this in Japan
+episode: 19
+format: practice
+scene: station
+weather: none
+
+Alex: のりかえは どこですか？ | Where do I change trains?
+Mika: あの かいだんを のぼって ください。 | Go up those stairs.
+Alex: ありがとうございます！ | Thank you very much!
+
+vocab: のりかえは どこですか | norikae wa doko desu ka | Where do I change trains?
