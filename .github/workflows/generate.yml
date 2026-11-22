@@ -123,6 +123,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Get the files the render job just committed (caption, cover)
+        run: git pull --rebase origin main || true
       - name: Publish Reel
         env:
           COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
