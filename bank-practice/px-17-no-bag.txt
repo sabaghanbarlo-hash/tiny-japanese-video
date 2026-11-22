@@ -1,0 +1,11 @@
+title: The konbini asks something fast. Say this to skip the bag
+episode: 17
+format: practice
+scene: store
+weather: none
+
+Mika: ふくろは いりますか？ | Do you need a bag?
+Alex: ふくろは いりません。 | I don't need a bag.
+Mika: はい、ありがとうございます！ | Okay, thank you!
+
+vocab: ふくろは いりません | fukuro wa irimasen | I don't need a bag
