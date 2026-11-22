@@ -1,0 +1,11 @@
+title: Alex can't find the bus. Ask this in Japan!
+episode: 19
+format: practice
+scene: street
+weather: none
+
+Alex: すみません、バスていは どこですか？ | Excuse me, where is the bus stop?
+Mika: あそこですよ！ | Over there!
+Alex: ありがとう！ | Thank you!
+
+vocab: バスていは どこですか | basutei wa doko desu ka | Where is the bus stop?
