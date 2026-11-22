@@ -1,0 +1,11 @@
+title: Is there meat in this? Ask like this in Japan
+episode: 15
+format: practice
+scene: restaurant
+weather: none
+
+Alex: これは にくが はいって いますか？ | Does this have meat in it?
+Mika: いいえ、やさいだけです。 | No, only vegetables.
+Alex: よかった！ | That's a relief!
+
+vocab: にくが はいって いますか | niku ga haitte imasu ka | Does it have meat in it?
