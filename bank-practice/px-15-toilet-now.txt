@@ -1,0 +1,11 @@
+title: Alex needs the toilet NOW. Ask like this in Japan!
+episode: 15
+format: practice
+scene: station
+weather: none
+
+Alex: あの、すみません！ | Um, excuse me!
+Mika: はい、どうしましたか？ | Yes, what's wrong?
+Alex: トイレは どこですか？ | Where is the toilet?
+
+vocab: トイレは どこですか | toire wa doko desu ka | Where is the toilet?
