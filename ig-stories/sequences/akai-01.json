@@ -1,0 +1,84 @@
+{
+  "id": "akai-01",
+  "title": "赤い - red",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's red”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "赤い",
+      "reading": "あかい",
+      "en": "red",
+      "example": {
+        "jp": "赤い花がきれいです。",
+        "reading": "あかいはながきれいです。",
+        "en": "The red flowers are pretty."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "flowers",
+      "title": "赤い · Red",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "赤い花ですね。",
+          "en": "Those are red flowers."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "きれいですね！",
+          "en": "They're pretty!"
+        },
+        {
+          "speaker": "Mika",
+          "jp": "写真を撮りましょう。",
+          "en": "Let's take a photo."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "赤い",
+      "question": "What does this word mean?",
+      "options": [
+        "Blue",
+        "Red",
+        "Green",
+        "Black"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "赤い",
+      "reading": "あかい",
+      "en": "Red",
+      "note": [
+        "赤いです = It's red (polite).",
+        "赤い花 = a red flower."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 青い (blue)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request on 2026-11-23 for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-28T18:00:00+00:00"
+}

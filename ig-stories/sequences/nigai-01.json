@@ -1,0 +1,84 @@
+{
+  "id": "nigai-01",
+  "title": "苦い - bitter",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's bitter”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "苦い",
+      "reading": "にがい",
+      "en": "bitter",
+      "example": {
+        "jp": "薬は苦いです。",
+        "reading": "くすりはにがいです。",
+        "en": "Medicine is bitter."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "cafe",
+      "title": "苦い · Bitter",
+      "lines": [
+        {
+          "speaker": "Alex",
+          "jp": "このコーヒーは苦いです。",
+          "en": "This coffee is bitter."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "砂糖を入れますか？",
+          "en": "Shall I add sugar?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、お願いします。",
+          "en": "Yes, please."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "苦い",
+      "question": "What does this word mean?",
+      "options": [
+        "Sweet",
+        "Bitter",
+        "Spicy",
+        "Sour"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "苦い",
+      "reading": "にがい",
+      "en": "Bitter",
+      "note": [
+        "苦いです = It's bitter (polite).",
+        "Opposite: 甘い (sweet)."
+      ],
+      "cta": "Watch our latest Reel for more everyday Japanese",
+      "teaser": "Tomorrow: 寂しい (lonely)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request on 2026-11-23 for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-12-01T18:00:00+00:00"
+}

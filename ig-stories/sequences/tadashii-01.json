@@ -1,0 +1,84 @@
+{
+  "id": "tadashii-01",
+  "title": "正しい - correct",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's correct”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "正しい",
+      "reading": "ただしい",
+      "en": "correct",
+      "example": {
+        "jp": "その答えは正しいです。",
+        "reading": "そのこたえはただしいです。",
+        "en": "That answer is correct."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "classroom",
+      "title": "正しい · Correct",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "この答えは正しいですか？",
+          "en": "Is this answer correct?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、正しいです。",
+          "en": "Yes, it's correct."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "やった！",
+          "en": "Yay!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "正しい",
+      "question": "What does this word mean?",
+      "options": [
+        "Wrong",
+        "Correct",
+        "Difficult",
+        "Heavy"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "正しい",
+      "reading": "ただしい",
+      "en": "Correct",
+      "note": [
+        "正しいです = It's correct (polite).",
+        "Opposite: 間違い (まちがい) = a mistake."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 珍しい (rare)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request on 2026-11-23 for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-12-04T18:00:00+00:00"
+}

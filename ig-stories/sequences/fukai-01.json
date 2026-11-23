@@ -1,0 +1,84 @@
+{
+  "id": "fukai-01",
+  "title": "深い - deep",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's deep”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "深い",
+      "reading": "ふかい",
+      "en": "deep",
+      "example": {
+        "jp": "この池は深いです。",
+        "reading": "このいけはふかいです。",
+        "en": "This pond is deep."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "park",
+      "title": "深い · Deep",
+      "lines": [
+        {
+          "speaker": "Alex",
+          "jp": "この川は深いですか？",
+          "en": "Is this river deep?"
+        },
+        {
+          "speaker": "Mika",
+          "jp": "はい、とても深いです。",
+          "en": "Yes, it's very deep."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "じゃあ、入りません。",
+          "en": "Then I won't go in."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "深い",
+      "question": "What does this word mean?",
+      "options": [
+        "Wide",
+        "Deep",
+        "Long",
+        "Short"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "深い",
+      "reading": "ふかい",
+      "en": "Deep",
+      "note": [
+        "深いです = It's deep (polite).",
+        "Opposite: 浅い (あさい) = shallow."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 薄い (thin)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request on 2026-11-23 for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-12-06T18:00:00+00:00"
+}

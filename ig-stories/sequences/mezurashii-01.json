@@ -1,0 +1,84 @@
+{
+  "id": "mezurashii-01",
+  "title": "珍しい - rare",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's rare”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "珍しい",
+      "reading": "めずらしい",
+      "en": "rare",
+      "example": {
+        "jp": "この鳥は珍しいです。",
+        "reading": "このとりはめずらしいです。",
+        "en": "This bird is rare."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "store",
+      "title": "珍しい · Rare",
+      "lines": [
+        {
+          "speaker": "Alex",
+          "jp": "この花は珍しいですね。",
+          "en": "This flower is rare."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "ええ、日本では珍しいです。",
+          "en": "Yes, it's rare in Japan."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "買いましょう！",
+          "en": "Let's buy it!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "珍しい",
+      "question": "What does this word mean?",
+      "options": [
+        "Cheap",
+        "Heavy",
+        "Fast",
+        "Rare"
+      ],
+      "answer": 3
+    },
+    {
+      "type": "reveal",
+      "answer_label": "D",
+      "jp": "珍しい",
+      "reading": "めずらしい",
+      "en": "Rare",
+      "note": [
+        "珍しいです = It's rare (polite).",
+        "珍しいですね = That's unusual!"
+      ],
+      "cta": "Watch our latest Reel for more everyday Japanese",
+      "teaser": "Tomorrow: 深い (deep)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request on 2026-11-23 for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-12-05T18:00:00+00:00"
+}

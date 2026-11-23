@@ -1,0 +1,83 @@
+{
+  "id": "yawarakai-01",
+  "title": "柔らかい - soft",
+  "level": "N3",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's soft”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "柔らかい",
+      "reading": "やわらかい",
+      "en": "soft",
+      "example": {
+        "jp": "このタオルは柔らかいです。",
+        "reading": "このタオルはやわらかいです。",
+        "en": "This towel is soft."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "home",
+      "title": "柔らかい · Soft",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "このタオルは柔らかいですね。",
+          "en": "This towel is soft."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "ええ、新しいです。",
+          "en": "Yes, it's new."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "気持ちいいです。",
+          "en": "It feels nice."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "柔らかい",
+      "question": "What does this word mean?",
+      "options": [
+        "Hard",
+        "Cold",
+        "Soft",
+        "Dark"
+      ],
+      "answer": 2
+    },
+    {
+      "type": "reveal",
+      "answer_label": "C",
+      "jp": "柔らかい",
+      "reading": "やわらかい",
+      "en": "Soft",
+      "note": [
+        "柔らかいです = It's soft (polite).",
+        "Also for food: 柔らかい肉 = tender meat."
+      ],
+      "cta": "Watch our latest Reel for more everyday Japanese"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request on 2026-11-23 for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-12-09T18:00:00+00:00"
+}

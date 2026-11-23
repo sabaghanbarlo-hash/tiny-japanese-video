@@ -1,0 +1,84 @@
+{
+  "id": "hazukashii-01",
+  "title": "恥ずかしい - embarrassing",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's embarrassing”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "恥ずかしい",
+      "reading": "はずかしい",
+      "en": "embarrassing",
+      "example": {
+        "jp": "人の前で話すのは恥ずかしいです。",
+        "reading": "ひとのまえではなすのははずかしいです。",
+        "en": "Speaking in front of people is embarrassing."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "classroom",
+      "title": "恥ずかしい · Embarrassing",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "発表は恥ずかしいです。",
+          "en": "Giving a presentation is embarrassing."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "大丈夫ですよ。",
+          "en": "It'll be fine."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "ありがとう。",
+          "en": "Thank you."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "恥ずかしい",
+      "question": "What does this word mean?",
+      "options": [
+        "Scary",
+        "Easy",
+        "Funny",
+        "Embarrassing"
+      ],
+      "answer": 3
+    },
+    {
+      "type": "reveal",
+      "answer_label": "D",
+      "jp": "恥ずかしい",
+      "reading": "はずかしい",
+      "en": "Embarrassing",
+      "note": [
+        "恥ずかしいです = I'm embarrassed (polite).",
+        "Also: It's embarrassing / I'm shy."
+      ],
+      "cta": "Watch our latest Reel for more everyday Japanese",
+      "teaser": "Tomorrow: 正しい (correct)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request on 2026-11-23 for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-12-03T18:00:00+00:00"
+}

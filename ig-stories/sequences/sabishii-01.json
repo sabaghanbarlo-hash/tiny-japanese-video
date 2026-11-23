@@ -1,0 +1,84 @@
+{
+  "id": "sabishii-01",
+  "title": "寂しい - lonely",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“I feel lonely”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "寂しい",
+      "reading": "さびしい",
+      "en": "lonely",
+      "example": {
+        "jp": "一人の夜は寂しいです。",
+        "reading": "ひとりのよるはさびしいです。",
+        "en": "Nights alone are lonely."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "home",
+      "title": "寂しい · Lonely",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "友達が帰って、寂しいです。",
+          "en": "My friend went home, and I feel lonely."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "電話しましょう。",
+          "en": "Let's call them."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "ありがとう。",
+          "en": "Thank you."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "寂しい",
+      "question": "What does this word mean?",
+      "options": [
+        "Busy",
+        "Happy",
+        "Lonely",
+        "Sleepy"
+      ],
+      "answer": 2
+    },
+    {
+      "type": "reveal",
+      "answer_label": "C",
+      "jp": "寂しい",
+      "reading": "さびしい",
+      "en": "Lonely",
+      "note": [
+        "寂しいです = I feel lonely (polite).",
+        "Also used for quiet, empty places."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 恥ずかしい (embarrassing)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request on 2026-11-23 for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-12-02T18:00:00+00:00"
+}

@@ -1,0 +1,84 @@
+{
+  "id": "shiroi-01",
+  "title": "白い - white",
+  "level": "N5",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's white”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "白い",
+      "reading": "しろい",
+      "en": "white",
+      "example": {
+        "jp": "雪は白いです。",
+        "reading": "ゆきはしろいです。",
+        "en": "Snow is white."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "park",
+      "title": "白い · White",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "その猫は白いですか？",
+          "en": "Is that cat white?"
+        },
+        {
+          "speaker": "Alex",
+          "jp": "はい、白い猫です。",
+          "en": "Yes, it's a white cat."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "かわいいですね！",
+          "en": "So cute!"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "白い",
+      "question": "What does this word mean?",
+      "options": [
+        "Black",
+        "White",
+        "Red",
+        "Blue"
+      ],
+      "answer": 1
+    },
+    {
+      "type": "reveal",
+      "answer_label": "B",
+      "jp": "白い",
+      "reading": "しろい",
+      "en": "White",
+      "note": [
+        "白いです = It's white (polite).",
+        "Before a noun: 白い猫 = a white cat."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 黒い (black)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request on 2026-11-23 for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-26T18:00:00+00:00"
+}

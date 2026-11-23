@@ -1,0 +1,84 @@
+{
+  "id": "kitanai-01",
+  "title": "汚い - dirty",
+  "level": "N4",
+  "scene": "sakura",
+  "approved": true,
+  "uncertain": [
+    "Level label comes from unofficial community word lists (JLPT publishes no official vocabulary list).",
+    "Dialogue and example sentence were written by AI and have NOT been checked by a native speaker."
+  ],
+  "slides": [
+    {
+      "type": "intro",
+      "kicker": "Today's tiny word",
+      "headline": [
+        "How do you say",
+        "“It's dirty”",
+        "in Japanese?"
+      ],
+      "sub": "Tap to find out"
+    },
+    {
+      "type": "word",
+      "skip": true,
+      "jp": "汚い",
+      "reading": "きたない",
+      "en": "dirty",
+      "example": {
+        "jp": "部屋が汚いです。",
+        "reading": "へやがきたないです。",
+        "en": "My room is dirty."
+      }
+    },
+    {
+      "type": "convo",
+      "scene": "home",
+      "title": "汚い · Dirty",
+      "lines": [
+        {
+          "speaker": "Mika",
+          "jp": "部屋が汚いですね。",
+          "en": "Your room is dirty."
+        },
+        {
+          "speaker": "Alex",
+          "jp": "すみません、今日は忙しかったです。",
+          "en": "Sorry, I was busy today."
+        },
+        {
+          "speaker": "Mika",
+          "jp": "一緒に掃除しましょう。",
+          "en": "Let's clean it together."
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "jp": "汚い",
+      "question": "What does this word mean?",
+      "options": [
+        "Dirty",
+        "Bitter",
+        "Lonely",
+        "Rare"
+      ],
+      "answer": 0
+    },
+    {
+      "type": "reveal",
+      "answer_label": "A",
+      "jp": "汚い",
+      "reading": "きたない",
+      "en": "Dirty",
+      "note": [
+        "汚いです = It's dirty (polite).",
+        "Opposite: きれい (clean, pretty)."
+      ],
+      "cta": "Tell us your answer in the comments!",
+      "teaser": "Tomorrow: 苦い (bitter)"
+    }
+  ],
+  "reviewed_by": "Auto-approved at Saba's request on 2026-11-23 for hands-free daily posting (Japanese written by Claude, not checked by a native speaker)",
+  "publish_at": "2026-11-30T18:00:00+00:00"
+}
