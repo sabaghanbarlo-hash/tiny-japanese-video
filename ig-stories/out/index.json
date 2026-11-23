@@ -1,5 +1,14 @@
 [
   {
+    "id": "akai-01",
+    "title": "赤い - red",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-28T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "akarui-01",
     "title": "明るい - bright",
     "level": "N5",
@@ -15,6 +24,15 @@
     "approved": true,
     "ready_to_publish": true,
     "publish_at": "2026-11-15T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "aoi-01",
+    "title": "青い - blue",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-29T18:00:00+00:00",
     "status": "ready"
   },
   {
@@ -63,6 +81,15 @@
     "status": "ready"
   },
   {
+    "id": "fukai-01",
+    "title": "深い - deep",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-12-06T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "furui-01",
     "title": "古い - old",
     "level": "N5",
@@ -78,6 +105,15 @@
     "approved": true,
     "ready_to_publish": true,
     "publish_at": "2026-11-17T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "hazukashii-01",
+    "title": "恥ずかしい - embarrassing",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-12-03T18:00:00+00:00",
     "status": "ready"
   },
   {
@@ -144,12 +180,30 @@
     "status": "ready"
   },
   {
+    "id": "katai-01",
+    "title": "硬い - hard",
+    "level": "N3",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-12-08T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "kawaii-01",
     "title": "かわいい - cute",
     "level": "N5",
     "approved": true,
     "ready_to_publish": true,
     "publish_at": "2026-11-05T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "kitanai-01",
+    "title": "汚い - dirty",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-30T18:00:00+00:00",
     "status": "ready"
   },
   {
@@ -168,6 +222,24 @@
     "approved": true,
     "ready_to_publish": true,
     "publish_at": "2026-11-08T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "kuroi-01",
+    "title": "黒い - black",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-27T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "mezurashii-01",
+    "title": "珍しい - rare",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-12-05T18:00:00+00:00",
     "status": "ready"
   },
   {
@@ -204,6 +276,15 @@
     "approved": true,
     "ready_to_publish": true,
     "publish_at": "2026-10-14T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "nigai-01",
+    "title": "苦い - bitter",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-12-01T18:00:00+00:00",
     "status": "ready"
   },
   {
@@ -252,6 +333,15 @@
     "status": "ready"
   },
   {
+    "id": "sabishii-01",
+    "title": "寂しい - lonely",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-12-02T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "samui-01",
     "title": "寒い - cold (weather)",
     "level": "N5",
@@ -270,12 +360,30 @@
     "status": "ready"
   },
   {
+    "id": "shiroi-01",
+    "title": "白い - white",
+    "level": "N5",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-11-26T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "suzushii-01",
     "title": "涼しい - cool",
     "level": "N4",
     "approved": true,
     "ready_to_publish": true,
     "publish_at": "2026-11-20T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "tadashii-01",
+    "title": "正しい - correct",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-12-04T18:00:00+00:00",
     "status": "ready"
   },
   {
@@ -333,6 +441,15 @@
     "status": "ready"
   },
   {
+    "id": "usui-01",
+    "title": "薄い - thin",
+    "level": "N4",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-12-07T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
     "id": "wakai-01",
     "title": "若い - young",
     "level": "N5",
@@ -366,6 +483,15 @@
     "approved": true,
     "ready_to_publish": true,
     "publish_at": "2026-10-30T18:00:00+00:00",
+    "status": "ready"
+  },
+  {
+    "id": "yawarakai-01",
+    "title": "柔らかい - soft",
+    "level": "N3",
+    "approved": true,
+    "ready_to_publish": true,
+    "publish_at": "2026-12-09T18:00:00+00:00",
     "status": "ready"
   }
 ]
