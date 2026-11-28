@@ -35,3 +35,4 @@ mx-18-calling-staff
 px-15-toilet-now
 mx-19-change-trains
 px-16-pay-by-card
+mx-20-table-for-two
