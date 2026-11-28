@@ -88,3 +88,4 @@ px-15-toilet-now
 mx-19-change-trains
 202611231834-where-is-the-atm
 px-16-pay-by-card
+mx-20-table-for-two
